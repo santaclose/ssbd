@@ -1,0 +1,8 @@
+*.txt
+*.s
+*.d
+*.ld
+*.z64
+*.o
+assets
+__pycache__

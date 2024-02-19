@@ -1,0 +1,178 @@
+name: Smash Brothers (North America)
+sha1: e2929e10fccc0aa84e5776227e798abc07cedabf
+options:
+  basename: smashbrothers
+  target_path: baserom.z64
+  elf_path: build/smashbrothers.elf
+  base_path: .
+  platform: n64
+  compiler: IDO
+
+  # asm_path: asm
+  # src_path: src
+  # build_path: build
+  # create_asm_dependencies: True
+
+  ld_script_path: smashbrothers.ld
+  ld_dependencies: True
+
+  find_file_boundaries: True
+  header_encoding: ASCII
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+  mips_abi_float_regs: o32
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  # section_order: [".text", ".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - symbol_addrs.txt
+  reloc_addrs_path:
+    - reloc_addrs.txt
+
+  # undefined_funcs_auto_path: undefined_funcs_auto.txt
+  # undefined_syms_auto_path: undefined_syms_auto.txt
+
+  extensions_path: tools/splat_ext
+
+  # string_encoding: ASCII
+  # data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+  # libultra_symbols: True
+  # hardware_regs: True
+  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: boot
+    type: bin
+    start: 0x40
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+      - [0x1000, hasm]
+
+  - name: main
+    type: code
+    start: 0x1060
+    vram: 0x80000460
+    follows_vram: entry
+    bss_size: 0x61EA0
+    subsegments:
+      - [0x1060, asm]
+      - [0x3A3E0, data]
+      - { start: 0x406D0, type: bss, vram: 0x8003FAD0 }
+
+  - type: bin
+    start: 0x406D0
+    follows_vram: main
+  - [0x1000000]
+
+  - name : ovl0_2
+    type: code
+    start: 0x04F860
+    vram: 0x800D3E80
+    subsegments:
+      - [0x04F860, asm, ovl0_2]
+
+  - name : ovl0_3
+    type: code
+    start: 0x04FB10
+    vram: 0x800D4130
+    subsegments:
+      - [0x04FB10, asm, ovl0_3]
+
+  - name : ovl0_4
+    type: code
+    start: 0x04FF00
+    vram: 0x800D4520
+    subsegments:
+      - [0x04FF00, asm, ovl0_4]
+
+  - name : ovl2
+    type: code
+    start: 0x051C90
+    vram: 0x800D6490
+    subsegments:
+      - [0x051C90, asm, ovl2]
+
+  - name : ovl3
+    type: code
+    start: 0x0AC540
+    vram: 0x80131B00
+    subsegments:
+      - [0x0AC540, asm, ovl3]
+
+  - name : ovl1
+    type: code
+    start: 0x1079C0
+    vram: 0x803903E0
+    subsegments:
+      - [0x1079C0, asm, ovl1]
+
+  - name : ovl4
+    type: code
+    start: 0x109FB0
+    vram: 0x8018D0C0
+    subsegments:
+      - [0x109FB0, asm, ovl4]
+
+  - name : ovl5
+    type: code
+    start: 0x10B370
+    vram: 0x8018D0C0
+    subsegments:
+      - [0x10B370, asm, ovl5]
+
+  - name : ovl65
+    type: code
+    start: 0x10B920
+    vram: 0x8018D0C0
+    subsegments:
+      - [0x10B920, asm, ovl65]
+
+  - name : ovl6
+    type: code
+    start: 0x111800
+    vram: 0x8018D0C0
+    subsegments:
+      - [0x111800, asm, ovl6]
+
+  - name : ovl7
+    type: code
+    start: 0x1138E0
+    vram: 0x8018D0C0
+    subsegments:
+      - [0x1138E0, c, ovl7]
+
+  - name : ovl10
+    type: code
+    start: 0x117180
+    vram: 0x80131B00
+    subsegments:
+      - [0x117180, asm, ovl10]
+
+  - name : ovl8
+    type: code
+    start: 0x18DCB0
+    vram: 0x80371460
+    subsegments:
+      - [0x18DCB0, asm, ovl8]
+
+  - name : ovl9
+    type: code
+    start: 0x1AB6B0
+    vram: 0x80369240
+    subsegments:
+      - [0x1AB6B0, asm, ovl9]
