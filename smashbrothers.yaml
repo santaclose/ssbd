@@ -155,6 +155,7 @@ segments:
     vram: 0x8018D0C0
     subsegments:
       - [0x1138E0, c, ovl7]
+      - [0x116F90]
 
   - name : ovl10
     type: code
