@@ -6,3 +6,5 @@
 *.o
 assets
 __pycache__
+
+!symbols.ld
