@@ -10,7 +10,7 @@ options:
 
   # asm_path: asm
   # src_path: src
-  # build_path: build
+  build_path: bin
   # create_asm_dependencies: True
 
   ld_script_path: smashbrothers.ld
@@ -21,7 +21,9 @@ options:
 
   o_as_suffix: True
   use_legacy_include_asm: False
-  mips_abi_float_regs: o32
+
+# problematic when running assembler
+#  mips_abi_float_regs: "32"
 
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
@@ -53,15 +55,19 @@ segments:
     start: 0x0
 
   - name: boot
-    type: bin
+    type: code
     start: 0x40
+    vram: 0xA4000040
+    subsegments:
+      - [0x40, hasm, boot]
+      - [0xB5C]
 
   - name: entry
     type: code
     start: 0x1000
     vram: 0x80000400
     subsegments:
-      - [0x1000, hasm]
+      - [0x1000, hasm, entry]
 
   - name: main
     type: code
@@ -70,9 +76,10 @@ segments:
     follows_vram: entry
     bss_size: 0x61EA0
     subsegments:
-      - [0x1060, asm]
-      - [0x3A3E0, data]
-      - { start: 0x406D0, type: bss, vram: 0x8003FAD0 }
+      - [0x1060, asm, main]
+      - [0x3A2C0]
+      # - [0x3A3E0, data]
+      # - { start: 0x406D0, type: bss, vram: 0x8003FAD0 }
 
   - type: bin
     start: 0x406D0
@@ -99,6 +106,7 @@ segments:
     vram: 0x800D4520
     subsegments:
       - [0x04FF00, asm, ovl0_4]
+      - [0x50684]
 
   - name : ovl2
     type: code
@@ -106,6 +114,7 @@ segments:
     vram: 0x800D6490
     subsegments:
       - [0x051C90, asm, ovl2]
+      - [0x923D0]
 
   - name : ovl3
     type: code
@@ -113,6 +122,7 @@ segments:
     vram: 0x80131B00
     subsegments:
       - [0x0AC540, asm, ovl3]
+      - [0x1010A0]
 
   - name : ovl1
     type: code
@@ -120,6 +130,7 @@ segments:
     vram: 0x803903E0
     subsegments:
       - [0x1079C0, asm, ovl1]
+      - [0x1081C8]
 
   - name : ovl4
     type: code
@@ -127,6 +138,7 @@ segments:
     vram: 0x8018D0C0
     subsegments:
       - [0x109FB0, asm, ovl4]
+      - [0x10B2C8]
 
   - name : ovl5
     type: code
@@ -141,6 +153,7 @@ segments:
     vram: 0x8018D0C0
     subsegments:
       - [0x10B920, asm, ovl65]
+      - [0x111060]
 
   - name : ovl6
     type: code
@@ -154,7 +167,7 @@ segments:
     start: 0x1138E0
     vram: 0x8018D0C0
     subsegments:
-      - [0x1138E0, c, ovl7]
+      - [0x1138E0, asm, ovl7]
       - [0x116F90]
 
   - name : ovl10
@@ -163,6 +176,7 @@ segments:
     vram: 0x80131B00
     subsegments:
       - [0x117180, asm, ovl10]
+      - [0x119860]
 
   - name : ovl8
     type: code
@@ -170,6 +184,7 @@ segments:
     vram: 0x80371460
     subsegments:
       - [0x18DCB0, asm, ovl8]
+      - [0x1A44F0]
 
   - name : ovl9
     type: code

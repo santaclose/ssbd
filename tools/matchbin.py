@@ -3,14 +3,17 @@ import os
 import sys
 import binascii
 
-def exactMatch(subBinFilePath, binFilePath):
+def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0):
 	INSTR_SIZE = 4
-	subBinStartOffset = 0x10000
 	curBinOffset = 0x0
-	foundMatch = False
+	matchedInstructions = 0
+	binFileSize = 0
 	with open(subBinFilePath, 'rb') as subBinFile:
 		subBinFile.seek(subBinStartOffset)
 		with open(binFilePath, 'rb') as binFile:
+			binFile.seek(0, 2)
+			binFileSize = binFile.tell()
+			binFile.seek(0)
 			while (binChunk := binFile.read(INSTR_SIZE)):
 				currentBlock = []
 				currentBlockLocation = curBinOffset
@@ -18,21 +21,19 @@ def exactMatch(subBinFilePath, binFilePath):
 					if binChunk != subBinChunk:
 						subBinFile.seek(subBinStartOffset)
 						if len(currentBlock) > 16:
-							foundMatch = True
+							matchedInstructions = len(currentBlock)
 							lineCount = len(currentBlock) // 4
 							print(f"match at: {hex(currentBlockLocation)}")
 							print(f"          {lineCount} lines ({hex(currentBlockLocation)} - {hex(currentBlockLocation + lineCount * 16)})")
-							print(f"          {len(currentBlock)} instructions")
+							print(f"          {matchedInstructions} instructions")
 						break
 					currentBlock.append(subBinChunk)
 					binChunk = binFile.read(INSTR_SIZE)
 					curBinOffset += INSTR_SIZE
 				curBinOffset += INSTR_SIZE
-	if not foundMatch:
-		print("couldn't match binaries")
-
+	print(f"matched {matchedInstructions} instructions out of {binFileSize//INSTR_SIZE} ({(matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%)")
 
 subBinFilePath = sys.argv[1]
 binFilePath = sys.argv[2]
 
-exactMatch(subBinFilePath, binFilePath)
+match(subBinFilePath, binFilePath)
