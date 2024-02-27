@@ -62,13 +62,14 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, ignoreOffsets = 
 
 	print(f"   binary instruction count:     {binFileSize//INSTR_SIZE}")
 	print(f"   sub-binary instruction count: {subBinFileSize//INSTR_SIZE}")
-	print(f"   matched {matchedInstructions} instructions out of {binFileSize//INSTR_SIZE} ({(matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%)")
-	print(f"   differences:")
-	for d in differentRanges:
-		if d[0] == d[1]:
-			print(f"     {d[0]}")
-		else:
-			print(f"     {d[0]} - {d[1]}")
+	print(f"   matched {matchedInstructions} instructions out of {binFileSize//INSTR_SIZE} ({(100.0*matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%)")
+	if len(differentRanges) > 0:
+		print(f"   differences:")
+		for d in differentRanges:
+			if d[0] == d[1]:
+				print(f"     {d[0]}")
+			else:
+				print(f"     {d[0]} - {d[1]}")
 
 subBinFilePath = sys.argv[1]
 binFilePath = sys.argv[2]
