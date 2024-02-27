@@ -293,12 +293,13 @@ struct MObj {
 
 struct SObj {
     /* 0x00 */ struct SObj *next;
-    /* 0x04 */ struct GObjCommon *unk04;
-    /* 0x08 */ struct SObj *unk08;
-    /* 0x0C */ struct SObj *unk0C;
-    /* 0x10 */ Sprite sp;
-    /* 0x54 */ s32 unk54;
-    /* 0x58 */ Vec2f pos;
+    /* 0x04 */ struct GObjCommon *parent_gobj;
+    /* 0x08 */ struct SObj *unk_sobj_0x8;
+    /* 0x0C */ struct SObj *unk_sobj_0xC;
+    /* 0x10 */ Sprite sprite;
+    /* 0x54 */ void *sobj_user_data;
+    /* 0x58 */ Vec2f pos; // Position / offset? Causes a ghosting effect if out of bounds
+    /* 0x60 */ GfxColor sobj_color;
 }; // size >= 0x58 (0x6C?)
 
 struct OMCamera {
