@@ -23,7 +23,7 @@ void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 	}
 }
 
-scTrainingMenu D_ovl7_80190B58;
+// 8018D0E8
 void scTrainingMode_CheckEnterTrainingMenu()
 {
 	s32 player = gSceneData.player_port;
@@ -231,8 +231,6 @@ sb32 scTrainingMode_UpdateSpeedOption()
 }
 
 // 8018D6DC
-void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32);   /* extern */
-void func_ovl7_8018F424();                             /* extern */
 sb32 scTrainingMode_UpdateViewOption()
 {
 	GObj *fighter_gobj;
@@ -307,7 +305,6 @@ void scTrainingMode_UpdateMainOption()
 }
 
 // 8018D91C
-extern sb32 (*jtbl_ovl7_801907F0[/* */])();
 void scTrainingMode_UpdateTrainingMenu()
 {
 	scTrainingMode_UpdateMenuInputs();
@@ -320,7 +317,6 @@ void scTrainingMode_UpdateTrainingMenu()
 }
 
 // 8018D974
-extern u8 D_ovl7_8019081C[/* */][2];
 sb32 scTrainingMode_CheckSpeedFrameFreeze()
 {
 	if (gTrainingModeStruct.lagframe_wait == 0)
@@ -371,7 +367,6 @@ void scTrainingMode_RunProcUpdate()
 }
 
 // 8018DA98
-gmMatchInfo D_ovl7_80190968;
 void func_ovl7_8018DA98()
 {
 	s32 opponent;
@@ -433,13 +428,6 @@ void func_ovl7_8018DA98()
 }
 
 // 8018DD0C
-extern intptr_t D_NF_00000000;
-extern intptr_t D_NF_00000020;
-extern intptr_t D_NF_000000BC;
-extern intptr_t D_NF_000000FE;
-extern intptr_t D_NF_0000010C;
-extern intptr_t D_NF_0000013C;
-extern intptr_t D_NF_000001B8;
 void scTrainingMode_LoadFiles()
 {
 	void *addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE, hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
@@ -451,27 +439,6 @@ void scTrainingMode_LoadFiles()
 	gTrainingModeStruct.unk_trainmenu_0x38 = (void*) ((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
 }
 
-// 8018DDB0
-intptr_t D_ovl7_801907B8[] =
-{
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88,
-	0x26C88
-};
-// 80190824
-scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[/* */] =
-{
-	{ 0x1A, 0x20718, { 0x00, 0x00, 0x00 } },
-	{ 0x1B, 0x20718, { 0xEE, 0x9E, 0x06 } },
-	{ 0x1C, 0x20718, { 0xAF, 0xF5, 0xFF } }
-};
-extern intptr_t scTrainingMode_Files_BackgroundImageIDs[/* */];
 void func_ovl7_8018DDB0()
 {
 	gGroundInfo->unk_0x48 = (void*) (rldm_get_file_external_force(
@@ -480,7 +447,6 @@ void func_ovl7_8018DDB0()
 			scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].addr
 	);
 }
-
 
 // 8018DE60
 void scTrainingMode_InitMiscVars()
@@ -500,7 +466,6 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj *interface_gobj, scTrainingSprites
 }
 
 // 8018DF30
-void func_ovl0_800CCF00(GObj*, s32);                     /* extern */
 void scTrainingMode_InitStatDisplayTextInterface()
 {
 	s32 i;
@@ -526,8 +491,6 @@ void scTrainingMode_InitStatDisplayTextInterface()
 }
 
 // 8018E014
-extern u16 D_ovl7_801907DC[3];
-extern u8 D_ovl7_801907E4[3];
 void scTrainingMode_UpdateDamageDisplay(GObj *interface_gobj, s32 index)
 {
 	SObj *sobj = SObjGetStruct(interface_gobj);
@@ -622,8 +585,6 @@ void scTrainingMode_MakeDamageDisplayInterface()
 }
 
 // 8018E424
-extern u16 D_ovl7_801907E8[2];
-extern u8 D_ovl7_801907EC[2];
 void scTrainingMode_UpdateComboDisplay(GObj *interface_gobj, s32 index)
 {
 	SObj *sobj = SObjGetStruct(interface_gobj);
@@ -749,7 +710,6 @@ void scTrainingMode_InitItemDisplaySprite()
 }
 
 // 8018E9AC
-void func_ovl0_800CCF00_overload(GObj*);                     /* extern */
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
 	ftStruct *fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
@@ -780,7 +740,6 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 	}
 	func_ovl0_800CCF00_overload(interface_gobj);
 }
-
 
 // 8018EA88
 void scTrainingMode_MakeItemDisplayInterface()
@@ -1093,17 +1052,13 @@ void scTrainingMode_UpdateOptionArrows()
 	}
 }
 
-
-
 // 8018F730
 void scTrainingMode_MakeOptionArrowInterface()
 {
 	GObj *interface_gobj;
 
 	gTrainingModeStruct.arrow_option_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
-
 	scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
 	scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
 
@@ -1140,7 +1095,6 @@ void func_ovl7_8018F8FC() // Unused?
 	GObj *interface_gobj;
 
 	gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])->pos.y = 182.0F;
 }
@@ -1202,7 +1156,6 @@ void func_ovl7_8018FB40() // Unused?
 	GObj *interface_gobj;
 
 	gTrainingModeStruct.combo0 = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
 	func_ovl7_8018FA54();
@@ -1213,7 +1166,6 @@ void scTrainingMode_UpdateCursorPosition()
 {
 	SObj *cursor_sobj = SObjGetStruct(gTrainingModeStruct.cursor_gobj);
 	SObj *text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
-
 	cursor_sobj->pos.y = (s32)(text_sobj->pos.y - 1.0F);
 }
 
@@ -1224,9 +1176,7 @@ void scTrainingMode_MakeMenuCursorInterface()
 	SObj *target_sprite;
 
 	gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-
 	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
-
 	target_sprite = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor]);
 	target_sprite->pos.x = 71.0F;
 
@@ -1312,7 +1262,7 @@ void scTrainingMode_InitTrainingMenuAll()
 	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_RENDERFLAG_HIDDEN);
 }
 
-// 801
+// 80190164
 void scTrainingMode_SetPlayDefaultMusicID()
 {
 	gMusicIndexDefault = 0x2A;
@@ -1334,7 +1284,6 @@ void scTrainingMode_SetGameStatusGo()
 }
 
 // 801901F4
-s32 scTrainingMode_CPOpponent_BehaviorKind[/* */] = { 0x0F, 0x10, 0x11, 0x12, 0x00 };
 void scTrainingMode_UpdateOpponentBehavior()
 {
 	ftStruct *fp = ftGetStruct(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
@@ -1347,8 +1296,6 @@ void scTrainingMode_UpdateOpponentBehavior()
 }
 
 // 80190260
-void func_ovl7_801906D0();
-Unk800D4060 D_ovl7_8019086C = { 0 };
 void scTrainingMode_InitTrainingMode()
 {
 	GObj *fighter_gobj;
@@ -1430,7 +1377,6 @@ void scTrainingMode_InitTrainingMode()
 }
 
 // 801905A8
-void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);    /* extern */
 void scTrainingMode_SetGeometryRenderLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
@@ -1438,11 +1384,6 @@ void scTrainingMode_SetGeometryRenderLights(Gfx **display_list)
 }
 
 // 801905F4
-extern uintptr_t D_NF_800A5240;
-scUnkDataBounds D_ovl7_80190870;
-scRuntimeInfo D_ovl7_8019088C;
-extern uintptr_t lOverlay7ArenaHi;  // 80392A00
-extern uintptr_t lOverlay7ArenaLo;  // 80190FA0
 void scManager_TrainingMode_InitScene()
 {
 	D_ovl7_80190870.unk_scdatabounds_0xC = (uintptr_t)&D_NF_800A5240 - 6400;
@@ -1470,14 +1411,6 @@ void scManager_TrainingMode_InitScene()
 }
 
 // 801906D0
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
-extern void *gCommonSpriteFiles[/* */];
-extern u32 D_ovl2_80116BD0[8];
-// 80190C40
-RldmFileNode gOverlay7StatusBuf[100];
-// 80190F60
-RldmFileNode gOverlay7ForceBuf[7];
 void func_ovl7_801906D0()
 {
 	RldmSetup rldm_setup;
