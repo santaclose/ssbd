@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir -p bin/asm
-find asm/ -type f | grep \\.s$ | grep -v /data/ | while read line
+find asm/ -type f | grep \\.s$ | grep "$1" | grep -v /data/ | while read line
 do
+	mkdir -p $(dirname "bin/${line%.*}")
 #	~/test/binutils-2.42/gas/as-new -EB -I include -march=vr4300 -mabi=32 -o bin/${line%.*}.o $line
 #	~/test/binutils-2.37/gas/as-new -EB -I include -march=vr4300 -mabi=32 -o bin/${line%.*}.o $line
 	mips-linux-gnu-as -EB -I include -march=vr4300 -mabi=32 -o bin/${line%.*}.o $line

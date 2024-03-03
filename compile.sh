@@ -17,17 +17,18 @@ if [ ! -f ./tools/ido-static-recomp/build7.1/out/cc ]; then
 	fi
 	pushd ./tools/ido-static-recomp/ && python ./build.py ./ido/7.1/ && popd
 fi
-mkdir -p ./bin/c
-./tools/ido-static-recomp/build7.1/out/cc -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm -Iinclude -Isrc -DF3DEX_GBI_2 -Wab,-r4300_mul -woff 649,838,712,568,624 -mips2 -O2 $1
+mkdir -p $(dirname "bin/${1%.*}")
+echo COMPILING $1
+./tools/ido-static-recomp/build7.1/out/cc -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm -Iinclude -Isrc -DF3DEX_GBI_2 -Wab,-r4300_mul -woff 649,838,712,568,624,709 -mips2 -O2 -o bin/${1%.*}.o $1
 #./tools/ido-static-recomp/build7.1/out/cc -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm -Iinclude -Isrc -Wab,-r4300_mul -mips2 -O2 $1
-mv *.o ./bin/c
+#mv *.o ./bin/c
 if [ $? -ne 0 ]; then
 	echo -e "${RED}COMPILATION FAILED${NC}"
 	exit
 fi
 
 echo -e "${GREEN}COMPILATION SUCCEEDED${NC}"
-find bin/c/ -type f | grep \\.o$ | while read line ; do mips-linux-gnu-objcopy -O binary --only-section=.text ${line} ${line}.text ; done
+find bin/src/ -type f | grep \\.o$ | while read line ; do mips-linux-gnu-objcopy -O binary --only-section=.text ${line} ${line}.text ; done
 
 
 #nameWithoutExtension=$(basename $1)

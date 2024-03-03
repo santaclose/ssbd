@@ -4,12 +4,13 @@ import re
 import sys
 import binascii
 import rabbitizer
+import disasm
 
 patternInstr = r"^(\w+)\s+(.+)$"
 patternReg = r"\$\w+"
 
-def instructionsDiffer(bytesA, bytesB, ignoreOffsets = True):
-	if ignoreOffsets:
+def instructionsDiffer(bytesA, bytesB, onlyInstrAndRegisters = True):
+	if onlyInstrAndRegisters:
 		asmb = f"{rabbitizer.Instruction(int.from_bytes(bytesA, byteorder='big'))}"
 		asmsb = f"{rabbitizer.Instruction(int.from_bytes(bytesB, byteorder='big'))}"
 		mb = re.match(patternInstr, asmb)
@@ -26,8 +27,79 @@ def instructionsDiffer(bytesA, bytesB, ignoreOffsets = True):
 		chunksDiffer = bytesA != bytesB
 	return chunksDiffer
 
+def searchCode(binWithSequenceFilePath, sequenceOffset, binToLookFilePath):
+	INSTR_SIZE = 4
+	LINE_SIZE = 4 * INSTR_SIZE
 
-def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, ignoreOffsets = True):
+	with open(binWithSequenceFilePath, 'rb') as binWithSequenceFile:
+		with open(binToLookFilePath, 'rb') as binToLookFile:
+			binWithSequenceFile.seek(sequenceOffset)
+			threeLineSequence = ""
+			for i in range(4 * 3):
+				binWithSequenceChunk = binWithSequenceFile.read(INSTR_SIZE)
+				threeLineSequence += disasm.mipsToString(int.from_bytes(binWithSequenceChunk, byteorder='big'), disasm.MIPS_TO_STRING_MODE_INSTR_AND_REGISTERS)
+				threeLineSequence += '\n'
+			twoLineSequence = ""
+			for i in range(4 * 2):
+				binWithSequenceChunk = binWithSequenceFile.read(INSTR_SIZE)
+				twoLineSequence += disasm.mipsToString(int.from_bytes(binWithSequenceChunk, byteorder='big'), disasm.MIPS_TO_STRING_MODE_INSTR_AND_REGISTERS)
+				twoLineSequence += '\n'
+			oneLineSequence = ""
+			for i in range(4 * 1):
+				binWithSequenceChunk = binWithSequenceFile.read(INSTR_SIZE)
+				oneLineSequence += disasm.mipsToString(int.from_bytes(binWithSequenceChunk, byteorder='big'), disasm.MIPS_TO_STRING_MODE_INSTR_AND_REGISTERS)
+				oneLineSequence += '\n'
+
+			binToLookDisassembled = ""
+			while (binChunk := binToLookFile.read(INSTR_SIZE)):
+				binToLookDisassembled += disasm.mipsToString(int.from_bytes(binChunk, byteorder='big'), disasm.MIPS_TO_STRING_MODE_INSTR_AND_REGISTERS)
+				binToLookDisassembled += '\n'
+
+			instrIndex = binToLookDisassembled.find(threeLineSequence)
+			if instrIndex > -1:
+				bytesToFoundMatch = binToLookDisassembled.count('\n', 0, instrIndex) * 4
+				print(f"   Matched three lines at: {hex(bytesToFoundMatch)}")
+				return
+			instrIndex = binToLookDisassembled.find(twoLineSequence)
+			if instrIndex > -1:
+				bytesToFoundMatch = binToLookDisassembled.count('\n', 0, instrIndex) * 4
+				print(f"     Matched two lines at: {hex(bytesToFoundMatch)}")
+				return
+			instrIndex = binToLookDisassembled.find(oneLineSequence)
+			if instrIndex > -1:
+				bytesToFoundMatch = binToLookDisassembled.count('\n', 0, instrIndex) * 4
+				print(f"      Matched one line at: {hex(bytesToFoundMatch)}")
+				return
+			print(f"   Not found")
+
+
+
+			# sequenceFirstLine = binWithSequenceFile.read(LINE_SIZE)
+			# binWithSequenceFile.seek(sequenceOffset)
+			# sequenceFirstTwoLines = binWithSequenceFile.read(LINE_SIZE * 2)
+			# binWithSequenceFile.seek(sequenceOffset)
+			# sequenceFirstThreeLines = binWithSequenceFile.read(LINE_SIZE * 3)
+
+			# binToLook = binToLookFile.read()
+			# lineIndex = binToLook.find(sequenceFirstThreeLines)
+			# if lineIndex > -1:
+			# 	print(f"   Matched three lines at: {hex(lineIndex)}")
+			# 	return
+			# lineIndex = binToLook.find(sequenceFirstTwoLines)
+			# if lineIndex > -1:
+			# 	print(f"   Matched two lines at: {hex(lineIndex)}")
+			# 	return
+			# lineIndex = binToLook.find(sequenceFirstLine)
+			# if lineIndex > -1:
+			# 	print(f"   Matched one line  at: {hex(lineIndex)}")
+			# 	return
+			# print(f"   Not found")
+			# return
+
+
+
+
+def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True):
 	INSTR_SIZE = 4
 	curBinOffset = 0x0
 	matchedInstructions = 0
@@ -49,7 +121,7 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, ignoreOffsets = 
 
 			while (binChunk := binFile.read(INSTR_SIZE)):
 				while (subBinChunk := subBinFile.read(INSTR_SIZE)):
-					if instructionsDiffer(binChunk, subBinChunk):
+					if instructionsDiffer(binChunk, subBinChunk, onlyInstrAndRegisters):
 						if len(differentRanges) > 0 and differentRanges[-1][1] == hex(curBinOffset - INSTR_SIZE):
 							differentRanges[-1] = (differentRanges[-1][0], hex(curBinOffset))
 						else:
@@ -71,7 +143,14 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, ignoreOffsets = 
 			else:
 				print(f"     {d[0]} - {d[1]}")
 
-subBinFilePath = sys.argv[1]
-binFilePath = sys.argv[2]
 
-match(subBinFilePath, binFilePath)
+if __name__ == "__main__":
+
+	if sys.argv[1] == '-s':
+		searchCode(sys.argv[2], eval(sys.argv[3]), sys.argv[4])
+		sys.exit()
+
+	subBinFilePath = sys.argv[1]
+	binFilePath = sys.argv[2]
+
+	match(subBinFilePath, binFilePath)
