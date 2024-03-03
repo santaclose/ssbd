@@ -280,7 +280,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj *ground_gobj)
 
 	while (fighter_gobj != NULL)
 	{
-		ftStruct *fp = fighter_gobj->user_data;
+		ftStruct *fp = ftGetStruct(fighter_gobj);
 		if ((fp->ground_or_air == GA_Ground) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == mpCollision_Material_Detect))
 		{
 			DObj *dobj = gMapRooms->room_dobj[mpCollision_SetDObjNoID(fp->coll_data.ground_line_id)];

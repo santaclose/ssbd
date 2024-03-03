@@ -33,7 +33,10 @@ options:
   # auto_all_sections: [".data", ".rodata", ".bss"]
 
   symbol_addrs_path:
-    - symbol_addrs.txt
+    - symbols/libultra.txt
+    - symbols/ovl6.txt
+    # - symbols/ovl7.txt
+    - symbols/ovl26.txt
   reloc_addrs_path:
     - reloc_addrs.txt
 
@@ -104,7 +107,10 @@ segments:
       - [0x0311B0, asm, libultra/io/sptask]
       - [0x0314A0, asm, libultra/os/destroythread]
       - [0x0315B0, asm, libultra/libc/ll]
-      - [0x032170, asm, libultra/os/thread]
+      - [0x031870, hasm, libultra/os/exceptasm]
+      - [0x031F8C, asm, libultra/os/unk_31F8C]
+      - [0x031FE4, hasm, libultra/os/dispatchthread]
+      - [0x032160, asm, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]
       - [0x032250, asm, libultra/motor]
       - [0x032620, asm, libultra/io/siacs]
@@ -276,28 +282,190 @@ segments:
       - [0x116F90, data, ovl7]
       - [0x117180]
 
-  # - name: ovl10
-  #   type: code
-  #   start: 0x117180
-  #   vram: 0x80131B00
-  #   subsegments:
-  #     - [0x117180, asm, ovl10]
-  #     - [0x119860]
+  - name: ovl10
+    type: code
+    start: 0x117180
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x117180, asm, ovl10/ovl10]
+      - [0x119860, data, ovl10]
+      - [0x119ac0]
 
-  # - name: ovl8
-  #   type: code
-  #   start: 0x18DCB0
-  #   vram: 0x80371460
-  #   subsegments:
-  #     - [0x18DCB0, asm, ovl8]
-  #     - [0x1A44F0]
+  - name: ovl11
+    type: code
+    start: 0x119ac0
+    vram: 0x800D6490
+    subsegments:
+      - [0x119ac0, asm, ovl11/ovl11]
+      - [0x119D30, data, ovl11]
+      - [0x119df0]
+
+  - name: ovl12
+    type: code
+    start: 0x119df0
+    vram: 0x800D6490
+    subsegments:
+      - [0x119df0, asm, ovl12/ovl12]
+      - [0x119FE0, data, ovl12]
+      - [0x11a340]
+
+  - name: ovl13
+    type: code
+    start: 0x11a340
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11a340, asm, ovl13/ovl13]
+      - [0x11AA20, data, ovl13]
+      - [0x11b970]
+
+  - name: ovl14
+    type: code
+    start: 0x11b970
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11b970, asm, ovl14/ovl14]
+      - [0x11C500, data, ovl14]
+      - [0x11ca90]
+
+  - name: ovl17
+    type: code
+    start: 0x11ca90
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11ca90, asm, ovl17/ovl17]
+      - [0x11DB20, data, ovl17]
+      - [0x11dc10]
+
+  - name: ovl18
+    type: code
+    start: 0x11dc10
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11dc10, asm, ovl18/ovl18]
+      - [0x11F190, data, ovl18]
+      - [0x11f2b0]
+
+  - name: ovl60
+    type: code
+    start: 0x11f2b0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x11f2b0, asm, ovl60/ovl60]
+      - [0x120DD0, data, ovl60]
+      - [0x120f50]
+
+  - name: ovl61
+    type: code
+    start: 0x120f50
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x120f50, asm, ovl61/ovl61]
+      - [0x122370, data, ovl61]
+      - [0x1224b0]
+
+  - name: ovl19
+    type: code
+    start: 0x1224b0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1224b0, asm, ovl19/ovl19]
+      - [0x125160, data, ovl19]
+      - [0x1252e0]
+
+  - name: ovl20
+    type: code
+    start: 0x1252e0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1252e0, asm, ovl20/ovl20]
+      - [0x127EA0, data, ovl20]
+      - [0x1280a0]
+
+  - name: ovl21
+    type: code
+    start: 0x1280a0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x1280a0, asm, ovl21/ovl21]
+      - [0x1297B0, data, ovl21]
+      - [0x129970]
+
+  - name: ovl22
+    type: code
+    start: 0x129970
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x129970, asm, ovl22/ovl22]
+      - [0x12A370, data, ovl22]
+      - [0x12a4c0]
+
+  - name: ovl23
+    type: code
+    start: 0x12a4c0
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12a4c0, asm, ovl23/ovl23]
+      - [0x12AD30, data, ovl23]
+      - [0x12ae40]
+
+  - name: ovl24
+    type: code
+    start: 0x12ae40
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12ae40, asm, ovl24/ovl24]
+      - [0x12E130, data, ovl24]
+      - [0x12ef60]
+
+  - name: ovl25
+    type: code
+    start: 0x12ef60
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12ef60, asm, ovl25/ovl25]
+      - [0x12FC90, data, ovl25]
+      - [0x12fd80]
+
+  - name: ovl26
+    type: code
+    start: 0x12fd80
+    vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
+    subsegments:
+      - [0x12fd80, asm, ovl26_nops]
+      - [0x12FDA0, asm, ovl26/ovl26]
+      - [0x139620, data, ovl26]
+      - [0x139D00]
+
+  - name: ovl8
+    type: code
+    start: 0x18DCB0
+    vram: 0x80371460
+    subsegments:
+      - [0x18DCB0, asm, ovl8/ovl8]
+      - [0x1A44F0, data, ovl8]
+      - [0x1AB6B0]
 
   - name: ovl9
     type: code
     start: 0x1AB6B0
     vram: 0x80369240
     subsegments:
-      - [0x1AB6B0, asm, ovl9]
+      - [0x1AB6B0, asm, ovl9/ovl9]
       - [0x1AC3D0, data, ovl9]
       - [0x1AC870]
 

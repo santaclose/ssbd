@@ -1,6 +1,10 @@
 #ifndef SYS_RLDM_H
 #define SYS_RLDM_H
 
+#include <ssb_types.h>
+
+typedef u32 RldmFileId;
+
 typedef struct RldmFileNode 
 {
 	/* 0x00 */ u32 id;

@@ -36,6 +36,7 @@ typedef enum omGObjLinkIndex
 
 } omGObjLinkIndex;
 
+typedef union OMUserData            OMUserData;
 typedef union ATrack                ATrack;
 typedef union ACommand              ACommand;
 typedef struct GObj                 GObj;
