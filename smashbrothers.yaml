@@ -52,6 +52,7 @@ options:
   # libultra_symbols: True
   # hardware_regs: True
   # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+
 segments:
   - name: header
     type: header
@@ -60,6 +61,7 @@ segments:
   - name: boot
     type: code
     start: 0x40
+    exclusive_ram_id: boot_A4000040
     vram: 0xA4000040
     subsegments:
       - [0x40, hasm, boot_hasm]
@@ -195,6 +197,7 @@ segments:
     type: code
     start: 0x04F860
     vram: 0x800D3E80
+    exclusive_ram_id: overlay_800D3E80
     subsegments:
       - [0x049A00, asm, ovl0/nops]
       - [0x049A20, asm, ovl0/hal_bitmap]
@@ -209,6 +212,7 @@ segments:
     type: code
     start: 0x051C90
     vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
     subsegments:
       - [0x051C90, asm, ovl2/ovl2]
       - [0x0923D0, data, ovl2]
@@ -218,6 +222,7 @@ segments:
     type: code
     start: 0x0AC540
     vram: 0x80131B00
+    exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x0AC540, asm, ovl3/ovl3]
       - [0x1010A0, data, ovl3]
@@ -227,6 +232,7 @@ segments:
     type: code
     start: 0x1079C0
     vram: 0x803903E0
+    exclusive_ram_id: overlay_803903E0
     subsegments:
       - [0x1079C0, asm, ovl1/ovl1]
       - [0x1081C0, data, ovl1]
@@ -296,6 +302,7 @@ segments:
     type: code
     start: 0x119ac0
     vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
     subsegments:
       - [0x119ac0, asm, ovl11/ovl11]
       - [0x119D30, data, ovl11]
@@ -305,6 +312,7 @@ segments:
     type: code
     start: 0x119df0
     vram: 0x800D6490
+    exclusive_ram_id: overlay_800D6490
     subsegments:
       - [0x119df0, asm, ovl12/ovl12]
       - [0x119FE0, data, ovl12]
@@ -455,6 +463,7 @@ segments:
     type: code
     start: 0x18DCB0
     vram: 0x80371460
+    exclusive_ram_id: overlay_80371460
     subsegments:
       - [0x18DCB0, asm, ovl8/ovl8]
       - [0x1A44F0, data, ovl8]
@@ -464,6 +473,7 @@ segments:
     type: code
     start: 0x1AB6B0
     vram: 0x80369240
+    exclusive_ram_id: overlay_80369240
     subsegments:
       - [0x1AB6B0, asm, ovl9/ovl9]
       - [0x1AC3D0, data, ovl9]
