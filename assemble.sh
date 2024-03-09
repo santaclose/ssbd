@@ -1,7 +1,8 @@
 #!/bin/bash
 
-find asm/ -type f | grep \\.s$ | grep "$1" | grep -v /data/ | while read line
+find asm/ -type f | grep \\.s$ | grep "$1" | while read line
 do
+#	echo making bin/${line%.*}.o
 	mkdir -p $(dirname "bin/${line%.*}")
 #	~/test/binutils-2.42/gas/as-new -EB -I include -march=vr4300 -mabi=32 -o bin/${line%.*}.o $line
 #	~/test/binutils-2.37/gas/as-new -EB -I include -march=vr4300 -mabi=32 -o bin/${line%.*}.o $line

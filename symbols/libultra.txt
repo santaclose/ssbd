@@ -272,3 +272,5 @@ guMtxL2F = 0x80032AF8;
 guMtxXFMF = 0x800348E0;
 guMtxCatF = 0x80034980;
 guNormalize = 0x80035380;
+
+osPrint = 0x80023624;
