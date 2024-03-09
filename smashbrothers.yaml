@@ -263,7 +263,7 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x051C90, asm, ovl2/ovl2]
+      - [0x051C90, asm, ovl2]
       - [0x0923D0, data, ovl2]
       - [0x0AB250, rodata, ovl2]
       - [0x0AC540]
@@ -274,7 +274,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x0AC540, asm, ovl3/ovl3]
+      - [0x0AC540, asm, ovl3]
       - [0x1010A0, data, ovl3]
       - [0x106200, rodata, ovl3]
       - [0x1079C0]
@@ -285,7 +285,7 @@ segments:
     vram: 0x803903E0
     exclusive_ram_id: overlay_803903E0
     subsegments:
-      - [0x1079C0, asm, ovl1/ovl1]
+      - [0x1079C0, asm, ovl1]
       - [0x1081C0, data, ovl1]
       - [0x109FB0]
 
@@ -295,7 +295,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x109FB0, asm, ovl4/ovl4]
+      - [0x109FB0, asm, ovl4]
       - [0x10B2C0, data, ovl4]
       - [0x10B370]
   - name: ovl5
@@ -304,7 +304,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x10B370, asm, ovl5/ovl5]
+      - [0x10B370, asm, ovl5]
       - [0x10B830, data, ovl5]
       - [0x10B920]
   - name: ovl65
@@ -313,7 +313,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x10B920, asm, ovl65/ovl65]
+      - [0x10B920, asm, ovl65]
       - [0x111060, data, ovl65]
       - [0x111670, rodata, ovl65]
       - [0x111800]
@@ -323,7 +323,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x111800, asm, ovl6/ovl6]
+      - [0x111800, asm, ovl6]
       - [0x113600, data, ovl6]
       - [0x1138B0, rodata, ovl6]
       - [0x1138E0]
@@ -333,7 +333,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1138E0, asm, ovl7/ovl7]
+      - [0x1138E0, asm, ovl7]
       - [0x116F90, data, ovl7]
       - [0x117140, rodata, ovl7]
       - [0x117180]
@@ -344,7 +344,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x117180, asm, ovl10/ovl10]
+      - [0x117180, asm, ovl10]
       - [0x119860, data, ovl10]
       - [0x119AB0, rodata, ovl10]
       - [0x119ac0]
@@ -355,7 +355,7 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119ac0, asm, ovl11/ovl11]
+      - [0x119ac0, asm, ovl11]
       - [0x119D30, data, ovl11]
       - [0x119df0]
   - name: ovl12
@@ -364,7 +364,7 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119df0, asm, ovl12/ovl12]
+      - [0x119df0, asm, ovl12]
       - [0x119FE0, data, ovl12]
       - [0x11A170, rodata, ovl12]
       - [0x11a340]
@@ -375,7 +375,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11a340, asm, ovl13/ovl13]
+      - [0x11a340, asm, ovl13]
       - [0x11AA20, data, ovl13]
       - [0x11B860, rodata, ovl13]
       - [0x11b970]
@@ -385,7 +385,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11b970, asm, ovl14/ovl14]
+      - [0x11b970, asm, ovl14]
       - [0x11C500, data, ovl14]
       - [0x11C850, rodata, ovl14]
       - [0x11ca90]
@@ -395,7 +395,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11ca90, asm, ovl17/ovl17]
+      - [0x11ca90, asm, ovl17]
       - [0x11DB20, data, ovl17]
       - [0x11dc10]
   - name: ovl18
@@ -404,7 +404,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11dc10, asm, ovl18/ovl18]
+      - [0x11dc10, asm, ovl18]
       - [0x11F190, data, ovl18]
       - [0x11f2b0]
   - name: ovl60
@@ -413,7 +413,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11f2b0, asm, ovl60/ovl60]
+      - [0x11f2b0, asm, ovl60]
       - [0x120DD0, data, ovl60]
       - [0x120f50]
   - name: ovl61
@@ -422,7 +422,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x120f50, asm, ovl61/ovl61]
+      - [0x120f50, asm, ovl61]
       - [0x122370, data, ovl61]
       - [0x1224b0]
   - name: ovl19
@@ -431,7 +431,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1224b0, asm, ovl19/ovl19]
+      - [0x1224b0, asm, ovl19]
       - [0x125160, data, ovl19]
       - [0x1252e0]
   - name: ovl20
@@ -440,7 +440,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1252e0, asm, ovl20/ovl20]
+      - [0x1252e0, asm, ovl20]
       - [0x127EA0, data, ovl20]
       - [0x1280a0]
   - name: ovl21
@@ -449,7 +449,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1280a0, asm, ovl21/ovl21]
+      - [0x1280a0, asm, ovl21]
       - [0x1297B0, data, ovl21]
       - [0x129970]
   - name: ovl22
@@ -458,7 +458,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x129970, asm, ovl22/ovl22]
+      - [0x129970, asm, ovl22]
       - [0x12A370, data, ovl22]
       - [0x12a4c0]
   - name: ovl23
@@ -467,7 +467,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12a4c0, asm, ovl23/ovl23]
+      - [0x12a4c0, asm, ovl23]
       - [0x12AD30, data, ovl23]
       - [0x12ae40]
   - name: ovl24
@@ -476,7 +476,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12ae40, asm, ovl24/ovl24]
+      - [0x12ae40, asm, ovl24]
       - [0x12E130, data, ovl24]
       - [0x12EF20, rodata, ovl24]
       - [0x12ef60]
@@ -486,7 +486,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12ef60, asm, ovl25/ovl25]
+      - [0x12ef60, asm, ovl25]
       - [0x12FC90, data, ovl25]
       - [0x12fd80]
   - name: ovl26
@@ -496,7 +496,7 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12fd80, pad, ovl26_nops]
-      - [0x12FDA0, asm, ovl26/ovl26]
+      - [0x12FDA0, asm, ovl26]
       - [0x139620, data, ovl26]
       - [0x139CB0, rodata, ovl26]
       - [0x139D00]
@@ -506,7 +506,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x139D00, asm, ovl27/ovl27]
+      - [0x139D00, asm, ovl27]
       - [0x1407B0, data, ovl27]
       - [0x140F60, rodata, ovl27]
       - [0x1410E0]
@@ -516,7 +516,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1410E0, asm, ovl28/ovl28]
+      - [0x1410E0, asm, ovl28]
       - [0x147540, data, ovl28]
       - [0x147AC0, rodata, ovl28]
       - [0x147B30]
@@ -526,7 +526,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x147B30, asm, ovl29/ovl29]
+      - [0x147B30, asm, ovl29]
       - [0x14CF80, data, ovl29]
       - [0x14D610, rodata, ovl29]
       - [0x14D670]
@@ -536,7 +536,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x14D670, asm, ovl30/ovl30]
+      - [0x14D670, asm, ovl30]
       - [0x150040, data, ovl30]
       - [0x150530, rodata, ovl30]
       - [0x150CA0]
@@ -547,7 +547,7 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x150CA0, pad, ovl31_nops]
-      - [0x150CC0, asm, ovl31/ovl31]
+      - [0x150CC0, asm, ovl31]
       - [0x158090, data, ovl31]
       - [0x158960, rodata, ovl31]
       - [0x158A40]
@@ -557,7 +557,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x158A40, asm, ovl32/ovl32]
+      - [0x158A40, asm, ovl32]
       - [0x15D570, data, ovl32]
       - [0x15D9C0, rodata, ovl32]
       - [0x15DB50]
@@ -567,7 +567,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x15DB50, asm, ovl33/ovl33]
+      - [0x15DB50, asm, ovl33]
       - [0x1600FC, data, ovl33]
       - [0x162600, rodata, ovl33]
       - [0x162640]
@@ -577,7 +577,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x162640, asm, ovl34/ovl34]
+      - [0x162640, asm, ovl34]
       - [0x165560, data, ovl34]
       - [0x1657C0, rodata, ovl34]
       - [0x165810]
@@ -587,7 +587,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x165810, asm, ovl35/ovl35]
+      - [0x165810, asm, ovl35]
       - [0x1665B0, data, ovl35]
       - [0x1666F0]
 
@@ -597,7 +597,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1666F0, asm, ovl36/ovl36]
+      - [0x1666F0, asm, ovl36]
       - [0x1676C0, data, ovl36]
       - [0x167800, rodata, ovl36]
       - [0x167830]
@@ -607,7 +607,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x167830, asm, ovl37/ovl37]
+      - [0x167830, asm, ovl37]
       - [0x1687E0, data, ovl37]
       - [0x168900, rodata, ovl37]
       - [0x168930]
@@ -617,7 +617,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x168930, asm, ovl38/ovl38]
+      - [0x168930, asm, ovl38]
       - [0x169990, data, ovl38]
       - [0x169AB0, rodata, ovl38]
       - [0x169AE0]
@@ -627,7 +627,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x169AE0, asm, ovl39/ovl39]
+      - [0x169AE0, asm, ovl39]
       - [0x16AAB0, data, ovl39]
       - [0x16ABE0, rodata, ovl39]
       - [0x16AC10]
@@ -637,7 +637,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16AC10, asm, ovl40/ovl40]
+      - [0x16AC10, asm, ovl40]
       - [0x16BBC0, data, ovl40]
       - [0x16BCE0, rodata, ovl40]
       - [0x16BD10]
@@ -647,7 +647,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16BD10, asm, ovl41/ovl41]
+      - [0x16BD10, asm, ovl41]
       - [0x16CD10, data, ovl41]
       - [0x16CE40, rodata, ovl41]
       - [0x16CE70]
@@ -657,7 +657,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16CE70, asm, ovl42/ovl42]
+      - [0x16CE70, asm, ovl42]
       - [0x16DE70, data, ovl42]
       - [0x16DFA0, rodata, ovl42]
       - [0x16DFD0]
@@ -667,7 +667,7 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16DFD0, asm, ovl43/ovl43]
+      - [0x16DFD0, asm, ovl43]
       - [0x16EFC0, data, ovl43]
       - [0x16F100, rodata, ovl43]
       - [0x16F130]
@@ -678,7 +678,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x16F130, asm, ovl44/ovl44]
+      - [0x16F130, asm, ovl44]
       - [0x16FC00, data, ovl44]
       - [0x16FD30, rodata, ovl44]
       - [0x16FD40]
@@ -688,7 +688,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x16FD40, asm, ovl45/ovl45]
+      - [0x16FD40, asm, ovl45]
       - [0x170570, data, ovl45]
       - [0x170660]
   - name: ovl46
@@ -697,7 +697,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x170660, asm, ovl46/ovl46]
+      - [0x170660, asm, ovl46]
       - [0x171230, data, ovl46]
       - [0x171310, rodata, ovl46]
       - [0x171320]
@@ -707,7 +707,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x171320, asm, ovl47/ovl47]
+      - [0x171320, asm, ovl47]
       - [0x1720F0, data, ovl47]
       - [0x1721D0, rodata, ovl47]
       - [0x1721E0]
@@ -717,7 +717,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1721E0, asm, ovl48/ovl48]
+      - [0x1721E0, asm, ovl48]
       - [0x172A80, data, ovl48]
       - [0x172B60]
   - name: ovl49
@@ -726,7 +726,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x172B60, asm, ovl49/ovl49]
+      - [0x172B60, asm, ovl49]
       - [0x173930, data, ovl49]
       - [0x173A30]
   - name: ovl50 # needs rodata symbols
@@ -735,7 +735,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x173A30, asm, ovl50/ovl50]
+      - [0x173A30, asm, ovl50]
       - [0x174820, data, ovl50]
       - [0x174920, rodata, ovl50]
       - [0x174940]
@@ -745,7 +745,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x174940, asm, ovl51/ovl51]
+      - [0x174940, asm, ovl51]
       - [0x1750F0, data, ovl51]
       - [0x1752C0]
   - name: ovl52
@@ -754,7 +754,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1752C0, asm, ovl52/ovl52]
+      - [0x1752C0, asm, ovl52]
       - [0x175E00, data, ovl52]
       - [0x175EE0, rodata, ovl52]
       - [0x175F00]
@@ -764,7 +764,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x175F00, asm, ovl53/ovl53]
+      - [0x175F00, asm, ovl53]
       - [0x177280, data, ovl53]
       - [0x177470, rodata, ovl53]
       - [0x1774A0]
@@ -774,7 +774,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1774A0, asm, ovl54/ovl54]
+      - [0x1774A0, asm, ovl54]
       - [0x178470, data, ovl54]
       - [0x178550, rodata, ovl54]
       - [0x178560]
@@ -784,7 +784,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x178560, asm, ovl55/ovl55]
+      - [0x178560, asm, ovl55]
       - [0x17ABC0, data, ovl55]
       - [0x17AD40, rodata, ovl55]
       - [0x17AD50]
@@ -794,7 +794,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17AD50, asm, ovl56/ovl56]
+      - [0x17AD50, asm, ovl56]
       - [0x17E130, data, ovl56]
       - [0x17E4F0, rodata, ovl56]
       - [0x17E510]
@@ -804,7 +804,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17E510, asm, ovl57/ovl57]
+      - [0x17E510, asm, ovl57]
       - [0x17EB10, data, ovl57]
       - [0x17ECC0]
   - name: ovl58
@@ -813,7 +813,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17ECC0, asm, ovl58/ovl58]
+      - [0x17ECC0, asm, ovl58]
       - [0x17F110, data, ovl58]
       - [0x17F200]
   - name: ovl59
@@ -822,7 +822,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x17F200, asm, ovl59/ovl59]
+      - [0x17F200, asm, ovl59]
       - [0x182960, data, ovl59]
       - [0x187EB0, rodata, ovl59]
       - [0x187ED0]
@@ -832,7 +832,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x187ED0, asm, ovl62/ovl62]
+      - [0x187ED0, asm, ovl62]
       - [0x189DB0, data, ovl62]
       - [0x18DCB0]
 
@@ -842,7 +842,7 @@ segments:
     vram: 0x80371460
     exclusive_ram_id: overlay_80371460
     subsegments:
-      - [0x18DCB0, asm, ovl8/ovl8]
+      - [0x18DCB0, asm, ovl8]
       - [0x1A44F0, data, ovl8]
       - [0x1AB650, rodata, ovl8]
       - [0x1AB6B0]
@@ -853,7 +853,7 @@ segments:
     vram: 0x80369240
     exclusive_ram_id: overlay_80369240
     subsegments:
-      - [0x1AB6B0, asm, ovl9/ovl9]
+      - [0x1AB6B0, asm, ovl9]
       - [0x1AC3D0, data, ovl9]
       - [0x1AC820, rodata, ovl9]
       - [0x1AC870]
