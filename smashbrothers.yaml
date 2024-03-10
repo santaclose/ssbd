@@ -10,7 +10,7 @@ options:
 
   build_path: bin
 
-  ld_script_path: smashbrothers.ld
+  ld_script_path: .splat/smashbrothers.ld
   ld_dependencies: True
 
   header_encoding: ASCII
@@ -90,14 +90,13 @@ options:
   reloc_addrs_path:
     - reloc_addrs.txt
 
-  undefined_funcs_auto_path: undefined_funcs_auto.txt
-  undefined_syms_auto_path: undefined_syms_auto.txt
+  undefined_funcs_auto_path: .splat/undefined_funcs_auto.txt
+  undefined_syms_auto_path: .splat/undefined_syms_auto.txt
 
   extensions_path: tools/splat_ext
 
   rodata_string_guesser_level: 2
   data_string_guesser_level: 2
-
 
   # elf_section_list_path: bin/smashbrothers.elf
   # asm_path: asm
@@ -125,7 +124,7 @@ segments:
     vram: 0xA4000040
     subsegments:
       - [0x40, hasm, boot_hasm]
-      - [0xB60, pad, boot_nops]
+      - [0xB60, asm, boot_nops]
       - [0xB70, data, boot]
       - [0x1000]
 
@@ -135,16 +134,17 @@ segments:
     vram: 0x80000400
     subsegments:
       - [0x1000, hasm, entry_hasm]
-      - [0x1040, pad, entry_nops]
+      - [0x1040, asm, entry_nops]
       - [0x1060]
 
   - name: main
     type: code
     start: 0x1060
     vram: 0x80000460
+    follows_vram: entry
+    bss_size: 0x61EA0
     subsegments:
       - [0x1060, asm, main/main]
-
       - [0x024480, asm, libultra/sprite]
       - [0x026B10, asm, libultra/io/sptaskyield]
       - [0x026BC0, asm, libultra/audio]
@@ -157,8 +157,6 @@ segments:
       - [0x0314A0, asm, libultra/os/destroythread]
       - [0x0315B0, asm, libultra/libc/ll]
       - [0x031870, hasm, libultra/os/exceptasm]
-      - [0x031F8C, asm, libultra/os/unk_31F8C]
-      - [0x031FE4, hasm, libultra/os/dispatchthread]
       - [0x032160, asm, libultra/os/thread]
       - [0x0321B0, hasm, libultra/libc/bzero]
       - [0x032250, asm, libultra/motor]
@@ -170,7 +168,7 @@ segments:
       - [0x032DD0, hasm, libultra/os/writebackdcache]
       - [0x033110, asm, libultra/createspeedparam]
       - [0x0331B0, asm, libultra/io/pirawread]
-      - [0x033210, pad, libultra/nops_33210]
+      - [0x033210, asm, libultra/nops_33210]
       - [0x033270, hasm, libultra/os/setsr]
       - [0x033280, hasm, libultra/os/getsr]
       - [0x0332D0, asm, libultra/io/sprawdma]
@@ -179,7 +177,7 @@ segments:
       - [0x033540, asm, libultra/gu/mtxutil]
       - [0x0337B0, asm, libultra/io/visetmode]
       - [0x033820, asm, libultra/os/probetlb]
-      - [0x033B10, pad, libultra/nops_33B10]
+      - [0x033B10, asm, libultra/nops_33B10]
       - [0x033B20, asm, libultra/io/devmgr]
       - [0x033FB0, asm, libultra/io/pirawdma]
       - [0x034090, asm, libultra/os/getcount]
@@ -229,7 +227,7 @@ segments:
       - [0x0394B0, asm, libultra/libc/ldiv]
       - [0x039640, asm, libultra/libc/xlitob]
       - [0x0398E0, asm, libultra/io/sirawwrite]
-      - [0x039A30, pad, libultra/nops_39A30]
+      - [0x039A30, asm, libultra/nops_39A30]
       - [0x039A40, asm, libultra/vimgr]
       - [0x039D60, hasm, libultra/os/writebackdcacheall]
       - [0x039D90, asm, libultra/os/startthread]
@@ -239,11 +237,13 @@ segments:
       - [0x03A2B0, hasm, libultra/unk_3A2B0_hasm]
       - [0x03A3E0, data, libultra_data]
       - [0x03E250, rodata, libultra_rodata]
-      - [0x0406D0, bss, libultra_bss]
-      - [0x049A00, pad, nops_49A00]
-      - [0x049A20, asm, halbitmap]
-      - [0x04F860]
+      - { start: 0x406D0, type: bss, vram: 0x8003FAD0 }
+      # - [0x0406D0, asm, unk_406D0]
+      # - [0x049A20, asm, halbitmap]
+      # - [0x04F860]
 
+  - type: bin
+    start: 0x406D0
 
   - name: ovl0
     type: code
@@ -256,6 +256,9 @@ segments:
       - [0x050680, data, ovl0/float_table]
       - [0x051680, rodata, ovl0/function_table]
       - [0x051740]
+
+  - type: bin
+    start: 0x051740
 
   - name: ovl2
     type: code
@@ -568,7 +571,7 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x15DB50, asm, ovl33]
-      - [0x1600FC, data, ovl33]
+      - [0x160100, data, ovl33]
       - [0x162600, rodata, ovl33]
       - [0x162640]
   - name: ovl34
@@ -858,4 +861,9 @@ segments:
       - [0x1AC820, rodata, ovl9]
       - [0x1AC870]
 
-  - [0xF5F4E0]
+  - type: bin
+    start: 0x1AC870
+
+  - [0x1000000]
+
+  # # - [0xF5F4E0] end of content
