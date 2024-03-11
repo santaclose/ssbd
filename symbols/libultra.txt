@@ -178,6 +178,7 @@ __sinf = 0x800303F0;
 _bzero = 0x800315B0;
 __createSpeedParam = 0x80032510;
 _Printf = 0x80033C60;
+memcpy = 0x800343E0;
 strlen = 0x8003440C;
 strchr = 0x80034434;
 MusPtrBankGetCurrent = 0x80035CB8;
