@@ -17,7 +17,14 @@ fi
 which mips-linux-gnu-ld 2>&1 > /dev/null
 if [ $? != 0 ]
 then
+	sudo apt update
 	sudo apt install binutils-mips-linux-gnu
+fi
+which clang 2>&1 > /dev/null
+if [ $? != 0 ]
+then
+	sudo apt update
+	sudo apt install sudo apt install clang
 fi
 
 if [ ! -f ./baserom.z64 ]

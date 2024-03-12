@@ -8,6 +8,10 @@ SHELL = /bin/bash
 COMPARE ?= 1
 FULL_DISASM ?= 0
 
+# ----- Common flags -----
+
+INCLUDES := -Iinclude -Isrc
+DEFINES := -DF3DEX_GBI_2 -D_MIPS_SZLONG=32
 
 # ----- Output ------
 
@@ -23,7 +27,7 @@ CC              := ./tools/ido-static-recomp/build7.1/out/cc
 AS              := mips-linux-gnu-as
 LD              := mips-linux-gnu-ld
 OBJCOPY         := mips-linux-gnu-objcopy
-CCFLAGS         := -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm -Iinclude -Isrc -DF3DEX_GBI_2 -Wab,-r4300_mul -woff 649,838,712,568,624,709 -mips2 -O2
+CCFLAGS         := -- mips-linux-gnu-as -32 -- -c -G 0 -non_shared -Xfullwarn -Xcpluscomm $(INCLUDES) $(DEFINES) -Wab,-r4300_mul -woff 649,838,712,568,624,709 -mips2 -O2
 ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
@@ -46,15 +50,7 @@ O_FILES       := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
 
 
 # Automatic dependency files
-DEP_FILES := $(LD_SCRIPT:.ld=.d) $(SEGMENTS_D)
-
-ifneq ($(DEP_ASM), 0)
-    DEP_FILES += $(O_FILES:.o=.asmproc.d)
-endif
-
-ifneq ($(DEP_INCLUDE), 0)
-    DEP_FILES += $(O_FILES:.o=.d)
-endif
+DEP_FILES := $(O_FILES:.o=.d)
 
 # create build directories
 $(shell mkdir -p bin/asm)
@@ -97,8 +93,11 @@ $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.c
 	mkdir -p $(@D)
 	$(CC) $(CCFLAGS) -o $@ $<
+	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
 # 	$(OBJCOPY) -O binary --only-section=.text $@ $@.text
 
 $(BUILD_DIR)/%.o: %.bin
 	mkdir -p $(@D)
 	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+
+-include $(DEP_FILES)
