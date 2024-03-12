@@ -12,9 +12,9 @@ __osSiAccessQueue_A = 0x800454C8;
 __osSiAccessQueue_B = 0x8009EF88;
 __additional_scanline_A = 0x8003D63C;
 __additional_scanline_B = 0x80045018;
+__osSiRelAccess_B = 0x80006AF8;
 
 __osGetActiveQueue = 0x8000092C;
-__osSiRelAccess = 0x80006AF8;
 __osExceptionPreamble = 0x80030C70;
 __osException = 0x80030C80;
 __osPopThread = 0x800313D4;
@@ -23,6 +23,7 @@ __osCleanupThread = 0x80031560;
 __osMotorAccess = 0x80031650;
 __osSiCreateAccessQueue = 0x80031A20;
 __osSiGetAccess = 0x80031A70;
+__osSiRelAccess = 0x80031AB4;
 __osContGetInitData = 0x80031C50;
 __osPackRequestData = 0x80031D20;
 __osGetSR = 0x80032680;
@@ -110,6 +111,7 @@ osAfterPreNMI = 0x80033520;
 osContStartQuery = 0x80033540;
 osContGetQuery = 0x800335C4;
 osEPiStartDma = 0x80034300;
+osCreateMesgQueue = 0x80034480;
 osJamMesg = 0x80034640;
 osSetThreadPri = 0x80034790;
 osGetThreadPri = 0x80034870;
@@ -273,5 +275,8 @@ guMtxL2F = 0x80032AF8;
 guMtxXFMF = 0x800348E0;
 guMtxCatF = 0x80034980;
 guNormalize = 0x80035380;
+guSqrtf = 0x80033510;
+
+fcos = 0x80035CD0;
 
 osPrint = 0x80023624;
