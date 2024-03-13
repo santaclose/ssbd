@@ -3,28 +3,27 @@ RED="\e[31m"
 GREEN="\e[32m"
 ENDCOLOR="\e[0m"
 
-if [ ! -f ./tools/ido-static-recomp/build7.1/out/cc ]
+missing_packages=""
+which git 2>&1 > /dev/null
+if [ $? != 0 ] ; then missing_packages=$"${missing_packages}git " ; fi
+which python3 2>&1 > /dev/null
+if [ $? != 0 ] ; then missing_packages=$"${missing_packages}python3 " ; fi
+which mips-linux-gnu-ld 2>&1 > /dev/null
+if [ $? != 0 ] ; then missing_packages=$"${missing_packages}binutils-mips-linux-gnu " ; fi
+which clang 2>&1 > /dev/null
+if [ $? != 0 ] ; then missing_packages=$"${missing_packages}clang " ; fi
+
+if [ ! -z "$missing_packages" ]
 then
-	which python > /dev/null
-	if [ $? -ne 0 ]
-	then
-		echo -e ${RED}Python required to build ido-static-recomp${ENDCOLOR}
-		exit
-	fi
-	pushd ./tools/ido-static-recomp/ && python ./build.py ./ido/7.1/ && popd
+	sudo apt install ${missing_packages}
 fi
 
-which mips-linux-gnu-ld 2>&1 > /dev/null
-if [ $? != 0 ]
+git submodule update --init --recursive
+python3 -m pip install -r ./tools/splat/requirements.txt
+
+if [ ! -f ./tools/ido-static-recomp/build7.1/out/cc ]
 then
-	sudo apt update
-	sudo apt install binutils-mips-linux-gnu
-fi
-which clang 2>&1 > /dev/null
-if [ $? != 0 ]
-then
-	sudo apt update
-	sudo apt install sudo apt install clang
+	pushd ./tools/ido-static-recomp/ && python3 ./build.py ./ido/7.1/ && popd
 fi
 
 if [ ! -f ./baserom.z64 ]

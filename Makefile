@@ -32,7 +32,7 @@ ASFLAGS         := -EB -I include -march=vr4300 -mabi=32
 LDFLAGS         := -T .splat/undefined_funcs_auto.txt -T .splat/undefined_syms_auto.txt -T symbols/not_found.txt -T .splat/smashbrothers.ld
 OBJCOPYFLAGS    := --pad-to=0xC00000 --gap-fill=0xFF
 
-SPLAT             ?= python ./tools/splat/split.py
+SPLAT             ?= python3 ./tools/splat/split.py
 SPLAT_YAML        ?= $(GAME_NAME).yaml
 SPLAT_FLAGS       ?=
 ifneq ($(FULL_DISASM),0)
