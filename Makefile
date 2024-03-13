@@ -42,11 +42,12 @@ endif
 # ----- Files ------
 
 C_FILES       := $(shell find src -type f | grep \\.c$)
-S_FILES       := $(shell find asm -type f | grep \\.s$)
+S_FILES       := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings)
 BIN_FILES     := $(shell find assets -type f)
 O_FILES       := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                  $(foreach f,$(S_FILES:.s=.o),$(BUILD_DIR)/$f) \
                  $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f)
+TEXT_SECTION_FILES := $(O_FILES:.o=.text)
 
 
 # Automatic dependency files
@@ -65,6 +66,9 @@ rom: $(ROM)
 ifneq ($(COMPARE),0)
 	bash ./tools/compareHashes.sh $(ROM) baserom.z64
 endif
+
+text: $(TEXT_SECTION_FILES)
+	bash tools/compareObjects.sh
 
 clean:
 	rm -r -f $(BUILD_DIR) $(ROM) $(ELF)
@@ -85,16 +89,17 @@ $(ROM): $(ELF)
 $(ELF): $(O_FILES)
 	$(LD) -o $@ $(LDFLAGS)
 
+$(BUILD_DIR)/%.text: $(O_FILES)
+	$(OBJCOPY) -O binary --only-section=.text $< $@
+
 $(BUILD_DIR)/%.o: %.s
 	mkdir -p $(@D)
 	$(AS) $(ASFLAGS) -o $@ $<
-# 	$(OBJCOPY) -O binary --only-section=.text $@ $@.text
 
 $(BUILD_DIR)/%.o: %.c
 	mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o /tmp/smashbros_clang_check.o $< # d file generation
 	$(CC) $(CCFLAGS) -o $@ $<
-# 	$(OBJCOPY) -O binary --only-section=.text $@ $@.text
 
 $(BUILD_DIR)/%.o: %.bin
 	mkdir -p $(@D)

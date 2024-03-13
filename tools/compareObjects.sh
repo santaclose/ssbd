@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find bin/src/ -type f | grep \\.o.text$ | grep "$1" | while read line
+find bin/src/ -type f | grep \\.text$ | grep "$1" | while read line
 do
 #	fileName=$(basename $line)
 #	asmPath=bin/asm/${fileName}
