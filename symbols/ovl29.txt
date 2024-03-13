@@ -98,7 +98,7 @@ func_ovl29_80136B54 = 0x80136B54; // segment:ovl29
 func_ovl29_80136C14 = 0x80136C14; // segment:ovl29
 func_ovl29_80136C88 = 0x80136C88; // segment:ovl29
 func_ovl29_80136CD8 = 0x80136CD8; // segment:ovl29
-func_ovl29_80136EF4 = 0x80136EF4; // segment:ovl29
+bonus_css_entry = 0x80136EF4; // segment:ovl29
 
 D_ovl29_80136F50 = 0x80136F50; // segment:ovl29
 D_ovl29_80136FB0 = 0x80136FB0; // segment:ovl29

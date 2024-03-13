@@ -15,7 +15,7 @@ func_ovl40_8018DD80 = 0x8018DD80; // segment:ovl40
 func_ovl40_8018DE3C = 0x8018DE3C; // segment:ovl40
 func_ovl40_8018DE48 = 0x8018DE48; // segment:ovl40
 func_ovl40_8018DFCC = 0x8018DFCC; // segment:ovl40
-func_ovl40_8018E018 = 0x8018E018; // segment:ovl40
+intro_focus_link_entry = 0x8018E018; // segment:ovl40
 
 D_ovl40_8018E070 = 0x8018E070; // segment:ovl40
 D_ovl40_8018E08C = 0x8018E08C; // segment:ovl40

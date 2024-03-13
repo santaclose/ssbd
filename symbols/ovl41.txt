@@ -15,7 +15,7 @@ func_ovl41_8018DDC0 = 0x8018DDC0; // segment:ovl41
 func_ovl41_8018DE7C = 0x8018DE7C; // segment:ovl41
 func_ovl41_8018DE88 = 0x8018DE88; // segment:ovl41
 func_ovl41_8018E010 = 0x8018E010; // segment:ovl41
-func_ovl41_8018E05C = 0x8018E05C; // segment:ovl41
+intro_focus_yoshi_entry = 0x8018E05C; // segment:ovl41
 
 D_ovl41_8018E0C0 = 0x8018E0C0; // segment:ovl41
 D_ovl41_8018E0DC = 0x8018E0DC; // segment:ovl41

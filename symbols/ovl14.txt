@@ -8,7 +8,7 @@ func_ovl14_80131F3C = 0x80131F3C; // segment:ovl14
 func_ovl14_80132238 = 0x80132238; // segment:ovl14
 func_ovl14_801322DC = 0x801322DC; // segment:ovl14
 func_ovl14_8013239C = 0x8013239C; // segment:ovl14
-func_ovl14_80132638 = 0x80132638; // segment:ovl14
+debug_battle_entry = 0x80132638; // segment:ovl14
 
 D_ovl14_80132690 = 0x80132690; // segment:ovl14
 D_ovl14_80132694 = 0x80132694; // segment:ovl14

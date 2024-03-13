@@ -10,7 +10,7 @@ func_ovl44_801321BC = 0x801321BC; // segment:ovl44
 func_ovl44_8013225C = 0x8013225C; // segment:ovl44
 func_ovl44_80132268 = 0x80132268; // segment:ovl44
 func_ovl44_8013237C = 0x8013237C; // segment:ovl44
-func_ovl44_8013256C = 0x8013256C; // segment:ovl44
+intro_chars_running_entry = 0x8013256C; // segment:ovl44
 
 D_ovl44_801325D0 = 0x801325D0; // segment:ovl44
 D_ovl44_80132610 = 0x80132610; // segment:ovl44

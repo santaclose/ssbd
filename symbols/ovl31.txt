@@ -113,7 +113,7 @@ func_ovl31_80138714 = 0x80138714; // segment:ovl31
 func_ovl31_80138830 = 0x80138830; // segment:ovl31
 func_ovl31_801388AC = 0x801388AC; // segment:ovl31
 func_ovl31_80138B70 = 0x80138B70; // segment:ovl31
-func_ovl31_80138E64 = 0x80138E64; // segment:ovl31
+vs_results_entry = 0x80138E64; // segment:ovl31
 
 D_ovl31_80138EF0 = 0x80138EF0; // segment:ovl31
 D_ovl31_80138FD8 = 0x80138FD8; // segment:ovl31

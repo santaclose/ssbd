@@ -13,7 +13,7 @@ func_ovl50_801325A0 = 0x801325A0; // segment:ovl50
 func_ovl50_80132640 = 0x80132640; // segment:ovl50
 func_ovl50_8013264C = 0x8013264C; // segment:ovl50
 func_ovl50_80132738 = 0x80132738; // segment:ovl50
-func_ovl50_80132898 = 0x80132898; // segment:ovl50
+intro_great_fox_entry = 0x80132898; // segment:ovl50
 
 D_ovl50_801328F0 = 0x801328F0; // segment:ovl50
 D_ovl50_8013293C = 0x8013293C; // segment:ovl50

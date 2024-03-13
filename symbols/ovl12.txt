@@ -1,7 +1,7 @@
 func_ovl12_800D6490 = 0x800D6490; // segment:ovl12
 func_ovl12_800D64A0 = 0x800D64A0; // segment:ovl12
 func_ovl12_800D65AC = 0x800D65AC; // segment:ovl12
-func_ovl12_800D6620 = 0x800D6620; // segment:ovl12
+debug_sss_entry = 0x800D6620; // segment:ovl12
 
 D_ovl12_800D6680 = 0x800D6680; // segment:ovl12
 D_ovl12_800D6684 = 0x800D6684; // segment:ovl12

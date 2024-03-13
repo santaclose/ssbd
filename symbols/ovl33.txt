@@ -40,7 +40,7 @@ func_ovl33_801338AC = 0x801338AC; // segment:ovl33
 func_ovl33_80133CB8 = 0x80133CB8; // segment:ovl33
 func_ovl33_80133D68 = 0x80133D68; // segment:ovl33
 func_ovl33_80133E28 = 0x80133E28; // segment:ovl33
-func_ovl33_80134050 = 0x80134050; // segment:ovl33
+char_bkg_info_entry = 0x80134050; // segment:ovl33
 
 D_ovl33_801340AC = 0x801340AC; // segment:ovl33
 D_ovl33_801340B0 = 0x801340B0; // segment:ovl33

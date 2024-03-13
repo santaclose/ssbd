@@ -36,7 +36,7 @@ func_ovl19_8013394C = 0x8013394C; // segment:ovl19
 func_ovl19_80133A8C = 0x80133A8C; // segment:ovl19
 func_ovl19_80133B8C = 0x80133B8C; // segment:ovl19
 func_ovl19_801345C4 = 0x801345C4; // segment:ovl19
-func_ovl19_80134758 = 0x80134758; // segment:ovl19
+menu_vs_entry = 0x80134758; // segment:ovl19
 
 D_ovl19_801347B0 = 0x801347B0; // segment:ovl19
 D_ovl19_801347B8 = 0x801347B8; // segment:ovl19

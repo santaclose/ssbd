@@ -45,7 +45,7 @@ func_ovl10_80133F3C = 0x80133F3C; // segment:ovl10
 func_ovl10_80133F90 = 0x80133F90; // segment:ovl10
 func_ovl10_80134074 = 0x80134074; // segment:ovl10
 func_ovl10_80134098 = 0x80134098; // segment:ovl10
-func_ovl10_801340B8 = 0x801340B8; // segment:ovl10
+title_screen_entry = 0x801340B8; // segment:ovl10
 func_ovl10_80134140 = 0x80134140; // segment:ovl10
 
 D_ovl10_801341E0 = 0x801341E0; // segment:ovl10

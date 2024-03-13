@@ -10,7 +10,7 @@ func_ovl25_80131FF8 = 0x80131FF8; // segment:ovl25
 func_ovl25_8013204C = 0x8013204C; // segment:ovl25
 func_ovl25_8013209C = 0x8013209C; // segment:ovl25
 func_ovl25_801326CC = 0x801326CC; // segment:ovl25
-func_ovl25_801327D8 = 0x801327D8; // segment:ovl25
+screen_adjust_entry = 0x801327D8; // segment:ovl25
 
 D_ovl25_80132830 = 0x80132830; // segment:ovl25
 D_ovl25_80132838 = 0x80132838; // segment:ovl25

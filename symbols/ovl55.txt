@@ -39,7 +39,7 @@ func_ovl55_80133918 = 0x80133918; // segment:ovl55
 func_ovl55_80133990 = 0x80133990; // segment:ovl55
 func_ovl55_80133998 = 0x80133998; // segment:ovl55
 func_ovl55_80133F58 = 0x80133F58; // segment:ovl55
-func_ovl55_801340FC = 0x801340FC; // segment:ovl55
+overlay_set49_entry = 0x801340FC; // segment:ovl55
 
 D_ovl55_80134160 = 0x80134160; // segment:ovl55
 D_ovl55_801341A8 = 0x801341A8; // segment:ovl55

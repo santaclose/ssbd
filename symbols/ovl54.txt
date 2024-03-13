@@ -18,7 +18,7 @@ func_ovl54_80132630 = 0x80132630; // segment:ovl54
 func_ovl54_80132774 = 0x80132774; // segment:ovl54
 func_ovl54_801327C8 = 0x801327C8; // segment:ovl54
 func_ovl54_801328D0 = 0x801328D0; // segment:ovl54
-func_ovl54_80132A78 = 0x80132A78; // segment:ovl54
+overlay_set48_entry = 0x80132A78; // segment:ovl54
 
 D_ovl54_80132AD0 = 0x80132AD0; // segment:ovl54
 D_ovl54_80132B08 = 0x80132B08; // segment:ovl54

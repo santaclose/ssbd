@@ -4,7 +4,7 @@ func_ovl57_80131C04 = 0x80131C04; // segment:ovl57
 func_ovl57_80131CA4 = 0x80131CA4; // segment:ovl57
 func_ovl57_80131F60 = 0x80131F60; // segment:ovl57
 func_ovl57_80131FE8 = 0x80131FE8; // segment:ovl57
-func_ovl57_8013200C = 0x8013200C; // segment:ovl57
+overlay_set55_entry = 0x8013200C; // segment:ovl57
 
 D_ovl57_80132100 = 0x80132100; // segment:ovl57
 D_ovl57_80132104 = 0x80132104; // segment:ovl57

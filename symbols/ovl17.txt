@@ -12,7 +12,7 @@ func_ovl17_80132510 = 0x80132510; // segment:ovl17
 func_ovl17_80132558 = 0x80132558; // segment:ovl17
 func_ovl17_801325E8 = 0x801325E8; // segment:ovl17
 func_ovl17_80132A0C = 0x80132A0C; // segment:ovl17
-func_ovl17_80132B34 = 0x80132B34; // segment:ovl17
+menu_main_entry = 0x80132B34; // segment:ovl17
 
 D_ovl17_80132B90 = 0X80132B90; // segment:ovl17
 D_ovl17_80132B98 = 0X80132B98; // segment:ovl17

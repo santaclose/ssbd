@@ -58,7 +58,7 @@ func_ovl32_80135D0C = 0x80135D0C; // segment:ovl32
 func_ovl32_80135D48 = 0x80135D48; // segment:ovl32
 func_ovl32_80135D98 = 0x80135D98; // segment:ovl32
 func_ovl32_80136488 = 0x80136488; // segment:ovl32
-func_ovl32_801365D0 = 0x801365D0; // segment:ovl32
+vs_records_entry = 0x801365D0; // segment:ovl32
 
 D_ovl32_80136630 = 0x80136630; // segment:ovl32
 D_ovl32_8013664C = 0x8013664C; // segment:ovl32

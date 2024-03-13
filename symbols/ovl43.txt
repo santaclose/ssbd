@@ -15,7 +15,7 @@ func_ovl43_8018DDBC = 0x8018DDBC; // segment:ovl43
 func_ovl43_8018DE78 = 0x8018DE78; // segment:ovl43
 func_ovl43_8018DE84 = 0x8018DE84; // segment:ovl43
 func_ovl43_8018E00C = 0x8018E00C; // segment:ovl43
-func_ovl43_8018E058 = 0x8018E058; // segment:ovl43
+intro_focus_kirby_entry = 0x8018E058; // segment:ovl43
 
 D_ovl43_8018E0B0 = 0x8018E0B0; // segment:ovl43
 D_ovl43_8018E0CC = 0x8018E0CC; // segment:ovl43

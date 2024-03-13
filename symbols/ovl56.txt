@@ -42,7 +42,7 @@ func_ovl56_80134604 = 0x80134604; // segment:ovl56
 func_ovl56_801349F0 = 0x801349F0; // segment:ovl56
 func_ovl56_80134AF4 = 0x80134AF4; // segment:ovl56
 func_ovl56_80134CC4 = 0x80134CC4; // segment:ovl56
-func_ovl56_80134E84 = 0x80134E84; // segment:ovl56
+overlay_set50_51_entry = 0x80134E84; // segment:ovl56
 
 D_ovl56_80134EE0 = 0x80134EE0; // segment:ovl56
 D_ovl56_80134EFC = 0x80134EFC; // segment:ovl56

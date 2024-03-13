@@ -15,7 +15,7 @@ func_ovl13_80131E00 = 0x80131E00; // segment:ovl13
 func_ovl13_80131EA0 = 0x80131EA0; // segment:ovl13
 func_ovl13_80131F28 = 0x80131F28; // segment:ovl13
 func_ovl13_80131FDC = 0x80131FDC; // segment:ovl13
-func_ovl13_8013214C = 0x8013214C; // segment:ovl13
+debug_system_entry = 0x8013214C; // segment:ovl13
 
 D_ovl13_801321E0 = 0x801321E0; // segment:ovl13
 D_ovl13_801321E8 = 0x801321E8; // segment:ovl13

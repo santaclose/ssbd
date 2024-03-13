@@ -10,7 +10,7 @@ func_ovl49_8013246C = 0x8013246C; // segment:ovl49
 func_ovl49_80132550 = 0x80132550; // segment:ovl49
 func_ovl49_8013255C = 0x8013255C; // segment:ovl49
 func_ovl49_8013267C = 0x8013267C; // segment:ovl49
-func_ovl49_80132874 = 0x80132874; // segment:ovl49
+intro_sex_kicks_entry = 0x80132874; // segment:ovl49
 
 D_ovl49_801328D0 = 0x801328D0; // segment:ovl49
 D_ovl49_80132908 = 0x80132908; // segment:ovl49

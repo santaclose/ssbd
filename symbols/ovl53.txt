@@ -15,7 +15,7 @@ func_ovl53_801325D4 = 0x801325D4; // segment:ovl53
 func_ovl53_80132930 = 0x80132930; // segment:ovl53
 func_ovl53_80132B9C = 0x80132B9C; // segment:ovl53
 func_ovl53_80132D34 = 0x80132D34; // segment:ovl53
-func_ovl53_80132E28 = 0x80132E28; // segment:ovl53
+menu_backup_clear_entry = 0x80132E28; // segment:ovl53
 
 D_ovl53_80132E80 = 0x80132E80; // segment:ovl53
 D_ovl53_80132EB0 = 0x80132EB0; // segment:ovl53

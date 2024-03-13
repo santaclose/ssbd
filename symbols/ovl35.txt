@@ -14,7 +14,7 @@ func_ovl35_80132570 = 0x80132570; // segment:ovl35
 func_ovl35_80132610 = 0x80132610; // segment:ovl35
 func_ovl35_80132624 = 0x80132624; // segment:ovl35
 func_ovl35_80132718 = 0x80132718; // segment:ovl35
-func_ovl35_8013283C = 0x8013283C; // segment:ovl35
+intro_portrait_wipes_entry = 0x8013283C; // segment:ovl35
 
 D_ovl35_801328A0 = 0x801328A0; // segment:ovl35
 D_ovl35_801328D8 = 0x801328D8; // segment:ovl35

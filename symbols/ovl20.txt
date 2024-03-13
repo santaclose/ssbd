@@ -35,7 +35,7 @@ func_ovl20_8013394C = 0x8013394C; // segment:ovl20
 func_ovl20_801339C4 = 0x801339C4; // segment:ovl20
 func_ovl20_80133A40 = 0x80133A40; // segment:ovl20
 func_ovl20_80134504 = 0x80134504; // segment:ovl20
-func_ovl20_80134668 = 0x80134668; // segment:ovl20
+options_vs_entry = 0x80134668; // segment:ovl20
 
 D_ovl20_801346C0 = 0x801346C0; // segment:ovl20
 D_ovl20_801346C8 = 0x801346C8; // segment:ovl20
