@@ -6,11 +6,17 @@
 
 void func_80020B38(s32, s32);
 void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32);   /* extern */
-void func_ovl7_8018F424();                             /* extern */
+void scTrainingMode_InitViewOptionSprite();                             /* extern */
 void func_ovl0_800CCF00(GObj*, s32);                     /* extern */
 void func_ovl0_800CCF00_overload(GObj*);                     /* extern */
 void func_ovl7_801906D0();
 void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);    /* extern */
+void scTrainingMode_InitCPDisplaySprite();
+void scTrainingMode_InitCPOptionSprite();
+void scTrainingMode_UpdateOptionArrows();
+void scTrainingMode_UpdateCursorUnderline();
+void scTrainingMode_UpdateOpponentBehavior();
+void scTrainingMode_InitItemOptionSprite();
 
 typedef struct scTrainingMenu
 {

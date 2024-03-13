@@ -124,8 +124,8 @@ void scTrainingMode_UpdateMenuInputs()
 // 8018D3DC
 void func_ovl7_8018D3DC()
 {
-	func_ovl7_8018F630();
-	func_ovl7_8018FE40();
+	scTrainingMode_UpdateOptionArrows();
+	scTrainingMode_UpdateCursorUnderline();
 	func_800269C0(0xA4U);
 }
 
@@ -153,11 +153,11 @@ sb32 scTrainingMode_CheckUpdateOptionID(s32 *arg0, s32 arg1, s32 arg2)
 // 8018D478
 sb32 scTrainingMode_UpdateCPOption()
 {
-	if (func_ovl7_8018D40C(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
 	{
-		func_ovl7_801901F4();
-		func_ovl7_8018E810();
-		func_ovl7_8018EEE8();
+		scTrainingMode_UpdateOpponentBehavior();
+		scTrainingMode_InitCPDisplaySprite();
+		scTrainingMode_InitCPOptionSprite();
 		func_ovl7_8018D3DC();
 	}
 	return FALSE;
@@ -183,9 +183,9 @@ sb32 scTrainingMode_UpdateItemOption()
 	Vec3f pos;
 	Vec3f vel;
 
-	if (func_ovl7_8018D40C(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
 	{
-		func_ovl7_8018F040();
+		scTrainingMode_InitItemOptionSprite();
 		func_ovl7_8018D3DC();
 	}
 	if (gTrainingModeStruct.item_spawn_wait == 0)
@@ -219,7 +219,7 @@ sb32 scTrainingMode_UpdateItemOption()
 // 8018D684
 sb32 scTrainingMode_UpdateSpeedOption()
 {
-	if (func_ovl7_8018D40C(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
 	{
 		gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 		
@@ -235,7 +235,7 @@ sb32 scTrainingMode_UpdateViewOption()
 {
 	GObj *fighter_gobj;
 
-	if (func_ovl7_8018D40C(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
 	{
 		if (gTrainingModeStruct.view_menu_option == 1)
 		{
@@ -249,7 +249,7 @@ sb32 scTrainingMode_UpdateViewOption()
 			gPlayerCommonInterface.is_ifmagnify_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
 		}
-		func_ovl7_8018F424();
+		scTrainingMode_InitViewOptionSprite();
 		func_ovl7_8018D3DC();
 	}
 	return FALSE;
@@ -475,7 +475,7 @@ void scTrainingMode_InitStatDisplayTextInterface()
 	
 	for(i = 0; i < 4; i++)
 	{
-		SObj *sobj = func_ovl7_8018DEDC(interface_gobj, &gTrainingModeStruct.display_label_sprites[i]);
+		SObj *sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.display_label_sprites[i]);
 		
 		sobj->sprite.red   = 0xAF;
 		sobj->sprite.green = 0xAE;
