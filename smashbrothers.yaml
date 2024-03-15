@@ -864,6 +864,84 @@ segments:
   - type: bin
     start: 0x1AC870
 
-  - [0x1000000]
+  - name: spr_bank-1.bin
+    type: bin
+    start: 0xAC7340
+  - name: img_bank-1.bin
+    type: bin
+    start: 0xAC9DE0
+  - name: spr_bank-2.bin
+    type: bin
+    start: 0xB16C80
+  - name: img_bank-2.bin
+    type: bin
+    start: 0xB17060
+  - name: spr_bank-3.bin
+    type: bin
+    start: 0xB174A0
+  - name: img_bank-3.bin
+    type: bin
+    start: 0xB176A0
+  - name: spr_bank-4.bin
+    type: bin
+    start: 0xB19700
+  - name: img_bank-4.bin
+    type: bin
+    start: 0xB19850
+  - name: spr_bank-5.bin
+    type: bin
+    start: 0xB1BCA0
+  - name: img_bank-5.bin
+    type: bin
+    start: 0xB1BDE0
+  - name: spr_bank-6.bin
+    type: bin
+    start: 0xB1E640
+  - name: img_bank-6.bin
+    type: bin
+    start: 0xB1E7E0
+  - name: spr_bank-7.bin
+    type: bin
+    start: 0xB1F960
+  - name: img_bank-7.bin
+    type: bin
+    start: 0xB1FC80
+  - name: spr_bank-8.bin
+    type: bin
+    start: 0xB22980
+  - name: img_bank-8.bin
+    type: bin
+    start: 0xB22A00
+  - name: spr_bank-9.bin
+    type: bin
+    start: 0xB22C30
+  - name: img_bank-9.bin
+    type: bin
+    start: 0xB22D40
+# Music and sound effects.
+  - name: S1_music.sbk
+    type: bin
+    start: 0xB277B0
+  - name: B1_sounds1.ctl
+    type: bin
+    start: 0xB4E5C0
+  - name: B1_sounds1.tbl
+    type: bin
+    start: 0xB54CE0
+  - name: B1_sounds2.ctl
+    type: bin
+    start: 0xC6B650
+  - name: B1_sounds2.tbl
+    type: bin
+    start: 0xC7B1F0
 
-  # # - [0xF5F4E0] end of content
+  - type: bin
+    start: 0xF573D0
+  - type: bin
+    start: 0xF57BF0
+  - type: bin
+    start: 0xF5A9C0
+
+
+  # - [0xF5F4E0] end of content
+  - [0x1000000]
