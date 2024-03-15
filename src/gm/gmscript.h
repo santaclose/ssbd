@@ -816,106 +816,106 @@ typedef union caColorEventAll
 
 #define caColorCommandSetSkeletonID(skeleton_id)        (GC_FIELDSET(caColorEvent_Kind_SetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
-// ColAnim Script 0 is NULL
+// // ColAnim Script 0 is NULL
 
-// 0x8012CA90 - ColAnim Script 1
-caColorEventSetRGBA     caColorEvents_Col1_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x30 };
-caColorEventDefault     caColorEvents_Col1_Ev1 = { caColorEvent_Kind_Wait, 65535 };
-caColorEventGoto        caColorEvents_Col1_Ev2 = { caColorEvent_Kind_Goto, &caColorEvents_Col1_Ev0 };
+// // 0x8012CA90 - ColAnim Script 1
+// caColorEventSetRGBA     caColorEvents_Col1_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x30 };
+// caColorEventDefault     caColorEvents_Col1_Ev1 = { caColorEvent_Kind_Wait, 65535 };
+// caColorEventGoto        caColorEvents_Col1_Ev2 = { caColorEvent_Kind_Goto, &caColorEvents_Col1_Ev0 };
 
-// 0x8012CAA4 - ColAnim Script 2
-caColorEventDefault     caColorEvents_Col2_Ev0 = { caColorEvent_Kind_ToggleColorOff };
-caColorEventDefault     caColorEvents_Col2_Ev1 = { caColorEvent_Kind_End };
+// // 0x8012CAA4 - ColAnim Script 2
+// caColorEventDefault     caColorEvents_Col2_Ev0 = { caColorEvent_Kind_ToggleColorOff };
+// caColorEventDefault     caColorEvents_Col2_Ev1 = { caColorEvent_Kind_End };
 
-// 0x8012CAAC - ColAnim Script 3
-caColorEventSetRGBA     caColorEvents_Col3_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x82 };
-caColorEventBlendRGBA   caColorEvents_Col3_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0xFF, 0xFF, 0xFF, 0x32 };
-caColorEventDefault     caColorEvents_Col3_Ev2 = { caColorEvent_Kind_Wait, 3 };
-caColorEventDefault     caColorEvents_Col3_Ev3 = { caColorEvent_Kind_ToggleColorOff };
-caColorEventDefault     caColorEvents_Col3_Ev4 = { caColorEvent_Kind_Wait, 1 };
-caColorEventGoto        caColorEvents_Col3_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col3_Ev0 };
+// // 0x8012CAAC - ColAnim Script 3
+// caColorEventSetRGBA     caColorEvents_Col3_Ev0 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0x82 };
+// caColorEventBlendRGBA   caColorEvents_Col3_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0xFF, 0xFF, 0xFF, 0x32 };
+// caColorEventDefault     caColorEvents_Col3_Ev2 = { caColorEvent_Kind_Wait, 3 };
+// caColorEventDefault     caColorEvents_Col3_Ev3 = { caColorEvent_Kind_ToggleColorOff };
+// caColorEventDefault     caColorEvents_Col3_Ev4 = { caColorEvent_Kind_Wait, 1 };
+// caColorEventGoto        caColorEvents_Col3_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col3_Ev0 };
 
-// 0x8012CAD0 - ColAnim Script 4
-caColorEventSetRGBA     caColorEvents_Col4_Ev0 = { caColorEvent_Kind_SetColor1, 0x80, 0xFF, 0x80, 0x50 };
-caColorEventBlendRGBA   caColorEvents_Col4_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0x80, 0xFF, 0x80, 0x14 };
-caColorEventDefault     caColorEvents_Col4_Ev2 = { caColorEvent_Kind_Wait, 3 };
-caColorEventDefault     caColorEvents_Col4_Ev3 = { caColorEvent_Kind_ToggleColorOff };
-caColorEventDefault     caColorEvents_Col4_Ev4 = { caColorEvent_Kind_Wait, 1 };
-caColorEventGoto        caColorEvents_Col4_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col4_Ev0 };
+// // 0x8012CAD0 - ColAnim Script 4
+// caColorEventSetRGBA     caColorEvents_Col4_Ev0 = { caColorEvent_Kind_SetColor1, 0x80, 0xFF, 0x80, 0x50 };
+// caColorEventBlendRGBA   caColorEvents_Col4_Ev1 = { caColorEvent_Kind_BlendColor1, 3, 0x80, 0xFF, 0x80, 0x14 };
+// caColorEventDefault     caColorEvents_Col4_Ev2 = { caColorEvent_Kind_Wait, 3 };
+// caColorEventDefault     caColorEvents_Col4_Ev3 = { caColorEvent_Kind_ToggleColorOff };
+// caColorEventDefault     caColorEvents_Col4_Ev4 = { caColorEvent_Kind_Wait, 1 };
+// caColorEventGoto        caColorEvents_Col4_Ev5 = { caColorEvent_Kind_Goto, &caColorEvents_Col4_Ev0 };
 
-// 0x8012CAF4 - ColAnim Script 5
-caColorEventSetLight    caColorEvents_Col5_Ev0 = { caColorEvent_Kind_SetLight, 90, 0 };
-caColorEventDefault     caColorEvents_Col5_Ev1 = { caColorEvent_Kind_ToggleColorOff };
-caColorEventDefault     caColorEvents_Col5_Ev2 = { caColorEvent_Kind_Wait, 1 };
-caColorEventSetRGBA     caColorEvents_Col5_Ev3 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0xE6 };
-caColorEventDefault     caColorEvents_Col5_Ev4 = { caColorEvent_Kind_Wait, 1 };
-caColorEventBlendRGBA   caColorEvents_Col5_Ev5 = { caColorEvent_Kind_BlendColor1, 6, 0xFF, 0xFF, 0xFF, 0x1E };
-caColorEventDefault     caColorEvents_Col5_Ev6 = { caColorEvent_Kind_Wait, 6 };
-caColorEventDefault     caColorEvents_Col5_Ev7 = { caColorEvent_Kind_ToggleColorOff };
-caColorEventDefault     caColorEvents_Col5_Ev8 = { caColorEvent_Kind_End };
+// // 0x8012CAF4 - ColAnim Script 5
+// caColorEventSetLight    caColorEvents_Col5_Ev0 = { caColorEvent_Kind_SetLight, 90, 0 };
+// caColorEventDefault     caColorEvents_Col5_Ev1 = { caColorEvent_Kind_ToggleColorOff };
+// caColorEventDefault     caColorEvents_Col5_Ev2 = { caColorEvent_Kind_Wait, 1 };
+// caColorEventSetRGBA     caColorEvents_Col5_Ev3 = { caColorEvent_Kind_SetColor1, 0xFF, 0xFF, 0xFF, 0xE6 };
+// caColorEventDefault     caColorEvents_Col5_Ev4 = { caColorEvent_Kind_Wait, 1 };
+// caColorEventBlendRGBA   caColorEvents_Col5_Ev5 = { caColorEvent_Kind_BlendColor1, 6, 0xFF, 0xFF, 0xFF, 0x1E };
+// caColorEventDefault     caColorEvents_Col5_Ev6 = { caColorEvent_Kind_Wait, 6 };
+// caColorEventDefault     caColorEvents_Col5_Ev7 = { caColorEvent_Kind_ToggleColorOff };
+// caColorEventDefault     caColorEvents_Col5_Ev8 = { caColorEvent_Kind_End };
 
-// Next: 8012CB20
+// // Next: 8012CB20
 
-// 0x8012CA90 - ColAnim Script 1
-uintptr_t caColorEventScript1[/* */] =
-{
-    caColorCommandSetColor1S1(),
-    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
-    caColorCommandWaitS1(65535),
-    caColorCommandGotoS1(),
-    caColorCommandGotoS2(caColorEventScript1)
-};
+// // 0x8012CA90 - ColAnim Script 1
+// uintptr_t caColorEventScript1[/* */] =
+// {
+//     caColorCommandSetColor1S1(),
+//     caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
+//     caColorCommandWaitS1(65535),
+//     caColorCommandGotoS1(),
+//     caColorCommandGotoS2(caColorEventScript1)
+// };
 
-// 0x8012CAA4 - ColAnim Script 2
-uintptr_t caColorEventScript2[/* */] =
-{
-    caColorCommandToggleColorOffS1(),
-    caColorCommandEndS1()
-};
+// // 0x8012CAA4 - ColAnim Script 2
+// uintptr_t caColorEventScript2[/* */] =
+// {
+//     caColorCommandToggleColorOffS1(),
+//     caColorCommandEndS1()
+// };
 
-// 0x8012CAAC - ColAnim Script 3
-uintptr_t caColorEventScript3[/* */] =
-{
-    caColorCommandSetColor1S1(),
-    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
-    caColorCommandBlendColor1S1(3),
-    caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x32),
-    caColorCommandWaitS1(3),
-    caColorCommandToggleColorOffS1(),
-    caColorCommandWaitS1(1),
-    caColorCommandGotoS1(),
-    caColorCommandGotoS2(caColorEventScript3)
-};
+// // 0x8012CAAC - ColAnim Script 3
+// uintptr_t caColorEventScript3[/* */] =
+// {
+//     caColorCommandSetColor1S1(),
+//     caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
+//     caColorCommandBlendColor1S1(3),
+//     caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x32),
+//     caColorCommandWaitS1(3),
+//     caColorCommandToggleColorOffS1(),
+//     caColorCommandWaitS1(1),
+//     caColorCommandGotoS1(),
+//     caColorCommandGotoS2(caColorEventScript3)
+// };
 
-// 0x8012CAD0 - ColAnim Script 4
-uintptr_t caColorEventScript4[/* */] =
-{
-    caColorCommandSetColor1S1(),
-    caColorCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
-    caColorCommandBlendColor1S1(3),
-    caColorCommandBlendColor1S2(0x80, 0xFF, 0x80, 0x14),
-    caColorCommandWaitS1(3),
-    caColorCommandToggleColorOffS1(),
-    caColorCommandWaitS1(1),
-    caColorCommandGotoS1(),
-    caColorCommandGotoS2(caColorEventScript4)
-};
+// // 0x8012CAD0 - ColAnim Script 4
+// uintptr_t caColorEventScript4[/* */] =
+// {
+//     caColorCommandSetColor1S1(),
+//     caColorCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
+//     caColorCommandBlendColor1S1(3),
+//     caColorCommandBlendColor1S2(0x80, 0xFF, 0x80, 0x14),
+//     caColorCommandWaitS1(3),
+//     caColorCommandToggleColorOffS1(),
+//     caColorCommandWaitS1(1),
+//     caColorCommandGotoS1(),
+//     caColorCommandGotoS2(caColorEventScript4)
+// };
 
-// 0x8012CAF4 - ColAnim Script 5
-uintptr_t caColorEventScript5[/* */] =
-{
-    caColorCommandSetLightS1(90, 0),
-    caColorCommandToggleColorOffS1(),
-    caColorCommandWaitS1(1),
-    caColorCommandSetColor1S1(),
-    caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0xE6),
-    caColorCommandWaitS1(1),
-    caColorCommandBlendColor1S1(6),
-    caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x1E),
-    caColorCommandWaitS1(6),
-    caColorCommandToggleColorOffS1(),
-    caColorCommandEndS1()
-};
+// // 0x8012CAF4 - ColAnim Script 5
+// uintptr_t caColorEventScript5[/* */] =
+// {
+//     caColorCommandSetLightS1(90, 0),
+//     caColorCommandToggleColorOffS1(),
+//     caColorCommandWaitS1(1),
+//     caColorCommandSetColor1S1(),
+//     caColorCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0xE6),
+//     caColorCommandWaitS1(1),
+//     caColorCommandBlendColor1S1(6),
+//     caColorCommandBlendColor1S2(0xFF, 0xFF, 0xFF, 0x1E),
+//     caColorCommandWaitS1(6),
+//     caColorCommandToggleColorOffS1(),
+//     caColorCommandEndS1()
+// };
 
 typedef struct gmRumbleEventDefault
 {

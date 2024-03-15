@@ -223,8 +223,8 @@ sb32 scTrainingMode_UpdateSpeedOption()
 	{
 		gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 		
-		func_ovl7_8018E714();
-		func_ovl7_8018F2C4();
+		scTrainingMode_InitSpeedDisplaySprite();
+		scTrainingMode_InitSpeedOptionSprite();
 		func_ovl7_8018D3DC();
 	}
 	return FALSE;
@@ -264,7 +264,7 @@ sb32 scTrainingMode_UpdateResetOption()
 		func_800266A0();
 		func_800269C0(0xA2U);
 		func_80020B38(0, 0x7800);
-		func_80005C74();
+		leoInitUnit_atten();
 		return TRUE;
 	}
 	else
@@ -278,7 +278,7 @@ sb32 scTrainingMode_UpdateExitOption()
 	{
 		func_800266A0();
 		func_800269C0(0xA2U);
-		func_80005C74();
+		leoInitUnit_atten();
 		return TRUE;
 	}
 	else
@@ -298,7 +298,7 @@ void scTrainingMode_UpdateMainOption()
 		else if (++gTrainingModeStruct.main_menu_option >= 6)
 			gTrainingModeStruct.main_menu_option = 0;
 
-		func_ovl7_8018FBB0();
+		scTrainingMode_UpdateCursorPosition();
 		func_ovl7_8018D3DC();
 		func_800269C0(0xA4U);
 	}
@@ -527,7 +527,7 @@ void scTrainingMode_UpdateDamageInfo(GObj *interface_gobj)
 		scTrainingMode_UpdateDamageDisplay(interface_gobj, damage);
 		gTrainingModeStruct.damage = damage;
 	}
-	func_ovl0_800CCF00(interface_gobj, damage);
+	func_ovl0_800CCF00(interface_gobj);
 }
 
 // 8018E1F8
@@ -629,7 +629,7 @@ void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 		scTrainingMode_UpdateComboDisplay(interface_gobj, combo);
 		gTrainingModeStruct.combo = combo;
 	}
-	func_ovl0_800CCF00(interface_gobj, combo);
+	func_ovl0_800CCF00(interface_gobj);
 }
 
 // 8018E62C
@@ -738,7 +738,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 		gTrainingModeStruct.item_hold = item_id;
 		scTrainingMode_InitItemDisplaySprite();
 	}
-	func_ovl0_800CCF00_overload(interface_gobj);
+	func_ovl0_800CCF00(interface_gobj);
 }
 
 // 8018EA88

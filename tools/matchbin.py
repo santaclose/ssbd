@@ -128,10 +128,10 @@ def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegi
 
 
 if __name__ == "__main__":
+	exactMatch = '-x' in sys.argv
+	if exactMatch:
+		sys.argv.remove('-x')
 	if sys.argv[1] == '-f':
-		exactMatch = '-x' in sys.argv
-		if exactMatch:
-			sys.argv.remove('-x')
 		print(hex(findSequence(sys.argv[2], bytes.fromhex(''.join([x for x in sys.argv[3:]])), not exactMatch)))
 		sys.exit()
 	if sys.argv[1] == '-s':
@@ -141,4 +141,4 @@ if __name__ == "__main__":
 	subBinFilePath = sys.argv[1]
 	binFilePath = sys.argv[2]
 
-	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]))
+	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch)

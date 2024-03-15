@@ -279,4 +279,4 @@ guSqrtf = 0x80033510;
 
 fcos = 0x80035CD0;
 
-osPrint = 0x80023624;
+fatal_printf = 0x80023624;

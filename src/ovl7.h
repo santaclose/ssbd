@@ -7,7 +7,7 @@
 void func_80020B38(s32, s32);
 void func_ovl2_8010CF44(void*, f32, f32, f32, f32, f32);   /* extern */
 void scTrainingMode_InitViewOptionSprite();                             /* extern */
-void func_ovl0_800CCF00(GObj*, s32);                     /* extern */
+void func_ovl0_800CCF00(GObj*);                     /* extern */
 void func_ovl0_800CCF00_overload(GObj*);                     /* extern */
 void func_ovl7_801906D0();
 void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);    /* extern */
@@ -17,6 +17,9 @@ void scTrainingMode_UpdateOptionArrows();
 void scTrainingMode_UpdateCursorUnderline();
 void scTrainingMode_UpdateOpponentBehavior();
 void scTrainingMode_InitItemOptionSprite();
+void scTrainingMode_InitSpeedDisplaySprite();
+void scTrainingMode_InitSpeedOptionSprite();
+void scTrainingMode_UpdateCursorPosition();
 
 typedef struct scTrainingMenu
 {
@@ -68,10 +71,17 @@ typedef struct scTrainingMenu
 } scTrainingMenu;
 scTrainingMenu gTrainingModeStruct;
 
-// 80190808
-s32 scTrainingMode_CPOpponent_BehaviorKind[/* */] = { 0x0F, 0x10, 0x11, 0x12, 0x00 };
+// 80190770
+u16 D_ovl80190770[] =
+{
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0004, 0x0000, 0x0005,
+0x0000, 0x0006, 0x0000, 0x0007, 0x0000, 0x0008, 0x0000, 0x0009,
+0x0000, 0x000a, 0x0000, 0x000b, 0x0000, 0x000c, 0x0000, 0x000d,
+0x0000, 0x000e, 0x0000, 0x000f, 0x0000, 0x0010, 0x0000, 0x0011,
+0x0000, 0x0012, 0x0000, 0x0013
+};
 
-// 8018DDB0
+// 801907B8
 intptr_t D_ovl7_801907B8[] =
 {
 	0x26C88,
@@ -84,6 +94,20 @@ intptr_t D_ovl7_801907B8[] =
 	0x26C88,
 	0x26C88
 };
+
+u16 D_ovl7_801907DC[3] = { 0x004b, 0x0055, 0x005f };
+u8 D_ovl7_801907E4[3] = { 0x64, 0xa, 0x1 };
+u16 D_ovl7_801907E8[2] = { 0x0045, 0x004f };
+u8 D_ovl7_801907EC[2] = { 0x0a, 0x01 };
+sb32 (*jtbl_ovl7_801907F0[6])() = {
+0x8018d478, 0x8018d518, 0x8018d684, 0x8018d6dc,
+0x8018d7b8, 0x8018d830
+};
+
+// 80190808
+s32 scTrainingMode_CPOpponent_BehaviorKind[/* */] = { 0x0F, 0x10, 0x11, 0x12, 0x00 };
+
+u8 D_ovl7_8019081C[4][2] = { {0x0, 0x0}, {0x1, 0x1}, {0x0, 0x1}, {0x0, 0x3} };
 
 // 80190824
 scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[/* */] =
@@ -107,6 +131,32 @@ s32 scTrainingMode_Files_BackgroundImageIDs[/* */] =
 	2  // Mushroom Kingdom
 };
 
+Unk800D4060 D_ovl7_8019086C = { 0 };
+scUnkDataBounds D_ovl7_80190870 = { 0x80392a00,  0x803b6900, 0x803da800, 0x00000000, {0, 0, 1, 64, 0, 0, 0, 240, 0, 1, 106, 153}};
+
+scRuntimeInfo D_ovl7_8019088C = {
+	NULL, 0x8018da78, 0x800a26b8, 0x80190fa0, 0, {
+00, 00, 0x00, 0x01, 0x00, 0x00, 00, 0x02, 0x00, 00, 0xf0, 0x00, 0x00, 0x00, 0x50, 0x00,
+00, 00, 0x00, 0x00, 0x00, 0x00, 00, 0x00, 0x00, 00, 0xd0, 0x00, 0x00, 0x02, 0x00, 0x00,
+00, 00, 0xc0, 0x00, 0x80, 0x19, 05, 0xa8, 0x80, 00, 0x43, 0x10, 0x00, 0x00, 0x00, 0x00,
+00, 00, 0x06, 0x00, 0x00, 0x00, 00, 0x00, 0x00, 00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+00, 00, 0x00, 0x00, 0x00, 0x00, 00, 0x88, 0x00, 00, 0x00, 0x00, 0x80, 0x0d, 0x5c, 0xac,
+00, 00, 0x00, 0x00, 0x00, 0x00, 00, 0x00, 0x00, 00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+00, 00, 0x00, 0x88, 0x00, 0x00, 00, 0x00, 0x00, 00, 0x00, 0x6c, 0x00, 0x00, 0x00, 0x00,
+00, 00, 0x00, 0x90
+},
+	0x80190260
+};
+
+gmMatchInfo D_ovl7_80190968;
+scTrainingMenu D_ovl7_80190B58;
+
+// 80190C40
+RldmFileNode gOverlay7StatusBuf[100];
+// 80190F60
+RldmFileNode gOverlay7ForceBuf[7];
+
+extern u32 D_ovl2_80116BD0[8];
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000020;
 extern intptr_t D_NF_000000BC;
@@ -115,27 +165,11 @@ extern intptr_t D_NF_0000010C;
 extern intptr_t D_NF_0000013C;
 extern intptr_t D_NF_000001B8;
 extern uintptr_t D_NF_800A5240;
-scUnkDataBounds D_ovl7_80190870;
-scRuntimeInfo D_ovl7_8019088C;
-gmMatchInfo D_ovl7_80190968;
-scTrainingMenu D_ovl7_80190B58;
 extern uintptr_t lOverlay7ArenaHi;  // 80392A00
 extern uintptr_t lOverlay7ArenaLo;  // 80190FA0
 extern intptr_t D_NF_00000854;
 extern intptr_t D_NF_001AC870;
 
-extern u16 D_ovl7_801907DC[3];
-extern u8 D_ovl7_801907E4[3];
-extern u16 D_ovl7_801907E8[2];
-extern u8 D_ovl7_801907EC[2];
-extern sb32 (*jtbl_ovl7_801907F0[/* */])();
-extern u8 D_ovl7_8019081C[/* */][2];
-Unk800D4060 D_ovl7_8019086C = { 0 };
 extern void *gCommonSpriteFiles[/* */];
-extern u32 D_ovl2_80116BD0[8];
-// 80190C40
-RldmFileNode gOverlay7StatusBuf[100];
-// 80190F60
-RldmFileNode gOverlay7ForceBuf[7];
 
 #endif 

@@ -645,7 +645,6 @@ D_NF_8018E7E0 = 0x8018E7E0;
 D_NF_8018E860 = 0x8018E860;
 D_NF_8018EC00 = 0x8018EC00;
 D_NF_8018F710 = 0x8018F710;
-D_NF_80190FA0 = 0x80190FA0;
 D_NF_80193900 = 0x80193900;
 D_NF_801F8100 = 0x801F8100;
 func_NF_80202020 = 0x80202020;
@@ -658,7 +657,6 @@ func_NF_80369EC0 = 0x80369EC0;
 func_NF_80369EE0 = 0x80369EE0;
 D_NF_8036A000 = 0x8036A000;
 D_NF_8036D200 = 0x8036D200;
-D_NF_80392A00 = 0x80392A00;
 D_NF_803B5000 = 0x803B5000;
 D_NF_803B6900 = 0x803B6900;
 D_NF_803DA800 = 0x803DA800;
@@ -698,6 +696,64 @@ D_NF_F649C0B8 = 0xF649C0B8;
 D_NF_FB006A58 = 0xFB006A58;
 D_NF_FFFF0000 = 0xFFFF0000;
 D_NF_FFFF0004 = 0xFFFF0004;
+lOverlay7ArenaLo = 0x80190FA0;
+lOverlay7ArenaHi = 0x80392A00;
+
+rldm_initialize = 0x800cdf78;
+rldm_bytes_need_to_load = 0x800cdeec;
+rldm_bytes_needed_to_load = 0x800cdbd0;
+rldm_get_file_external_force = 0x800cddd8;
+rldm_load_files_into = 0x800cde04;
+rldm_get_file_with_external_heap = 0x800cdc88;
+func_ovl2_800E7F68 = 0x800E7F68;
+gOMObjCommonLinks = 0x800466FC;
+func_ovl0_800CCF00 = 0x800CCF00;
+func_ovl0_800CCFDC = 0x800CCFDC;
+ftGlobal_SpawnInfo_MainData = 0x80116DD0;
+gDefaultBattleState = 0x800A3fc8;
+scnmgr_crash_print_gobj_state = 0x800a3040;
+gDisplayListHead = 0x800465B0;
+gCommonSpriteFiles = 0x80130D40;
+gMapLightAngleY = 0x80131394;
+rgba32_to_fill_color = 0x80006d70;
+gPlayerControllers = 0x80045228;
+gBattleState = 0x800A50e8;
+omAddGObjCommonProc = 0x80008188;
+gSceneData = 0x800A4AE3;
+gMapLightAngleX = 0x80131390;
+gCameraGObj = 0x80131460;
+gMusicIndexDefault = 0x801313a0;
+omMakeGObjCommon = 0x80009968;
+gPlayerCommonInterface = 0x80131580;
+omAddGObjRenderProc = 0x80009df4;
+gMusicIndexCurrent = 0x8013139C;
+hal_alloc = 0x80004980;
+
+
+
+D_ovl7_80190770 = 0x80190770;
+D_ovl7_801907B8 = 0x801907B8;
+D_ovl7_801907DC = 0x801907DC;
+D_ovl7_801907E2 = 0x801907E2;
+D_ovl7_801907E4 = 0x801907E4;
+D_ovl7_801907E8 = 0x801907E8;
+D_ovl7_801907EC = 0x801907EC;
+
+jtbl_ovl7_801907F0 = 0x801907F0;
+D_ovl7_80190808 = 0x80190808;
+D_ovl7_8019081C = 0x8019081C;
+D_ovl7_8019081D = 0x8019081D;
+D_ovl7_80190824 = 0x80190824;
+D_ovl7_80190828 = 0x80190828;
+D_ovl7_80190848 = 0x80190848;
+D_ovl7_8019086C = 0x8019086C;
+D_ovl7_80190870 = 0x80190870;
+D_ovl7_8019088C = 0x8019088C;
+D_ovl7_80190920 = 0x80190920;
+D_ovl7_80190938 = 0x80190938;
+jtbl_ovl7_8019093C = 0x8019093C;
+
+
 
 func_840010BC = 0x840010BC;
 .L80132A78 = 0x80132A78;
