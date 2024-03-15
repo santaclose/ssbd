@@ -338,7 +338,7 @@ segments:
     subsegments:
       - [0x1138E0, asm, ovl7]
       - [0x116F90, data, ovl7]
-      - [0x117140, rodata, ovl7]
+      - [0x117010, rodata, ovl7]
       - [0x117180]
 
   - name: ovl10
