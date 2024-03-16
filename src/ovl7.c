@@ -37,11 +37,8 @@ void scTrainingMode_CheckEnterTrainingMenu()
 			ifCommon_SetRenderFlagsAll(1);
 			scTrainingMode_SetPauseGObjRenderFlags(0);
 			func_ovl2_801157EC();
-			ftCommon_ResetControllerInputs(
-				gBattleState->player_block[player].fighter_gobj);
-			ftCommon_ResetControllerInputs(
-				gBattleState->player_block[gTrainingModeStruct.opponent]
-					.fighter_gobj);
+			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
+			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 
 			gBattleState->game_status = 2;
 
@@ -59,16 +56,13 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 	s32 player = gSceneData.player_port;
 	GObj* fighter_gobj;
 
-	if (gPlayerControllers[player].button_new
-		& (HAL_BUTTON_B | HAL_BUTTON_START))
+	if (gPlayerControllers[player].button_new & (HAL_BUTTON_B | HAL_BUTTON_START))
 	{
 		ifCommon_SetRenderFlagsAll(0);
 		scTrainingMode_SetPauseGObjRenderFlags(1);
 
 		gBattleState->game_status = 1;
-		func_ovl2_800E7F68(
-			gBattleState->player_block[gTrainingModeStruct.opponent]
-				.fighter_gobj);
+		func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 		fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 		func_ovl2_800E7F68(fighter_gobj);
 
@@ -102,8 +96,7 @@ void scTrainingMode_UpdateMenuInputs()
 	}
 	else
 	{
-		gTrainingModeStruct.button_tap
-			= (inputs ^ gTrainingModeStruct.button_hold) & inputs;
+		gTrainingModeStruct.button_tap = (inputs ^ gTrainingModeStruct.button_hold) & inputs;
 
 		if (inputs ^ gTrainingModeStruct.button_hold)
 		{
@@ -158,9 +151,7 @@ sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
 // 8018D478
 sb32 scTrainingMode_UpdateCPOption()
 {
-	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option,
-										   0, 5)
-		!= FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
 	{
 		scTrainingMode_UpdateOpponentBehavior();
 		scTrainingMode_InitCPDisplaySprite();
@@ -176,8 +167,7 @@ s32 scTrainingMode_GetSpawnableItemCount()
 	GObj* item_gobj = gOMObjCommonLinks[omGObj_LinkIndex_Item];
 	s32 item_count;
 
-	for (item_count = 0; item_gobj != NULL;
-		 item_gobj = item_gobj->group_gobj_next)
+	for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->group_gobj_next)
 	{
 		if ((itGetStruct(item_gobj)->it_kind <= It_Kind_CommonEnd)
 			|| (itGetStruct(item_gobj)->it_kind >= It_Kind_MbMonsterStart))
@@ -192,17 +182,14 @@ sb32 scTrainingMode_UpdateItemOption()
 	Vec3f pos;
 	Vec3f vel;
 
-	if (scTrainingMode_CheckUpdateOptionID(
-			&gTrainingModeStruct.item_menu_option, 0, 0x11)
-		!= FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.item_menu_option, 0, 0x11) != FALSE)
 	{
 		scTrainingMode_InitItemOptionSprite();
 		func_ovl7_8018D3DC();
 	}
 	if (gTrainingModeStruct.item_spawn_wait == 0)
 	{
-		if ((gPlayerControllers[gSceneData.player_port].button_new
-			 & HAL_BUTTON_A)
+		if ((gPlayerControllers[gSceneData.player_port].button_new & HAL_BUTTON_A)
 			&& (gTrainingModeStruct.item_menu_option != 0))
 		{
 			if (scTrainingMode_GetSpawnableItemCount() <= 3)
@@ -210,17 +197,12 @@ sb32 scTrainingMode_UpdateItemOption()
 				vel.x = vel.z = 0.0F;
 				vel.y = 30.0F;
 
-				pos = DObjGetStruct(
-						  gBattleState->player_block[gSceneData.player_port]
-							  .fighter_gobj)
-						  ->translate.vec.f;
+				pos = DObjGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj)->translate.vec.f;
 
 				pos.y += 200.0F;
 				pos.z = 0.0F;
 
-				itManager_MakeItemSetupCommon(
-					NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel,
-					4);
+				itManager_MakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel, 4);
 				func_800269C0(0x9EU);
 				gTrainingModeStruct.item_spawn_wait = 8;
 			}
@@ -237,12 +219,9 @@ sb32 scTrainingMode_UpdateItemOption()
 // 8018D684
 sb32 scTrainingMode_UpdateSpeedOption()
 {
-	if (scTrainingMode_CheckUpdateOptionID(
-			&gTrainingModeStruct.speed_menu_option, 0, 4)
-		!= FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
 	{
-		gTrainingModeStruct.lagframe_wait
-			= gTrainingModeStruct.frameadvance_wait = 0;
+		gTrainingModeStruct.lagframe_wait = gTrainingModeStruct.frameadvance_wait = 0;
 
 		scTrainingMode_InitSpeedDisplaySprite();
 		scTrainingMode_InitSpeedOptionSprite();
@@ -256,9 +235,7 @@ sb32 scTrainingMode_UpdateViewOption()
 {
 	GObj* fighter_gobj;
 
-	if (scTrainingMode_CheckUpdateOptionID(
-			&gTrainingModeStruct.view_menu_option, 0, 2)
-		!= FALSE)
+	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.view_menu_option, 0, 2) != FALSE)
 	{
 		if (gTrainingModeStruct.view_menu_option == 1)
 		{
@@ -267,12 +244,9 @@ sb32 scTrainingMode_UpdateViewOption()
 		}
 		else
 		{
-			fighter_gobj = gBattleState->player_block[gSceneData.player_port]
-							   .fighter_gobj;
-			func_ovl2_8010CF44(
-				fighter_gobj, 0.0F, 0.0F,
-				ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F,
-				28.0F);
+			fighter_gobj = gBattleState->player_block[gSceneData.player_port].fighter_gobj;
+			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_cam_zoom, 0.1F,
+							   28.0F);
 			gPlayerCommonInterface.is_ifmagnify_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
 		}
@@ -349,8 +323,7 @@ sb32 scTrainingMode_CheckSpeedFrameFreeze()
 	if (gTrainingModeStruct.lagframe_wait == 0)
 	{
 		if (gTrainingModeStruct.frameadvance_wait == 0)
-			gTrainingModeStruct.lagframe_wait
-				= D_ovl7_8019081C[gTrainingModeStruct.speed_menu_option][0];
+			gTrainingModeStruct.lagframe_wait = D_ovl7_8019081C[gTrainingModeStruct.speed_menu_option][0];
 		else
 		{
 			gTrainingModeStruct.frameadvance_wait--;
@@ -361,8 +334,7 @@ sb32 scTrainingMode_CheckSpeedFrameFreeze()
 		gTrainingModeStruct.lagframe_wait--;
 
 	if (gTrainingModeStruct.lagframe_wait == 0)
-		gTrainingModeStruct.frameadvance_wait
-			= D_ovl7_8019081C[gTrainingModeStruct.speed_menu_option][1];
+		gTrainingModeStruct.frameadvance_wait = D_ovl7_8019081C[gTrainingModeStruct.speed_menu_option][1];
 
 	return FALSE;
 }
@@ -401,16 +373,13 @@ void func_ovl7_8018DA98()
 	gBattleState->is_display_score = FALSE;
 	gBattleState->item_toggles = 0;
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block);
-		 player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
 		if (player == gSceneData.player_port)
 		{
 			gBattleState->player_block[player].player_kind = Pl_Kind_Man;
-			gBattleState->player_block[player].character_kind
-				= gSceneData.unk3B;
-			gBattleState->player_block[player].costume_index
-				= gSceneData.unk3C;
+			gBattleState->player_block[player].character_kind = gSceneData.unk3B;
+			gBattleState->player_block[player].costume_index = gSceneData.unk3C;
 			gBattleState->player_block[player].team_index = 0;
 			gBattleState->player_block[player].player_color_index = player;
 		}
@@ -442,8 +411,7 @@ void func_ovl7_8018DA98()
 	gTrainingModeStruct.item_spawn_wait = 0;
 	gTrainingModeStruct.item_menu_option = 0;
 	gTrainingModeStruct.opponent = opponent;
-	gTrainingModeStruct.button_hold = gTrainingModeStruct.button_tap
-		= gTrainingModeStruct.button_queue = 0;
+	gTrainingModeStruct.button_hold = gTrainingModeStruct.button_tap = gTrainingModeStruct.button_queue = 0;
 	gTrainingModeStruct.rapid_scroll_wait = 30;
 	gTrainingModeStruct.damage_reset_wait = 0;
 	gTrainingModeStruct.combo_reset_wait = 0;
@@ -455,21 +423,14 @@ void func_ovl7_8018DA98()
 // 8018DD0C
 void scTrainingMode_LoadFiles()
 {
-	void* addr = rldm_get_file_with_external_heap(
-		(u32)&D_NF_000000FE,
-		hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
-	gTrainingModeStruct.display_label_sprites
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
-	gTrainingModeStruct.display_option_sprites
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
-	gTrainingModeStruct.menu_label_sprites
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
-	gTrainingModeStruct.menu_option_sprites
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_0000013C);
-	gTrainingModeStruct.unk_trainmenu_0x34
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_0000010C);
-	gTrainingModeStruct.unk_trainmenu_0x38
-		= (void*)((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
+	void* addr = rldm_get_file_with_external_heap((u32)&D_NF_000000FE,
+												  hal_alloc(rldm_bytes_needed_to_load((u32)&D_NF_000000FE), 0x10));
+	gTrainingModeStruct.display_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
+	gTrainingModeStruct.display_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
+	gTrainingModeStruct.menu_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
+	gTrainingModeStruct.menu_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_0000013C);
+	gTrainingModeStruct.unk_trainmenu_0x34 = (void*)((uintptr_t)addr + (intptr_t)&D_NF_0000010C);
+	gTrainingModeStruct.unk_trainmenu_0x38 = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
 }
 
 void func_ovl7_8018DDB0()
@@ -477,15 +438,11 @@ void func_ovl7_8018DDB0()
 	gGroundInfo->unk_0x48
 		= (void*)(rldm_get_file_external_force(
 					  scTrainingMode_Files_BackgroundImageInfo
-						  [scTrainingMode_Files_BackgroundImageIDs
-							   [gBattleState->gr_kind]]
+						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							  .file_id,
-					  (void*)((uintptr_t)gGroundInfo->unk_0x48
-							  - (intptr_t)
-								  D_ovl7_801907B8[gBattleState->gr_kind]))
+					  (void*)((uintptr_t)gGroundInfo->unk_0x48 - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
 				  + scTrainingMode_Files_BackgroundImageInfo
-						[scTrainingMode_Files_BackgroundImageIDs[gBattleState
-																	 ->gr_kind]]
+						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 							.addr);
 }
 
@@ -493,16 +450,14 @@ void func_ovl7_8018DDB0()
 void scTrainingMode_InitMiscVars()
 {
 	gGroundInfo->fog_color
-		= scTrainingMode_Files_BackgroundImageInfo
-			  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
-				  .fog_color;
+		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
+			  .fog_color;
 	ifPlayer_MagnifyGlass_SetInterface();
 	gPlayerCommonInterface.is_ifmagnify_display = TRUE;
 }
 
 // 8018DEDC
-SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj,
-										 scTrainingSprites* tms)
+SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites* tms)
 {
 	SObj* sobj = func_ovl0_800CCFDC(interface_gobj, tms->sprite);
 	sobj->pos.x = tms->pos.x;
@@ -514,16 +469,13 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj,
 void scTrainingMode_InitStatDisplayTextInterface()
 {
 	s32 i;
-	GObj* interface_gobj
-		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
+	GObj* interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < 4; i++)
 	{
-		SObj* sobj = scTrainingMode_MakeStatDisplaySObj(
-			interface_gobj, &gTrainingModeStruct.display_label_sprites[i]);
+		SObj* sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.display_label_sprites[i]);
 
 		sobj->sprite.red = 0xAF;
 		sobj->sprite.green = 0xAE;
@@ -543,9 +495,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj* interface_gobj, s32 index)
 	SObj* sobj = SObjGetStruct(interface_gobj);
 	s32 i;
 
-	for (i = 0;
-		 i < (ARRAY_COUNT(D_ovl7_801907DC) + ARRAY_COUNT(D_ovl7_801907E4)) / 2;
-		 i++)
+	for (i = 0; i < (ARRAY_COUNT(D_ovl7_801907DC) + ARRAY_COUNT(D_ovl7_801907E4)) / 2; i++)
 	{
 		s32 modulo = index / D_ovl7_801907E4[i];
 		index -= ((modulo)*D_ovl7_801907E4[i]);
@@ -558,8 +508,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj* interface_gobj, s32 index)
 // 8018E138
 void scTrainingMode_UpdateDamageInfo(GObj* interface_gobj)
 {
-	s32 damage = gBattleState->player_block[gTrainingModeStruct.opponent]
-					 .combo_damage_foe;
+	s32 damage = gBattleState->player_block[gTrainingModeStruct.opponent].combo_damage_foe;
 	if (damage > 999)
 		damage = 999;
 	if (damage == 0)
@@ -618,21 +567,17 @@ void scTrainingMode_MakeDamageDisplayInterface()
 
 	gTrainingModeStruct.damage_display_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17U,
-						0x80000000, -1);
-	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait,
-						1, 4);
+	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17U, 0x80000000, -1);
+	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
 
 	for (i = 0; i < 3; i++)
 	{
-		sobj = func_ovl0_800CCFDC(
-			interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
+		sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
 		scTrainingMode_InitSObjColors(sobj);
 		sobj->pos.y = 20.0F;
 	}
 	scTrainingMode_UpdateDamageDisplay(interface_gobj, 0);
-	sobj = func_ovl0_800CCFDC(interface_gobj,
-							  gTrainingModeStruct.display_option_sprites[38]);
+	sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[38]);
 	scTrainingMode_InitSObjColors(sobj);
 
 	sobj->pos.y = 20.0F;
@@ -645,9 +590,7 @@ void scTrainingMode_UpdateComboDisplay(GObj* interface_gobj, s32 index)
 	SObj* sobj = SObjGetStruct(interface_gobj);
 	s32 i;
 
-	for (i = 0;
-		 i < (ARRAY_COUNT(D_ovl7_801907E8) + ARRAY_COUNT(D_ovl7_801907EC)) / 2;
-		 i++)
+	for (i = 0; i < (ARRAY_COUNT(D_ovl7_801907E8) + ARRAY_COUNT(D_ovl7_801907EC)) / 2; i++)
 	{
 		s32 modulo = index / D_ovl7_801907EC[i];
 		index -= (modulo * D_ovl7_801907EC[i]);
@@ -667,8 +610,7 @@ void scTrainingMode_UpdateComboResetWait(GObj* interface_gobj)
 // 8018E56C
 void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 {
-	s32 combo = gBattleState->player_block[gTrainingModeStruct.opponent]
-					.combo_count_foe;
+	s32 combo = gBattleState->player_block[gTrainingModeStruct.opponent].combo_count_foe;
 
 	if (combo > 99)
 		combo = 99;
@@ -699,15 +641,12 @@ void scTrainingMode_MakeComboDisplayInterface()
 	gTrainingModeStruct.combo_display_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xBU, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17U,
-						0x80000000, -1);
-	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1,
-						4);
+	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17U, 0x80000000, -1);
+	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
 
 	for (i = 0; i < 2; i++)
 	{
-		SObj* sobj = func_ovl0_800CCFDC(
-			interface_gobj, *gTrainingModeStruct.display_option_sprites);
+		SObj* sobj = func_ovl0_800CCFDC(interface_gobj, *gTrainingModeStruct.display_option_sprites);
 		scTrainingMode_InitSObjColors(sobj);
 		sobj->pos.y = 36.0F;
 	}
@@ -718,10 +657,7 @@ void scTrainingMode_MakeComboDisplayInterface()
 void scTrainingMode_InitSpeedDisplaySprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.speed_display_gobj);
-	sobj->sprite
-		= *gTrainingModeStruct
-			   .display_option_sprites[gTrainingModeStruct.speed_menu_option
-									   + 27];
+	sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27];
 }
 
 // 8018E774
@@ -732,13 +668,9 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 
 	gTrainingModeStruct.speed_display_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U,
-						-1);
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.display_option_sprites[gTrainingModeStruct.speed_menu_option
-									+ 27]);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
 
 	sobj->pos.x = 276.0F;
 	sobj->pos.y = 20.0F;
@@ -750,9 +682,7 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 void scTrainingMode_InitCPDisplaySprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.cp_display_gobj);
-	sobj->sprite
-		= *gTrainingModeStruct
-			   .display_option_sprites[gTrainingModeStruct.cp_menu_option + 31];
+	sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31];
 }
 
 // 8018E870
@@ -763,12 +693,9 @@ void scTrainingMode_MakeCPDisplayInterface()
 
 	gTrainingModeStruct.cp_display_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
 
 	sobj->pos.x = 191.0F;
 	sobj->pos.y = 20.0F;
@@ -782,19 +709,15 @@ void scTrainingMode_InitItemDisplaySprite()
 	SObj *root_sobj, *next_sobj;
 	root_sobj = SObjGetStruct(gTrainingModeStruct.item_display_gobj)->next;
 	next_sobj = root_sobj->next;
-	root_sobj->sprite
-		= *gTrainingModeStruct
-			   .display_option_sprites[gTrainingModeStruct.item_hold + 10];
+	root_sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.item_hold + 10];
 	root_sobj->pos.x = (f32)(292 - root_sobj->sprite.width);
-	next_sobj->pos.x
-		= (f32)(292 - root_sobj->sprite.width) - next_sobj->sprite.width;
+	next_sobj->pos.x = (f32)(292 - root_sobj->sprite.width) - next_sobj->sprite.width;
 }
 
 // 8018E9AC
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
-	ftStruct* fp = ftGetStruct(
-		gBattleState->player_block[gSceneData.player_port].fighter_gobj);
+	ftStruct* fp = ftGetStruct(gBattleState->player_block[gSceneData.player_port].fighter_gobj);
 	GObj* item_gobj = fp->item_hold;
 	s32 item_id;
 
@@ -810,9 +733,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 				scnmgr_crash_print_gobj_state();
 			}
 		}
-		item_id = (ip->it_kind <= It_Kind_CommonEnd)
-					  ? scGetTrainingModeItemKind(ip->it_kind)
-					  : 0;
+		item_id = (ip->it_kind <= It_Kind_CommonEnd) ? scGetTrainingModeItemKind(ip->it_kind) : 0;
 	}
 	else
 		item_id = 0;
@@ -833,22 +754,18 @@ void scTrainingMode_MakeItemDisplayInterface()
 
 	gTrainingModeStruct.item_display_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xB, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17,
-						0x80000000, -1);
-	sobj = func_ovl0_800CCFDC(interface_gobj,
-							  gTrainingModeStruct.display_option_sprites[37]);
+	omAddGObjRenderProc(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
+	sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
 	sobj->pos.x = 292.0F;
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 
-	sobj = func_ovl0_800CCFDC(interface_gobj,
-							  gTrainingModeStruct.display_option_sprites[0]);
+	sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 
-	sobj = func_ovl0_800CCFDC(interface_gobj,
-							  gTrainingModeStruct.display_option_sprites[36]);
+	sobj = func_ovl0_800CCFDC(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 }
@@ -871,15 +788,12 @@ void scTrainingMode_MakeMenuLabelsInterface()
 	GObj* interface_gobj;
 	s32 i;
 
-	gTrainingModeStruct.menu_label_gobj = interface_gobj
-		= omMakeGObjCommon(0x3F8U, NULL, 0xE, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	gTrainingModeStruct.menu_label_gobj = interface_gobj = omMakeGObjCommon(0x3F8U, NULL, 0xE, 0x80000000);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < 10; i++)
 	{
-		SObj* sobj = scTrainingMode_MakeStatDisplaySObj(
-			interface_gobj, &gTrainingModeStruct.menu_label_sprites[i]);
+		SObj* sobj = scTrainingMode_MakeStatDisplaySObj(interface_gobj, &gTrainingModeStruct.menu_label_sprites[i]);
 
 		if (i < 6)
 		{
@@ -900,8 +814,7 @@ void scTrainingMode_InitMenuOptionSpriteAttrs()
 {
 	s32 i;
 	for (i = 0; i < 31; i++)
-		gTrainingModeStruct.menu_option_sprites[i]->attr
-			= SP_TEXSHUF | SP_TRANSPARENT;
+		gTrainingModeStruct.menu_option_sprites[i]->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
 // 8018ED2C
@@ -919,17 +832,15 @@ void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 // 8018EE10
 void scTrainingMode_MakeMainMenuInterface()
 {
-	omAddGObjRenderProc(
-		omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000),
-		scTrainingMode_RenderMainMenu, 0x16, 0x80000000, -1);
+	omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
+						0x16, 0x80000000, -1);
 }
 
 // 8018EE5C
 void scTrainingMode_InitCPOptionTextColors()
 {
 	s32 i;
-	for (i = scTrainingMenu_OptionSprite_CPStart;
-		 i <= scTrainingMenu_OptionSprite_CPEnd; i++)
+	for (i = scTrainingMenu_OptionSprite_CPStart; i <= scTrainingMenu_OptionSprite_CPEnd; i++)
 	{
 		Sprite* sprite = gTrainingModeStruct.menu_option_sprites[i];
 		sprite->red = 0xFF;
@@ -942,10 +853,8 @@ void scTrainingMode_InitCPOptionTextColors()
 void scTrainingMode_InitCPOptionSprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
-	sobj->sprite
-		= *gTrainingModeStruct
-			   .menu_option_sprites[gTrainingModeStruct.cp_menu_option
-									+ scTrainingMenu_OptionSprite_CPStart];
+	sobj->sprite = *gTrainingModeStruct
+						.menu_option_sprites[gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart];
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
 
@@ -958,14 +867,11 @@ void scTrainingMode_MakeCPOptionInterface()
 	gTrainingModeStruct.cp_option_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[gTrainingModeStruct.cp_menu_option
-								 + scTrainingMenu_OptionSprite_CPStart]);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option
+																	  + scTrainingMenu_OptionSprite_CPStart]);
 
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 65.0F;
@@ -982,22 +888,17 @@ void scTrainingMode_InitItemOptionSprite()
 
 	sobj->sprite
 		= *gTrainingModeStruct
-			   .menu_option_sprites[gTrainingModeStruct.item_menu_option
-									+ scTrainingMenu_OptionSprite_ItemStart];
+			   .menu_option_sprites[gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart];
 
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
-	sobj->pos.y = (gTrainingModeStruct.item_menu_option
-				   == scTrainingMenu_Item_MotionSensorBomb)
-					  ? 83.0F
-					  : 85.0F;
+	sobj->pos.y = (gTrainingModeStruct.item_menu_option == scTrainingMenu_Item_MotionSensorBomb) ? 83.0F : 85.0F;
 }
 
 // 8018F0FC
 void scTrainingMode_InitItemOptionTextColors()
 {
 	s32 i;
-	for (i = scTrainingMenu_OptionSprite_ItemStart;
-		 i <= scTrainingMenu_OptionSprite_ItemEnd; i++)
+	for (i = scTrainingMenu_OptionSprite_ItemStart; i <= scTrainingMenu_OptionSprite_ItemEnd; i++)
 	{
 		Sprite* sprite = gTrainingModeStruct.menu_option_sprites[i];
 		sprite->red = 0xFF;
@@ -1015,14 +916,11 @@ void scTrainingMode_MakeItemOptionInterface()
 	gTrainingModeStruct.item_option_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[gTrainingModeStruct.item_menu_option
-								 + scTrainingMenu_OptionSprite_ItemStart]);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option
+																	  + scTrainingMenu_OptionSprite_ItemStart]);
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 
 	scTrainingMode_InitItemOptionSprite();
@@ -1036,8 +934,7 @@ void scTrainingMode_MakeItemOptionInterface()
 void scTrainingMode_InitSpeedOptionTextColors()
 {
 	s32 i;
-	for (i = scTrainingMenu_OptionSprite_SpeedStart;
-		 i <= scTrainingMenu_OptionSprite_SpeedEnd; i++)
+	for (i = scTrainingMenu_OptionSprite_SpeedStart; i <= scTrainingMenu_OptionSprite_SpeedEnd; i++)
 	{
 		Sprite* sprite = gTrainingModeStruct.menu_option_sprites[i];
 		sprite->red = 0xFF;
@@ -1053,8 +950,7 @@ void scTrainingMode_InitSpeedOptionSprite()
 
 	sobj->sprite
 		= *gTrainingModeStruct
-			   .menu_option_sprites[gTrainingModeStruct.speed_menu_option
-									+ scTrainingMenu_OptionSprite_SpeedStart];
+			   .menu_option_sprites[gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart];
 
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
@@ -1068,14 +964,11 @@ void scTrainingMode_MakeSpeedOptionInterface()
 	gTrainingModeStruct.speed_option_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[gTrainingModeStruct.speed_menu_option
-								 + scTrainingMenu_OptionSprite_SpeedStart]);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option
+																	  + scTrainingMenu_OptionSprite_SpeedStart]);
 
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 105.0F;
@@ -1094,8 +987,7 @@ void scTrainingMode_InitViewOptionSprite()
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
 	sobj->sprite
 		= *gTrainingModeStruct
-			   .menu_option_sprites[gTrainingModeStruct.view_menu_option
-									+ scTrainingMenu_OptionSprite_ViewStart];
+			   .menu_option_sprites[gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart];
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
 
@@ -1119,14 +1011,11 @@ void scTrainingMode_MakeViewOptionInterface()
 	gTrainingModeStruct.view_option_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
 
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[gTrainingModeStruct.view_menu_option
-								 + scTrainingMenu_OptionSprite_ViewStart]);
+	sobj = func_ovl0_800CCFDC(interface_gobj,
+							  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option
+																	  + scTrainingMenu_OptionSprite_ViewStart]);
 
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 125.0F;
@@ -1135,21 +1024,16 @@ void scTrainingMode_MakeViewOptionInterface()
 	sobj->shadow_color.g = 0x2E;
 	sobj->shadow_color.b = 0x60;
 
-	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateMagnifyWait, 1,
-						4);
+	omAddGObjCommonProc(interface_gobj, scTrainingMode_UpdateMagnifyWait, 1, 4);
 }
 
 // 8018F5CC
 void scTrainingMode_CopyHScrollOptionSObjs()
 {
-	gTrainingModeStruct.hscroll_option_sobj[0]
-		= SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
-	gTrainingModeStruct.hscroll_option_sobj[1]
-		= SObjGetStruct(gTrainingModeStruct.item_option_gobj);
-	gTrainingModeStruct.hscroll_option_sobj[2]
-		= SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
-	gTrainingModeStruct.hscroll_option_sobj[3]
-		= SObjGetStruct(gTrainingModeStruct.view_option_gobj);
+	gTrainingModeStruct.hscroll_option_sobj[0] = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
+	gTrainingModeStruct.hscroll_option_sobj[1] = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
+	gTrainingModeStruct.hscroll_option_sobj[2] = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
+	gTrainingModeStruct.hscroll_option_sobj[3] = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
 }
 
 // 8018F608
@@ -1167,27 +1051,21 @@ void scTrainingMode_InitOptionArrowColors(SObj* sobj)
 // 8018F630
 void scTrainingMode_UpdateOptionArrows()
 {
-	SObj* root_sobj
-		= SObjGetStruct(gTrainingModeStruct.arrow_option_gobj); // Left arrow
-	SObj* next_sobj = root_sobj->next;							// Right arrow
+	SObj* root_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj); // Left arrow
+	SObj* next_sobj = root_sobj->next;										// Right arrow
 
 	if (gTrainingModeStruct.main_menu_option <= scTrainingMenu_Main_ScrollEnd)
 	{
-		SObj* option_sobj
-			= gTrainingModeStruct
-				  .hscroll_option_sobj[gTrainingModeStruct.main_menu_option];
+		SObj* option_sobj = gTrainingModeStruct.hscroll_option_sobj[gTrainingModeStruct.main_menu_option];
 
 		root_sobj->pos.x = 137.0F;
 		next_sobj->pos.x = 237.0F;
 
 		if ((gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Item)
-			&& (gTrainingModeStruct.item_menu_option
-				== scTrainingMenu_Item_MotionSensorBomb))
-			root_sobj->pos.y = next_sobj->pos.y
-				= (s32)(option_sobj->pos.y + 5.0F);
+			&& (gTrainingModeStruct.item_menu_option == scTrainingMenu_Item_MotionSensorBomb))
+			root_sobj->pos.y = next_sobj->pos.y = (s32)(option_sobj->pos.y + 5.0F);
 		else
-			root_sobj->pos.y = next_sobj->pos.y
-				= (s32)(option_sobj->pos.y + 3.0F);
+			root_sobj->pos.y = next_sobj->pos.y = (s32)(option_sobj->pos.y + 3.0F);
 
 		root_sobj->sprite.attr &= ~SP_HIDDEN;
 		next_sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1206,16 +1084,11 @@ void scTrainingMode_MakeOptionArrowInterface()
 
 	gTrainingModeStruct.arrow_option_gobj = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
+		interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_LeftArrow]));
 	scTrainingMode_InitOptionArrowColors(func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
+		interface_gobj, gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_RightArrow]));
 
 	scTrainingMode_UpdateOptionArrows();
 }
@@ -1233,21 +1106,15 @@ void func_ovl7_8018F804() // Unused?
 {
 	s32 i;
 	for (i = 0; i < 6; i++)
-		gTrainingModeStruct.unk_trainmenu_0x34[i].sprite->attr
-			= SP_TEXSHUF | SP_TRANSPARENT;
+		gTrainingModeStruct.unk_trainmenu_0x34[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
 // 8018F874
 void func_ovl7_8018F874() // Unused?
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.unk_trainmenu_0x7C);
-	sobj->sprite
-		= *gTrainingModeStruct
-			   .unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option]
-			   .sprite;
-	sobj->pos.x = gTrainingModeStruct
-					  .unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option]
-					  .pos.x;
+	sobj->sprite = *gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option].sprite;
+	sobj->pos.x = gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option].pos.x;
 }
 
 // 8018F8FC
@@ -1257,12 +1124,8 @@ void func_ovl7_8018F8FC() // Unused?
 
 	gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj
 		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
-	func_ovl7_8018F7C8(
-		interface_gobj,
-		&gTrainingModeStruct
-			 .unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])
 		->pos.y
 		= 182.0F;
 }
@@ -1272,8 +1135,7 @@ void func_ovl7_8018F984() // Unused?
 {
 	s32 i;
 	for (i = 0; i < 28; i++)
-		gTrainingModeStruct.unk_trainmenu_0x38[i].sprite->attr
-			= SP_TEXSHUF | SP_TRANSPARENT;
+		gTrainingModeStruct.unk_trainmenu_0x38[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
 // 8018F9E8
@@ -1281,21 +1143,14 @@ s32 scTrainingMode_GetMenuOptionSpriteID()
 {
 	switch (gTrainingModeStruct.main_menu_option)
 	{
-	case scTrainingMenu_Main_CP:
-		return gTrainingModeStruct.cp_menu_option
-			   + scTrainingMenu_OptionSprite_CPStart;
+	case scTrainingMenu_Main_CP: return gTrainingModeStruct.cp_menu_option + scTrainingMenu_OptionSprite_CPStart;
 
-	case scTrainingMenu_Main_Item:
-		return gTrainingModeStruct.item_menu_option
-			   + scTrainingMenu_OptionSprite_ItemStart;
+	case scTrainingMenu_Main_Item: return gTrainingModeStruct.item_menu_option + scTrainingMenu_OptionSprite_ItemStart;
 
 	case scTrainingMenu_Main_Speed:
-		return gTrainingModeStruct.speed_menu_option
-			   + scTrainingMenu_OptionSprite_SpeedStart;
+		return gTrainingModeStruct.speed_menu_option + scTrainingMenu_OptionSprite_SpeedStart;
 
-	case scTrainingMenu_Main_View:
-		return gTrainingModeStruct.view_menu_option
-			   + scTrainingMenu_OptionSprite_ViewStart;
+	case scTrainingMenu_Main_View: return gTrainingModeStruct.view_menu_option + scTrainingMenu_OptionSprite_ViewStart;
 
 	case scTrainingMenu_Main_Reset: return scTrainingMenu_OptionSprite_EnumMax;
 
@@ -1313,13 +1168,9 @@ void func_ovl7_8018FA54() // Unused but referenced?
 		sobj->sprite.attr |= SP_HIDDEN;
 	else
 	{
-		sobj->sprite
-			= *gTrainingModeStruct.unk_trainmenu_0x38[sprite_id].sprite;
+		sobj->sprite = *gTrainingModeStruct.unk_trainmenu_0x38[sprite_id].sprite;
 		sobj->pos.x = gTrainingModeStruct.unk_trainmenu_0x38[sprite_id].pos.x;
-		sobj->pos.y
-			= (sprite_id == scTrainingMenu_OptionSprite_ItemMotionSensorBomb)
-				  ? 178.0F
-				  : 182.0F;
+		sobj->pos.y = (sprite_id == scTrainingMenu_OptionSprite_ItemMotionSensorBomb) ? 178.0F : 182.0F;
 		sobj->sprite.attr &= ~SP_HIDDEN;
 	}
 }
@@ -1329,10 +1180,8 @@ void func_ovl7_8018FB40() // Unused?
 {
 	GObj* interface_gobj;
 
-	gTrainingModeStruct.combo0 = interface_gobj
-		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
+	gTrainingModeStruct.combo0 = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
 	func_ovl7_8018FA54();
 }
@@ -1341,9 +1190,7 @@ void func_ovl7_8018FB40() // Unused?
 void scTrainingMode_UpdateCursorPosition()
 {
 	SObj* cursor_sobj = SObjGetStruct(gTrainingModeStruct.cursor_gobj);
-	SObj* text_sobj
-		= gTrainingModeStruct
-			  .vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
+	SObj* text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
 	cursor_sobj->pos.y = (s32)(text_sobj->pos.y - 1.0F);
 }
 
@@ -1353,14 +1200,10 @@ void scTrainingMode_MakeMenuCursorInterface()
 	GObj* interface_gobj;
 	SObj* target_sprite;
 
-	gTrainingModeStruct.cursor_gobj = interface_gobj
-		= omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
-	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000,
-						-1);
-	target_sprite = func_ovl0_800CCFDC(
-		interface_gobj,
-		gTrainingModeStruct
-			.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor]);
+	gTrainingModeStruct.cursor_gobj = interface_gobj = omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000);
+	omAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	target_sprite = func_ovl0_800CCFDC(interface_gobj,
+									   gTrainingModeStruct.menu_option_sprites[scTrainingMenu_OptionSprite_Cursor]);
 	target_sprite->pos.x = 71.0F;
 
 	scTrainingMode_UpdateCursorPosition();
@@ -1369,30 +1212,23 @@ void scTrainingMode_MakeMenuCursorInterface()
 // 8018FC7C
 void scTrainingMode_CopyVScrollOptionSObjs()
 {
-	SObj* arrow_sobj
-		= SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->next;
+	SObj* arrow_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->next;
 
-	gTrainingModeStruct.vscroll_option_sobj[0][0]
-		= SObjGetStruct(gTrainingModeStruct.menu_label_gobj);
+	gTrainingModeStruct.vscroll_option_sobj[0][0] = SObjGetStruct(gTrainingModeStruct.menu_label_gobj);
 	gTrainingModeStruct.vscroll_option_sobj[0][1] = arrow_sobj;
 
-	gTrainingModeStruct.vscroll_option_sobj[1][0]
-		= gTrainingModeStruct.vscroll_option_sobj[0][0]->next;
+	gTrainingModeStruct.vscroll_option_sobj[1][0] = gTrainingModeStruct.vscroll_option_sobj[0][0]->next;
 	gTrainingModeStruct.vscroll_option_sobj[1][1] = arrow_sobj;
 
-	gTrainingModeStruct.vscroll_option_sobj[2][0]
-		= gTrainingModeStruct.vscroll_option_sobj[1][0]->next;
+	gTrainingModeStruct.vscroll_option_sobj[2][0] = gTrainingModeStruct.vscroll_option_sobj[1][0]->next;
 	gTrainingModeStruct.vscroll_option_sobj[2][1] = arrow_sobj;
 
-	gTrainingModeStruct.vscroll_option_sobj[3][0]
-		= gTrainingModeStruct.vscroll_option_sobj[2][0]->next;
+	gTrainingModeStruct.vscroll_option_sobj[3][0] = gTrainingModeStruct.vscroll_option_sobj[2][0]->next;
 	gTrainingModeStruct.vscroll_option_sobj[3][1] = arrow_sobj;
 
-	gTrainingModeStruct.vscroll_option_sobj[4][0]
-		= gTrainingModeStruct.vscroll_option_sobj[4][1]
+	gTrainingModeStruct.vscroll_option_sobj[4][0] = gTrainingModeStruct.vscroll_option_sobj[4][1]
 		= gTrainingModeStruct.vscroll_option_sobj[3][0]->next;
-	gTrainingModeStruct.vscroll_option_sobj[5][0]
-		= gTrainingModeStruct.vscroll_option_sobj[5][1]
+	gTrainingModeStruct.vscroll_option_sobj[5][0] = gTrainingModeStruct.vscroll_option_sobj[5][1]
 		= gTrainingModeStruct.vscroll_option_sobj[4][0]->next;
 }
 
@@ -1402,53 +1238,39 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(
-		gDisplayListHead[0]++,
-		rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF),
-							 gDisplayListHead));
-	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx,
-					 gTrainingModeStruct.cursor_uly,
-					 gTrainingModeStruct.cursor_lrx,
-					 gTrainingModeStruct.cursor_lry);
+	gDPSetFillColor(gDisplayListHead[0]++,
+					rgba32_to_fill_color(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF), gDisplayListHead));
+	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
+					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF,
-					 G_RM_AA_ZB_OPA_SURF2);
+	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018FE40
 void scTrainingMode_UpdateCursorUnderline()
 {
-	SObj* text_sobj
-		= gTrainingModeStruct
-			  .vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
-	SObj* arrow_sobj
-		= gTrainingModeStruct
-			  .vscroll_option_sobj[gTrainingModeStruct.main_menu_option][1];
+	SObj* text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
+	SObj* arrow_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][1];
 	s32 offset;
 
 	gTrainingModeStruct.cursor_ulx = text_sobj->pos.x - 13.0F;
 
-	offset
-		= ((gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Reset)
-		   || (gTrainingModeStruct.main_menu_option
-			   == scTrainingMenu_Main_Exit))
-			  ? 2
-			  : -2;
+	offset = ((gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Reset)
+			  || (gTrainingModeStruct.main_menu_option == scTrainingMenu_Main_Exit))
+				 ? 2
+				 : -2;
 
-	gTrainingModeStruct.cursor_lrx
-		= offset + (arrow_sobj->pos.x + arrow_sobj->sprite.width);
-	gTrainingModeStruct.cursor_uly
-		= text_sobj->pos.y + text_sobj->sprite.height + (-1.0F);
+	gTrainingModeStruct.cursor_lrx = offset + (arrow_sobj->pos.x + arrow_sobj->sprite.width);
+	gTrainingModeStruct.cursor_uly = text_sobj->pos.y + text_sobj->sprite.height + (-1.0F);
 	gTrainingModeStruct.cursor_lry = gTrainingModeStruct.cursor_uly + 1;
 }
 
 // 80190070
 void scTrainingMode_MakeCursorUnderlineInterface()
 {
-	omAddGObjRenderProc(
-		omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000),
-		scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
+	omAddGObjRenderProc(omMakeGObjCommon(omGObj_Kind_Interface, NULL, 0xE, 0x80000000),
+						scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
 	scTrainingMode_UpdateCursorUnderline();
 }
 
@@ -1498,14 +1320,11 @@ void scTrainingMode_SetGameStatusGo()
 // 801901F4
 void scTrainingMode_UpdateOpponentBehavior()
 {
-	ftStruct* fp = ftGetStruct(
-		gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
+	ftStruct* fp = ftGetStruct(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 
 	if (fp->status_info.pl_kind == Pl_Kind_Com)
 	{
-		fp->fighter_com.behavior_set
-			= scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct
-														 .cp_menu_option];
+		fp->fighter_com.behavior_set = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
 		fp->fighter_com.behavior_write = 0xA;
 	}
 }
@@ -1538,29 +1357,22 @@ void scTrainingMode_InitTrainingMode()
 	gmRumble_SetPlayerRumble();
 	ftPublicity_SetPlayerPublicReact();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block);
-		 player++)
+	for (player = 0; player < ARRAY_COUNT(gBattleState->player_block); player++)
 	{
 		player_spawn = ftGlobal_SpawnInfo_MainData;
 
 		if (gBattleState->player_block[player].player_kind == Pl_Kind_Not)
 			continue;
 
-		ftManager_SetFileDataKind(
-			gBattleState->player_block[player].character_kind);
-		player_spawn.ft_kind
-			= gBattleState->player_block[player].character_kind;
+		ftManager_SetFileDataKind(gBattleState->player_block[player].character_kind);
+		player_spawn.ft_kind = gBattleState->player_block[player].character_kind;
 		mpCollision_GetPlayerMPointPosition(player, &player_spawn.pos);
-		player_spawn.lr_spawn
-			= (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
+		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? LR_Left : LR_Right;
 		player_spawn.team = gBattleState->player_block[player].team_index;
 		player_spawn.player = player;
 		player_spawn.model_lod
-			= ((gBattleState->pl_count + gBattleState->cp_count) < 3)
-				  ? ftParts_LOD_HighPoly
-				  : ftParts_LOD_LowPoly;
-		player_spawn.costume
-			= gBattleState->player_block[player].costume_index;
+			= ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? ftParts_LOD_HighPoly : ftParts_LOD_LowPoly;
+		player_spawn.costume = gBattleState->player_block[player].costume_index;
 		player_spawn.shade = gBattleState->player_block[player].shade_index;
 		player_spawn.handicap = gBattleState->player_block[player].handicap;
 		player_spawn.cp_level = gBattleState->player_block[player].level;
@@ -1568,8 +1380,7 @@ void scTrainingMode_InitTrainingMode()
 		player_spawn.damage = 0;
 		player_spawn.pl_kind = gBattleState->player_block[player].player_kind;
 		player_spawn.p_controller = &gPlayerControllers[player];
-		player_spawn.anim_heap = ftManager_AllocAnimHeapKind(
-			gBattleState->player_block[player].character_kind);
+		player_spawn.anim_heap = ftManager_AllocAnimHeapKind(gBattleState->player_block[player].character_kind);
 		player_spawn.is_skip_entry = TRUE;
 		fighter_gobj = ftManager_MakeFighter(&player_spawn);
 		ftCommon_ClearPlayerMatchStats(player, fighter_gobj);
@@ -1604,8 +1415,7 @@ void scTrainingMode_InitTrainingMode()
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX,
-										gMapLightAngleY);
+	ftRender_Lights_DisplayLightReflect(display_list, gMapLightAngleX, gMapLightAngleY);
 }
 
 // 801905F4
@@ -1615,8 +1425,7 @@ void scManager_TrainingMode_InitScene()
 
 	func_80007024(&D_ovl7_80190870);
 
-	D_ovl7_8019088C.arena_size
-		= ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
+	D_ovl7_8019088C.arena_size = ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
 	D_ovl7_8019088C.proc_start = scTrainingMode_InitTrainingMode;
 
 	do
@@ -1650,9 +1459,6 @@ void func_ovl7_801906D0()
 	rldm_setup.forceBufSize = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	rldm_initialize(&rldm_setup);
-	rldm_load_files_into(
-		D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0), gCommonSpriteFiles,
-		hal_alloc(rldm_bytes_need_to_load(D_ovl2_80116BD0,
-										  ARRAY_COUNT(D_ovl2_80116BD0)),
-				  0x10));
+	rldm_load_files_into(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0), gCommonSpriteFiles,
+						 hal_alloc(rldm_bytes_need_to_load(D_ovl2_80116BD0, ARRAY_COUNT(D_ovl2_80116BD0)), 0x10));
 }

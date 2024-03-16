@@ -18,7 +18,4 @@ void __osSiGetAccess(void)
 		__osSiCreateAccessQueue();
 	osRecvMesg(&__osSiAccessQueue, &dummyMesg, OS_MESG_BLOCK);
 }
-void __osSiRelAccess(void)
-{
-	osSendMesg(&__osSiAccessQueue, NULL, OS_MESG_NOBLOCK);
-}
+void __osSiRelAccess(void) { osSendMesg(&__osSiAccessQueue, NULL, OS_MESG_NOBLOCK); }

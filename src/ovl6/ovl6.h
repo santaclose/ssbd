@@ -71,13 +71,11 @@ grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[/* */] = {
 };
 
 // 0x8018EFE4
-grBonus2Unk D_ovl6_8018EFE4[/* */]
-	= { { 0x5520, 0x55D0 }, { 0x5B80, 0x5C30 }, { 0x61E0, 0x6290 } };
+grBonus2Unk D_ovl6_8018EFE4[/* */] = { { 0x5520, 0x55D0 }, { 0x5B80, 0x5C30 }, { 0x61E0, 0x6290 } };
 
 // 0x8018EFFC - last one is apparently 0.554000020027F but precision is lost
-f32 scBonusGame_Timer_UnitLengths[/* */]
-	= { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1),	  I_SEC_TO_FRAMES(10),
-		I_SEC_TO_FRAMES(1),	 I_SEC_TO_FRAMES(1) / 10, 277.0F / 500.0F };
+f32 scBonusGame_Timer_UnitLengths[/* */] = { I_MIN_TO_FRAMES(10), I_MIN_TO_FRAMES(1),	   I_SEC_TO_FRAMES(10),
+											 I_SEC_TO_FRAMES(1),  I_SEC_TO_FRAMES(1) / 10, 277.0F / 500.0F };
 
 // 0x8018F014
 s32 scBonusGame_Timer_DigitPositions[/* */] = {

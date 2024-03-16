@@ -59,8 +59,8 @@ extern "C"
  */
 #define _MIPS_SIM_ABI32 1  /* MIPS MSIG calling convention */
 #define _MIPS_SIM_NABI32 2 /* MIPS new 32-bit abi */
-	/* NABI32 is 64bit calling convention but 32bit type sizes) */
-#define _MIPS_SIM_ABI64 3 /* MIPS 64 calling convention */
+						   /* NABI32 is 64bit calling convention but 32bit type sizes) */
+#define _MIPS_SIM_ABI64 3  /* MIPS 64 calling convention */
 
 	/*
 	 * Data Types Sizes (C and C++)

@@ -4,31 +4,31 @@
 // Enums
 typedef enum ftStatusUpdateFlags
 {
-	ftStatusUpdate_Hit_Preserve,	 // Preserve hitboxes between action states
-	ftStatusUpdate_ColAnim_Preserve, // Preserve color animation between action
-									 // states
-	ftStatusUpdate_GFX_Preserve,	 // Preserve GFX between action states
-	ftStatusUpdate_FastFall_Preserve, // Preserve fastfall between action states
-	ftStatusUpdate_HitStatus_Preserve, // Preserve hurtbox collision state
-									   // between action states
-	ftStatusUpdate_ModelPart_Preserve, // Preserve modified model part display
-									   // state between action states
+	ftStatusUpdate_Hit_Preserve,		  // Preserve hitboxes between action states
+	ftStatusUpdate_ColAnim_Preserve,	  // Preserve color animation between action
+										  // states
+	ftStatusUpdate_GFX_Preserve,		  // Preserve GFX between action states
+	ftStatusUpdate_FastFall_Preserve,	  // Preserve fastfall between action states
+	ftStatusUpdate_HitStatus_Preserve,	  // Preserve hurtbox collision state
+										  // between action states
+	ftStatusUpdate_ModelPart_Preserve,	  // Preserve modified model part display
+										  // state between action states
 	ftStatusUpdate_SlopeContour_Preserve, // Preserve inverse kinematics mode
 										  // between action states
 	ftStatusUpdate_TexturePart_Preserve,  // Preserve modified texture part
-										 // display state between action states
-	ftStatusUpdate_PlayerTag_Preserve, // Preserve player indicator wait timer
-	ftStatusUpdate_ThrowGObj_Preserve, // Preserve thrower's GObj pointer
-									   // between action states; used to tell
-									   // the game not to check thrower's
-									   // collateral hitbox on thrown victim?
-	ftStatusUpdate_ShuffleTime_Preserve, // Preserve model vibration frames
-										 // from hitlag between action states
-	ftStatusUpdate_LoopSFX_Preserve,	 // Preserve looping SFX
-	ftStatusUpdate_DamagePort_Preserve,	 // Preserve damaging player's port ID
-										 // if grounded?
-	ftStatusUpdate_AfterImage_Preserve,	 // Preserve sword trail display state
-	ftStatusUpdate_Rumble_Preserve		 // Preserve rumble
+										  // display state between action states
+	ftStatusUpdate_PlayerTag_Preserve,	  // Preserve player indicator wait timer
+	ftStatusUpdate_ThrowGObj_Preserve,	  // Preserve thrower's GObj pointer
+										  // between action states; used to tell
+										  // the game not to check thrower's
+										  // collateral hitbox on thrown victim?
+	ftStatusUpdate_ShuffleTime_Preserve,  // Preserve model vibration frames
+										  // from hitlag between action states
+	ftStatusUpdate_LoopSFX_Preserve,	  // Preserve looping SFX
+	ftStatusUpdate_DamagePort_Preserve,	  // Preserve damaging player's port ID
+										  // if grounded?
+	ftStatusUpdate_AfterImage_Preserve,	  // Preserve sword trail display state
+	ftStatusUpdate_Rumble_Preserve		  // Preserve rumble
 
 } ftStatusUpdateFlags;
 
@@ -366,8 +366,7 @@ typedef enum ftCommonStatus
 	ftStatus_Common_LightThrowAirB4,
 	ftStatus_Common_LightThrowAirHi4,
 	ftStatus_Common_LightThrowAirLw4,
-	ftStatus_Common_LightThrowEnd
-	= ftStatus_Common_LightThrowAirLw4, // End of Light Throw action states
+	ftStatus_Common_LightThrowEnd = ftStatus_Common_LightThrowAirLw4, // End of Light Throw action states
 
 	ftStatus_Common_HeavyThrowStart, // Start of Heavy Throw action states
 	ftStatus_Common_HeavyThrowF = ftStatus_Common_HeavyThrowStart,
@@ -375,10 +374,8 @@ typedef enum ftCommonStatus
 	ftStatus_Common_HeavyThrow4Start, // Start of Heavy Throw Smash action states
 	ftStatus_Common_HeavyThrowF4 = ftStatus_Common_HeavyThrow4Start,
 	ftStatus_Common_HeavyThrowB4,
-	ftStatus_Common_HeavyThrow4End
-	= ftStatus_Common_HeavyThrowB4, // End of Heavy Throw Smash action states
-	ftStatus_Common_HeavyThrowEnd
-	= ftStatus_Common_HeavyThrow4End, // End of Heavy Throw action states
+	ftStatus_Common_HeavyThrow4End = ftStatus_Common_HeavyThrowB4,	// End of Heavy Throw Smash action states
+	ftStatus_Common_HeavyThrowEnd = ftStatus_Common_HeavyThrow4End, // End of Heavy Throw action states
 
 	ftStatus_Common_ItemSwingStart, // Start of Item Swing action states
 	ftStatus_Common_SwordSwing1 = ftStatus_Common_ItemSwingStart,
@@ -397,8 +394,7 @@ typedef enum ftCommonStatus
 	ftStatus_Common_StarRodSwing3,
 	ftStatus_Common_StarRodSwing4,
 	ftStatus_Common_StarRodSwingDash,
-	ftStatus_Common_ItemSwingEnd
-	= ftStatus_Common_StarRodSwingDash, // End of Item Swing action states
+	ftStatus_Common_ItemSwingEnd = ftStatus_Common_StarRodSwingDash, // End of Item Swing action states
 
 	ftStatus_Common_LGunShoot,
 	ftStatus_Common_LGunShootAir,
@@ -412,8 +408,7 @@ typedef enum ftCommonStatus
 	ftStatus_Common_HammerKneeBend,
 	ftStatus_Common_HammerFall, // Pretty much any aerial Hammer state
 	ftStatus_Common_HammerLanding,
-	ftStatus_Common_HammerEnd
-	= ftStatus_Common_HammerLanding, // End of Hammer action states
+	ftStatus_Common_HammerEnd = ftStatus_Common_HammerLanding, // End of Hammer action states
 
 	ftStatus_Common_GuardOn,
 	ftStatus_Common_Guard,
@@ -667,12 +662,12 @@ typedef enum ftItemSwingType
 
 typedef enum ftCatchKind
 {
-	ftCatch_Kind_SpecialNYoshi, // Yoshi's Egg Lay, also used for Kirby's copy
-								// ability version of it
-	ftCatch_Kind_SpecialNKirby, // Kirby's Inhale
-	ftCatch_Kind_TaruCann,		// Barrel Cannon
-	ftCatch_Kind_Twister,		// Tornado
-	ftCatch_Kind_CatchCommon,	// Common grab
+	ftCatch_Kind_SpecialNYoshi,	  // Yoshi's Egg Lay, also used for Kirby's copy
+								  // ability version of it
+	ftCatch_Kind_SpecialNKirby,	  // Kirby's Inhale
+	ftCatch_Kind_TaruCann,		  // Barrel Cannon
+	ftCatch_Kind_Twister,		  // Tornado
+	ftCatch_Kind_CatchCommon,	  // Common grab
 	ftCatch_Kind_SpecialHiCaptain // Captain Falcon's Falcon Dive
 
 } ftCatchKind;

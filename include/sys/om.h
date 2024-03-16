@@ -240,10 +240,9 @@ struct MObjSub
 {
 	///* 0x00 */ f32 unk00;
 	/* 0x00 */ u16 pad00;
-	/* 0x02 */ u8 unk02; // SetTextureImage format?
-	/* 0x03 */ u8 unk03; // SetTextureImage size?
-	/* 0x04 */ f32
-		unk04; // should this be a pointer to an array of images (sprite set)?
+	/* 0x02 */ u8 unk02;  // SetTextureImage format?
+	/* 0x03 */ u8 unk03;  // SetTextureImage size?
+	/* 0x04 */ f32 unk04; // should this be a pointer to an array of images (sprite set)?
 	/* 0x08 */ u16 unk08;
 	/* 0x0A */ u16 unk0A;
 	///* 0x0C */ f32 unk0C;
@@ -322,8 +321,7 @@ struct SObj
 	/* 0x0C */ struct SObj* unk_sobj_0xC;
 	/* 0x10 */ Sprite sprite;
 	/* 0x54 */ void* sobj_user_data;
-	/* 0x58 */ Vec2f
-		pos; // Position / offset? Causes a ghosting effect if out of bounds
+	/* 0x58 */ Vec2f pos; // Position / offset? Causes a ghosting effect if out of bounds
 	/* 0x60 */ GfxColor sobj_color;
 }; // size >= 0x58 (0x6C?)
 
@@ -416,8 +414,7 @@ extern struct Unk80046A88 D_80046A88[64];
 // functions
 
 extern s32 func_800078C8(void);
-extern struct GObjProcess*
-omAddGObjCommonProc(struct GObjCommon* com, void* ptr, u8 kind, u32 pri);
+extern struct GObjProcess* omAddGObjCommonProc(struct GObjCommon* com, void* ptr, u8 kind, u32 pri);
 extern void func_8000848C(struct GObjProcess*);
 extern void func_80008CC0(struct DObj*, u8, u8);
 extern struct OMMtx* func_80008CF0(struct OMCamera*, u8, u8);
@@ -435,22 +432,16 @@ extern void func_8000948C(struct DObj*);
 extern struct SObj* func_80009614(struct GObjCommon*, Sprite*);
 extern void func_800096EC(struct SObj*);
 extern struct OMCamera* func_80009760(struct GObjCommon*);
-extern struct GObjCommon*
-omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
-extern struct GObjCommon*
-func_800099A8(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
+extern struct GObjCommon* omMakeGObjCommon(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
+extern struct GObjCommon* func_800099A8(u32 id, void (*arg1)(struct GObjCommon*), u8 link, u32 arg3);
 extern void omEjectGObjCommon(struct GObjCommon*);
 extern void func_80009C90(struct GObjCommon* arg0, u8 link, u32 arg2);
 extern void func_80009CC8(struct GObjCommon* arg0, u8 link, u32 arg2);
 extern void
-omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*),
-					u8 dlLink, u32 arg3, s32 arg4);
-extern void
-func_80009F74(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*),
-			  u32 arg2, s64 arg3, s32 arg4);
+omAddGObjRenderProc(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u8 dlLink, u32 arg3, s32 arg4);
+extern void func_80009F74(struct GObjCommon* arg0, void (*arg1)(struct GObjCommon*), u32 arg2, s64 arg3, s32 arg4);
 extern void om_g_move_obj_dl(struct GObjCommon* arg0, u8 dlLink, u32 arg2);
-extern void
-om_g_move_obj_dl_head(struct GObjCommon* arg0, u8 dlLink, u32 arg2);
+extern void om_g_move_obj_dl_head(struct GObjCommon* arg0, u8 dlLink, u32 arg2);
 extern void func_8000A24C(struct GObjCommon*, u32);
 extern void func_8000A2B4(struct GObjCommon*, struct GObjCommon*);
 extern void set_max_obj_commons(s32 n);

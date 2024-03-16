@@ -196,7 +196,7 @@ typedef struct grCommon_GroundVars_Inishie
 	f32 splat_altitude;	  // Scale platform uh... thing I don't know how to
 						  // explain, splat_accelerate gets added to this
 	f32 splat_accelerate; // Scale platform fall acceleration
-	u16 splat_wait; // Wait this many frames before retracting if the platforms
+	u16 splat_wait;		  // Wait this many frames before retracting if the platforms
 					// have falle
 	u8 splat_status;   // Current state of the platforms
 	u8 players_tt[4];  // Players timer, something to do with being
@@ -322,8 +322,7 @@ typedef struct grBonus_GroundVars_Bonus2
 	void* unk_bonus2_0x0;
 	void* unk_bonus2_0x4;
 	void* unk_bonus2_0x8;
-	GObj*
-		interface_gobj; // GObj for platform count HUD at the top of the screen
+	GObj* interface_gobj; // GObj for platform count HUD at the top of the screen
 	u8 platform_count;
 
 } grBonus_GroundVars_Bonus2;

@@ -64,13 +64,13 @@ extern "C"
 
 		/* Because the following are set in the initialization routine
 		   guS2DInitBg(), the user doesn't have to set it.*/
-		u16 tmemW; /* The TMEM width and Work size of the frame 1 line.
-													At LoadBlock,
-					  GS_PIX2TMEM(imageW/4,imageSiz) At LoadTile
-					  GS_PIX2TMEM(frameW/4,imageSiz)+1  */
-		u16 tmemH; /* The height of TMEM loadable at a time.  (s13.2) The 4
-				times value. When the normal texture,   512/tmemW*4 When the CI
-				texture,    256/tmemW*4       */
+		u16 tmemW;		/* The TMEM width and Work size of the frame 1 line.
+														 At LoadBlock,
+						   GS_PIX2TMEM(imageW/4,imageSiz) At LoadTile
+						   GS_PIX2TMEM(frameW/4,imageSiz)+1  */
+		u16 tmemH;		/* The height of TMEM loadable at a time.  (s13.2) The 4
+					 times value. When the normal texture,   512/tmemW*4 When the CI
+					 texture,    256/tmemW*4       */
 		u16 tmemLoadSH; /* The SH value
 					 At LoadBlock,  tmemSize/2-1
 					 At LoadTile,  tmemW*16-1                  */
@@ -110,8 +110,8 @@ extern "C"
 		u16 imageFlip; /* The right & left inversion of the image. Inverted by
 						  G_BG_FLAG_FLIPS*/
 
-		u16 scaleW; /* The scale value of the X-direction.           (u5.10)*/
-		u16 scaleH; /* The scale value of the Y-direction.           (u5.10)*/
+		u16 scaleW;		/* The scale value of the X-direction.           (u5.10)*/
+		u16 scaleH;		/* The scale value of the Y-direction.           (u5.10)*/
 		s32 imageYorig; /* The start point of drawing on the image. (s20.5)*/
 
 		u8 padding[4];
@@ -133,16 +133,16 @@ extern "C"
 
 	typedef struct
 	{
-		s16 objX;	  /* The x-coordinate of the upper-left end. s10.2 OBJ	 */
-		u16 scaleW;	  /* Scaling of the u5.10 width direction.   */
-		u16 imageW;	  /* The width of the u10.5 texture. (The length of the
-						 S-direction.) */
-		u16 paddingX; /* Unused.  Always 0. */
-		s16 objY;	  /* The y-coordinate of the s10.2 OBJ upper-left end.	 */
-		u16 scaleH;	  /* Scaling of the u5.10 height direction.   */
-		u16 imageH;	  /* The height of the u10.5 texture. (The length of the
-						 T-direction.)*/
-		u16 paddingY; /* Unused.  Always 0. */
+		s16 objX;		 /* The x-coordinate of the upper-left end. s10.2 OBJ	 */
+		u16 scaleW;		 /* Scaling of the u5.10 width direction.   */
+		u16 imageW;		 /* The width of the u10.5 texture. (The length of the
+							S-direction.) */
+		u16 paddingX;	 /* Unused.  Always 0. */
+		s16 objY;		 /* The y-coordinate of the s10.2 OBJ upper-left end.	 */
+		u16 scaleH;		 /* Scaling of the u5.10 height direction.   */
+		u16 imageH;		 /* The height of the u10.5 texture. (The length of the
+							T-direction.)*/
+		u16 paddingY;	 /* Unused.  Always 0. */
 		u16 imageStride; /* The folding width of the texel.        (In units of
 							64bit word.) */
 		u16 imageAdrs;	 /* The texture header position in  TMEM.  (In units of
@@ -201,14 +201,14 @@ extern "C"
 
 	typedef struct
 	{
-		u32 type;	/* G_OBJLT_TXTRBLOCK divided into types.   */
-		u64* image; /* The texture source address on DRAM. */
-		u16 tmem;	/* The  transferred TMEM word address.   (8byteWORD)   */
-		u16 tsize; /* The Texture size.  Specified by the macro  GS_TB_TSIZE().
-					*/
-		u16 tline; /* The width of the Texture 1-line. Specified by the macro
-					  GS_TB_TLINE()*/
-		u16 sid; /* STATE ID Multipled by 4.  Either one of  0,4,8 and 12.   */
+		u32 type;	   /* G_OBJLT_TXTRBLOCK divided into types.   */
+		u64* image;	   /* The texture source address on DRAM. */
+		u16 tmem;	   /* The  transferred TMEM word address.   (8byteWORD)   */
+		u16 tsize;	   /* The Texture size.  Specified by the macro  GS_TB_TSIZE().
+						*/
+		u16 tline;	   /* The width of the Texture 1-line. Specified by the macro
+						  GS_TB_TLINE()*/
+		u16 sid;	   /* STATE ID Multipled by 4.  Either one of  0,4,8 and 12.   */
 		u32 flag;	   /* STATE flag  */
 		u32 mask;	   /* STATE mask  */
 	} uObjTxtrBlock_t; /* 24 bytes */
@@ -218,14 +218,14 @@ extern "C"
 
 	typedef struct
 	{
-		u32 type;	/* G_OBJLT_TXTRTILE divided into types.   */
-		u64* image; /* The texture source address on DRAM. */
-		u16 tmem; /* The loaded texture source address on DRAM.  (8byteWORD) */
-		u16 twidth;	 /* The width of the Texture. Specified by the macro
-						GS_TT_TWIDTH()  */
-		u16 theight; /* The height of the Texture. Specified by the macro
-						GS_TT_THEIGHT()*/
-		u16 sid; /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
+		u32 type;	  /* G_OBJLT_TXTRTILE divided into types.   */
+		u64* image;	  /* The texture source address on DRAM. */
+		u16 tmem;	  /* The loaded texture source address on DRAM.  (8byteWORD) */
+		u16 twidth;	  /* The width of the Texture. Specified by the macro
+						 GS_TT_TWIDTH()  */
+		u16 theight;  /* The height of the Texture. Specified by the macro
+						 GS_TT_THEIGHT()*/
+		u16 sid;	  /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
 		u32 flag;	  /* STATE flag  */
 		u32 mask;	  /* STATE mask  */
 	} uObjTxtrTile_t; /* 24 bytes */
@@ -235,13 +235,13 @@ extern "C"
 
 	typedef struct
 	{
-		u32 type;	/* G_OBJLT_TLUT divided into types.   */
-		u64* image; /* the texture source address on DRAM. */
-		u16 phead;	/* The pallet number of the load header.  Between 256 and
-					   511. */
-		u16 pnum;	/* The loading pallet number -1.   */
-		u16 zero;	/* Assign 0 all the time.   */
-		u16 sid; /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
+		u32 type;	  /* G_OBJLT_TLUT divided into types.   */
+		u64* image;	  /* the texture source address on DRAM. */
+		u16 phead;	  /* The pallet number of the load header.  Between 256 and
+						 511. */
+		u16 pnum;	  /* The loading pallet number -1.   */
+		u16 zero;	  /* Assign 0 all the time.   */
+		u16 sid;	  /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
 		u32 flag;	  /* STATE flag  */
 		u32 mask;	  /* STATE mask  */
 	} uObjTxtrTLUT_t; /* 24 bytes */
@@ -314,37 +314,35 @@ extern "C"
  *---------------------------------------------------------------------------*/
 #define gSPObjLoadTxtr(pkt, tptr) gDma0p((pkt), G_OBJ_LOADTXTR, (tptr), 23)
 #define gsSPObjLoadTxtr(tptr) gsDma0p(G_OBJ_LOADTXTR, (tptr), 23)
-#define gSPObjLoadTxSprite(pkt, tptr)                                         \
-	gDma0p((pkt), G_OBJ_LDTX_SPRITE, (tptr), 47)
+#define gSPObjLoadTxSprite(pkt, tptr) gDma0p((pkt), G_OBJ_LDTX_SPRITE, (tptr), 47)
 #define gsSPObjLoadTxSprite(tptr) gsDma0p(G_OBJ_LDTX_SPRITE, (tptr), 47)
 #define gSPObjLoadTxRect(pkt, tptr) gDma0p((pkt), G_OBJ_LDTX_RECT, (tptr), 47)
 #define gsSPObjLoadTxRect(tptr) gsDma0p(G_OBJ_LDTX_RECT, (tptr), 47)
-#define gSPObjLoadTxRectR(pkt, tptr)                                          \
-	gDma0p((pkt), G_OBJ_LDTX_RECT_R, (tptr), 47)
+#define gSPObjLoadTxRectR(pkt, tptr) gDma0p((pkt), G_OBJ_LDTX_RECT_R, (tptr), 47)
 #define gsSPObjLoadTxRectR(tptr) gsDma0p(G_OBJ_LDTX_RECT_R, (tptr), 47)
 
 /*---------------------------------------------------------------------------*
  *	Select Display List
  *---------------------------------------------------------------------------*/
-#define gSPSelectDL(pkt, mptr, sid, flag, mask)                               \
-	{                                                                         \
-		gDma1p((pkt), G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));        \
-		gDma1p((pkt), G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_PUSH);     \
+#define gSPSelectDL(pkt, mptr, sid, flag, mask)                                                                        \
+	{                                                                                                                  \
+		gDma1p((pkt), G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));                                                 \
+		gDma1p((pkt), G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_PUSH);                                              \
 	}
-#define gsSPSelectDL(mptr, sid, flag, mask)                                   \
-	{                                                                         \
-		gsDma1p(G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));              \
-		gsDma1p(G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_PUSH);           \
+#define gsSPSelectDL(mptr, sid, flag, mask)                                                                            \
+	{                                                                                                                  \
+		gsDma1p(G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));                                                       \
+		gsDma1p(G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_PUSH);                                                    \
 	}
-#define gSPSelectBranchDL(pkt, mptr, sid, flag, mask)                         \
-	{                                                                         \
-		gDma1p((pkt), G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));        \
-		gDma1p((pkt), G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_NOPUSH);   \
+#define gSPSelectBranchDL(pkt, mptr, sid, flag, mask)                                                                  \
+	{                                                                                                                  \
+		gDma1p((pkt), G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));                                                 \
+		gDma1p((pkt), G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_NOPUSH);                                            \
 	}
-#define gsSPSelectBranchDL(mptr, sid, flag, mask)                             \
-	{                                                                         \
-		gsDma1p(G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));              \
-		gsDma1p(G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_NOPUSH);         \
+#define gsSPSelectBranchDL(mptr, sid, flag, mask)                                                                      \
+	{                                                                                                                  \
+		gsDma1p(G_RDPHALF_0, (flag), (u32)(mptr)&0xffff, (sid));                                                       \
+		gsDma1p(G_SELECT_DL, (mask), (u32)(mptr) >> 16, G_DL_NOPUSH);                                                  \
 	}
 
 /*---------------------------------------------------------------------------*
@@ -372,9 +370,8 @@ extern "C"
 /*===========================================================================*
  *	Render Mode Macro
  *===========================================================================*/
-#define RM_RA_SPRITE(clk)                                                     \
-	AA_EN | CVG_DST_CLAMP | CVG_X_ALPHA | ALPHA_CVG_SEL | ZMODE_OPA           \
-		| TEX_EDGE                                                            \
+#define RM_RA_SPRITE(clk)                                                                                              \
+	AA_EN | CVG_DST_CLAMP | CVG_X_ALPHA | ALPHA_CVG_SEL | ZMODE_OPA | TEX_EDGE                                         \
 		| GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define G_RM_SPRITE G_RM_OPA_SURF

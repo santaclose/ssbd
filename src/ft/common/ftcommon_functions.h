@@ -37,9 +37,8 @@ void ftCommon_Appear_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Appear_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_Appear_InitStatusVars(GObj* fighter_gobj);
 void ftCommon_Appear_SetStatus(GObj* fighter_gobj);
-void ftCommon_Appear_SetPosition(
-	GObj* fighter_gobj); // This runs when spawning multi-character team
-						 // members in VS mode I suppose?
+void ftCommon_Appear_SetPosition(GObj* fighter_gobj); // This runs when spawning multi-character team
+													  // members in VS mode I suppose?
 
 // RebirthDown / RebirthStand / RebirthWait
 void ftCommon_RebirthDown_SetStatus(GObj* this_gobj);
@@ -107,8 +106,7 @@ sb32 ftCommon_TurnRun_CheckInterruptRun(GObj* fighter_gobj);
 // KneeBend / GuardKneeBend
 void ftCommon_KneeBend_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_KneeBend_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_KneeBend_SetStatusParam(GObj* fighter_gobj, s32 status_id,
-									  s32 input_source);
+void ftCommon_KneeBend_SetStatusParam(GObj* fighter_gobj, s32 status_id, s32 input_source);
 void ftCommon_KneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
 void ftCommon_GuardKneeBend_SetStatus(GObj* fighter_gobj, s32 input_source);
 sb32 ftCommon_KneeBend_CheckButtonTap(ftStruct* fp);
@@ -120,8 +118,7 @@ sb32 ftCommon_GuardKneeBend_CheckInterruptGuard(GObj* fighter_gobj);
 
 // Jump
 void ftCommon_Jump_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32* jump_vel_x,
-									  s32* jump_vel_y, sb32 is_short_hop);
+void ftCommon_Jump_GetJumpForceButton(s32 stick_range_x, s32* jump_vel_x, s32* jump_vel_y, sb32 is_short_hop);
 void ftCommon_Jump_SetStatus(GObj* fighter_gobj);
 
 // JumpAerial
@@ -157,18 +154,14 @@ sb32 ftCommon_SquatRv_CheckInterruptSquatWait(GObj* fighter_gobj);
 
 // LandingLight / LandingHeavy
 void ftCommon_Landing_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Landing_SetStatusParam(GObj* fighter_gobj, s32 status_id,
-									 sb32 is_allow_interrupt, f32 anim_speed);
+void ftCommon_Landing_SetStatusParam(GObj* fighter_gobj, s32 status_id, sb32 is_allow_interrupt, f32 anim_speed);
 void ftCommon_Landing_SetStatus(GObj* fighter_gobj);
 void ftCommon_LandingAirNull_SetStatus(GObj* fighter_gobj, f32 anim_speed);
-void ftCommon_LandingFallSpecial_SetStatus(GObj* fighter_gobj,
-										   sb32 is_allow_interrupt,
-										   f32 anim_speed);
+void ftCommon_LandingFallSpecial_SetStatus(GObj* fighter_gobj, sb32 is_allow_interrupt, f32 anim_speed);
 
 // Pass
 void ftCommon_Pass_ProcInterrupt(GObj* fighter_gobj);
-void ftCommon_Pass_SetStatusParam(GObj* fighter_gobj, s32 status_id,
-								  f32 frame_begin, u32 flags);
+void ftCommon_Pass_SetStatusParam(GObj* fighter_gobj, s32 status_id, f32 frame_begin, u32 flags);
 void ftCommon_Pass_SetStatusSquat(GObj* fighter_gobj);
 void ftCommon_GuardPass_SetStatus(GObj* fighter_gobj);
 sb32 ftCommon_Pass_CheckInputSuccess(ftStruct* fp);
@@ -197,31 +190,23 @@ void ftCommon_DamageCommon_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_DamageCommon_ProcLagUpdate(GObj* fighter_gobj);
 void func_ovl3_80140934(void);
 void ftCommon_DamageAirCommon_ProcMap(GObj* fighter_gobj);
-f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air,
-									  f32 knockback);
+f32 gmCommon_Damage_GetKnockbackAngle(s32 angle_i, s32 ground_or_air, f32 knockback);
 s32 ftCommon_Damage_GetDamageLevel(f32 hitstun);
-void ftCommon_Damage_SetPublicReact(ftStruct* this_fp, f32 knockback,
-									f32 angle);
-sb32 ftCommon_Damage_CheckElementSetColAnim(GObj* fighter_gobj, s32 element,
-											s32 damage_level);
+void ftCommon_Damage_SetPublicReact(ftStruct* this_fp, f32 knockback, f32 angle);
+sb32 ftCommon_Damage_CheckElementSetColAnim(GObj* fighter_gobj, s32 element, s32 damage_level);
 void ftCommon_Damage_CheckMakeScreenFlash(f32 knockback, s32 element);
 sb32 func_ovl3_80140D30(ftStruct* fp);
 void func_ovl3_80140E2C(GObj* fighter_gobj);
 sb32 ftCommon_Damage_CheckCaptureKeepHold(ftStruct* fp);
-void ftCommon_Damage_InitDamageVars(GObj* this_gobj, s32 status_id_replace,
-									s32 damage, f32 knockback, s32 angle_start,
-									s32 lr_damage, s32 damage_index,
-									s32 element, s32 damage_player_number,
-									s32 arg9, sb32 unk_bool,
-									sb32 is_publicity);
+void ftCommon_Damage_InitDamageVars(GObj* this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start,
+									s32 lr_damage, s32 damage_index, s32 element, s32 damage_player_number, s32 arg9,
+									sb32 unk_bool, sb32 is_publicity);
 void ftCommon_Damage_GotoDamageStatus(GObj* fighter_gobj);
-void ftCommon_Damage_UpdateDamageColAnim(GObj* fighter_gobj, f32 knockback,
-										 s32 element);
+void ftCommon_Damage_UpdateDamageColAnim(GObj* fighter_gobj, f32 knockback, s32 element);
 void ftCommon_Damage_SetDamageColAnim(GObj* fighter_gobj);
 void ftCommon_Damage_UpdateMain(GObj* fighter_gobj);
 void ftCommon_WallDamage_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_WallDamage_SetStatus(GObj* fighter_gobj, Vec3f* angle,
-								   Vec3f* pos);
+void ftCommon_WallDamage_SetStatus(GObj* fighter_gobj, Vec3f* angle, Vec3f* pos);
 sb32 ftCommon_WallDamage_CheckGoto(GObj* fighter_gobj);
 
 // DamageFall
@@ -237,10 +222,8 @@ void ftCommon_FallSpecial_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_FallSpecial_ProcPhysics(GObj* fighter_gobj);
 sb32 ftCommon_FallSpecial_CheckIgnorePass(GObj* fighter_gobj);
 void ftCommon_FallSpecial_ProcMap(GObj* fighter_gobj);
-void ftCommon_FallSpecial_SetStatus(GObj* fighter_gobj, f32 drift,
-									sb32 unknown, sb32 is_fall_accelerate,
-									sb32 is_goto_landing, f32 landing_lag,
-									sb32 is_allow_interrupt);
+void ftCommon_FallSpecial_SetStatus(GObj* fighter_gobj, f32 drift, sb32 unknown, sb32 is_fall_accelerate,
+									sb32 is_goto_landing, f32 landing_lag, sb32 is_allow_interrupt);
 
 // Twister
 void ftCommon_Twister_ProcUpdate(GObj* fighter_gobj);
@@ -450,18 +433,15 @@ void ftCommon_Guard_UpdateShieldVars(GObj* fighter_gobj);
 void ftCommon_Guard_UpdateShieldHitbox(ftStruct* fp);
 void func_ovl3_80148488(ftStruct* fp);
 void func_ovl3_801485CC(DObj* joint, DObjDesc* joint_desc, f32 range);
-void func_ovl3_80148664(DObj* joint, DObjDesc* joint_desc, f32 range,
-						Vec3f* scale);
+void func_ovl3_80148664(DObj* joint, DObjDesc* joint_desc, f32 range, Vec3f* scale);
 void func_ovl3_80148714(GObj* fighter_gobj);
 void func_ovl3_8014889C(GObj* fighter_gobj);
 void ftCommon_GuardOn_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_GuardCommon_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_GuardOn_SetStatus(GObj* fighter_gobj, s32 slide_frames);
-sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj* fighter_gobj,
-											s32 slide_frames);
+sb32 ftCommon_GuardOn_CheckInterruptSuccess(GObj* fighter_gobj, s32 slide_frames);
 sb32 ftCommon_GuardOn_CheckInterruptCommon(GObj* fighter_gobj);
-sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj* fighter_gobj,
-											s32 slide_frames);
+sb32 ftCommon_GuardOn_CheckInterruptDashRun(GObj* fighter_gobj, s32 slide_frames);
 void ftCommon_Guard_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Guard_SetStatus(GObj* fighter_gobj);
 
@@ -477,8 +457,7 @@ void ftCommon_GuardSetOff_SetStatus(GObj* fighter_gobj);
 void ftCommon_Escape_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Escape_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_Escape_ProcStatus(GObj* fighter_gobj);
-void ftCommon_Escape_SetStatus(GObj* fighter_gobj, s32 status_id,
-							   s32 itemthrow_buffer_frames);
+void ftCommon_Escape_SetStatus(GObj* fighter_gobj, s32 status_id, s32 itemthrow_buffer_frames);
 s32 ftCommon_Escape_GetStatus(ftStruct* fp);
 sb32 ftCommon_Escape_CheckInterruptSpecialNDonkey(GObj* fighter_gobj);
 sb32 ftCommon_Escape_CheckInterruptDash(GObj* fighter_gobj);
@@ -540,22 +519,18 @@ void ftKirby_ThrowFLanding_ProcMap(GObj* fighter_gobj);
 void ftKirby_ThrowFLanding_SetStatus(GObj* fighter_gobj);
 
 // CapturePulled
-void ftCommon_CapturePulled_MatrixRotateScale(GObj* fighter_gobj,
-											  Vec3f* this_pos, Vec3f* rotate);
+void ftCommon_CapturePulled_MatrixRotateScale(GObj* fighter_gobj, Vec3f* this_pos, Vec3f* rotate);
 void ftCommon_Capture_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_CapturePulled_ProcMap(GObj* fighter_gobj);
-void ftCommon_CapturePulled_ProcCapture(GObj* fighter_gobj,
-										GObj* capture_gobj);
+void ftCommon_CapturePulled_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 
 // CaptureWait
 void ftCommon_CaptureWait_ProcMap(GObj* fighter_gobj);
 void ftCommon_CaptureWait_SetStatus(GObj* fighter_gobj);
 
 // CatchCut / CaptureCut / Shouldered
-void ftCommon_CatchCut_DamageApplyKnockback(GObj* fighter_gobj,
-											ftThrowReleaseDesc* throw_release);
-void ftCommon_CaptureCut_DamageApplyKnockback(
-	GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
+void ftCommon_CatchCut_DamageApplyKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
+void ftCommon_CaptureCut_DamageApplyKnockback(GObj* fighter_gobj, ftThrowReleaseDesc* throw_release);
 void ftCommon_Trap_InitBreakoutVars(ftStruct* fp, s32 breakout_wait);
 sb32 ftCommon_Trap_UpdateBreakoutVars(ftStruct* fp);
 void ftCommon_Shouldered_ProcInterrupt(GObj* fighter_gobj);
@@ -566,8 +541,7 @@ void ftCommon_CaptureKirby_UpdatePosMag(GObj* fighter_gobj, Vec3f* dist);
 void ftCommon_CaptureKirby_UpdatePosAll(GObj* fighter_gobj);
 void ftCommon_CaptureKirby_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_CaptureKirby_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
-void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct* this_fp,
-												  ftStruct* capture_fp);
+void ftCommon_CaptureWaitKirby_UpdateBreakoutVars(ftStruct* this_fp, ftStruct* capture_fp);
 void ftCommon_CaptureWaitKirby_ProcMap(GObj* fighter_gobj);
 void ftCommon_CaptureWaitKirby_ProcInterrupt(GObj* fighter_gobj);
 void ftCommon_CaptureWaitKirby_SetStatus(GObj* fighter_gobj);
@@ -575,8 +549,7 @@ void ftCommon_ThrownKirby_Escape(GObj* fighter_gobj);
 void ftCommon_ThrownCommonStar_ProcHit(GObj* fighter_gobj);
 void ftCommon_ThrownKirby_SpawnStarGFX(GObj* fighter_gobj, f32 arg1, f32 arg2);
 void ftCommon_ThrownKirbyStar_ProcUpdate(GObj* fighter_gobj);
-void ftCommon_ThrownCommonStar_UpdatePhysics(GObj* fighter_gobj,
-											 f32 decelerate);
+void ftCommon_ThrownCommonStar_UpdatePhysics(GObj* fighter_gobj, f32 decelerate);
 void ftCommon_ThrownKirbyStar_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_ThrownCommonStar_ProcMap(GObj* fighter_gobj);
 void ftCommon_ThrownKirbyStar_InitStatusVars(GObj* fighter_gobj);
@@ -602,30 +575,24 @@ void ftCommon_YoshiEgg_ProcStatus(GObj* fighter_gobj);
 void ftCommon_YoshiEgg_SetStatus(GObj* fighter_gobj);
 
 // CaptureCaptain
-void ftCommon_CaptureCaptain_UpdateCapturePos(GObj* fighter_gobj,
-											  GObj* capture_gobj, Vec3f* pos);
+void ftCommon_CaptureCaptain_UpdateCapturePos(GObj* fighter_gobj, GObj* capture_gobj, Vec3f* pos);
 void ftCommon_CaptureCaptain_ProcPhysics(GObj* fighter_gobj);
-void ftCommon_CaptureCaptain_ProcCapture(GObj* fighter_gobj,
-										 GObj* capture_gobj);
+void ftCommon_CaptureCaptain_ProcCapture(GObj* fighter_gobj, GObj* capture_gobj);
 void ftCommon_CaptureCaptain_Release(GObj* fighter_gobj);
 
 // Thrown
 void ftCommon_Thrown_ProcUpdate(GObj* fighter_gobj);
 void ftCommon_Thrown_ProcPhysics(GObj* fighter_gobj);
 void ftCommon_Thrown_ProcMap(GObj* fighter_gobj);
-void ftCommon_Thrown_SetStatusQueue(GObj* fighter_gobj, s32 status_id_new,
-									s32 status_id_queue);
+void ftCommon_Thrown_SetStatusQueue(GObj* fighter_gobj, s32 status_id_new, s32 status_id_queue);
 void ftCommon_Thrown_SetStatusImmediate(GObj* fighter_gobj, s32 status_id);
 
 // Thrown2
 void ftCommon_Thrown_ReleaseFighterLoseGrip(GObj* fighter_gobj);
-void ftCommon_Thrown_DecideFighterLoseGrip(GObj* fighter_gobj,
-										   GObj* interact_gobj);
+void ftCommon_Thrown_DecideFighterLoseGrip(GObj* fighter_gobj, GObj* interact_gobj);
 void func_ovl3_8014AF2C(GObj* fighter_gobj);
 void ftCommon_Thrown_ProcStatus(GObj* fighter_gobj);
-void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr,
-											  s32 script_index,
-											  sb32 is_proc_status);
+void ftCommon_Thrown_ReleaseThrownUpdateStats(GObj* fighter_gobj, s32 lr, s32 script_index, sb32 is_proc_status);
 void ftCommon_Thrown_UpdateDamageStats(ftStruct* this_fp);
 void ftCommon_Thrown_SetStatusDamageRelease(GObj* fighter_gobj);
 void ftCommon_Thrown_SetStatusNoDamageRelease(GObj* fighter_gobj);

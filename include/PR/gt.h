@@ -289,8 +289,7 @@ extern "C"
 	 * the above modes, the 'data' field comes from gbi.h, it is the data
 	 * field for the equivalent gbi setothermode macro.
 	 */
-	extern void
-	gtStateSetOthermode(Gfx* om, gtStateOthermode_t mode, int data);
+	extern void gtStateSetOthermode(Gfx* om, gtStateOthermode_t mode, int data);
 
 /*
  * This call dumps a turbo display list for use with gbi2mem and RSPSIM
@@ -303,17 +302,17 @@ extern "C"
  * Special macros to init othermode words to all 0's, a good default
  * value.
  */
-#define gDPClearOtherMode(pkt)                                                \
-	{                                                                         \
-		Gfx* _g = (Gfx*)(pkt);                                                \
-                                                                              \
-		_g->words.w0 = _SHIFTL(G_RDPSETOTHERMODE, 24, 8);                     \
-		_g->words.w1 = 0x0;                                                   \
+#define gDPClearOtherMode(pkt)                                                                                         \
+	{                                                                                                                  \
+		Gfx* _g = (Gfx*)(pkt);                                                                                         \
+                                                                                                                       \
+		_g->words.w0 = _SHIFTL(G_RDPSETOTHERMODE, 24, 8);                                                              \
+		_g->words.w1 = 0x0;                                                                                            \
 	}
 
-#define gsDPClearOtherMode()                                                  \
-	{                                                                         \
-		_SHIFTL(G_RDPSETOTHERMODE, 24, 8), 0x0                                \
+#define gsDPClearOtherMode()                                                                                           \
+	{                                                                                                                  \
+		_SHIFTL(G_RDPSETOTHERMODE, 24, 8), 0x0                                                                         \
 	}
 
 /*

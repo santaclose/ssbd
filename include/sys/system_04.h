@@ -36,22 +36,18 @@ extern void omAddDObjAnimAll(struct DObj*, union AnimCmd*, f32);
 extern void omAddMObjAnimAll(struct MObj*, union AnimCmd*, f32);
 extern void func_8000BD8C(struct GObjCommon*, union AnimCmd**, f32);
 extern void func_8000BE28(struct GObjCommon*, union AnimCmd***, f32);
-extern void
-func_8000BED8(struct GObjCommon*, union AnimCmd**, union AnimCmd***, f32);
+extern void func_8000BED8(struct GObjCommon*, union AnimCmd**, union AnimCmd***, f32);
 extern void func_8000BFE8(struct DObj* dobj);
 extern f32 func_8000CA28(f32, f32, f32, f32, f32, f32);
 extern void func_8000CCBC(struct DObj* dobj);
 extern void func_8000CF6C(struct MObj* mobj);
 extern void func_8000DA40(struct MObj* mobj);
 extern void func_8000DF34(struct GObjCommon*);
-extern void
-func_8000F120(struct GObjCommon*, struct UnkEC64Arg3*, struct DObj**);
+extern void func_8000F120(struct GObjCommon*, struct UnkEC64Arg3*, struct DObj**);
 extern void func_8000F2FC(struct DObj*, u8, u8, u8);
 extern void func_8000F364(struct DObj*, u8, u8, u8, s32);
-extern void func_8000F590(struct GObjCommon*, struct UnkEC64Arg3*,
-						  struct DObj**, u8, u8, u8);
-extern void func_8000F720(struct GObjCommon*, struct UnkEC64Arg3*,
-						  struct MObjSub***, struct DObj**, u8, u8, u8);
+extern void func_8000F590(struct GObjCommon*, struct UnkEC64Arg3*, struct DObj**, u8, u8, u8);
+extern void func_8000F720(struct GObjCommon*, struct UnkEC64Arg3*, struct MObjSub***, struct DObj**, u8, u8, u8);
 extern void func_8000F8F4(struct GObjCommon*, struct MObjSub***);
 extern void func_8000F988(struct GObjCommon*, struct UnkEC64Arg3*);
 extern void func_8000FA3C(struct DObj* dobj, union AnimCmd*, f32);

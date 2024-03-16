@@ -30,19 +30,14 @@ extern intptr_t lMonsterAnimBankStart;
 #define itGetStruct(item_gobj) ((itStruct*)(item_gobj)->user_data.p)
 
 // Points to all sorts of data
-#define itGetPData(ip, off1, off2)                                            \
-	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off1))  \
-				 + (intptr_t)                                                 \
-			 & (off2)))
+#define itGetPData(ip, off1, off2)                                                                                     \
+	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off1)) + (intptr_t) & (off2)))
 
-#define itGetMonsterAnimNode(ip, off)                                         \
-	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off))   \
-			 + (intptr_t)&lMonsterAnimBankStart))
+#define itGetMonsterAnimNode(ip, off)                                                                                  \
+	((void*)(((uintptr_t)(ip)->attributes->model_desc - (intptr_t) & (off)) + (intptr_t)&lMonsterAnimBankStart))
 
-#define itGetHitEvent(it_desc, off)                                           \
-	((itHitEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetHitEvent(it_desc, off) ((itHitEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 
-#define itGetHitParty(it_desc, off)                                           \
-	((itHitParty*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetHitParty(it_desc, off) ((itHitParty*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 
 #endif

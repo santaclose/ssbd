@@ -6,9 +6,8 @@
 #include <sys/objdef.h>
 
 // JumpAerial
-void ftYoshi_JumpAerial_ProcPhysics(
-	GObj* fighter_gobj); // Contemplating whether this should be here or in
-						 // ftcommon_functions.h
+void ftYoshi_JumpAerial_ProcPhysics(GObj* fighter_gobj); // Contemplating whether this should be here or in
+														 // ftcommon_functions.h
 
 // SpecialHi / SpecialAirHi
 void ftYoshi_SpecialHi_ProcDamage(GObj* fighter_gobj);
@@ -30,8 +29,7 @@ void ftYoshi_SpecialAirHi_SetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
 void ftYoshi_SpecialN_InitCatchVars(ftStruct* fp, void (*proc_catch)(GObj*));
-void ftYoshi_SpecialNCatch_UpdateProcStatus(GObj* fighter_gobj,
-											void (*proc_status)(GObj*));
+void ftYoshi_SpecialNCatch_UpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 void ftYoshi_SpecialNCatch_ProcUpdate(GObj* fighter_gobj);
 void ftYoshi_SpecialAirNCatch_ProcUpdate(GObj* fighter_gobj);
 void ftYoshi_SpecialNCatch_UpdateCaptureVars(ftStruct* fp);

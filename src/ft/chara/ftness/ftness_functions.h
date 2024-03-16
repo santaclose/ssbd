@@ -8,8 +8,7 @@
 #include <sys/objdef.h>
 
 // JumpAerial
-void ftNess_JumpAerial_ProcPhysics(
-	GObj* fighter_gobj); // Same story as Yoshi's JumpAerial physics
+void ftNess_JumpAerial_ProcPhysics(GObj* fighter_gobj); // Same story as Yoshi's JumpAerial physics
 
 // Appear
 void ftNess_AppearStart_ProcUpdate(GObj* fighter_gobj);
@@ -61,8 +60,7 @@ void ftNess_SpecialHiEnd_SwitchStatusAir(GObj* fighter_gobj);
 void ftNess_SpecialHi_ClearProcDamage(GObj* fighter_gobj);
 void ftNess_SpecialHiEnd_SetStatus(GObj* fighter_gobj);
 void ftNess_SpecialAirHiEnd_SetStatus(GObj* fighter_gobj);
-void ftNess_SpecialHi_CollideWallPhysics(GObj* fighter_gobj,
-										 mpCollData* coll_data);
+void ftNess_SpecialHi_CollideWallPhysics(GObj* fighter_gobj, mpCollData* coll_data);
 void ftNess_SpecialHi_UpdateModelPitch(GObj* fighter_gobj);
 void ftNess_Jibaku_ProcUpdate(GObj* fighter_gobj);
 void ftNess_JibakuAir_ProcUpdate(GObj* fighter_gobj);
@@ -78,8 +76,7 @@ void ftNess_Jibaku_SetStatus(GObj* fighter_gobj);
 void ftNess_JibakuAir_SetStatus(GObj* fighter_gobj);
 void ftNess_JibakuAirBound_ProcUpdate(GObj* fighter_gobj);
 void ftNess_JibakuAirBound_ProcMap(GObj* fighter_gobj);
-void ftNess_JibakuAirBound_SetStatus(GObj* fighter_gobj, Vec3f* angle,
-									 Vec3f* pos);
+void ftNess_JibakuAirBound_SetStatus(GObj* fighter_gobj, Vec3f* angle, Vec3f* pos);
 
 // SpecialLw / SpecialAirLw
 void ftNess_SpecialLw_CheckRelease(ftStruct* fp);

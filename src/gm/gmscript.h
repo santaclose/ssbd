@@ -6,25 +6,21 @@
 #include <sys/obj.h>
 #include <ft/fttypes.h>
 
-#define ftMotionEventAdvance(event, type)                                     \
-	((event)->p_script                                                        \
-	 = (void*)((uintptr_t)(event)->p_script + (sizeof(type))))
+#define ftMotionEventAdvance(event, type) ((event)->p_script = (void*)((uintptr_t)(event)->p_script + (sizeof(type))))
 
 #define ftMotionEventCast(event, type) ((type*)(event)->p_script)
 
 // WARNING: Only advances 4 bytes at a time
 #define ftMotionEventCastAdvance(event, type) ((type*)(event)->p_script++)
 
-#define caColorEventAdvance(event, type)                                      \
-	((event) = (void*)((uintptr_t)event + sizeof(type)))
+#define caColorEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
 
 #define caColorEventCast(event, type) ((type*)(event))
 
 // WARNING: Only advances 4 bytes at a time
 #define caColorEventCastAdvance(event, type) ((type*)(event)++)
 
-#define gmRumbleEventAdvance(event, type)                                     \
-	((event) = (void*)((uintptr_t)(event) + (sizeof(type))))
+#define gmRumbleEventAdvance(event, type) ((event) = (void*)((uintptr_t)(event) + (sizeof(type))))
 
 #define gmRumbleEventCast(event, type) ((type*)(event))
 
@@ -766,91 +762,65 @@ typedef union caColorEventAll
 // Now watch me make dollar store display list commands like a clown
 #define caColorCommandEndS1() GC_FIELDSET(caColorEvent_Kind_End, 26, 6)
 
-#define caColorCommandWaitS1(frames)                                          \
-	(GC_FIELDSET(caColorEvent_Kind_Wait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define caColorCommandWaitS1(frames) (GC_FIELDSET(caColorEvent_Kind_Wait, 26, 6) | GC_FIELDSET(frames, 0, 26))
 
 #define caColorCommandGotoS1() GC_FIELDSET(caColorEvent_Kind_Goto, 26, 6)
 #define caColorCommandGotoS2(addr) ((uintptr_t)addr)
 
-#define caColorCommandLoopBeginS1(count)                                      \
-	(GC_FIELDSET(caColorEvent_Kind_LoopBegin, 26, 6)                          \
-	 | GC_FIELDSET(count, 0, 26))
+#define caColorCommandLoopBeginS1(count) (GC_FIELDSET(caColorEvent_Kind_LoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
 #define caColorCommandLoopEndS1() GC_FIELDSET(caColorEvent_Kind_LoopEnd, 26, 6)
 
-#define caColorCommandSubroutineS1()                                          \
-	GC_FIELDSET(caColorEvent_Kind_Subroutine, 26, 6)
+#define caColorCommandSubroutineS1() GC_FIELDSET(caColorEvent_Kind_Subroutine, 26, 6)
 #define caColorCommandSubroutineS2(addr) ((uintptr_t)addr)
 
 #define caColorCommandReturnS1() GC_FIELDSET(caColorEvent_Kind_Return, 26, 6)
 
-#define caColorCommandParallelS1()                                            \
-	GC_FIELDSET(caColorEvent_Kind_SetParallelScript, 26, 6)
+#define caColorCommandParallelS1() GC_FIELDSET(caColorEvent_Kind_SetParallelScript, 26, 6)
 #define caColorCommandParallelS2(addr) ((uintptr_t)addr)
 
-#define caColorCommandToggleColorOffS1()                                      \
-	GC_FIELDSET(caColorEvent_Kind_ToggleColorOff, 26, 6)
+#define caColorCommandToggleColorOffS1() GC_FIELDSET(caColorEvent_Kind_ToggleColorOff, 26, 6)
 
-#define caColorCommandSetColor1S1()                                           \
-	GC_FIELDSET(caColorEvent_Kind_SetColor1, 26, 6)
-#define caColorCommandSetColor1S2(r, g, b, a)                                 \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8)     \
-	 | GC_FIELDSET(a, 0, 8))
+#define caColorCommandSetColor1S1() GC_FIELDSET(caColorEvent_Kind_SetColor1, 26, 6)
+#define caColorCommandSetColor1S2(r, g, b, a)                                                                          \
+	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define caColorCommandBlendColor1S1(frames)                                   \
-	(GC_FIELDSET(caColorEvent_Kind_BlendColor1, 26, 6)                        \
-	 | GC_FIELDSET(frames, 0, 26))
-#define caColorCommandBlendColor1S2(r, g, b, a)                               \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8)     \
-	 | GC_FIELDSET(a, 0, 8))
+#define caColorCommandBlendColor1S1(frames)                                                                            \
+	(GC_FIELDSET(caColorEvent_Kind_BlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define caColorCommandBlendColor1S2(r, g, b, a)                                                                        \
+	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define caColorCommandSetColor2S1()                                           \
-	GC_FIELDSET(caColorEvent_Kind_SetColor2, 26, 6)
-#define caColorCommandSetColor2S2(r, g, b, a)                                 \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8)     \
-	 | GC_FIELDSET(a, 0, 8))
+#define caColorCommandSetColor2S1() GC_FIELDSET(caColorEvent_Kind_SetColor2, 26, 6)
+#define caColorCommandSetColor2S2(r, g, b, a)                                                                          \
+	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define caColorCommandBlendColor2S1(frames)                                   \
-	(GC_FIELDSET(caColorEvent_Kind_BlendColor1, 26, 6)                        \
-	 | GC_FIELDSET(frames, 0, 26))
-#define caColorCommandBlendColor2S2(r, g, b, a)                               \
-	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8)     \
-	 | GC_FIELDSET(a, 0, 8))
+#define caColorCommandBlendColor2S1(frames)                                                                            \
+	(GC_FIELDSET(caColorEvent_Kind_BlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define caColorCommandBlendColor2S2(r, g, b, a)                                                                        \
+	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define caColorCommandEffectS1(joint, gfx_id, flag)                           \
-	(GC_FIELDSET(caColorEvent_Kind_Effect, 26, 6) | GC_FIELDSET(joint, 19, 7) \
-	 | GC_FIELDSET(gfx_id, 10, 9) | GC_FIELDSET(flag, 0, 10))
-#define caColorCommandEffectS2(off_x, off_y)                                  \
-	(GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
-#define caColorCommandEffectS3(off_z, rng_x)                                  \
-	(GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
-#define caColorCommandEffectS4(rng_y, rng_z)                                  \
-	(GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
-
-#define caColorCommandEffectScaleS1(joint, gfx_id, flag)                      \
-	(GC_FIELDSET(caColorEvent_Kind_EffectScaleOffset, 26, 6)                  \
-	 | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(gfx_id, 10, 9)                 \
+#define caColorCommandEffectS1(joint, gfx_id, flag)                                                                    \
+	(GC_FIELDSET(caColorEvent_Kind_Effect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(gfx_id, 10, 9)             \
 	 | GC_FIELDSET(flag, 0, 10))
-#define caColorCommandEffectScaleS2(off_x, off_y)                             \
-	(GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
-#define caColorCommandEffectScaleS3(off_z, rng_x)                             \
-	(GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
-#define caColorCommandEffectSScale4(rng_y, rng_z)                             \
-	(GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
+#define caColorCommandEffectS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
+#define caColorCommandEffectS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
+#define caColorCommandEffectS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define caColorCommandSetLightS1(angle1, angle2)                              \
-	(GC_FIELDSET(caColorEvent_Kind_SetLight, 26, 6)                           \
-	 | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
+#define caColorCommandEffectScaleS1(joint, gfx_id, flag)                                                               \
+	(GC_FIELDSET(caColorEvent_Kind_EffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(gfx_id, 10, 9)  \
+	 | GC_FIELDSET(flag, 0, 10))
+#define caColorCommandEffectScaleS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
+#define caColorCommandEffectScaleS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
+#define caColorCommandEffectSScale4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
-#define caColorCommandToggleLightOff()                                        \
-	GC_FIELDSET(caColorEvent_Kind_ToggleLightOff, 26, 6)
+#define caColorCommandSetLightS1(angle1, angle2)                                                                       \
+	(GC_FIELDSET(caColorEvent_Kind_SetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
-#define caColorCommandPlaySFX(sfx_id)                                         \
-	(GC_FIELDSET(caColorEvent_Kind_PlaySFX, 26, 6)                            \
-	 | GC_FIELDSET(sfx_id, 0, 26))
+#define caColorCommandToggleLightOff() GC_FIELDSET(caColorEvent_Kind_ToggleLightOff, 26, 6)
 
-#define caColorCommandSetSkeletonID(skeleton_id)                              \
-	(GC_FIELDSET(caColorEvent_Kind_SetSkeletonID, 26, 6)                      \
-	 | GC_FIELDSET(skeleton_id, 0, 26))
+#define caColorCommandPlaySFX(sfx_id) (GC_FIELDSET(caColorEvent_Kind_PlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
+
+#define caColorCommandSetSkeletonID(skeleton_id)                                                                       \
+	(GC_FIELDSET(caColorEvent_Kind_SetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
 // // ColAnim Script 0 is NULL
 

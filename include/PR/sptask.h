@@ -164,10 +164,10 @@ extern "C"
 /*
  * this macro simulates atomic action.
  */
-#define osSpTaskStart(tp)                                                     \
-	{                                                                         \
-		osSpTaskLoad((tp));                                                   \
-		osSpTaskStartGo((tp));                                                \
+#define osSpTaskStart(tp)                                                                                              \
+	{                                                                                                                  \
+		osSpTaskLoad((tp));                                                                                            \
+		osSpTaskStartGo((tp));                                                                                         \
 	}
 
 	/**************************************************************************

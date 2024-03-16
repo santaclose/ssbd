@@ -28,8 +28,7 @@ typedef enum grKind
 	Gr_Kind_CommonEnd = Gr_Kind_Last,
 
 	Gr_Kind_BonusGameStart,
-	Gr_Kind_Bonus1Start
-	= Gr_Kind_BonusGameStart, // Start of Target Test stages
+	Gr_Kind_Bonus1Start = Gr_Kind_BonusGameStart, // Start of Target Test stages
 	Gr_Kind_Bonus1Mario = Gr_Kind_Bonus1Start,
 	Gr_Kind_Bonus1Fox,
 	Gr_Kind_Bonus1Donkey,

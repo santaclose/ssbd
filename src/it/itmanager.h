@@ -15,16 +15,13 @@ itStruct* itManager_GetStructSetNextAlloc(void);
 void itManager_SetPrevAlloc(itStruct* ip);
 
 // Unknown, something to do with setting up item models?
-void func_ovl3_8016DFF4(GObj* gobj, DObjDesc* joint_desc, DObj** p_ptr_dobj,
-						u8 arg3);
+void func_ovl3_8016DFF4(GObj* gobj, DObjDesc* joint_desc, DObj** p_ptr_dobj, u8 arg3);
 
 // Create new item
-GObj* itManager_MakeItem(GObj* spawn_gobj, itCreateDesc* spawn_data,
-						 Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManager_MakeItem(GObj* spawn_gobj, itCreateDesc* spawn_data, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Create item and init spawn GFX + spin rotation if common item (indexes 0 - 19)
-GObj* itManager_MakeItemSetupCommon(GObj* spawn_gobj, s32 index, Vec3f* pos,
-									Vec3f* vel, u32 spawn_flags);
+GObj* itManager_MakeItemSetupCommon(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
 
 // Get current item user_data to see if != NULL
 itStruct* itManager_GetCurrentStructAlloc(void);
@@ -45,8 +42,7 @@ void func_ovl3_8016EF40(void);
 void itManager_InitMonsterVars(void);
 
 // Make immediate item with index
-GObj* itManager_MakeItemIndex(GObj* spawn_gobj, s32 index, Vec3f* pos,
-							  Vec3f* vel, u32 flags);
+GObj* itManager_MakeItemIndex(GObj* spawn_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Update positions of item hitboxes
 void itManager_UpdateHitPositions(GObj* item_gobj);
@@ -60,37 +56,27 @@ void itManager_ProcItemMain(GObj* item_gobj);
 
 // Set type of interaction and record hit target when item's hitbox collides
 // with another GObj
-void itManager_SetHitVictimInteractStats(itHitbox* it_hit, GObj* victim_gobj,
-										 s32 hitbox_type, u32 interact_mask);
+void itManager_SetHitVictimInteractStats(itHitbox* it_hit, GObj* victim_gobj, s32 hitbox_type, u32 interact_mask);
 
 // Set stuff when item's hurtbox gets hit by a fighter
-void itManager_UpdateDamageStatFighter(ftStruct* fp, ftHitbox* ft_hit,
-									   itStruct* ip, itHurtbox* it_hurt,
+void itManager_UpdateDamageStatFighter(ftStruct* fp, ftHitbox* ft_hit, itStruct* ip, itHurtbox* it_hurt,
 									   GObj* fighter_gobj, GObj* item_gobj);
 
 // Set stuff when item's hitbox collides with another item's hitbox
-void itManager_UpdateAttackStatItem(itStruct* this_ip, itHitbox* this_hit,
-									s32 this_hit_id, itStruct* victim_ip,
-									itHitbox* victim_hit, s32 victim_hit_id,
-									GObj* this_gobj, GObj* victim_gobj);
+void itManager_UpdateAttackStatItem(itStruct* this_ip, itHitbox* this_hit, s32 this_hit_id, itStruct* victim_ip,
+									itHitbox* victim_hit, s32 victim_hit_id, GObj* this_gobj, GObj* victim_gobj);
 
 // Set stuff when item's hitbox collides with a weapon's hitbox
-void itManager_UpdateAttackStatWeapon(wpStruct* wp, wpHitbox* wp_hit,
-									  s32 wp_hit_id, itStruct* ip,
-									  itHitbox* it_hit, s32 it_hit_id,
-									  GObj* weapon_gobj, GObj* item_gobj);
+void itManager_UpdateAttackStatWeapon(wpStruct* wp, wpHitbox* wp_hit, s32 wp_hit_id, itStruct* ip, itHitbox* it_hit,
+									  s32 it_hit_id, GObj* weapon_gobj, GObj* item_gobj);
 
 // Set stuff when item's hurtbox gets hit by another item's hitbox
-void itManager_UpdateDamageStatItem(itStruct* attack_ip,
-									itHitbox* attack_it_hit, s32 hitbox_id,
-									itStruct* defend_ip, itHurtbox* it_hurt,
-									GObj* attack_gobj, GObj* defend_gobj);
+void itManager_UpdateDamageStatItem(itStruct* attack_ip, itHitbox* attack_it_hit, s32 hitbox_id, itStruct* defend_ip,
+									itHurtbox* it_hurt, GObj* attack_gobj, GObj* defend_gobj);
 
 // Set  stuff when item's hurtbox gets hit by a weapon's hitbox
-void itManager_UpdateDamageStatWeapon(wpStruct* wp, wpHitbox* wp_hit,
-									  s32 hitbox_id, itStruct* ip,
-									  itHurtbox* it_hurt, GObj* weapon_gobj,
-									  GObj* item_gobj);
+void itManager_UpdateDamageStatWeapon(wpStruct* wp, wpHitbox* wp_hit, s32 hitbox_id, itStruct* ip, itHurtbox* it_hurt,
+									  GObj* weapon_gobj, GObj* item_gobj);
 
 // Search for collision with fighter hitbox
 void itManager_SearchFighterHit(GObj* item_gobj);

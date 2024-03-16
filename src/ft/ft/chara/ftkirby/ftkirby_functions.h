@@ -30,12 +30,10 @@ f32 ftKirby_SpecialLw_GetGroundAxisRoll(ftStruct* fp);
 sb32 ftKirby_SpecialLw_CheckRelease(GObj* fighter_gobj, sb32 is_allow_release);
 void ftKirby_SpecialLwStart_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_SpecialAirLwStart_ProcUpdate(GObj* fighter_gobj);
-void ftKirby_SpecialLwUnk_DecideNextStatus(GObj* fighter_gobj,
-										   sb32 ground_or_air);
+void ftKirby_SpecialLwUnk_DecideNextStatus(GObj* fighter_gobj, sb32 ground_or_air);
 void ftKirby_SpecialLwUnk_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_SpecialAirLwHold_ProcUpdate(GObj* fighter_gobj);
-void ftKirby_SpecialLwHold_DecideNextStatus(GObj* fighter_gobj,
-											sb32 ground_or_air);
+void ftKirby_SpecialLwHold_DecideNextStatus(GObj* fighter_gobj, sb32 ground_or_air);
 void ftKirby_SpecialLwHold_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_SpecialAirLwFall_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_SpecialLwHold_ProcPhysics(GObj* fighter_gobj);
@@ -52,11 +50,9 @@ void ftKirby_SpecialAirLwHold_SetStatus(GObj* fighter_gobj);
 void ftKirby_SpecialAirLwEnd_SetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
-void ftKirby_SpecialN_ApplyCaptureDamage(GObj* kirby_gobj, GObj* victim_gobj,
-										 s32 damage);
+void ftKirby_SpecialN_ApplyCaptureDamage(GObj* kirby_gobj, GObj* victim_gobj, s32 damage);
 f32 ftKirby_SpecialN_GetCaptureDistance(Vec3f* kirby_pos, Vec3f* victim_pos);
-void ftKirby_SpecialN_AddCaptureDistance(ftStruct* fp, GObj* fighter_gobj,
-										 Vec3f* pos);
+void ftKirby_SpecialN_AddCaptureDistance(ftStruct* fp, GObj* fighter_gobj, Vec3f* pos);
 void ftKirby_SpecialN_InitStatusVars(GObj* fighter_gobj, sb32 unused);
 void ftKirby_SpecialN_InitCatchVars(ftStruct* fp);
 void ftKirby_SpecialN_GotoInitCatchVars(GObj* fighter_gobj);
@@ -79,12 +75,9 @@ void ftKirby_SpecialAirNCopy_ProcUpdate(GObj* fighter_gobj);
 sb32 ftKirby_SpecialNLoop_CheckContinueLoop(GObj* fighter_gobj);
 void ftKirby_SpecialNLoop_ProcInterrupt(GObj* fighter_gobj);
 void ftKirby_SpecialAirNLoop_ProcInterrupt(GObj* fighter_gobj);
-sb32 ftKirby_SpecialNThrow_CheckGotoThrow(GObj* fighter_gobj,
-										  void (*proc_status)(GObj*));
-sb32 ftKirby_SpecialNCopy_CheckGotoCopy(GObj* fighter_gobj,
-										void (*proc_status)(GObj*));
-sb32 ftKirby_SpecialNTurn_CheckGotoTurn(GObj* fighter_gobj,
-										void (*proc_status)(GObj*));
+sb32 ftKirby_SpecialNThrow_CheckGotoThrow(GObj* fighter_gobj, void (*proc_status)(GObj*));
+sb32 ftKirby_SpecialNCopy_CheckGotoCopy(GObj* fighter_gobj, void (*proc_status)(GObj*));
+sb32 ftKirby_SpecialNTurn_CheckGotoTurn(GObj* fighter_gobj, void (*proc_status)(GObj*));
 void ftKirby_SpecialNWait_ProcInterrupt(GObj* fighter_gobj);
 void ftKirby_SpecialAirNWait_ProcInterrupt(GObj* fighter_gobj);
 void ftKirby_SpecialAirNWait_ProcPhysics(GObj* fighter_gobj);
@@ -128,8 +121,7 @@ void ftKirby_SpecialNWait_UpdateLR(GObj* fighter_gobj);
 void ftKirby_SpecialNWait_SetStatusFromTurn(GObj* fighter_gobj);
 void ftKirby_SpecialAirNWait_SetStatusFromTurn(GObj* fighter_gobj);
 void ftKirby_SpecialNEat_SetStatusParam(GObj* fighter_gobj, s32 status_id);
-void ftKirby_SpecialNCatchEat_SetStatusParam(GObj* fighter_gobj,
-											 s32 status_id);
+void ftKirby_SpecialNCatchEat_SetStatusParam(GObj* fighter_gobj, s32 status_id);
 void ftKirby_SpecialNStart_SetStatus(GObj* fighter_gobj);
 void ftKirby_SpecialNLoop_SetStatus(GObj* fighter_gobj);
 void ftKirby_SpecialNCatch_ProcCatch(GObj* fighter_gobj);
@@ -172,8 +164,7 @@ void ftKirby_CopyFox_SpecialAirN_SetStatus(GObj* fighter_gobj);
 // CopySamusSpecialN
 void ftKirby_CopySamus_SpecialN_DestroyChargeShot(ftStruct* fp);
 void ftKirby_CopySamus_SpecialN_ProcDamage(GObj* fighter_gobj);
-void ftKirby_CopySamus_SpecialN_GetChargeShotPosition(ftStruct* fp,
-													  Vec3f* pos);
+void ftKirby_CopySamus_SpecialN_GetChargeShotPosition(ftStruct* fp, Vec3f* pos);
 void ftKirby_CopySamus_SpecialN_SetChargeShotPosition(ftStruct* fp);
 void ftKirby_CopySamus_SpecialNStart_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_CopySamus_SpecialNStart_ProcInterrupt(GObj* fighter_gobj);
@@ -289,10 +280,8 @@ void ftKirby_CopyCaptain_SpecialN_SetStatus(GObj* fighter_gobj);
 void ftKirby_CopyCaptain_SpecialAirN_SetStatus(GObj* fighter_gobj);
 
 // CopyYoshiSpecialN
-void ftKirby_CopyYoshi_SpecialN_InitCatchVars(ftStruct* fp,
-											  void (*proc_catch)(GObj*));
-void ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(
-	GObj* fighter_gobj, void (*proc_status)(GObj*));
+void ftKirby_CopyYoshi_SpecialN_InitCatchVars(ftStruct* fp, void (*proc_catch)(GObj*));
+void ftKirby_CopyYoshi_SpecialNCatch_UpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 void ftKirby_CopyYoshi_SpecialNCatch_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialAirNCatch_ProcUpdate(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialAirNCatch_UpdateCaptureVars(ftStruct* fp);
@@ -310,8 +299,7 @@ void ftKirby_CopyYoshi_SpecialAirN_SwitchStatusGround(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialN_SwitchStatusAir(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialAirNCatch_SwitchStatusGround(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialNCatch_SwitchStatusAir(GObj* fighter_gobj);
-void ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround(
-	GObj* fighter_gobj);
+void ftKirby_CopyYoshi_SpecialAirNRelease_SwitchStatusGround(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialNRelease_SwitchStatusAir(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialN_SetStatus(GObj* fighter_gobj);
 void ftKirby_CopyYoshi_SpecialAirN_SetStatus(GObj* fighter_gobj);

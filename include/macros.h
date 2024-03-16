@@ -32,9 +32,8 @@
 #define GC_BITMASK(len) (GC_BITFIELD(len) - 1)
 #define GC_FIELDMASK(start, len) (GC_BITMASK(len) << (start))
 #define GC_FIELDPREP(x, start, len) (((x)&GC_BITMASK(len)) << (start))
-#define GC_FIELDSET(x, start, len)                                            \
-	(0 & ~GC_FIELDMASK(start, len)                                            \
-	 | GC_FIELDPREP(x, start, len)) // I'm too dumb to do it without the 0
+#define GC_FIELDSET(x, start, len)                                                                                     \
+	(0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len)) // I'm too dumb to do it without the 0
 
 #define GC_FRAMERATE_DEFAULT (60)
 
@@ -50,8 +49,7 @@
 #define I_MIN_TO_FRAMES(q) ((int)((q)*GC_TIME_MIN))
 #define I_HRS_TO_FRAMES(q) ((int)((q)*GC_TIME_HRS))
 
-#define I_TIME_TO_FRAMES(h, m, s, f)                                          \
-	(I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
+#define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
 
 #define U8_MAX 0xFF
 #define S8_MAX 0x7F
@@ -91,8 +89,7 @@
 
 /// Apply compiler printf format checking to function
 #ifdef __GNUC__
-#define PRINTF_CHECK(fmtpos, vargpos)                                         \
-	__attribute__((__format__(__printf__, (fmtpos), (vargpos))))
+#define PRINTF_CHECK(fmtpos, vargpos) __attribute__((__format__(__printf__, (fmtpos), (vargpos))))
 #else
 #define PRINTF_CHECK(fmtpos, vargpos)
 #endif
@@ -104,8 +101,7 @@
 #ifdef __GNUC__
 #define STATIC_ASSERT(cond, msg) _Static_assert(cond, msg)
 #else
-#define STATIC_ASSERT(cond, msg)                                              \
-	typedef char GLUE2(static_assertion_failed, __LINE__)[(cond) ? 1 : -1]
+#define STATIC_ASSERT(cond, msg) typedef char GLUE2(static_assertion_failed, __LINE__)[(cond) ? 1 : -1]
 #endif
 
 /// Convert from a physical addresss to a ROM (0xB0) address

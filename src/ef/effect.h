@@ -146,8 +146,7 @@ struct efStruct
 		efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
 		efParticle_EffectVars_CaptureKirbyStar capture_kirby_star;
 		efParticle_EffectVars_LoseKirbyStar lose_kirby_star;
-		efParticle_EffectVars_GroundEffect
-			ground_effect; // Used in func_ovl2_80115E80
+		efParticle_EffectVars_GroundEffect ground_effect; // Used in func_ovl2_80115E80
 
 	} effect_vars;
 };

@@ -32,7 +32,7 @@ struct ifPlayerDamage
 	f32 scale;
 	ifDCharacter chars[4];
 	GObj* interface_gobj; // Fighter whom this HUD is assigned to
-	u8 color_id; // ??? This changes the damage HUD's color to white if set to 4
+	u8 color_id;		  // ??? This changes the damage HUD's color to white if set to 4
 	u8 is_update_anim;
 	u8 char_display_count;
 	u8 break_anim_frame;

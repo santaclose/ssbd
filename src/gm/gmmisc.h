@@ -13,10 +13,10 @@
 #define LEFT -1
 #define CENTER 0
 #define RIGHT 1
-#define WALL_UP                                                               \
+#define WALL_UP                                                                                                        \
 	2 // Apparently a valid facing direction value used by Pikachu's Thunder
 	  // Jolt?
-#define WALL_DOWN                                                             \
+#define WALL_DOWN                                                                                                      \
 	3 // Apparently a valid facing direction value used by Pikachu's Thunder
 	  // Jolt?
 
@@ -26,9 +26,7 @@
 #define GMHITCOLLISION_MASK_WEAPON (1 << 1)	 // Can interact with weapons
 #define GMHITCOLLISION_MASK_ITEM (1 << 2)	 // Can interact with items
 
-#define GMHITCOLLISION_MASK_ALL                                               \
-	(GMHITCOLLISION_MASK_FIGHTER | GMHITCOLLISION_MASK_WEAPON                 \
-	 | GMHITCOLLISION_MASK_ITEM)
+#define GMHITCOLLISION_MASK_ALL (GMHITCOLLISION_MASK_FIGHTER | GMHITCOLLISION_MASK_WEAPON | GMHITCOLLISION_MASK_ITEM)
 #define GMHITRECORD_COUNT_MAX 4
 
 typedef enum gmDirectionSign
@@ -83,10 +81,10 @@ typedef enum gmHitCollisionType // Hitbox types, this is universal but I don't
 
 typedef enum gmHitCollisionUpdateState
 {
-	gmHitCollision_UpdateState_Disable,	 // No active hitbox or updates
-	gmHitCollision_UpdateState_New,		 // Initialize hitbox positions
-	gmHitCollision_UpdateState_Transfer, // Transitions to interpolation mode,
-										 // that's it
+	gmHitCollision_UpdateState_Disable,	   // No active hitbox or updates
+	gmHitCollision_UpdateState_New,		   // Initialize hitbox positions
+	gmHitCollision_UpdateState_Transfer,   // Transitions to interpolation mode,
+										   // that's it
 	gmHitCollision_UpdateState_Interpolate // Copies current position to previous
 
 } gmHitCollisionUpdateState;
@@ -190,9 +188,8 @@ typedef struct caStruct
 	caScript cs[2];
 	s32 duration;
 	s32 colanim_id;
-	caColorInfo
-		maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro
-				   // scene uses it for Prim and items render it as Env
+	caColorInfo maincolor; // Used as both PrimColor and EnvColor? DK VS Samus intro
+						   // scene uses it for Prim and items render it as Env
 	f32 light_angle1;
 	f32 light_angle2;
 	caColorInfo blendcolor;

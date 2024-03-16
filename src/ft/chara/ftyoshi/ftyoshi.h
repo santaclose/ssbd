@@ -9,11 +9,9 @@
 
 #define FTYOSHI_EGG_THROW_JOINT 3 // Bone to attach Egg
 
-#define FTYOSHI_YOSHIBOMB_STAR_SPAWN_JOINT                                    \
-	0 // Bone to use as base for Star projectiles when landing
-#define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F // Not sure how this takes effect
-#define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP                                         \
-	-150.0F // Constant downward velocity during ground pound
+#define FTYOSHI_YOSHIBOMB_STAR_SPAWN_JOINT 0  // Bone to use as base for Star projectiles when landing
+#define FTYOSHI_YOSHIBOMB_VEL_X_CLAMP 30.0F	  // Not sure how this takes effect
+#define FTYOSHI_YOSHIBOMB_VEL_Y_CLAMP -150.0F // Constant downward velocity during ground pound
 
 extern ftStatusDesc ftStatus_SpecialDesc_Yoshi[/* */];
 

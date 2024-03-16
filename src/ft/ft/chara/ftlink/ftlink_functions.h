@@ -9,8 +9,7 @@
 // SpecialHi / SpecialAirHi
 void ftLink_SpecialHi_DestroyWeapon(ftStruct* fp, wpStruct* wp);
 void ftLink_SpecialHi_UpdateWeaponPos(GObj* fighter_gobj, wpStruct* wp);
-void ftLink_SpecialHi_DecWeaponLifeCheckDestroy(GObj* fighter_gobj,
-												wpStruct* wp);
+void ftLink_SpecialHi_DecWeaponLifeCheckDestroy(GObj* fighter_gobj, wpStruct* wp);
 void ftLink_SpecialHi_UpdateWeaponHit(GObj* fighter_gobj, wpStruct* wp);
 void ftLink_SpecialHi_ProcGFX(GObj* fighter_gobj);
 void ftLink_SpecialHi_UpdateWeaponVars(GObj* fighter_gobj);

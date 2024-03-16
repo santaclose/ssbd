@@ -24,7 +24,7 @@
 #define FTPARTS_HURT_NUM_MAX 11
 #define FTPARTS_JOINT_NUM_MAX 37
 
-#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN                                    \
+#define FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN                                                                             \
 	8 // Default minimum stick range required to clamp air drift in respective
 	  // physics routine
 
@@ -35,98 +35,64 @@
 #define FTSTAT_OPENING1_START 0x1000F
 #define FTSTAT_OPENING2_START 0x10000
 
-#define FTSTATUPDATE_NONE_PRESERVE (0) // 0x0 - Just zero
-#define FTSTATUPDATE_HIT_PRESERVE (1 << ftStatusUpdate_Hit_Preserve) // 0x1
-#define FTSTATUPDATE_COLANIM_PRESERVE                                         \
-	(1 << ftStatusUpdate_ColAnim_Preserve)							 // 0x2
-#define FTSTATUPDATE_GFX_PRESERVE (1 << ftStatusUpdate_GFX_Preserve) // 0x4
-#define FTSTATUPDATE_FASTFALL_PRESERVE                                        \
-	(1 << ftStatusUpdate_FastFall_Preserve) // 0x8
-#define FTSTATUPDATE_HITSTATUS_PRESERVE                                       \
-	(1 << ftStatusUpdate_HitStatus_Preserve) // 0x10
-#define FTSTATUPDATE_MODELPART_PRESERVE                                       \
-	(1 << ftStatusUpdate_ModelPart_Preserve) // 0x20
-#define FTSTATUPDATE_SLOPECONTOUR_PRESERVE                                    \
-	(1 << ftStatusUpdate_SlopeContour_Preserve) // 0x40
-#define FTSTATUPDATE_TEXTUREPART_PRESERVE                                     \
-	(1 << ftStatusUpdate_TexturePart_Preserve) // 0x80
-#define FTSTATUPDATE_PLAYERTAG_PRESERVE                                       \
-	(1 << ftStatusUpdate_PlayerTag_Preserve) // 0x100
-#define FTSTATUPDATE_THROWPOINTER_PRESERVE                                    \
-	(1 << ftStatusUpdate_ThrowGObj_Preserve) // 0x200
-#define FTSTATUPDATE_SHUFFLETIME_PRESERVE                                     \
-	(1 << ftStatusUpdate_ShuffleTime_Preserve) // 0x400
-#define FTSTATUPDATE_LOOPSFX_PRESERVE                                         \
-	(1 << ftStatusUpdate_LoopSFX_Preserve) // 0x800
-#define FTSTATUPDATE_DAMAGEPORT_PRESERVE                                      \
-	(1 << ftStatusUpdate_DamagePort_Preserve) // 0x1000
-#define FTSTATUPDATE_AFTERIMAGE_PRESERVE                                      \
-	(1 << ftStatusUpdate_AfterImage_Preserve) // 0x2000
-#define FTSTATUPDATE_RUMBLE_PRESERVE                                          \
-	(1 << ftStatusUpdate_Rumble_Preserve) // 0x4000
+#define FTSTATUPDATE_NONE_PRESERVE (0)												   // 0x0 - Just zero
+#define FTSTATUPDATE_HIT_PRESERVE (1 << ftStatusUpdate_Hit_Preserve)				   // 0x1
+#define FTSTATUPDATE_COLANIM_PRESERVE (1 << ftStatusUpdate_ColAnim_Preserve)		   // 0x2
+#define FTSTATUPDATE_GFX_PRESERVE (1 << ftStatusUpdate_GFX_Preserve)				   // 0x4
+#define FTSTATUPDATE_FASTFALL_PRESERVE (1 << ftStatusUpdate_FastFall_Preserve)		   // 0x8
+#define FTSTATUPDATE_HITSTATUS_PRESERVE (1 << ftStatusUpdate_HitStatus_Preserve)	   // 0x10
+#define FTSTATUPDATE_MODELPART_PRESERVE (1 << ftStatusUpdate_ModelPart_Preserve)	   // 0x20
+#define FTSTATUPDATE_SLOPECONTOUR_PRESERVE (1 << ftStatusUpdate_SlopeContour_Preserve) // 0x40
+#define FTSTATUPDATE_TEXTUREPART_PRESERVE (1 << ftStatusUpdate_TexturePart_Preserve)   // 0x80
+#define FTSTATUPDATE_PLAYERTAG_PRESERVE (1 << ftStatusUpdate_PlayerTag_Preserve)	   // 0x100
+#define FTSTATUPDATE_THROWPOINTER_PRESERVE (1 << ftStatusUpdate_ThrowGObj_Preserve)	   // 0x200
+#define FTSTATUPDATE_SHUFFLETIME_PRESERVE (1 << ftStatusUpdate_ShuffleTime_Preserve)   // 0x400
+#define FTSTATUPDATE_LOOPSFX_PRESERVE (1 << ftStatusUpdate_LoopSFX_Preserve)		   // 0x800
+#define FTSTATUPDATE_DAMAGEPORT_PRESERVE (1 << ftStatusUpdate_DamagePort_Preserve)	   // 0x1000
+#define FTSTATUPDATE_AFTERIMAGE_PRESERVE (1 << ftStatusUpdate_AfterImage_Preserve)	   // 0x2000
+#define FTSTATUPDATE_RUMBLE_PRESERVE (1 << ftStatusUpdate_Rumble_Preserve)			   // 0x4000
 
-#define FTCATCHKIND_MASK_SPECIALNYOSHI (1 << ftCatch_Kind_SpecialNYoshi) // 0x1
-#define FTCATCHKIND_MASK_SPECIALNKIRBY (1 << ftCatch_Kind_SpecialNKirby) // 0x2
-#define FTCATCHKIND_MASK_TARUCANN (1 << ftCatch_Kind_TaruCann)			 // 0x4
-#define FTCATCHKIND_MASK_TWISTER (1 << ftCatch_Kind_Twister)			 // 0x8
-#define FTCATCHKIND_MASK_CATCHCOMMON (1 << ftCatch_Kind_CatchCommon) // 0x10
-#define FTCATCHKIND_MASK_SPECIALHICAPTAIN                                     \
-	(1 << ftCatch_Kind_SpecialHiCaptain) // 0x20
+#define FTCATCHKIND_MASK_SPECIALNYOSHI (1 << ftCatch_Kind_SpecialNYoshi)	   // 0x1
+#define FTCATCHKIND_MASK_SPECIALNKIRBY (1 << ftCatch_Kind_SpecialNKirby)	   // 0x2
+#define FTCATCHKIND_MASK_TARUCANN (1 << ftCatch_Kind_TaruCann)				   // 0x4
+#define FTCATCHKIND_MASK_TWISTER (1 << ftCatch_Kind_Twister)				   // 0x8
+#define FTCATCHKIND_MASK_CATCHCOMMON (1 << ftCatch_Kind_CatchCommon)		   // 0x10
+#define FTCATCHKIND_MASK_SPECIALHICAPTAIN (1 << ftCatch_Kind_SpecialHiCaptain) // 0x20
 
 #define FTCATCHKIND_MASK_NONE (0)
-#define FTCATCHKIND_MASK_ALL                                                  \
-	(FTCATCHKIND_MASK_SPECIALHICAPTAIN | FTCATCHKIND_MASK_CATCHCOMMON         \
-	 | FTCATCHKIND_MASK_TWISTER | FTCATCHKIND_MASK_TARUCANN                   \
-	 | FTCATCHKIND_MASK_SPECIALNKIRBY | FTCATCHKIND_MASK_SPECIALNYOSHI)
+#define FTCATCHKIND_MASK_ALL                                                                                           \
+	(FTCATCHKIND_MASK_SPECIALHICAPTAIN | FTCATCHKIND_MASK_CATCHCOMMON | FTCATCHKIND_MASK_TWISTER                       \
+	 | FTCATCHKIND_MASK_TARUCANN | FTCATCHKIND_MASK_SPECIALNKIRBY | FTCATCHKIND_MASK_SPECIALNYOSHI)
 
 #define FTCOMPUTER_COMMAND_TIMER_BITS (0x4)
 #define FTCOMPUTER_COMMAND_OPCODE_BITS (0x4)
 
-#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS                                     \
-	(ftComputer_Input_ButtonAPress << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x0
-#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE                                   \
-	(ftComputer_Input_ButtonARelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x10
-#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS                                     \
-	(ftComputer_Input_ButtonBPress << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x20
-#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE                                   \
-	(ftComputer_Input_ButtonBRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x30
-#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS                                     \
-	(ftComputer_Input_ButtonZPress << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x40
-#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE                                   \
-	(ftComputer_Input_ButtonZRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x50
-#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS                                     \
-	(ftComputer_Input_ButtonLPress << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x60
-#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE                                   \
-	(ftComputer_Input_ButtonLRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x70
-#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS                                 \
-	(ftComputer_Input_ButtonStartPress                                        \
-	 << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x80
-#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE                               \
-	(ftComputer_Input_ButtonStartRelease                                      \
-	 << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x90
-#define FTCOMPUTER_COMMAND_STICK_X_TILT                                       \
-	(ftComputer_Input_StickXTilt << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xA0
-#define FTCOMPUTER_COMMAND_STICK_Y_TILT                                       \
-	(ftComputer_Input_StickYTilt << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xB0
-#define FTCOMPUTER_COMMAND_FOXSPECIALHI                                       \
-	(ftComputer_Input_FoxSpecialHi << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xC0
-#define FTCOMPUTER_COMMAND_STICK_X_VAR                                        \
-	(ftComputer_Input_StickXVar << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xD0
-#define FTCOMPUTER_COMMAND_STICK_Y_VAR                                        \
-	(ftComputer_Input_StickYVar << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xE0
-#define FTCOMPUTER_COMMAND_DEFAULT_MAX                                        \
-	(ftComputer_Input_EnumMax << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xF0
+#define FTCOMPUTER_COMMAND_BUTTON_A_PRESS (ftComputer_Input_ButtonAPress << FTCOMPUTER_COMMAND_TIMER_BITS)	   // 0x0
+#define FTCOMPUTER_COMMAND_BUTTON_A_RELEASE (ftComputer_Input_ButtonARelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x10
+#define FTCOMPUTER_COMMAND_BUTTON_B_PRESS (ftComputer_Input_ButtonBPress << FTCOMPUTER_COMMAND_TIMER_BITS)	   // 0x20
+#define FTCOMPUTER_COMMAND_BUTTON_B_RELEASE (ftComputer_Input_ButtonBRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x30
+#define FTCOMPUTER_COMMAND_BUTTON_Z_PRESS (ftComputer_Input_ButtonZPress << FTCOMPUTER_COMMAND_TIMER_BITS)	   // 0x40
+#define FTCOMPUTER_COMMAND_BUTTON_Z_RELEASE (ftComputer_Input_ButtonZRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x50
+#define FTCOMPUTER_COMMAND_BUTTON_L_PRESS (ftComputer_Input_ButtonLPress << FTCOMPUTER_COMMAND_TIMER_BITS)	   // 0x60
+#define FTCOMPUTER_COMMAND_BUTTON_L_RELEASE (ftComputer_Input_ButtonLRelease << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x70
+#define FTCOMPUTER_COMMAND_BUTTON_START_PRESS                                                                          \
+	(ftComputer_Input_ButtonStartPress << FTCOMPUTER_COMMAND_TIMER_BITS) // 0x80
+#define FTCOMPUTER_COMMAND_BUTTON_START_RELEASE                                                                        \
+	(ftComputer_Input_ButtonStartRelease << FTCOMPUTER_COMMAND_TIMER_BITS)								 // 0x90
+#define FTCOMPUTER_COMMAND_STICK_X_TILT (ftComputer_Input_StickXTilt << FTCOMPUTER_COMMAND_TIMER_BITS)	 // 0xA0
+#define FTCOMPUTER_COMMAND_STICK_Y_TILT (ftComputer_Input_StickYTilt << FTCOMPUTER_COMMAND_TIMER_BITS)	 // 0xB0
+#define FTCOMPUTER_COMMAND_FOXSPECIALHI (ftComputer_Input_FoxSpecialHi << FTCOMPUTER_COMMAND_TIMER_BITS) // 0xC0
+#define FTCOMPUTER_COMMAND_STICK_X_VAR (ftComputer_Input_StickXVar << FTCOMPUTER_COMMAND_TIMER_BITS)	 // 0xD0
+#define FTCOMPUTER_COMMAND_STICK_Y_VAR (ftComputer_Input_StickYVar << FTCOMPUTER_COMMAND_TIMER_BITS)	 // 0xE0
+#define FTCOMPUTER_COMMAND_DEFAULT_MAX (ftComputer_Input_EnumMax << FTCOMPUTER_COMMAND_TIMER_BITS)		 // 0xF0
 
-#define FTEXPLAIN_COMMAND_INSTRUCTION(kind, timer)                            \
-	((((kind << 12) & 0xF000) | (timer & 0xFFF)) & U16_MAX)
-#define FTEXPLAIN_COMMAND_STICK(timer, x, y)                                  \
-	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Stick, timer),        \
+#define FTEXPLAIN_COMMAND_INSTRUCTION(kind, timer) ((((kind << 12) & 0xF000) | (timer & 0xFFF)) & U16_MAX)
+#define FTEXPLAIN_COMMAND_STICK(timer, x, y)                                                                           \
+	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Stick, timer),                                                 \
 		((((x << 8) & 0xFF00) | ((y << 0) & 0x00FF)) & U16_MAX)
-#define FTEXPLAIN_COMMAND_BUTTON(timer, buttons)                              \
-	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Button, timer),       \
-		(buttons & U16_MAX)
-#define FTEXPLAIN_COMMAND_END                                                 \
-	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_End, 0)
+#define FTEXPLAIN_COMMAND_BUTTON(timer, buttons)                                                                       \
+	FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_Button, timer), (buttons & U16_MAX)
+#define FTEXPLAIN_COMMAND_END FTEXPLAIN_COMMAND_INSTRUCTION(ftExplainCommand_Kind_End, 0)
 
 // Structs
 struct ftSpecialHit
@@ -347,14 +313,14 @@ struct ftSpawnInfo
 	u8 stock_count;
 	u8 unk_rebirth_0x1C;
 	u8 unk_rebirth_0x1D;
-	u8 team_order; // Order number of fighter if member of "VS *character* Team"
-	ub32 is_skip_entry : 1; // If TRUE, fighter gets spawned in Wait or Fall
-							// state, otherwise use entry state
+	u8 team_order;				   // Order number of fighter if member of "VS *character* Team"
+	ub32 is_skip_entry : 1;		   // If TRUE, fighter gets spawned in Wait or Fall
+								   // state, otherwise use entry state
 	ub32 is_skip_shadow_setup : 1; // If TRUE, fighter's shadow is not
 								   // initialized
-	ub32 is_skip_magnify : 1; // If TRUE, fighter's magnifying glass is not
-							  // rendered?
-	s32 copy_kind;			  // Kirby's copy ID on spawn
+	ub32 is_skip_magnify : 1;	   // If TRUE, fighter's magnifying glass is not
+								   // rendered?
+	s32 copy_kind;				   // Kirby's copy ID on spawn
 	s32 damage;
 	s32 pl_kind;
 	void* p_controller; // Pointer to player's controller input struct
@@ -828,18 +794,18 @@ struct ftStruct
 	s32 cliffcatch_wait;
 	s32 time_since_last_z; // Frames since last Z-press, resets to 65536 on
 						   // action state change
-	s32 acid_wait;	   // Wait this many frames before fighter can be hurt by
-					   // Planet Zebes acid again
-	s32 twister_wait;  // Wait this many frames before fighter can be picked up
-					   // by the Hyrule Tornado again
-	s32 tarucann_wait; // Wait this many frames before fighter can enter Barrel
-					   // Cannon again
-	s32 damagefloor_wait; // Wait this many frames before fighter can be hurt
-						  // by damaging floors again (e.g. Mario's Board the
-						  // Platforms stage)
-	s32 playertag_wait;	  // Wait this many frames before fighter's player
-						  // indicator is shown again; tag is shown when this
-						  // reaches 1 or is overridden by position on stage
+	s32 acid_wait;		   // Wait this many frames before fighter can be hurt by
+						   // Planet Zebes acid again
+	s32 twister_wait;	   // Wait this many frames before fighter can be picked up
+						   // by the Hyrule Tornado again
+	s32 tarucann_wait;	   // Wait this many frames before fighter can enter Barrel
+						   // Cannon again
+	s32 damagefloor_wait;  // Wait this many frames before fighter can be hurt
+						   // by damaging floors again (e.g. Mario's Board the
+						   // Platforms stage)
+	s32 playertag_wait;	   // Wait this many frames before fighter's player
+						   // indicator is shown again; tag is shown when this
+						   // reaches 1 or is overridden by position on stage
 	s32 unk_0x178;
 
 	union ftCommandVars
@@ -896,9 +862,9 @@ struct ftStruct
 									 // ftAttributes which houses the actual
 									 // joint ID
 	ub32 is_shield : 1;				 // Fighter's shield bubble is active
-	ub32 is_attach_effect : 1; // Destroy GFX on action state change if TRUE,
-							   // not sure why this and is_playing_gfx are
-							   // different
+	ub32 is_attach_effect : 1;		 // Destroy GFX on action state change if TRUE,
+									 // not sure why this and is_playing_gfx are
+									 // different
 	ub32 x18F_flag_b4 : 1;
 	ub32 x18F_flag_b5 : 1;
 	ub32 is_disable_control : 1; // Fighter cannot be controlled if TRUE;
@@ -913,8 +879,8 @@ struct ftStruct
 	ub32 x190_flag_b7 : 1;
 	ub32 is_effect_interrupt : 1; // Is this flag's sole purpose to fast-forward
 								  // GFX in the moveset event parser?
-	ub32 is_nullstatus : 1; // Dead / Entry / Appear / Rebirth, ignore hit
-							// collisions + blastzones?
+	ub32 is_nullstatus : 1;		  // Dead / Entry / Appear / Rebirth, ignore hit
+								  // collisions + blastzones?
 	ub32 is_damage_resist : 1;
 	ub32 is_ignore_startbutton : 1;
 	u32 camera_mode : 4;
@@ -1043,7 +1009,7 @@ struct ftStruct
 	GObj* search_gobj; // GObj this fighter found when searching for grabbable
 					   // fighters?
 	f32 search_gobj_dist;
-	void (*proc_catch)(GObj*); // Run this callback on grabbing attacker
+	void (*proc_catch)(GObj*);			// Run this callback on grabbing attacker
 	void (*proc_capture)(GObj*, GObj*); // Run this callback on grabbed victim
 	GObj* catch_gobj;					// GObj this fighter has caught
 	GObj* capture_gobj;					// GObj this fighter is captured by
@@ -1063,10 +1029,8 @@ struct ftStruct
 
 	DObj* joint[FTPARTS_JOINT_NUM_MAX];
 
-	ftModelPartRenderState
-		joint_render_state[FTPARTS_JOINT_NUM_MAX
-						   - ftParts_Joint_EnumMax]; // Display List active =
-													 // 0, inactive = -1?
+	ftModelPartRenderState joint_render_state[FTPARTS_JOINT_NUM_MAX - ftParts_Joint_EnumMax]; // Display List active =
+																							  // 0, inactive = -1?
 	ftTexturePartRenderState texture_render_state[2];
 
 	ftData* ft_data;

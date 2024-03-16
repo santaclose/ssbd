@@ -92,8 +92,7 @@ void ftPikachu_SpecialHiEnd_ProcPhysics(GObj* fighter_gobj);
 void ftPikachu_SpecialAirHiEnd_ProcPhysics(GObj* fighter_gobj);
 void ftPikachu_SpecialHiEnd_ProcMap(GObj* fighter_gobj);
 void ftPikachu_SpecialAirHiEnd_ProcMap(GObj* fighter_gobj);
-void ftPikachu_SpecialAirHiEnd_SwitchStatusGround(
-	GObj* fighter_gobj); // Unused;
+void ftPikachu_SpecialAirHiEnd_SwitchStatusGround(GObj* fighter_gobj); // Unused;
 void ftPikachu_SpecialHiEnd_SwitchStatusAir(GObj* fighter_gobj);
 void ftPikachu_SpecialHiEnd_BackupVel(GObj* fighter_gobj);
 void ftPikachu_SpecialHiEnd_SetStatus(GObj* fighter_gobj);

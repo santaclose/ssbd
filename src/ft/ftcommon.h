@@ -7,7 +7,7 @@
 #define FTCOMMON_DEADUP_REBIRTH_WAIT 180
 #define FTCOMMON_DEADUPFALL_VEL_Z -83.333336F
 
-#define FTCOMMON_REBIRTH_INVINCIBLE_FRAMES                                    \
+#define FTCOMMON_REBIRTH_INVINCIBLE_FRAMES                                                                             \
 	120 // Invincibility frames; setting this to 0 makes invincibility last
 		// forever (?)
 #define FTCOMMON_REBIRTH_HALO_LOWER_WAIT 90
@@ -19,14 +19,12 @@
 
 #define FTCOMMON_ENTRY_WAIT 120
 
-#define FTCOMMON_WALKFAST_STICK_RANGE_MIN                                     \
-	62 // Minimum stick range required for fast walk speed
-#define FTCOMMON_WALKMIDDLE_STICK_RANGE_MIN                                   \
-	26 // Minimum stick range required for medium walk speed
+#define FTCOMMON_WALKFAST_STICK_RANGE_MIN 62   // Minimum stick range required for fast walk speed
+#define FTCOMMON_WALKMIDDLE_STICK_RANGE_MIN 26 // Minimum stick range required for medium walk speed
 
 #define FTCOMMON_TURN_STICK_RANGE_MIN (-20)
 
-#define FTCOMMON_DASH_BUFFER_FRAMES_MAX                                       \
+#define FTCOMMON_DASH_BUFFER_FRAMES_MAX                                                                                \
 	3 // Dash will register if stick range is greater than or equal to
 	  // FTCOMMON_DASH_STICK_RANGE_MIN within this window of time
 #define FTCOMMON_DASH_STICK_RANGE_MIN 56
@@ -39,27 +37,20 @@
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_NONE 0
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_STICK 1
 #define FTCOMMON_KNEEBEND_INPUT_TYPE_BUTTON 2
-#define FTCOMMON_KNEEBEND_BUFFER_FRAMES_MAX                                   \
+#define FTCOMMON_KNEEBEND_BUFFER_FRAMES_MAX                                                                            \
 	3 // Jumpsquat will register if stick range is greater than
 	  // FTCOMMON_KNEEBEND_STICK_RANGE_MIN within this window of time
-#define FTCOMMON_KNEEBEND_JUMP_F_OR_B_RANGE                                   \
+#define FTCOMMON_KNEEBEND_JUMP_F_OR_B_RANGE                                                                            \
 	(-10) // Stick X range to determine whether to usee JumpF or JumpB action
 		  // state
-#define FTCOMMON_KNEEBEND_RUN_STICK_RANGE_MIN                                 \
-	44 // Used for jumpsquat interrupt from run?
-#define FTCOMMON_KNEEBEND_STICK_RANGE_MIN                                     \
-	53 // Minimum stick Y range required for stick jump
-#define FTCOMMON_KNEEBEND_BUTTON_SHORT_FORCE                                  \
-	9.0F // Jump force of C-button short jump
-#define FTCOMMON_KNEEBEND_BUTTON_LONG_FORCE                                   \
-	17.0F // Jump force of C-button long jump
-#define FTCOMMON_KNEEBEND_BUTTON_SHORT_MIN                                    \
-	36.0F // Minimum short jump height possible with C-button input
-#define FTCOMMON_KNEEBEND_BUTTON_LONG_MIN                                     \
-	63.0F // Minimum long jump height possible with C-button input
-#define FTCOMMON_KNEEBEND_BUTTON_HEIGHT_CLAMP                                 \
-	77.0F // Maximum jump height possible with C-button input
-#define FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES                                    \
+#define FTCOMMON_KNEEBEND_RUN_STICK_RANGE_MIN 44	// Used for jumpsquat interrupt from run?
+#define FTCOMMON_KNEEBEND_STICK_RANGE_MIN 53		// Minimum stick Y range required for stick jump
+#define FTCOMMON_KNEEBEND_BUTTON_SHORT_FORCE 9.0F	// Jump force of C-button short jump
+#define FTCOMMON_KNEEBEND_BUTTON_LONG_FORCE 17.0F	// Jump force of C-button long jump
+#define FTCOMMON_KNEEBEND_BUTTON_SHORT_MIN 36.0F	// Minimum short jump height possible with C-button input
+#define FTCOMMON_KNEEBEND_BUTTON_LONG_MIN 63.0F		// Minimum long jump height possible with C-button input
+#define FTCOMMON_KNEEBEND_BUTTON_HEIGHT_CLAMP 77.0F // Maximum jump height possible with C-button input
+#define FTCOMMON_KNEEBEND_SHORT_HOP_FRAMES                                                                             \
 	3.0F // Universal short hop window, unlike Melee where the user must simply
 		 // not be holding their jump input on the last frame of jumpsquat
 
@@ -70,20 +61,18 @@
 #define FTCOMMON_JUMPAERIAL_STICK_RANGE_MIN 53
 #define FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN (-30)
 #define FTCOMMON_JUMPAERIAL_TURN_FRAMES 12
-#define FTCOMMON_JUMPAERIAL_TURN_INVERT_LR_WAIT                               \
-	6 // Invert facing direction on this frame of the direction turn process
-#define FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP                                  \
-	(-(F_DEG_TO_RAD(180.0F)                                                   \
-	   / FTCOMMON_JUMPAERIAL_TURN_FRAMES)) // Model Y-rotation step for
-										   // characters who can turn around
-										   // during their double jump
+#define FTCOMMON_JUMPAERIAL_TURN_INVERT_LR_WAIT 6 // Invert facing direction on this frame of the direction turn process
+#define FTCOMMON_JUMPAERIAL_TURN_ROTATE_STEP                                                                           \
+	(-(F_DEG_TO_RAD(180.0F) / FTCOMMON_JUMPAERIAL_TURN_FRAMES)) // Model Y-rotation step for
+																// characters who can turn around
+																// during their double jump
 
 #define FTCOMMON_FALL_FAST_STICK_RANGE_MIN (-53)
 #define FTCOMMON_FALL_FAST_BUFFER_FRAMES_MAX 4
 
 #define FTCOMMON_DAMAGE_SMASH_DI_BUFFER_FRAMES_MAX 4
 #define FTCOMMON_DAMAGE_SMASH_DI_RANGE_MIN 53
-#define FTCOMMON_DAMAGE_CATCH_RELEASE_THRESHOLD                               \
+#define FTCOMMON_DAMAGE_CATCH_RELEASE_THRESHOLD                                                                        \
 	6 // If a grabbed fighter takes more than this much damage in one hit,
 	  // they're released
 #define FTCOMMON_DAMAGE_FIGHTER_FLYROLL_DAMAGE_MIN 100
@@ -103,112 +92,92 @@
 #define FTCOMMON_DAMAGE_SAKURAI_KNOCKBACK_LOW 32.0F
 #define FTCOMMON_DAMAGE_SAKURAI_ANGLE_LOW_GR 0.0F
 #define FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GD 42.5F
-#define FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GR                                 \
-	F_DEG_TO_RAD(FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GD) // 0.741764903069F
-#define FTCOMMON_DAMAGE_SAKURAI_ANGLE_DEFAULT_AR                              \
-	F_DEG_TO_RAD(43.0F) // 0.75049156F
-#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_LOW                                     \
-	12.0F // Knockback < this value -> DamageX1
-#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_MID                                     \
+#define FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GR F_DEG_TO_RAD(FTCOMMON_DAMAGE_SAKURAI_ANGLE_HIGH_GD) // 0.741764903069F
+#define FTCOMMON_DAMAGE_SAKURAI_ANGLE_DEFAULT_AR F_DEG_TO_RAD(43.0F)							  // 0.75049156F
+#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_LOW 12.0F // Knockback < this value -> DamageX1
+#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_MID                                                                              \
 	24.0F // Knockback < this value && knockback >=
 		  // FTCOMMON_DAMAGE_LEVEL_HITSTUN_LOW -> DamageX2
-#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_HIGH                                    \
+#define FTCOMMON_DAMAGE_LEVEL_HITSTUN_HIGH                                                                             \
 	32.0F // Knockback < this value && knockback >=
 		  // FTCOMMON_DAMAGE_LEVEL_HITSTUN_MID -> DamageX3
-#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_LOW                           \
-	F_DEG_TO_RAD(75.0F) // 1.308997F
-#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_HIGH                          \
-	F_DEG_TO_RAD(115.0F) // 2.0071287F
-#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_MUL                       \
+#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_LOW F_DEG_TO_RAD(75.0F)	  // 1.308997F
+#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_ANGLE_HIGH F_DEG_TO_RAD(115.0F) // 2.0071287F
+#define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_MUL                                                                \
 	0.8F // Multiply crowd reaction knockback by this value if angle >
 		 // ANGLE_LOW && angle < ANGLE_HIGH
 #define FTCOMMON_DAMAGE_PUBLIC_REACT_GASP_KNOCKBACK_UNK 160.0F
-#define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_LOW                              \
-	F_DEG_TO_RAD(70.0F) // 1.2217306F
-#define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_HIGH                             \
-	F_DEG_TO_RAD(100.0F) // 1.9198622F
+#define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_LOW F_DEG_TO_RAD(70.0F)   // 1.2217306F
+#define FTCOMMON_DAMAGE_FIGHTER_FLYTOP_ANGLE_HIGH F_DEG_TO_RAD(100.0F) // 1.9198622F
 #define FTCOMMON_DAMAGE_FIGHTER_FLYROLL_RANDOM_CHANCE 0.5F
-#define FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN                               \
+#define FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN                                                                        \
 	80.0F // Minimum knockback required for a fighter to play their damage
 		  // voice effect when getting hit
-#define FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN                       \
+#define FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN                                                                \
 	130.0F // Minimum knockback required for a fighter's indicator to be hidden
 #define FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES 10
 
 #define FTCOMMON_WALLDAMAGE_INTANGIBLE_TIMER 15
 
-#define FTCOMMON_PASS_STICK_RANGE_MIN                                         \
-	(-53) // Minimum stick Y range required for platform drop to register
+#define FTCOMMON_PASS_STICK_RANGE_MIN (-53) // Minimum stick Y range required for platform drop to register
 #define FTCOMMON_PASS_BUFFER_FRAMES_MAX 4
 
 #define FTCOMMON_SQUAT_STICK_RANGE_MIN (-53)
 #define FTCOMMON_SQUAT_BUFFER_FRAMES_MAX 4
 #define FTCOMMON_SQUAT_PASS_WAIT 3
 
-#define FTCOMMON_DOKAN_STICK_RANGE_MIN                                        \
-	(-53) // Minimum stick Y range required for pipe enter to register
+#define FTCOMMON_DOKAN_STICK_RANGE_MIN (-53) // Minimum stick Y range required for pipe enter to register
 #define FTCOMMON_DOKAN_BUFFER_FRAMES_MAX 4
 #define FTCOMMON_DOKAN_PLAYERTAG_WAIT 20
 #define FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT 8
-#define FTCOMMON_DOKAN_TURN_STEP                                              \
-	(F_DEG_TO_RAD(90.0F) / FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT)
+#define FTCOMMON_DOKAN_TURN_STEP (F_DEG_TO_RAD(90.0F) / FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT)
 #define FTCOMMON_DOKAN_POS_ADJUST 25.0F
 #define FTCOMMON_DOKAN_DETECT_WIDTH 200.0F
 #define FTCOMMON_DOKAN_POS_ADJUST_WAIT 30.0F
 #define FTCOMMON_DOKAN_EXIT_WAIT 30.0F
 
-#define FTCOMMON_OTTOTTO_WALK_DIST_X_MIN 60.0F // ???
-#define FTCOMMON_OTTOTTO_WALK_STICK_RANGE_MIN                                 \
-	60 // Minimum stick range required for walk interrupt???
+#define FTCOMMON_OTTOTTO_WALK_DIST_X_MIN 60.0F	 // ???
+#define FTCOMMON_OTTOTTO_WALK_STICK_RANGE_MIN 60 // Minimum stick range required for walk interrupt???
 
-#define FTCOMMON_LANDING_INTERRUPT_BEGIN                                      \
-	4.0F // If is_allow_interrupt == TRUE then landing can be interrupted once
-		 // this many frames of the animation have played
-#define FTCOMMON_LANDING_HEAVY_ANIM_SPEED                                     \
-	0.5F // Animation playback rate of landing after fastfall
-#define FTCOMMON_LANDING_LIGHT_ANIM_SPEED                                     \
-	1.0F // Animation playback rate of normal landing
+#define FTCOMMON_LANDING_INTERRUPT_BEGIN                                                                               \
+	4.0F									   // If is_allow_interrupt == TRUE then landing can be interrupted once
+											   // this many frames of the animation have played
+#define FTCOMMON_LANDING_HEAVY_ANIM_SPEED 0.5F // Animation playback rate of landing after fastfall
+#define FTCOMMON_LANDING_LIGHT_ANIM_SPEED 1.0F // Animation playback rate of normal landing
 
-#define FTCOMMON_FALLSPECIAL_PASS_STICK_RANGE_MIN                             \
+#define FTCOMMON_FALLSPECIAL_PASS_STICK_RANGE_MIN                                                                      \
 	(-44) // Minimum stick Y range required to pass through drop-through
 		  // platforms while in FallSpecial
-#define FTCOMMON_FALLSPECIAL_SKIP_LANDING_VEL_Y_MAX                           \
-	(-20.0F) // Maximum Y velocity allowed for no impact land
+#define FTCOMMON_FALLSPECIAL_SKIP_LANDING_VEL_Y_MAX (-20.0F) // Maximum Y velocity allowed for no impact land
 
 #define FTCOMMON_TORNADO_RELEASE_WAIT 60.0F
-#define FTCOMMON_TORNADO_PICKUP_WAIT                                          \
-	60 // Frames before tornado can pick up individual fighter again
+#define FTCOMMON_TORNADO_PICKUP_WAIT 60 // Frames before tornado can pick up individual fighter again
 
-#define FTCOMMON_TARUCANN_RELEASE_WAIT                                        \
+#define FTCOMMON_TARUCANN_RELEASE_WAIT                                                                                 \
 	180 // Maximum number of frames fighter can spend inside the Barrel Cannon
 		// on Kongo Jungle before automatically firing
-#define FTCOMMON_TARUCANN_SHOOT_WAIT                                          \
+#define FTCOMMON_TARUCANN_SHOOT_WAIT                                                                                   \
 	10 // Frames before fighter is released once the Barrel Cannon is in its
 	   // firing state?
-#define FTCOMMON_TARUCANN_PICKUP_WAIT                                         \
-	16 // Frames before Barrel Cannon can be used again
+#define FTCOMMON_TARUCANN_PICKUP_WAIT 16 // Frames before Barrel Cannon can be used again
 
-#define FTCOMMON_DOWNWAIT_STAND_WAIT                                          \
-	180 // Frames until fighter automatically stands up from knockdown
-#define FTCOMMON_DOWNWAIT_STAND_STICK_RANGE_MIN                               \
-	20 // Minimum stick Y range required to stand up
+#define FTCOMMON_DOWNWAIT_STAND_WAIT 180		   // Frames until fighter automatically stands up from knockdown
+#define FTCOMMON_DOWNWAIT_STAND_STICK_RANGE_MIN 20 // Minimum stick Y range required to stand up
 
 #define FTCOMMON_DOWNBOUNCE_ATTACK_BUFFER 60
 
-#define FTCOMMON_DOWN_FORWARD_BACK_RANGE_MIN                                  \
-	20 // Minimum stick X range required for missed tech roll
+#define FTCOMMON_DOWN_FORWARD_BACK_RANGE_MIN 20 // Minimum stick X range required for missed tech roll
 
 #define FTCOMMON_PASSIVE_BUFFER_FRAMES_MAX 20 // Tech buffer frames
 #define FTCOMMON_PASSIVE_F_OR_B_RANGE 20
 
-#define FTCOMMON_CLIFF_CATCH_WAIT                                             \
-	30 // Frames to wait before fighter can grab ledge again
-#define FTCOMMON_CLIFF_DAMAGE_HIGH                                            \
+#define FTCOMMON_CLIFF_CATCH_WAIT 30 // Frames to wait before fighter can grab ledge again
+#define FTCOMMON_CLIFF_DAMAGE_HIGH                                                                                     \
 	100 // If fighter's damage is greater than or equal to this, use Slow
 		// action states and hang time
 #define FTCOMMON_CLIFF_FALL_WAIT_DAMAGE_HIGH 480
 #define FTCOMMON_CLIFF_FALL_WAIT_DAMAGE_LOW 1080
-#define FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN                                 \
+#define FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN                                                                          \
 	20 // Minimum stick range required to preform ledge actions (and drop from
 	   // ledge)
 
@@ -216,8 +185,7 @@
 #define FTCOMMON_GET_MASK_HEAVY (1 << 1)
 
 #define FTCOMMON_LIFT_TURN_FRAMES 8
-#define FTCOMMON_LIFT_TURN_STEP                                               \
-	(-(F_DEG_TO_RAD(180.0F) / FTCOMMON_LIFT_TURN_FRAMES)) // -0.3926991F
+#define FTCOMMON_LIFT_TURN_STEP (-(F_DEG_TO_RAD(180.0F) / FTCOMMON_LIFT_TURN_FRAMES)) // -0.3926991F
 
 #define FTCOMMON_LIGHTTHROW_STICK_RANGE_XY_MIN 20
 #define FTCOMMON_LIGHTTHROW4_STICK_RANGE_X_MIN 56
@@ -252,8 +220,7 @@
 #define FTCOMMON_HAMMER_COLANIM_LENGTH 0
 #define FTCOMMON_HAMMER_TURN_FRAMES 12
 #define FTCOMMON_HAMMER_SKIP_LANDING_VEL_Y_MAX (-20.0F)
-#define FTCOMMON_HAMMER_TURN_ROTATE_STEP                                      \
-	(-(F_DEG_TO_RAD(180.0F) / FTCOMMON_HAMMER_TURN_FRAMES)) // -0.2617994F
+#define FTCOMMON_HAMMER_TURN_ROTATE_STEP (-(F_DEG_TO_RAD(180.0F) / FTCOMMON_HAMMER_TURN_FRAMES)) // -0.2617994F
 
 #define FTCOMMON_GUARD_RELEASE_LAG 8
 #define FTCOMMON_GUARD_DECAY_INT 16
@@ -264,8 +231,7 @@
 #define FTCOMMON_GUARD_SIZE_SCALE_MUL_DIV 30.0F
 #define FTCOMMON_GUARD_SETOFF_MUL 1.62F
 #define FTCOMMON_GUARD_SETOFF_ADD 4.0F
-#define FTCOMMON_GUARD_VEL_MUL                                                \
-	2.0F // Multiplies shieldstun frames and turns it into horizontal velocity
+#define FTCOMMON_GUARD_VEL_MUL 2.0F // Multiplies shieldstun frames and turns it into horizontal velocity
 
 #define FTCOMMON_ESCAPE_STICK_RANGE_MIN 56
 #define FTCOMMON_ESCAPE_BUFFER_FRAMES_MAX 4
@@ -321,8 +287,7 @@
 #define FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y 70.0F
 
 #define FTCOMMON_CAPTURECAPTAIN_MASK_THROW (1 << 1)
-#define FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE                                 \
-	(1 << 2) // No position adjustment? True only on grounded opponents?
+#define FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE (1 << 2) // No position adjustment? True only on grounded opponents?
 #define FTCOMMON_CAPTURECAPTAIN_JOINT 29
 #define FTCOMMON_CAPTURECAPTAIN_FRAME_BEGIN 4.0F
 #define FTCOMMON_CAPTURECAPTAIN_ANIM_SPEED 0.0F
@@ -370,7 +335,7 @@
 
 #define FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX 10
 #define FTCOMMON_ATTACKAIR_SKIP_LANDING_VEL_Y_MAX (-20.0F)
-#define FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN                          \
+#define FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN                                                                   \
 	20 // Minimum control stick range required for directional aerial attacks
 #define FTCOMMON_LIGHTTHROWAIR4_BUFFER_FRAMES_MAX 8
 
@@ -419,9 +384,9 @@ typedef struct ftCommon_Turn_StatusVars
 {
 	sb32 is_allow_turn_direction; // Cannot turn around at all if disabled +
 								  // horizontal controls are inverted?
-	sb32 is_disable_interrupts; // Sort of weird, still allows three interrupts
-								// even if false, one being shield and the other
-								// being jumpsquat, I don't know the third one
+	sb32 is_disable_interrupts;	  // Sort of weird, still allows three interrupts
+								  // even if false, one being shield and the other
+								  // being jumpsquat, I don't know the third one
 	u16 button_mask;
 	s32 lr_dash;
 	s32 lr_turn;

@@ -9,12 +9,9 @@ void ftMasterHand_Common_CheckEdgeInvertLR(GObj* fighter_gobj);
 void ftMasterHand_Common_CheckPlayerInvertLR(GObj* fighter_gobj);
 void ftMasterHand_Common_GetRandomEdgeLR(s32 line_id, Vec3f* pos);
 void ftMasterHand_Common_GotoTargetEdge(GObj* fighter_gobj, Vec3f* pos);
-void ftMasterHand_Common_SetPosOffsetY(GObj* fighter_gobj, Vec3f* pos,
-									   f32 off_y);
-void ftMasterHand_Common_SetPosAddVelPlayer(GObj* fighter_gobj, Vec3f* pos,
-											f32 vel_x, f32 vel_y);
-void ftMasterHand_Common_SetPosAddVelAuto(GObj* fighter_gobj, Vec3f* pos,
-										  f32 vel_x, f32 vel_y);
+void ftMasterHand_Common_SetPosOffsetY(GObj* fighter_gobj, Vec3f* pos, f32 off_y);
+void ftMasterHand_Common_SetPosAddVelPlayer(GObj* fighter_gobj, Vec3f* pos, f32 vel_x, f32 vel_y);
+void ftMasterHand_Common_SetPosAddVelAuto(GObj* fighter_gobj, Vec3f* pos, f32 vel_x, f32 vel_y);
 void ftMasterHand_Common_GetPositionCenter(s32 var, Vec3f* pos_input);
 void ftMasterHand_Common_SetNextAttackWait(GObj* fighter_gobj);
 void ftMasterHand_Common_UpdateFogColor(GObj* fighter_gobj);
@@ -38,8 +35,7 @@ void ftMasterHand_Wait_SetStatus(GObj* fighter_gobj);
 // Move
 void ftMasterHand_Move_ProcPhysics(GObj* fighter_gobj);
 void ftMasterHand_Move_ProcMap(GObj* fighter_gobj);
-void ftMasterHand_Move_SetStatus(GObj* fighter_gobj,
-								 void (*proc_setstatus)(GObj*), Vec3f* vel);
+void ftMasterHand_Move_SetStatus(GObj* fighter_gobj, void (*proc_setstatus)(GObj*), Vec3f* vel);
 
 // Hippataku
 void ftMasterHand_Hippataku_ProcUpdate(GObj* fighter_gobj);

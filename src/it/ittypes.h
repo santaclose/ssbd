@@ -17,8 +17,7 @@
 // Macros
 #define ITEM_ALLOC_MAX 16
 
-#define ITEM_FLAG_PROJECT                                                     \
-	(1 << 31) // Perform initial collision check when spawning item?
+#define ITEM_FLAG_PROJECT (1 << 31) // Perform initial collision check when spawning item?
 
 #define ITEM_MASK_SPAWN_FIGHTER 0 // Item spawned by fighter
 #define ITEM_MASK_SPAWN_GROUND 1  // Item spawned by stage
@@ -28,24 +27,21 @@
 
 #define ITEM_MASK_SPAWN_ALL 0xF // Mask all GObj classes that can spawn items?
 
-#define ITEM_TEAM_DEFAULT                                                     \
-	4 // Item is teamless; deals damage to any eligible target
+#define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
 #define ITEM_PORT_DEFAULT GMMATCH_PLAYERS_MAX
 #define ITEM_HANDICAP_DEFAULT 9 // Handicap?
 #define ITEM_STALE_DEFAULT 1.0F
 
-#define ITEM_PICKUP_WAIT_DEFAULT                                              \
-	1400 // "Lifetime" while item is not being carried
+#define ITEM_PICKUP_WAIT_DEFAULT 1400 // "Lifetime" while item is not being carried
 
-#define ITEM_REFLECT_MAX_DEFAULT 100  // Maximum damage cap for reflected items
-#define ITEM_REFLECT_MUL_DEFAULT 1.8F // Universal reflect damage multiplier
-#define ITEM_REFLECT_ADD_DEFAULT                                              \
-	0.99F // Added after multiplying item's hitbox damage
+#define ITEM_REFLECT_MAX_DEFAULT 100   // Maximum damage cap for reflected items
+#define ITEM_REFLECT_MUL_DEFAULT 1.8F  // Universal reflect damage multiplier
+#define ITEM_REFLECT_ADD_DEFAULT 0.99F // Added after multiplying item's hitbox damage
 
-#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT                                      \
+#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT                                                                               \
 	180U // Item starts flashing rapidly once its pickup duration drops below
 		 // this value
-#define ITEM_ARROW_FLASH_INT_DEFAULT                                          \
+#define ITEM_ARROW_FLASH_INT_DEFAULT                                                                                   \
 	45 // Red arrow pointing downward at article "blinks" at this frequency (45
 	   // frames visible, 45 frames invisible)
 
@@ -54,10 +50,8 @@
 
 #define ITEM_HOP_ANGLE_DEFAULT F_DEG_TO_RAD(135.0F) // 2.3561945F
 
-#define ITEM_SPIN_SPEED_MUL_DEFAULT F_DEG_TO_RAD(18.0F) // 0.31415927F
-#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN                                         \
-	F_DEG_TO_RAD(                                                             \
-		10.0F) // 0.17453294F, DEG_TO_RAD angle might actually be incorrect
+#define ITEM_SPIN_SPEED_MUL_DEFAULT F_DEG_TO_RAD(18.0F)	   // 0.31415927F
+#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_DEG_TO_RAD(10.0F)  // 0.17453294F, DEG_TO_RAD angle might actually be incorrect
 #define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_DEG_TO_RAD(16.0F) // 0.27925268F
 
 #define ITEM_SPIN_SPEED_SET_SMASH_THROW F_DEG_TO_RAD(-21.0F)  // -0.36651915F
@@ -67,12 +61,12 @@
 
 #define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
 
-#define ITEM_THROW_NUM_MAX                                                    \
-	4 /* Maximum number of times item can be thrown/dropped before it is      \
-	  guaranteed to despawn; default is 4 and caps at 7 due to being 3 bits   \
+#define ITEM_THROW_NUM_MAX                                                                                             \
+	4 /* Maximum number of times item can be thrown/dropped before it is                                               \
+	  guaranteed to despawn; default is 4 and caps at 7 due to being 3 bits                                            \
 	  wide */
 
-#define ITEM_THROW_DESPAWN_RANDOM                                             \
+#define ITEM_THROW_DESPAWN_RANDOM                                                                                      \
 	4 // Random chance for item to despawn when landing after being
 	  // thrown/dropped; guaranteed despawn after ITEM_THROW_NUM_MAX
 #define ITEM_LANDING_DESPAWN_CHECK 1
@@ -134,44 +128,42 @@ struct itHitPositions
 
 struct itHitbox
 {
-	gmHitCollisionUpdateState
-		update_state; // Hitbox's position update mode (0 = disabled, 1 =
-					  // fresh, 2 = transfer, 3 = interpolate)
-	s32 damage;		  // Hitbox's base damage output
-	f32 stale;		  // Might be swapped with throw_mul
-	f32 throw_mul;	  // Might be swapped with stale
-	gmHitCollisionElement element;		 // Hitbox's element
-	Vec3f offset[ITEM_HITBOX_COUNT_MAX]; // Hitbox offset from TopN translation
-										 // vector?
-	f32 size;							 // Hitbox size
-	s32 angle;							 // Launch angle
-	u32 knockback_scale;				 // Knockback growth
-	u32 knockback_weight;				 // Weight-Dependent Set Knockback
-	u32 knockback_base;					 // Base knockback
-	s32 shield_damage;					 // Shield damage
-	s32 priority;						 // Priority?
-	u8 interact_mask; // Mask of object classes hitbox can interact with; 0x1 =
-					  // fighters, 0x2 = weapons, 0x4 = items
-	u16 hit_sfx;	  // Played when hitbox connects with a hurtbox
-	ub32 can_setoff : 1;	 // Item's hitbox can collide with other hitboxes
-	ub32 can_rehit_item : 1; // Item can rehit item after default rehit
-							 // cooldown expires
-	ub32 can_rehit_fighter : 1; // Item can rehit fighter after default rehit
-								// cooldown expires
-	ub32 can_rehit_shield : 1;	// Item can rehit shield after default rehit
-								// cooldown expires
-	ub32 can_hop : 1;			// Item can bounce off shields
-	ub32 can_reflect : 1;		// Item can be reflected
-	ub32 can_shield : 1;		// Item can be shielded
-	u32 attack_id : 6; // Attack ID copied from object that spawned this item
-	u16 motion_count;  // Item's animation update number?
-	gmStatFlags stat_flags; // Item's status flags
-	u16 stat_count;			// Item's status update number
-	s32 hitbox_count;		// Item's hitbox count, up to two
-	itHitPositions
-		hit_positions[ITEM_HITBOX_COUNT_MAX];		// Item hitbox positions
-	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX]; // Item's record of
-													// attacked targets
+	gmHitCollisionUpdateState update_state;				 // Hitbox's position update mode (0 = disabled, 1 =
+														 // fresh, 2 = transfer, 3 = interpolate)
+	s32 damage;											 // Hitbox's base damage output
+	f32 stale;											 // Might be swapped with throw_mul
+	f32 throw_mul;										 // Might be swapped with stale
+	gmHitCollisionElement element;						 // Hitbox's element
+	Vec3f offset[ITEM_HITBOX_COUNT_MAX];				 // Hitbox offset from TopN translation
+														 // vector?
+	f32 size;											 // Hitbox size
+	s32 angle;											 // Launch angle
+	u32 knockback_scale;								 // Knockback growth
+	u32 knockback_weight;								 // Weight-Dependent Set Knockback
+	u32 knockback_base;									 // Base knockback
+	s32 shield_damage;									 // Shield damage
+	s32 priority;										 // Priority?
+	u8 interact_mask;									 // Mask of object classes hitbox can interact with; 0x1 =
+														 // fighters, 0x2 = weapons, 0x4 = items
+	u16 hit_sfx;										 // Played when hitbox connects with a hurtbox
+	ub32 can_setoff : 1;								 // Item's hitbox can collide with other hitboxes
+	ub32 can_rehit_item : 1;							 // Item can rehit item after default rehit
+														 // cooldown expires
+	ub32 can_rehit_fighter : 1;							 // Item can rehit fighter after default rehit
+														 // cooldown expires
+	ub32 can_rehit_shield : 1;							 // Item can rehit shield after default rehit
+														 // cooldown expires
+	ub32 can_hop : 1;									 // Item can bounce off shields
+	ub32 can_reflect : 1;								 // Item can be reflected
+	ub32 can_shield : 1;								 // Item can be shielded
+	u32 attack_id : 6;									 // Attack ID copied from object that spawned this item
+	u16 motion_count;									 // Item's animation update number?
+	gmStatFlags stat_flags;								 // Item's status flags
+	u16 stat_count;										 // Item's status update number
+	s32 hitbox_count;									 // Item's hitbox count, up to two
+	itHitPositions hit_positions[ITEM_HITBOX_COUNT_MAX]; // Item hitbox positions
+	gmHitRecord hit_targets[GMHITRECORD_COUNT_MAX];		 // Item's record of
+														 // attacked targets
 };
 
 struct itHitEvent // Miniature Hitbox subaction event? Used by explosions.
@@ -302,22 +294,22 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	gmStatFlags reflect_stat_flags; // Status flags of GObj reflecting this
 									// item (e.g. is_smash_attack,
 									// is_ground_or_air, is_projectile, etc.)
-	u16 reflect_stat_count; // Status update count at the time the item is
-							// reflected?
+	u16 reflect_stat_count;			// Status update count at the time the item is
+									// reflected?
 
-	s32 damage_highest;	  // I don't know why there are at least two of these
-	f32 damage_knockback; // Item's calculated knockback
-	s32 damage_queue;	  // Used to calculate knockback?
-	s32 damage_angle;	  // Angle of attack that hit the item
-	s32 damage_element;	  // Element of attack that hit the item
-	s32 lr_damage;		  // Direction of incoming attack
-	GObj* damage_gobj;	  // GObj that last dealt damage to this item?
-	u8 damage_team;		  // Team of attacker
-	u8 damage_port;		  // Controller port of attacker
+	s32 damage_highest;		  // I don't know why there are at least two of these
+	f32 damage_knockback;	  // Item's calculated knockback
+	s32 damage_queue;		  // Used to calculate knockback?
+	s32 damage_angle;		  // Angle of attack that hit the item
+	s32 damage_element;		  // Element of attack that hit the item
+	s32 lr_damage;			  // Direction of incoming attack
+	GObj* damage_gobj;		  // GObj that last dealt damage to this item?
+	u8 damage_team;			  // Team of attacker
+	u8 damage_port;			  // Controller port of attacker
 	s32 damage_player_number; // Player number of attacker
 	u8 damage_handicap;		  // Handicap of attacker
-	s32 damage_display_mode; // Display mode of attacker which the item takes on
-	s32 damage_lag;			 // Used to calculate hitlag?
+	s32 damage_display_mode;  // Display mode of attacker which the item takes on
+	s32 damage_lag;			  // Used to calculate hitlag?
 
 	s32 lifetime; // Item's duration in frames
 
@@ -327,22 +319,22 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 	u16 drop_sfx;  // SFX to play when item is dropped
 	u16 throw_sfx; // SFX to play when item is thrown
 
-	ub32 is_allow_pickup : 1; // Bool to check whether item can be picked up or
-							  // not
-	ub32 is_hold : 1;		  // Whether item is held by a fighter
-	u32 times_landed : 2; // Number of times item has touched the ground when
-						  // landing, used to tell how many times item should
-						  // bounce up
-	u32 times_thrown : 3; // Number of times item has been dropped or thrown by
-						  // player; overflows after 7
-	ub32 weight : 1;	  // 0 = item is heavy, 1 = item is light
-	ub32 is_damage_all : 1; // Item ignores ownership and can damage anything?
-	ub32 is_attach_surface : 1; // Item is "sticking" to a map collision line
-								// specified by attach_line_id
-	ub32 is_thrown : 1; // Apply magnitude and stale multiplier to damage output
-	u16 attach_line_id;	  // Map collision line ID that item is attached to
-	u32 pickup_wait : 12; // Number of frames item can last without being
-						  // picked up (if applicable)
+	ub32 is_allow_pickup : 1;	  // Bool to check whether item can be picked up or
+								  // not
+	ub32 is_hold : 1;			  // Whether item is held by a fighter
+	u32 times_landed : 2;		  // Number of times item has touched the ground when
+								  // landing, used to tell how many times item should
+								  // bounce up
+	u32 times_thrown : 3;		  // Number of times item has been dropped or thrown by
+								  // player; overflows after 7
+	ub32 weight : 1;			  // 0 = item is heavy, 1 = item is light
+	ub32 is_damage_all : 1;		  // Item ignores ownership and can damage anything?
+	ub32 is_attach_surface : 1;	  // Item is "sticking" to a map collision line
+								  // specified by attach_line_id
+	ub32 is_thrown : 1;			  // Apply magnitude and stale multiplier to damage output
+	u16 attach_line_id;			  // Map collision line ID that item is attached to
+	u32 pickup_wait : 12;		  // Number of frames item can last without being
+								  // picked up (if applicable)
 	ub32 is_allow_knockback : 1;  // Item can receive knockback velocity?
 	ub32 is_unused_item_bool : 1; // Unused? Set various times, but no item
 								  // process makes use of it
@@ -354,9 +346,9 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 
 	ub32 is_hitlag_victim : 1; // Item can deal hitlag to target
 
-	u16 it_multi; // Some sort of universal multi-purpose variable, e.g. it is
-				  // used as intangibility delay for Star Man and ammo count
-				  // for Ray Gun
+	u16 it_multi;			  // Some sort of universal multi-purpose variable, e.g. it is
+							  // used as intangibility delay for Star Man and ammo count
+							  // for Ray Gun
 	u32 item_event_index : 4; // Item hitbox script index? When in doubt, make
 							  // this u8 : 4
 
@@ -406,13 +398,12 @@ struct itStruct // Common items, stage hazards, fighter items and Pokémon
 					  // = opaque hurtboxes + outlined attack hitboxes, 3 = map
 					  // collisions
 
-	sb32 (*proc_update)(GObj*); // Update general item information
-	sb32 (*proc_map)(GObj*);	// Update item's map collision
-	sb32 (*proc_hit)(GObj*);	// Runs when item collides with a hurtbox
-	sb32 (*proc_shield)(GObj*); // Runs when item collides with a shield
-	sb32 (*proc_hop)(GObj*);	// Runs when item bounces off a shield
-	sb32 (*proc_setoff)(
-		GObj*); // Runs when item's hitbox collides with another hitbox
+	sb32 (*proc_update)(GObj*);	   // Update general item information
+	sb32 (*proc_map)(GObj*);	   // Update item's map collision
+	sb32 (*proc_hit)(GObj*);	   // Runs when item collides with a hurtbox
+	sb32 (*proc_shield)(GObj*);	   // Runs when item collides with a shield
+	sb32 (*proc_hop)(GObj*);	   // Runs when item bounces off a shield
+	sb32 (*proc_setoff)(GObj*);	   // Runs when item's hitbox collides with another hitbox
 	sb32 (*proc_reflector)(GObj*); // Runs when item is reflected
 	sb32 (*proc_damage)(GObj*);	   // Runs when item takes damage
 	sb32 (*proc_dead)(GObj*);	   // Runs when item is in a blast zone

@@ -16,8 +16,7 @@ void func_ovl3_8017245C(GObj* item_gobj, f32* spin_speed, sb32 is_smash_throw);
 void itMain_VelSetRotateStepLR(GObj* item_gobj);
 
 // Update item's gravity and clamp to terminal velocity if greater than
-void itMain_ApplyGravityClampTVel(itStruct* ip, f32 gravity,
-								  f32 terminal_velocity);
+void itMain_ApplyGravityClampTVel(itStruct* ip, f32 gravity, f32 terminal_velocity);
 
 // Reset item's player-related variables
 void itMain_ResetPlayerVars(GObj* item_gobj);
@@ -52,8 +51,7 @@ void itMain_DestroyItem(GObj* item_gobj);
 void itMain_SetFighterDrop(GObj* item_gobj, Vec3f* vel, f32 stale);
 
 // Run item's throw routine
-void itMain_SetFighterThrow(GObj* item_gobj, Vec3f* vel, f32 stale,
-							sb32 is_smash_throw);
+void itMain_SetFighterThrow(GObj* item_gobj, Vec3f* vel, f32 stale, sb32 is_smash_throw);
 
 // Run item's pickup routine
 void itMain_SetFighterHold(GObj* item_gobj, GObj* fighter_gobj);
@@ -62,12 +60,10 @@ void itMain_SetFighterHold(GObj* item_gobj, GObj* fighter_gobj);
 void itMain_SetGroundAllowPickup(GObj* item_gobj);
 
 // Change item's action state
-void itMain_SetItemStatus(GObj* item_gobj, itStatusDesc* status_desc,
-						  s32 status_id);
+void itMain_SetItemStatus(GObj* item_gobj, itStatusDesc* status_desc, s32 status_id);
 
 // Apply ColAnim to item and return whether it was successfully applied
-sb32 itMain_CheckSetColAnimIndex(GObj* item_gobj, s32 colanim_id,
-								 s32 duration);
+sb32 itMain_CheckSetColAnimIndex(GObj* item_gobj, s32 colanim_id, s32 duration);
 
 // Reset item's ColAnim
 void itMain_ResetColAnim(GObj* item_gobj);

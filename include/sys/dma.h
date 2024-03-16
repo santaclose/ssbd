@@ -24,8 +24,7 @@ struct Overlay
 extern OSPiHandle* gRomPiHandle;
 
 extern void create_dma_mq(void);
-extern void dma_copy(OSPiHandle* handle, u32 physAddr, uintptr_t vAddr,
-					 u32 size, u8 direction);
+extern void dma_copy(OSPiHandle* handle, u32 physAddr, uintptr_t vAddr, u32 size, u8 direction);
 extern void load_overlay(struct Overlay* ovl);
 extern void dma_rom_read(u32 romSrc, void* ramDst, u32 nbytes);
 extern void dma_rom_write(void* ramSrc, u32 romDst, u32 nbytes);

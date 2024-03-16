@@ -36,8 +36,7 @@ void __osSetWatchLo(u32);
 #define THREAD6_PRI 115
 
 // data, fake values for now
-static struct Overlay OverlayManager
-	= { (u32)0x0, (u32)0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8 };
+static struct Overlay OverlayManager = { (u32)0x0, (u32)0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8 };
 u32 sNoThread5 = 0;
 
 // bss
@@ -67,10 +66,7 @@ OSMesg sPIcmdBuf[50];
 OSMesgQueue sPIcmdQ;
 u8 sThreadArgBuf[128];
 
-u64* get_thread4_stack_start(void)
-{
-	return sThread4Stack + THREAD4_STACK_SIZE;
-}
+u64* get_thread4_stack_start(void) { return sThread4Stack + THREAD4_STACK_SIZE; }
 
 u8* unref_8000046C(void) { return sUkn80040E90; }
 
@@ -115,8 +111,7 @@ void thread5_main(UNUSED void* arg)
 	osCreateViManager(OS_PRIORITY_VIMGR);
 	gRomPiHandle = osCartRomInit();
 	sram_pi_init();
-	osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf,
-					  ARRAY_COUNT(sPIcmdBuf));
+	osCreatePiManager(OS_PRIORITY_PIMGR, &sPIcmdQ, sPIcmdBuf, ARRAY_COUNT(sPIcmdBuf));
 	create_dma_mq();
 	// load IP3 font? rsp boot text
 	dma_rom_read(PHYSICAL_TO_ROM(0xB70), gRspBootCode, sizeof(gRspBootCode));
@@ -124,22 +119,19 @@ void thread5_main(UNUSED void* arg)
 	check_sp_dmem();
 	osCreateMesgQueue(&gThreadingQueue, sBlockMsg, ARRAY_COUNT(sBlockMsg));
 
-	osCreateThread(&sThread3, 3, &thread3_scheduler, NULL,
-				   sThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
+	osCreateThread(&sThread3, 3, &thread3_scheduler, NULL, sThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
 	// clang-format off
     sThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread3);
 	// clang-format on
 	osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&sThread4, 4, thread4_audio, NULL,
-				   sThread4Stack + THREAD4_STACK_SIZE, THREAD4_PRI);
+	osCreateThread(&sThread4, 4, thread4_audio, NULL, sThread4Stack + THREAD4_STACK_SIZE, THREAD4_PRI);
 	// clang-format off
     sThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread4);
 	// clang-format on
 	osRecvMesg(&gThreadingQueue, NULL, OS_MESG_BLOCK);
 
-	osCreateThread(&sThread6, 6, thread6_controllers, NULL,
-				   sThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
+	osCreateThread(&sThread6, 6, thread6_controllers, NULL, sThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
 	// clang-format off
     sThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sThread6);
 	// clang-format on
@@ -153,8 +145,7 @@ void thread5_main(UNUSED void* arg)
 void thread1_idle(void* arg)
 {
 	start_thread8_rmon();
-	osCreateThread(&gThread5, 5, thread5_main, arg,
-				   sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
+	osCreateThread(&gThread5, 5, thread5_main, arg, sThread5Stack + THREAD5_STACK_SIZE, THREAD5_PRI);
 	sThread5Stack[0] = STACK_PROBE_MAGIC;
 	if (!sNoThread5)
 		osStartThread(&gThread5);
@@ -168,8 +159,7 @@ void ssb_main(void)
 	gThread0Stack[0] = STACK_PROBE_MAGIC;
 	__osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
 	osInitialize();
-	osCreateThread(&sThread1, 1, thread1_idle, &sThreadArgBuf,
-				   sThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
+	osCreateThread(&sThread1, 1, thread1_idle, &sThreadArgBuf, sThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
 	sThread1Stack[0] = STACK_PROBE_MAGIC;
 	osStartThread(&sThread1);
 }

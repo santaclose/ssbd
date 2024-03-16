@@ -34,25 +34,19 @@
 #define U64_MINOR_PROFILE 7
 #define NUMBER_MINORS 8 /* don't use minor zero , but must count 0-7 */
 
-#define U64_MINOR_PRINT_BUF_SIZE                                              \
-	0x80000 /* buffer used by incoming printf data */
+#define U64_MINOR_PRINT_BUF_SIZE 0x80000 /* buffer used by incoming printf data */
 #define U64_MINOR_DEBUG_BUF_SIZE 0x4000
-#define U64_MINOR_LOGGING_BUF_SIZE                                            \
-	RDB_LOG_MAX_BLOCK_SIZE /* buffer used by incoming logging data */
-#define U64_MINOR_DATA_BUF_SIZE                                               \
-	RDB_DATA_MAX_BLOCK_SIZE			  /* buffer used by incoming data */
-#define U64_MINOR_FAULT_BUF_SIZE 1024 /* buffer used for incoming fault data */
-#define U64_MINOR_KDEBUG_BUF_SIZE                                             \
-	1024 /* buffer used for incoming kdebug data */
-#define U64_MINOR_PROFILE_BUF_SIZE                                            \
-	2048 /* buffer used for incoming profile data */
-#define U64_MINOR_PROFILE_SEND_BUF_SIZE 16 /* only send one byte messages */
-#define U64_INTERNAL_WRITE_BUF_SIZE                                           \
-	0x8000 /* buffer used to store packets waiting to go out */
+#define U64_MINOR_LOGGING_BUF_SIZE RDB_LOG_MAX_BLOCK_SIZE /* buffer used by incoming logging data */
+#define U64_MINOR_DATA_BUF_SIZE RDB_DATA_MAX_BLOCK_SIZE	  /* buffer used by incoming data */
+#define U64_MINOR_FAULT_BUF_SIZE 1024					  /* buffer used for incoming fault data */
+#define U64_MINOR_KDEBUG_BUF_SIZE 1024					  /* buffer used for incoming kdebug data */
+#define U64_MINOR_PROFILE_BUF_SIZE 2048					  /* buffer used for incoming profile data */
+#define U64_MINOR_PROFILE_SEND_BUF_SIZE 16				  /* only send one byte messages */
+#define U64_INTERNAL_WRITE_BUF_SIZE 0x8000				  /* buffer used to store packets waiting to go out */
 
-#define u64_increment_Qptr(x)                                                 \
-	{                                                                         \
-		((x) = ((x) + 1) & 0xff);                                             \
+#define u64_increment_Qptr(x)                                                                                          \
+	{                                                                                                                  \
+		((x) = ((x) + 1) & 0xff);                                                                                      \
 	}
 
 typedef struct
@@ -119,7 +113,7 @@ struct u64_data
 	unsigned int* write_buf;
 	unsigned int write_buf_cur_write;
 	unsigned int write_buf_cur_read;
-	unsigned int write_buf_ct; /* number of packets waiting for transmission */
+	unsigned int write_buf_ct;	 /* number of packets waiting for transmission */
 	unsigned int write_buf_size; /* measured in rdbPackets */
 	sema_t write_buf_sema;
 	u64_minor minors[NUMBER_MINORS];

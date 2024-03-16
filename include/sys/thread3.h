@@ -112,8 +112,7 @@ extern s64 D_80044FC0;
 extern s32 D_80045020;
 
 extern void func_80000970(struct SCTaskInfo* arg0);
-extern void func_800009D8(struct MqListNode* arg0, OSMesgQueue* mq,
-						  OSMesg* msg, u32 count);
+extern void func_800009D8(struct MqListNode* arg0, OSMesgQueue* mq, OSMesg* msg, u32 count);
 extern s32 unref_80000A34(struct SCTaskGfx* t);
 extern void thread3_scheduler(void* arg);
 extern s32 func_80000B54(UNUSED struct SCTaskInfo* t);

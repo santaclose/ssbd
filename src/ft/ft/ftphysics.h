@@ -15,8 +15,7 @@ void ftPhysics_ClampGroundVel(ftStruct* fp, f32 clamp);
 void ftPhysics_SetGroundVelFriction(ftStruct* fp, f32 friction);
 
 // Apply and clamp ground velocity if stick range is greater than stick_x_min
-void ftPhysics_ApplyClampGroundVelStickRange(ftStruct* fp, s32 stick_x_min,
-											 f32 vel, f32 clamp);
+void ftPhysics_ApplyClampGroundVelStickRange(ftStruct* fp, s32 stick_x_min, f32 vel, f32 clamp);
 
 // Set ground velocity to vel * absolute stick range; apply friction
 void ftPhysics_SetGroundVelAbsStickRange(ftStruct* fp, f32 vel, f32 friction);
@@ -71,12 +70,10 @@ sb32 ftPhysics_CheckClampAirVelXDec(ftStruct* fp, f32 clamp);
 sb32 ftPhysics_CheckClampAirVelXDecMax(ftStruct* fp, ftAttributes* attributes);
 
 // Apply and clamp aerial X velocity if stick range is greater than stick_x_min
-void ftPhysics_ClampAirVelXStickRange(ftStruct* fp, s32 stick_range_min,
-									  f32 vel, f32 clamp);
+void ftPhysics_ClampAirVelXStickRange(ftStruct* fp, s32 stick_range_min, f32 vel, f32 clamp);
 
 // Apply and clamp aerial X velocity if stick range is greater than 8 units
-void ftPhysics_ClampAirVelXStickDefault(ftStruct* fp,
-										ftAttributes* attributes);
+void ftPhysics_ClampAirVelXStickDefault(ftStruct* fp, ftAttributes* attributes);
 
 // Apply friction to aerial X velocity
 void ftPhysics_ApplyAirVelXFriction(ftStruct* fp, ftAttributes* attributes);

@@ -16,8 +16,7 @@ void wpManager_SetPrevAlloc(wpStruct* wp);
 u32 wpManager_GetGroupIndexInc();
 
 // Create new weapon
-GObj* wpManager_MakeWeapon(GObj* spawn_gobj, wpCreateDesc* wp_desc,
-						   Vec3f* spawn_pos, u32 flags);
+GObj* wpManager_MakeWeapon(GObj* spawn_gobj, wpCreateDesc* wp_desc, Vec3f* spawn_pos, u32 flags);
 
 // Update weapon's scale, rotate and translate vectors
 void wpManager_UpdateWeaponVectors(DObj* joint, Vec3f* vec);
@@ -35,19 +34,15 @@ void wpManager_ProcWeaponMain(GObj* weapon_gobj);
 
 // Set type of interaction and record hit target when weapon's hitbox collides
 // with another GObj
-void wpManager_SetHitVictimInteractStats(wpHitbox* wp_hit, GObj* victim_gobj,
-										 s32 hitbox_type, u32 interact_mask);
+void wpManager_SetHitVictimInteractStats(wpHitbox* wp_hit, GObj* victim_gobj, s32 hitbox_type, u32 interact_mask);
 
 // Unknown
-void wpManager_UpdateInteractStatsGroupID(wpStruct* this_wp, wpHitbox* wp_hit,
-										  GObj* target_gobj, s32 hitbox_type,
+void wpManager_UpdateInteractStatsGroupID(wpStruct* this_wp, wpHitbox* wp_hit, GObj* target_gobj, s32 hitbox_type,
 										  u32 interact_mask);
 
 // Set weapon VS weapon hitbox detection results
-void wpManager_UpdateAttackStatWeapon(wpStruct* this_wp, wpHitbox* this_hit,
-									  s32 this_hit_id, wpStruct* victim_wp,
-									  wpHitbox* victim_hit, s32 victim_hit_id,
-									  GObj* this_gobj, GObj* victim_gobj);
+void wpManager_UpdateAttackStatWeapon(wpStruct* this_wp, wpHitbox* this_hit, s32 this_hit_id, wpStruct* victim_wp,
+									  wpHitbox* victim_hit, s32 victim_hit_id, GObj* this_gobj, GObj* victim_gobj);
 
 // GObj process for detecting other weapon hitboxes
 void wpManager_ProcSearchHitWeapon(GObj* weapon_gobj);

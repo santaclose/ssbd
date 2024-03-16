@@ -42,8 +42,7 @@ void ftDonkey_SpecialHi_ProcMap(GObj* fighter_gobj);
 void ftDonkey_SpecialAirHi_ProcMap(GObj* fighter_gobj);
 void ftDonkey_SpecialAirHi_SwitchStatusGround(GObj* fighter_gobj);
 void ftDonkey_SpecialHi_SwitchStatusAir(GObj* fighter_gobj);
-void ftDonkey_SpecialHi_SetStatusFlagGA(GObj* fighter_gobj,
-										sb32 ground_or_air);
+void ftDonkey_SpecialHi_SetStatusFlagGA(GObj* fighter_gobj, sb32 ground_or_air);
 void ftDonkey_SpecialHi_SetStatus(GObj* fighter_gobj);
 void ftDonkey_SpecialAirHi_SetStatus(GObj* fighter_gobj);
 

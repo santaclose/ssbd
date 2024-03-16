@@ -122,16 +122,12 @@ extern "C"
 	extern long long int gspSprite2DDataStart[], gspSprite2DDataEnd[];
 
 	/* 2D sprite ucode with output to DRAM: */
-	extern long long int gspSprite2D_dramTextStart[],
-		gspSprite2D_dramTextEnd[];
-	extern long long int gspSprite2D_dramDataStart[],
-		gspSprite2D_dramDataEnd[];
+	extern long long int gspSprite2D_dramTextStart[], gspSprite2D_dramTextEnd[];
+	extern long long int gspSprite2D_dramDataStart[], gspSprite2D_dramDataEnd[];
 
 	/* 2D sprite ucode with output through DRAM FIFO to RDP: */
-	extern long long int gspSprite2D_fifoTextStart[],
-		gspSprite2D_fifoTextEnd[];
-	extern long long int gspSprite2D_fifoDataStart[],
-		gspSprite2D_fifoDataEnd[];
+	extern long long int gspSprite2D_fifoTextStart[], gspSprite2D_fifoTextEnd[];
+	extern long long int gspSprite2D_fifoDataStart[], gspSprite2D_fifoDataEnd[];
 
 	/* basic audio ucode: */
 	extern long long int aspMainTextStart[], aspMainTextEnd[];
@@ -141,26 +137,18 @@ extern "C"
 	/* FIFO version only */
 	extern long long int gspF3DEX_fifoTextStart[], gspF3DEX_fifoTextEnd[];
 	extern long long int gspF3DEX_fifoDataStart[], gspF3DEX_fifoDataEnd[];
-	extern long long int gspF3DEX_NoN_fifoTextStart[],
-		gspF3DEX_NoN_fifoTextEnd[];
-	extern long long int gspF3DEX_NoN_fifoDataStart[],
-		gspF3DEX_NoN_fifoDataEnd[];
+	extern long long int gspF3DEX_NoN_fifoTextStart[], gspF3DEX_NoN_fifoTextEnd[];
+	extern long long int gspF3DEX_NoN_fifoDataStart[], gspF3DEX_NoN_fifoDataEnd[];
 
 	extern long long int gspF3DLX_fifoTextStart[], gspF3DLX_fifoTextEnd[];
 	extern long long int gspF3DLX_fifoDataStart[], gspF3DLX_fifoDataEnd[];
-	extern long long int gspF3DLX_NoN_fifoTextStart[],
-		gspF3DLX_NoN_fifoTextEnd[];
-	extern long long int gspF3DLX_NoN_fifoDataStart[],
-		gspF3DLX_NoN_fifoDataEnd[];
-	extern long long int gspF3DLX_Rej_fifoTextStart[],
-		gspF3DLX_Rej_fifoTextEnd[];
-	extern long long int gspF3DLX_Rej_fifoDataStart[],
-		gspF3DLX_Rej_fifoDataEnd[];
+	extern long long int gspF3DLX_NoN_fifoTextStart[], gspF3DLX_NoN_fifoTextEnd[];
+	extern long long int gspF3DLX_NoN_fifoDataStart[], gspF3DLX_NoN_fifoDataEnd[];
+	extern long long int gspF3DLX_Rej_fifoTextStart[], gspF3DLX_Rej_fifoTextEnd[];
+	extern long long int gspF3DLX_Rej_fifoDataStart[], gspF3DLX_Rej_fifoDataEnd[];
 
-	extern long long int gspF3DLP_Rej_fifoTextStart[],
-		gspF3DLP_Rej_fifoTextEnd[];
-	extern long long int gspF3DLP_Rej_fifoDataStart[],
-		gspF3DLP_Rej_fifoDataEnd[];
+	extern long long int gspF3DLP_Rej_fifoTextStart[], gspF3DLP_Rej_fifoTextEnd[];
+	extern long long int gspF3DLP_Rej_fifoDataStart[], gspF3DLP_Rej_fifoDataEnd[];
 	extern long long int gspL3DEX_fifoTextStart[], gspL3DEX_fifoTextEnd[];
 	extern long long int gspL3DEX_fifoDataStart[], gspL3DEX_fifoDataEnd[];
 
@@ -168,26 +156,18 @@ extern "C"
 	/* FIFO version only */
 	extern long long int gspF3DEX2_fifoTextStart[], gspF3DEX2_fifoTextEnd[];
 	extern long long int gspF3DEX2_fifoDataStart[], gspF3DEX2_fifoDataEnd[];
-	extern long long int gspF3DEX2_NoN_fifoTextStart[],
-		gspF3DEX2_NoN_fifoTextEnd[];
-	extern long long int gspF3DEX2_NoN_fifoDataStart[],
-		gspF3DEX2_NoN_fifoDataEnd[];
+	extern long long int gspF3DEX2_NoN_fifoTextStart[], gspF3DEX2_NoN_fifoTextEnd[];
+	extern long long int gspF3DEX2_NoN_fifoDataStart[], gspF3DEX2_NoN_fifoDataEnd[];
 
 	extern long long int gspF3DLX2_fifoTextStart[], gspF3DLX2_fifoTextEnd[];
 	extern long long int gspF3DLX2_fifoDataStart[], gspF3DLX2_fifoDataEnd[];
-	extern long long int gspF3DLX2_NoN_fifoTextStart[],
-		gspF3DLX2_NoN_fifoTextEnd[];
-	extern long long int gspF3DLX2_NoN_fifoDataStart[],
-		gspF3DLX2_NoN_fifoDataEnd[];
-	extern long long int gspF3DLX2_Rej_fifoTextStart[],
-		gspF3DLX2_Rej_fifoTextEnd[];
-	extern long long int gspF3DLX2_Rej_fifoDataStart[],
-		gspF3DLX2_Rej_fifoDataEnd[];
+	extern long long int gspF3DLX2_NoN_fifoTextStart[], gspF3DLX2_NoN_fifoTextEnd[];
+	extern long long int gspF3DLX2_NoN_fifoDataStart[], gspF3DLX2_NoN_fifoDataEnd[];
+	extern long long int gspF3DLX2_Rej_fifoTextStart[], gspF3DLX2_Rej_fifoTextEnd[];
+	extern long long int gspF3DLX2_Rej_fifoDataStart[], gspF3DLX2_Rej_fifoDataEnd[];
 
-	extern long long int gspF3DLP2_Rej_fifoTextStart[],
-		gspF3DLP2_Rej_fifoTextEnd[];
-	extern long long int gspF3DLP2_Rej_fifoDataStart[],
-		gspF3DLP2_Rej_fifoDataEnd[];
+	extern long long int gspF3DLP2_Rej_fifoTextStart[], gspF3DLP2_Rej_fifoTextEnd[];
+	extern long long int gspF3DLP2_Rej_fifoDataStart[], gspF3DLP2_Rej_fifoDataEnd[];
 	extern long long int gspL3DEX2_fifoTextStart[], gspL3DEX2_fifoTextEnd[];
 	extern long long int gspL3DEX2_fifoDataStart[], gspL3DEX2_fifoDataEnd[];
 

@@ -121,10 +121,9 @@ extern "C"
  * Macros:
  */
 #define UP_HUGEVAL 3.40282347e+37
-#define PT_IN_BOX(p, box)                                                     \
-	((p)[0] > (box).min[0] && (p)[0] < (box).max[0] && (p)[1] > (box).min[1]  \
-	 && (p)[1] < (box).max[1] && (p)[2] > (box).min[2]                        \
-	 && (p)[2] < (box).max[2])
+#define PT_IN_BOX(p, box)                                                                                              \
+	((p)[0] > (box).min[0] && (p)[0] < (box).max[0] && (p)[1] > (box).min[1] && (p)[1] < (box).max[1]                  \
+	 && (p)[2] > (box).min[2] && (p)[2] < (box).max[2])
 
 #ifdef __Cplusplus
 }

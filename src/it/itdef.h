@@ -14,8 +14,8 @@ typedef enum itKind
 	It_Kind_Egg,								  // Egg
 	It_Kind_ContainerEnd = It_Kind_Egg,			  // End of container items
 
-	It_Kind_UtilityStart, // Start of utility items (or items that can be
-						  // spawned in training mode / toggled)
+	It_Kind_UtilityStart,				   // Start of utility items (or items that can be
+										   // spawned in training mode / toggled)
 	It_Kind_Tomato = It_Kind_UtilityStart, // Maxim Tomato
 	It_Kind_Heart,						   // Heart
 	It_Kind_Star,						   // Star Man

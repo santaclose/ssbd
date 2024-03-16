@@ -54,58 +54,58 @@
 /*
  * LEAF -- declare leaf routine
  */
-#define LEAF(x)                                                               \
-	.globl x;                                                                 \
-	.ent x, 0;                                                                \
-	x:;                                                                       \
+#define LEAF(x)                                                                                                        \
+	.globl x;                                                                                                          \
+	.ent x, 0;                                                                                                         \
+	x:;                                                                                                                \
 	.frame sp, 0, ra
 
-#define GLABEL(x)                                                             \
-	.globl x;                                                                 \
+#define GLABEL(x)                                                                                                      \
+	.globl x;                                                                                                          \
 	x:
 
 /*
  * XLEAF -- declare alternate entry to leaf routine
  */
-#define XLEAF(x)                                                              \
-	.globl x;                                                                 \
-	.aent x, 0;                                                               \
+#define XLEAF(x)                                                                                                       \
+	.globl x;                                                                                                          \
+	.aent x, 0;                                                                                                        \
 	x:
 
 /*
  * VECTOR -- declare exception routine entry
  */
 #if _K32U32
-#define VECTOR(x, regmask)                                                    \
-	.globl x;                                                                 \
-	.ent x, 0;                                                                \
-	x:;                                                                       \
-	.frame sp, EF_SIZE, $0;                                                   \
+#define VECTOR(x, regmask)                                                                                             \
+	.globl x;                                                                                                          \
+	.ent x, 0;                                                                                                         \
+	x:;                                                                                                                \
+	.frame sp, EF_SIZE, $0;                                                                                            \
 	.mask + (regmask) | M_EXCFRM, -(EF_SIZE - (EF_RA))
 #else
-#define VECTOR(x, regmask)                                                    \
-	.globl x;                                                                 \
-	.ent x, 0;                                                                \
-	x:;                                                                       \
-	.frame sp, EF_SIZE, $0;                                                   \
+#define VECTOR(x, regmask)                                                                                             \
+	.globl x;                                                                                                          \
+	.ent x, 0;                                                                                                         \
+	x:;                                                                                                                \
+	.frame sp, EF_SIZE, $0;                                                                                            \
 	.mask + (regmask) | M_EXCFRM, -(EF_SIZE - (EF_RA + 4))
 #endif
 
 /*
  * NESTED -- declare nested routine entry point
  */
-#define NESTED(x, fsize, rpc)                                                 \
-	.globl x;                                                                 \
-	.ent x, 0;                                                                \
-	x:;                                                                       \
+#define NESTED(x, fsize, rpc)                                                                                          \
+	.globl x;                                                                                                          \
+	.ent x, 0;                                                                                                         \
+	x:;                                                                                                                \
 	.frame sp, fsize, rpc
 
 /*
  * XNESTED -- declare alternate entry point to nested routine
  */
-#define XNESTED(x)                                                            \
-	.globl x;                                                                 \
-	.aent x, 0;                                                               \
+#define XNESTED(x)                                                                                                     \
+	.globl x;                                                                                                          \
+	.aent x, 0;                                                                                                        \
 	x:
 
 /*
@@ -121,15 +121,15 @@
 /*
  * ABS -- declare absolute symbol
  */
-#define ABS(x, y)                                                             \
-	.globl x;                                                                 \
+#define ABS(x, y)                                                                                                      \
+	.globl x;                                                                                                          \
 	x = y
 
 /*
  * EXPORT -- export definition of symbol
  */
-#define EXPORT(x)                                                             \
-	.globl x;                                                                 \
+#define EXPORT(x)                                                                                                      \
+	.globl x;                                                                                                          \
 	x:
 
 /*
@@ -151,21 +151,21 @@
 /*
  * Set gp when at 1st instruction
  */
-#define SETUP_GP                                                              \
-	.set noreorder;                                                           \
-	.cpload t9;                                                               \
+#define SETUP_GP                                                                                                       \
+	.set noreorder;                                                                                                    \
+	.cpload t9;                                                                                                        \
 	.set reorder
 
 /*
  * Set gp when not at 1st instruction
  */
-#define SETUP_GPX(r)                                                          \
-	.set noreorder;                                                           \
-	move r, ra; /* save old ra */                                             \
-	bal 10f;	/* find addr of cpload */                                     \
-	nop;                                                                      \
-	10 :.cpload ra;                                                           \
-	move ra, r;                                                               \
+#define SETUP_GPX(r)                                                                                                   \
+	.set noreorder;                                                                                                    \
+	move r, ra; /* save old ra */                                                                                      \
+	bal 10f;	/* find addr of cpload */                                                                              \
+	nop;                                                                                                               \
+	10 :.cpload ra;                                                                                                    \
+	move ra, r;                                                                                                        \
 	.set reorder;
 
 #define SAVE_GP(x) .cprestore x; /* save gp trigger t9/jalr conversion */
@@ -212,56 +212,56 @@
  * so that the stack backtrace can trace from a leaf
  */
 #if defined(STANDALONE) || defined(LOCORE)
-#define PANIC(msg)                                                            \
-	sw zero, waittime;                                                        \
-	la a0, 9f;                                                                \
-	jal panic;                                                                \
+#define PANIC(msg)                                                                                                     \
+	sw zero, waittime;                                                                                                 \
+	la a0, 9f;                                                                                                         \
+	jal panic;                                                                                                         \
 	MSG(msg)
 
-#define PRINTF(msg)                                                           \
-	la a0, 9f;                                                                \
-	jal printf;                                                               \
+#define PRINTF(msg)                                                                                                    \
+	la a0, 9f;                                                                                                         \
+	jal printf;                                                                                                        \
 	MSG(msg)
 
 #else /* the kernel */
-#define PANIC(msg)                                                            \
-	li a0, CE_PANIC;                                                          \
-	la a1, 9f;                                                                \
-	jal cmn_err;                                                              \
+#define PANIC(msg)                                                                                                     \
+	li a0, CE_PANIC;                                                                                                   \
+	la a1, 9f;                                                                                                         \
+	jal cmn_err;                                                                                                       \
 	MSG(msg)
 
-#define SPPANIC(msg)                                                          \
-	/* make sure a good frame */                                              \
-	lw sp, VPDA_LBOOTSTACK(zero);                                             \
-	li a0, CE_PANIC;                                                          \
-	la a1, 9f;                                                                \
-	jal cmn_err;                                                              \
+#define SPPANIC(msg)                                                                                                   \
+	/* make sure a good frame */                                                                                       \
+	lw sp, VPDA_LBOOTSTACK(zero);                                                                                      \
+	li a0, CE_PANIC;                                                                                                   \
+	la a1, 9f;                                                                                                         \
+	jal cmn_err;                                                                                                       \
 	MSG(msg)
 
-#define ASMASSFAIL(msg)                                                       \
-	la a0, 9f;                                                                \
-	la a1, lmsg;                                                              \
-	move a2, zero;                                                            \
-	j assfail;                                                                \
+#define ASMASSFAIL(msg)                                                                                                \
+	la a0, 9f;                                                                                                         \
+	la a1, lmsg;                                                                                                       \
+	move a2, zero;                                                                                                     \
+	j assfail;                                                                                                         \
 	MSG(msg)
 
-#define PRINTF(msg)                                                           \
-	la a0, 9f;                                                                \
-	jal dprintf;                                                              \
+#define PRINTF(msg)                                                                                                    \
+	la a0, 9f;                                                                                                         \
+	jal dprintf;                                                                                                       \
 	MSG(msg)
 
 #endif /* defined(STANDALONE) || defined(LOCORE) */
 
-#define MSG(msg)                                                              \
-	.data;                                                                    \
-	9 :.asciiz msg;                                                           \
+#define MSG(msg)                                                                                                       \
+	.data;                                                                                                             \
+	9 :.asciiz msg;                                                                                                    \
 	.text
 
-#define SYSMAP(mname, vname, page, len)                                       \
-	.globl mname;                                                             \
-	mname:                                                                    \
-	.space len * 4;                                                           \
-	.globl vname;                                                             \
+#define SYSMAP(mname, vname, page, len)                                                                                \
+	.globl mname;                                                                                                      \
+	mname:                                                                                                             \
+	.space len * 4;                                                                                                    \
+	.globl vname;                                                                                                      \
 	vname = ((page)*NBPG)
 
 #if !defined(_MIPSEB) && !defined(_MIPSEL)
@@ -283,31 +283,31 @@
  */
 #if R4000
 #define NOP_0_1 nop
-#define NOP_0_2                                                               \
-	nop;                                                                      \
+#define NOP_0_2                                                                                                        \
+	nop;                                                                                                               \
 	nop
-#define NOP_0_3                                                               \
-	nop;                                                                      \
-	nop;                                                                      \
+#define NOP_0_3                                                                                                        \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
 	nop
-#define NOP_0_4                                                               \
-	nop;                                                                      \
-	nop;                                                                      \
-	nop;                                                                      \
+#define NOP_0_4                                                                                                        \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
 	nop
 #define NOP_1_0
 #define NOP_1_1 nop
-#define NOP_1_2                                                               \
-	nop;                                                                      \
+#define NOP_1_2                                                                                                        \
+	nop;                                                                                                               \
 	nop
-#define NOP_1_3                                                               \
-	nop;                                                                      \
-	nop;                                                                      \
+#define NOP_1_3                                                                                                        \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
 	nop
-#define NOP_1_4                                                               \
-	nop;                                                                      \
-	nop;                                                                      \
-	nop;                                                                      \
+#define NOP_1_4                                                                                                        \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
+	nop;                                                                                                               \
 	nop
 #endif
 
@@ -390,31 +390,31 @@
  *--------------------------------------------------------------------------
  */
 #define NOP_MFC0_HAZ NOP_SSNOP
-#define NOP_MTC0_HAZ                                                          \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define NOP_MTC0_HAZ                                                                                                   \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
 #define NOP_ERET_HAZ
-#define NOP_COM_HAZ                                                           \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define NOP_COM_HAZ                                                                                                    \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
 /*
  * The NOP_MFC1_HAZ and NOP_MTC1_HAZ are here only due to paranoia.
  * I am also defining DMFC1 and DMTC1 which use these macros (in ip21prom.h).
  * All this will exist until there is established confidence in FPU.
  */
-#define NOP_MFC1_HAZ                                                          \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define NOP_MFC1_HAZ                                                                                                   \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
-#define NOP_MTC1_HAZ                                                          \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define NOP_MTC1_HAZ                                                                                                   \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
 #endif
 
@@ -655,28 +655,28 @@
 #define MTC0 dmtc0
 #endif
 #if TFP
-#define DMTC0(r, c)                                                           \
-	dmtc0 r, c;                                                               \
+#define DMTC0(r, c)                                                                                                    \
+	dmtc0 r, c;                                                                                                        \
 	NOP_MTC0_HAZ
-#define DMFC0(c, r)                                                           \
-	dmfc0 c, r;                                                               \
+#define DMFC0(c, r)                                                                                                    \
+	dmfc0 c, r;                                                                                                        \
 	NOP_MFC0_HAZ
 #if _K32U32 || _K32U64
 #This code only works for SABLE
 #We need to avoid a tlbmiss on the PC address(our pseudo - K0 space)
 #because such a fault destroys values loaded into BADVADDR,
 #TLBHI, etc.
-#define SABLE_GOTO_KP64(reg1, reg2)                                           \
-	lui reg2, 0xa000;                                                         \
-	dsll reg2, 32;                                                            \
-	la reg1, 1f;                                                              \
-	dsll reg1, 35;                                                            \
-	dsrl reg1, 35;                                                            \
-	dadd reg1, reg2;                                                          \
-	NOP_SSNOP;                                                                \
-	j reg1;                                                                   \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define SABLE_GOTO_KP64(reg1, reg2)                                                                                    \
+	lui reg2, 0xa000;                                                                                                  \
+	dsll reg2, 32;                                                                                                     \
+	la reg1, 1f;                                                                                                       \
+	dsll reg1, 35;                                                                                                     \
+	dsrl reg1, 35;                                                                                                     \
+	dadd reg1, reg2;                                                                                                   \
+	NOP_SSNOP;                                                                                                         \
+	j reg1;                                                                                                            \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	1 : NOP_SSNOP #Now we're executing in Kernel Physical (KP) space
 #else
 #define SABLE_GOTO_KP64(reg1, reg2)
@@ -706,34 +706,34 @@
  * cycles following the tlb/dct instruction, there can only be noops in the
  * pipeline.
  */
-#define TLB_READ                                                              \
-	.align 4;                                                                 \
-	c0 C0_READ;                                                               \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define TLB_READ                                                                                                       \
+	.align 4;                                                                                                          \
+	c0 C0_READ;                                                                                                        \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
-#define TLB_WRITER                                                            \
-	.align 4;                                                                 \
-	c0 C0_WRITER;                                                             \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define TLB_WRITER                                                                                                     \
+	.align 4;                                                                                                          \
+	c0 C0_WRITER;                                                                                                      \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
-#define TLB_PROBE                                                             \
-	.align 4;                                                                 \
-	c0 C0_PROBE;                                                              \
-	NOP_SSNOP;                                                                \
-	NOP_SSNOP;                                                                \
+#define TLB_PROBE                                                                                                      \
+	.align 4;                                                                                                          \
+	c0 C0_PROBE;                                                                                                       \
+	NOP_SSNOP;                                                                                                         \
+	NOP_SSNOP;                                                                                                         \
 	NOP_SSNOP
 #else /* !TFP_TLBCACHE_WAR */
 #if TFP
-#define TLB_READ                                                              \
-	c0 C0_READ;                                                               \
+#define TLB_READ                                                                                                       \
+	c0 C0_READ;                                                                                                        \
 	NOP_COM_HAZ
-#define TLB_WRITER                                                            \
-	c0 C0_WRITER;                                                             \
+#define TLB_WRITER                                                                                                     \
+	c0 C0_WRITER;                                                                                                      \
 	NOP_COM_HAZ
-#define TLB_PROBE                                                             \
-	c0 C0_PROBE;                                                              \
+#define TLB_PROBE                                                                                                      \
+	c0 C0_PROBE;                                                                                                       \
 	NOP_COM_HAZ
 #else
 #define TLB_READ c0 C0_READ

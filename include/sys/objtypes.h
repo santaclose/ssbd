@@ -63,9 +63,8 @@ struct _GObjProcess
 {
 	GObjProcess* gobjproc_next;
 	GObjProcess* gobjproc_prev;
-	GObjProcess*
-		unk_gobjproc_0x8[2]; // This is more than likely not an array, doing
-							 // this only to get the correct offsets
+	GObjProcess* unk_gobjproc_0x8[2]; // This is more than likely not an array, doing
+									  // this only to get the correct offsets
 	s32 priority;
 	u8 kind;
 	u8 unk_gobjproc_0x15;
@@ -86,7 +85,7 @@ struct GObj
 	u8 group;
 	u8 room;
 	u8 asynchronous_timer; // For subaction events?
-	u8 obj_kind; // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 =
+	u8 obj_kind;		   // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 =
 				 // OMCamera
 	s32 group_order; // Might be room?
 	void* call_unk;
@@ -273,20 +272,19 @@ struct _DObj
 
 struct _SObj // Sprite object
 {
-	SObj* alloc_free;  // Has to do with memory allocation
-	GObj* parent_gobj; // GObj that owns this SObj
-	SObj* next;		   // Next SObj in linked list
-	SObj* prev;		   // Prev SObj in linked list
-	Sprite sprite;	   // Sprite data
-	OMUserData
-		user_data; // Pointer to custom parameters struct attached to SObj
-	Vec2f pos; // Position / offset? Causes a ghosting effect if out of bounds;
+	SObj* alloc_free;			// Has to do with memory allocation
+	GObj* parent_gobj;			// GObj that owns this SObj
+	SObj* next;					// Next SObj in linked list
+	SObj* prev;					// Prev SObj in linked list
+	Sprite sprite;				// Sprite data
+	OMUserData user_data;		// Pointer to custom parameters struct attached to SObj
+	Vec2f pos;					// Position / offset? Causes a ghosting effect if out of bounds;
 	GfxColorAlpha shadow_color; // Color of outline around / under sprite?
-	u8 cms;		  // s-axis mirror, no-mirror, wrap and clamp flags
-	u8 cmt;		  // t-axis mirror, no-mirror, wrap and clamp flags
-	u8 masks;	  // s-axis mask
-	u8 maskt;	  // t-axis mask
-	u16 lrs, lrt; // lower right s and t - used for wrap/mirror boundary
+	u8 cms;						// s-axis mirror, no-mirror, wrap and clamp flags
+	u8 cmt;						// t-axis mirror, no-mirror, wrap and clamp flags
+	u8 masks;					// s-axis mask
+	u8 maskt;					// t-axis mask
+	u16 lrs, lrt;				// lower right s and t - used for wrap/mirror boundary
 };
 
 struct OMMtxCamera

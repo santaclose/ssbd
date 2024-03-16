@@ -43,18 +43,18 @@ extern "C"
 #ifndef _EMULATOR
 #ifdef AUD_PROFILE
 
-#define PROFILE_AUD(num, cnt, max, min)                                       \
-	{                                                                         \
-		u32 currCnt = osGetCount();                                           \
-		currCnt -= lastCnt[cnt_index];                                        \
-		cnt_index--;                                                          \
-		cnt += currCnt;                                                       \
-		num++;                                                                \
-                                                                              \
-		if (currCnt > max)                                                    \
-			max = currCnt;                                                    \
-		if (currCnt < min)                                                    \
-			min = currCnt;                                                    \
+#define PROFILE_AUD(num, cnt, max, min)                                                                                \
+	{                                                                                                                  \
+		u32 currCnt = osGetCount();                                                                                    \
+		currCnt -= lastCnt[cnt_index];                                                                                 \
+		cnt_index--;                                                                                                   \
+		cnt += currCnt;                                                                                                \
+		num++;                                                                                                         \
+                                                                                                                       \
+		if (currCnt > max)                                                                                             \
+			max = currCnt;                                                                                             \
+		if (currCnt < min)                                                                                             \
+			min = currCnt;                                                                                             \
 	}
 
 #endif /* AUD_PROFILE */
@@ -87,35 +87,35 @@ extern "C"
 	 ***********************************************************************/
 
 #ifdef _DEBUG
-#define ALFailIf(condition, error)                                            \
-	if (condition)                                                            \
-	{                                                                         \
-		__osError(error, 0);                                                  \
-		return;                                                               \
+#define ALFailIf(condition, error)                                                                                     \
+	if (condition)                                                                                                     \
+	{                                                                                                                  \
+		__osError(error, 0);                                                                                           \
+		return;                                                                                                        \
 	}
 
 #else
-#define ALFailIf(condition, error)                                            \
-	if (condition)                                                            \
-	{                                                                         \
-		return;                                                               \
+#define ALFailIf(condition, error)                                                                                     \
+	if (condition)                                                                                                     \
+	{                                                                                                                  \
+		return;                                                                                                        \
 	}
 #endif
 
 #ifdef _DEBUG
-#define ALFlagFailIf(condition, flag, error)                                  \
-	if (condition)                                                            \
-	{                                                                         \
-		if (flag)                                                             \
-			__osError(error, 0);                                              \
-		return;                                                               \
+#define ALFlagFailIf(condition, flag, error)                                                                           \
+	if (condition)                                                                                                     \
+	{                                                                                                                  \
+		if (flag)                                                                                                      \
+			__osError(error, 0);                                                                                       \
+		return;                                                                                                        \
 	}
 
 #else
-#define ALFlagFailIf(condition, flag, error)                                  \
-	if (condition)                                                            \
-	{                                                                         \
-		return;                                                               \
+#define ALFlagFailIf(condition, flag, error)                                                                           \
+	if (condition)                                                                                                     \
+	{                                                                                                                  \
+		return;                                                                                                        \
 	}
 #endif
 
@@ -153,8 +153,7 @@ extern "C"
 	s32 alHeapCheck(ALHeap* hp);
 
 #ifdef _DEBUG
-#define alHeapAlloc(hp, elem, size)                                           \
-	alHeapDBAlloc((u8*)__FILE__, __LINE__, (hp), (elem), (size))
+#define alHeapAlloc(hp, elem, size) alHeapDBAlloc((u8*)__FILE__, __LINE__, (hp), (elem), (size))
 #else
 #define alHeapAlloc(hp, elem, size) alHeapDBAlloc(0, 0, (hp), (elem), (size))
 #endif
@@ -399,8 +398,7 @@ extern "C"
 	void alSynFreeVoice(ALSynth* s, ALVoice* voice);
 
 	void alSynStartVoice(ALSynth* s, ALVoice* voice, ALWaveTable* w);
-	void alSynStartVoiceParams(ALSynth* s, ALVoice* voice, ALWaveTable* w,
-							   f32 pitch, s16 vol, ALPan pan, u8 fxmix,
+	void alSynStartVoiceParams(ALSynth* s, ALVoice* voice, ALWaveTable* w, f32 pitch, s16 vol, ALPan pan, u8 fxmix,
 							   ALMicroTime t);
 	void alSynStopVoice(ALSynth* s, ALVoice* voice);
 
@@ -529,8 +527,7 @@ extern "C"
 	{
 		AL_MIDI_VOLUME_CTRL = 0x07,
 		AL_MIDI_PAN_CTRL = 0x0A,
-		AL_MIDI_PRIORITY_CTRL
-		= 0x10, /* use general purpose controller for priority */
+		AL_MIDI_PRIORITY_CTRL = 0x10, /* use general purpose controller for priority */
 		AL_MIDI_FX_CTRL_0 = 0x14,
 		AL_MIDI_FX_CTRL_1 = 0x15,
 		AL_MIDI_FX_CTRL_2 = 0x16,
@@ -785,8 +782,7 @@ extern "C"
 		void* stopOsc;
 	} ALSeqpConfig;
 
-	typedef ALMicroTime (*ALOscInit)(void** oscState, f32* initVal, u8 oscType,
-									 u8 oscRate, u8 oscDepth, u8 oscDelay);
+	typedef ALMicroTime (*ALOscInit)(void** oscState, f32* initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay);
 	typedef ALMicroTime (*ALOscUpdate)(void* oscState, f32* updateVal);
 	typedef void (*ALOscStop)(void* oscState);
 
@@ -885,8 +881,7 @@ extern "C"
 	s32 alSeqpGetTempo(ALSeqPlayer* seqp);
 	s16 alSeqpGetVol(ALSeqPlayer* seqp); /* Master volume control */
 	void alSeqpSetVol(ALSeqPlayer* seqp, s16 vol);
-	void alSeqpLoop(ALSeqPlayer* seqp, ALSeqMarker* start, ALSeqMarker* end,
-					s32 count);
+	void alSeqpLoop(ALSeqPlayer* seqp, ALSeqMarker* start, ALSeqMarker* end, s32 count);
 
 	void alSeqpSetChlProgram(ALSeqPlayer* seqp, u8 chan, u8 prog);
 	s32 alSeqpGetChlProgram(ALSeqPlayer* seqp, u8 chan);
@@ -898,8 +893,7 @@ extern "C"
 	ALPan alSeqpGetChlPan(ALSeqPlayer* seqp, u8 chan);
 	void alSeqpSetChlPriority(ALSeqPlayer* seqp, u8 chan, u8 priority);
 	u8 alSeqpGetChlPriority(ALSeqPlayer* seqp, u8 chan);
-	void alSeqpSendMidi(ALSeqPlayer* seqp, s32 ticks, u8 status, u8 byte1,
-						u8 byte2);
+	void alSeqpSendMidi(ALSeqPlayer* seqp, s32 ticks, u8 status, u8 byte1, u8 byte2);
 
 /* Maintain backwards compatibility with old routine names. */
 #define alSeqpSetProgram alSeqpSetChlProgram
@@ -937,8 +931,7 @@ extern "C"
 	u8 alCSPGetChlVol(ALCSPlayer* seqp, u8 chan);
 	void alCSPSetChlPriority(ALCSPlayer* seqp, u8 chan, u8 priority);
 	u8 alCSPGetChlPriority(ALCSPlayer* seqp, u8 chan);
-	void
-	alCSPSendMidi(ALCSPlayer* seqp, s32 ticks, u8 status, u8 byte1, u8 byte2);
+	void alCSPSendMidi(ALCSPlayer* seqp, s32 ticks, u8 status, u8 byte1, u8 byte2);
 
 /* Maintain backwards compatibility with old routine names. */
 #define alCSPSetProgram alCSPSetChlProgram

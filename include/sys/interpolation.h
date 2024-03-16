@@ -25,10 +25,7 @@ enum HalInterpolationKind
 	HAL_INTERP_CATROM
 };
 
-extern void hal_interpolation_cubic(struct Vec3f* out,
-									struct HalInterpolationParam* p, f32 t);
-extern void
-hal_interpolation_quadratic(struct Vec3f* out, struct HalInterpolationParam* p,
-							f32 t);
+extern void hal_interpolation_cubic(struct Vec3f* out, struct HalInterpolationParam* p, f32 t);
+extern void hal_interpolation_quadratic(struct Vec3f* out, struct HalInterpolationParam* p, f32 t);
 
 #endif /* SYS_INTERPOLATION_H */
