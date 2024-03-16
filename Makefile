@@ -98,7 +98,7 @@ $(BUILD_DIR)/%.o: %.s
 
 $(BUILD_DIR)/%.o: %.c
 	mkdir -p $(@D)
-	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o /tmp/smashbros_clang_check.o $< # d file generation
+	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
 	$(CC) $(CCFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.bin
