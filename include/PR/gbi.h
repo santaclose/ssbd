@@ -3264,10 +3264,10 @@ typedef union
 						   d1, Aa1, Ab1, Ac1, Ad1)                            \
 	{                                                                         \
 		_SHIFTL(G_SETCOMBINE, 24, 8)                                          \
-			| _SHIFTL(GCCc0w0(G_CCMUX_##a0, G_CCMUX_##c0, G_ACMUX_##Aa0,      \
-							  G_ACMUX_##Ac0)                                  \
-						  | GCCc1w0(G_CCMUX_##a1, G_CCMUX_##c1),              \
-					  0, 24),                                                 \
+		| _SHIFTL(                                                            \
+			GCCc0w0(G_CCMUX_##a0, G_CCMUX_##c0, G_ACMUX_##Aa0, G_ACMUX_##Ac0) \
+				| GCCc1w0(G_CCMUX_##a1, G_CCMUX_##c1),                        \
+			0, 24),                                                           \
 			(unsigned int)(GCCc0w1(G_CCMUX_##b0, G_CCMUX_##d0, G_ACMUX_##Ab0, \
 								   G_ACMUX_##Ad0)                             \
 						   | GCCc1w1(G_CCMUX_##b1, G_ACMUX_##Aa1,             \
@@ -4394,7 +4394,7 @@ typedef union
 #define gsDPSetScissor(mode, ulx, uly, lrx, lry)                              \
 	{                                                                         \
 		_SHIFTL(G_SETSCISSOR, 24, 8)                                          \
-			| _SHIFTL((int)((float)(ulx)*4.0F), 12, 12)                       \
+		| _SHIFTL((int)((float)(ulx)*4.0F), 12, 12)                           \
 			| _SHIFTL((int)((float)(uly)*4.0F), 0, 12),                       \
 			_SHIFTL(mode, 24, 2) | _SHIFTL((int)((float)(lrx)*4.0F), 12, 12)  \
 				| _SHIFTL((int)((float)(lry)*4.0F), 0, 12)                    \

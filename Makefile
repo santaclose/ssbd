@@ -82,8 +82,8 @@ init:
 	make all
 
 format:
-	find include -type f | grep "\.h" | xargs clang-format -i
-	find src -type f | grep "\.(c|h)" | xargs clang-format -i
+	find include -type f | rg "\.h" | xargs clang-format -i
+	find src -type f | rg "\.(c|h)" | xargs clang-format -i
 
 # ----- Rules ------
 
@@ -93,7 +93,7 @@ $(ROM): $(ELF)
 $(ELF): $(O_FILES)
 	$(LD) -o $@ $(LDFLAGS)
 
-$(BUILD_DIR)/%.text: $(O_FILES)
+$(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
 	$(OBJCOPY) -O binary --only-section=.text $< $@
 
 $(BUILD_DIR)/%.o: %.s

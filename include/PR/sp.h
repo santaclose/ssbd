@@ -40,7 +40,7 @@ extern "C"
 					   /* Done if width = 0		*/
 
 		s16 s; /* Horizontal offset into bitmap */
-			   /* if (s > width), then load only! */
+		/* if (s > width), then load only! */
 
 		s16 t; /* Vertical offset into base	*/
 

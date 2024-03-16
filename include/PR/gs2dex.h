@@ -208,9 +208,9 @@ extern "C"
 					*/
 		u16 tline; /* The width of the Texture 1-line. Specified by the macro
 					  GS_TB_TLINE()*/
-		u16 sid;   /* STATE ID Multipled by 4.  Either one of  0,4,8 and 12.   */
-		u32 flag;  /* STATE flag  */
-		u32 mask;  /* STATE mask  */
+		u16 sid; /* STATE ID Multipled by 4.  Either one of  0,4,8 and 12.   */
+		u32 flag;	   /* STATE flag  */
+		u32 mask;	   /* STATE mask  */
 	} uObjTxtrBlock_t; /* 24 bytes */
 
 #define GS_TT_TWIDTH(pix, siz) ((GS_PIX2TMEM((pix), (siz)) << 2) - 1)
@@ -225,9 +225,9 @@ extern "C"
 						GS_TT_TWIDTH()  */
 		u16 theight; /* The height of the Texture. Specified by the macro
 						GS_TT_THEIGHT()*/
-		u16 sid;  /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
-		u32 flag; /* STATE flag  */
-		u32 mask; /* STATE mask  */
+		u16 sid; /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
+		u32 flag;	  /* STATE flag  */
+		u32 mask;	  /* STATE mask  */
 	} uObjTxtrTile_t; /* 24 bytes */
 
 #define GS_PAL_HEAD(head) ((head) + 256)
@@ -241,9 +241,9 @@ extern "C"
 					   511. */
 		u16 pnum;	/* The loading pallet number -1.   */
 		u16 zero;	/* Assign 0 all the time.   */
-		u16 sid;  /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
-		u32 flag; /* STATE flag  */
-		u32 mask; /* STATE mask  */
+		u16 sid; /* STATE ID  Multiplied by 4.  Either one of 0,4,8 and 12.  */
+		u32 flag;	  /* STATE flag  */
+		u32 mask;	  /* STATE mask  */
 	} uObjTxtrTLUT_t; /* 24 bytes */
 
 	typedef union

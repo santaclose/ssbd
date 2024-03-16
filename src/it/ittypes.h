@@ -69,7 +69,7 @@
 
 #define ITEM_THROW_NUM_MAX                                                    \
 	4 /* Maximum number of times item can be thrown/dropped before it is      \
-	  guaranteed to despawn; default is 4 and caps at 7 due to being 3 bits                               \
+	  guaranteed to despawn; default is 4 and caps at 7 due to being 3 bits   \
 	  wide */
 
 #define ITEM_THROW_DESPAWN_RANDOM                                             \

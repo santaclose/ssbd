@@ -37,8 +37,9 @@ typedef enum efKind
 						  // ground
 	Ef_Kind_SparkleWhiteMultiExplode, // e.g. Kirby's F-Throw explosion
 	Ef_Kind_SparkleWhiteMulti, // I can't really trigger this but it's just
-							   // SparkleWhiteMultiExplode without the explosion;
-							   // seems to be exclusive to fighter scripts
+							   // SparkleWhiteMultiExplode without the
+							   // explosion; seems to be exclusive to fighter
+							   // scripts
 	Ef_Kind_SparkleWhiteScale, // Most common white sparkle, plays during many
 							   // moves such as Smash attacks
 	Ef_Kind_QuakeM0,		   // Creates an earthquake of magnitude 0
