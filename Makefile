@@ -82,8 +82,8 @@ init:
 	make all
 
 format:
-	find include -type f | xargs clang-format -i
-	find src -type f | xargs clang-format -i
+	find include -type f | grep "\.h" | xargs clang-format -i
+	find src -type f | grep "\.(c|h)" | xargs clang-format -i
 
 # ----- Rules ------
 
