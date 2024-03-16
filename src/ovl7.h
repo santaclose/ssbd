@@ -68,8 +68,8 @@ typedef struct scTrainingMenu
 	u8 item_spawn_wait;                         // Cooldown before new item can be summoned
 	u16 magnify_wait;                           // Cooldown before magnifying glass is shown again after switching back from Close-Up view
 	ub8 is_read_menu_inputs;                    // Menu navigation inputs are ignored if FALSE
+	s32 unknown[2];
 } scTrainingMenu;
-scTrainingMenu gTrainingModeStruct;
 
 // 80190770
 u16 D_ovl80190770[] =
@@ -148,8 +148,11 @@ scRuntimeInfo D_ovl7_8019088C = {
 	0x80190260
 };
 
-gmMatchInfo D_ovl7_80190968;
-scTrainingMenu D_ovl7_80190B58;
+// 80190968
+gmMatchInfo gTrainingModeBattleState;
+
+// 80190B58
+scTrainingMenu gTrainingModeStruct;
 
 // 80190C40
 RldmFileNode gOverlay7StatusBuf[100];

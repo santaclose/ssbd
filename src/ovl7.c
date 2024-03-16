@@ -39,14 +39,14 @@ void scTrainingMode_CheckEnterTrainingMenu()
 			scTrainingMode_SetPauseGObjRenderFlags(0);
 			func_ovl2_801157EC();
 			ftCommon_ResetControllerInputs(gBattleState->player_block[player].fighter_gobj);
-			ftCommon_ResetControllerInputs(gBattleState->player_block[D_ovl7_80190B58.opponent].fighter_gobj);
+			ftCommon_ResetControllerInputs(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 			
 			gBattleState->game_status = 2;
 			
 			func_800269C0(0x116U);
 			func_80020B38(0, 0x3C00);
 			
-			D_ovl7_80190B58.is_read_menu_inputs = 0;
+			gTrainingModeStruct.is_read_menu_inputs = 0;
 		}
 	}
 }
@@ -63,7 +63,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 		scTrainingMode_SetPauseGObjRenderFlags(1);
 		
 		gBattleState->game_status = 1;
-		func_ovl2_800E7F68(gBattleState->player_block[D_ovl7_80190B58.opponent].fighter_gobj);
+		func_ovl2_800E7F68(gBattleState->player_block[gTrainingModeStruct.opponent].fighter_gobj);
 		fighter_gobj = gBattleState->player_block[player].fighter_gobj;
 		func_ovl2_800E7F68(fighter_gobj);
 		
@@ -91,33 +91,33 @@ void scTrainingMode_UpdateMenuInputs()
 		inputs |= 0x800;
 	if (gPlayerControllers[player].stick_range.y < -40)
 		inputs |= 0x400;
-	if (D_ovl7_80190B58.is_read_menu_inputs == FALSE)
+	if (gTrainingModeStruct.is_read_menu_inputs == FALSE)
 	{
 		if (!(inputs))
-			D_ovl7_80190B58.is_read_menu_inputs = TRUE;
+			gTrainingModeStruct.is_read_menu_inputs = TRUE;
 	}
 	else
 	{
-		D_ovl7_80190B58.button_tap = (inputs ^ D_ovl7_80190B58.button_hold) & inputs;
+		gTrainingModeStruct.button_tap = (inputs ^ gTrainingModeStruct.button_hold) & inputs;
 		
-		if (inputs ^ D_ovl7_80190B58.button_hold)
+		if (inputs ^ gTrainingModeStruct.button_hold)
 		{
-			D_ovl7_80190B58.button_queue = D_ovl7_80190B58.button_tap;
-			D_ovl7_80190B58.rapid_scroll_wait = 30;
+			gTrainingModeStruct.button_queue = gTrainingModeStruct.button_tap;
+			gTrainingModeStruct.rapid_scroll_wait = 30;
 		}
 		else
 		{
-			D_ovl7_80190B58.rapid_scroll_wait--;
+			gTrainingModeStruct.rapid_scroll_wait--;
 			
-			if (D_ovl7_80190B58.rapid_scroll_wait > 0)
-				D_ovl7_80190B58.button_queue = 0;
+			if (gTrainingModeStruct.rapid_scroll_wait > 0)
+				gTrainingModeStruct.button_queue = 0;
 			else
 			{
-				D_ovl7_80190B58.button_queue = inputs;
-				D_ovl7_80190B58.rapid_scroll_wait = 5;
+				gTrainingModeStruct.button_queue = inputs;
+				gTrainingModeStruct.rapid_scroll_wait = 5;
 			}
 		}
-		D_ovl7_80190B58.button_hold = inputs;
+		gTrainingModeStruct.button_hold = inputs;
 	}
 }
 
@@ -349,7 +349,7 @@ void scTrainingMode_ProcUpdate()
 		break;
 		
 	case 2:
-		scTrainingMode_ProcUpdate();
+		scTrainingMode_UpdateTrainingMenu();
 		break;
 	}
 	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
@@ -371,8 +371,8 @@ void func_ovl7_8018DA98()
 {
 	s32 opponent;
 	s32 player;
-	D_ovl7_80190968 = gDefaultBattleState;
-	gBattleState = &D_ovl7_80190968;
+	gTrainingModeBattleState = gDefaultBattleState;
+	gBattleState = &gTrainingModeBattleState;
 
 	gBattleState->game_type = 7;
 	gBattleState->gr_kind = gSceneData.gr_kind;

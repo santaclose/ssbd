@@ -706,7 +706,7 @@ rldm_get_file_external_force = 0x800cddd8;
 rldm_load_files_into = 0x800cde04;
 rldm_get_file_with_external_heap = 0x800cdc88;
 func_ovl2_800E7F68 = 0x800E7F68;
-gOMObjCommonLinks = 0x800466FC;
+gOMObjCommonLinks = 0x800466F0;
 func_ovl0_800CCF00 = 0x800CCF00;
 func_ovl0_800CCFDC = 0x800CCFDC;
 ftGlobal_SpawnInfo_MainData = 0x80116DD0;
@@ -719,7 +719,7 @@ rgba32_to_fill_color = 0x80006d70;
 gPlayerControllers = 0x80045228;
 gBattleState = 0x800A50e8;
 omAddGObjCommonProc = 0x80008188;
-gSceneData = 0x800A4AE3;
+gSceneData = 0x800A4AD0;
 gMapLightAngleX = 0x80131390;
 gCameraGObj = 0x80131460;
 gMusicIndexDefault = 0x801313a0;
@@ -729,6 +729,7 @@ omAddGObjRenderProc = 0x80009df4;
 gMusicIndexCurrent = 0x8013139C;
 hal_alloc = 0x80004980;
 
+gGroundInfo = 0x80131300;
 
 
 D_ovl7_80190770 = 0x80190770;

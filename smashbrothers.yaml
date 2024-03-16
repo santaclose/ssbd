@@ -242,6 +242,14 @@ segments:
       # - [0x049A20, asm, halbitmap]
       # - [0x04F860]
 
+  # - name: hal_sys_sintable
+  #   type: bin
+  #   start: 0x3C550
+
+  # - name: hal_sys_sintable_end
+  #   type: bin
+  #   start: 0x3D550
+
   - type: bin
     start: 0x406D0
 
@@ -336,9 +344,9 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x1138E0, asm, ovl7]
-      - [0x116F90, data, ovl7]
-      - [0x117010, rodata, ovl7]
+      - [0x1138E0, c, ovl7]
+      - [0x116F90, .data, ovl7]
+      - [0x117140, .rodata, ovl7]
       - [0x117180]
 
   - name: ovl10
