@@ -402,14 +402,19 @@ typedef struct scUnkDataBounds
 
 typedef struct scRuntimeInfo
 {
-    void *unk_pointer_0x0;
-    void *unk_pointer_0x4;
-    void *unk_pointer_0x8;
-    void *unk_scruntime_0xC;
+    void* unk_pointer_0x0;
+    void* unk_pointer_0x4;
+    void* unk_pointer_0x8;
+    void* unk_scruntime_0xC;
     u32 arena_size;
-    u8 filler_0x14[0x88 - 0x14];
+    u8 filler_0x14[0x38 - 0x14];
+    void* unk_pointer_0x38;
+    void* unk_pointer_0x3C;
+    u8 filler_0x40[0x60 - 0x40];
+    void* unk_scruntime_0x60;
+    u8 filler_0x64[0x88 - 0x64];
     void (*proc_start)(); // 0x88
-
+    
 } scRuntimeInfo;
 
 typedef struct gmStaleInfo
