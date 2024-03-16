@@ -16,24 +16,24 @@
  * Module: tinymon.h: constants for use with the tinymon family of debug servers
  */
 
-#define GIO_BASE_REG_UPPER	0x1800
-#define GIO_BASE_REG_UPPER_K1	0xb800
-#define	GIO_INTR_REG_OFFSET	0x0
-#define	GIO_SYNC_REG_OFFSET	0x400
-#define	CART_INTR_REG_OFFSET	0x800
+#define GIO_BASE_REG_UPPER 0x1800
+#define GIO_BASE_REG_UPPER_K1 0xb800
+#define GIO_INTR_REG_OFFSET 0x0
+#define GIO_SYNC_REG_OFFSET 0x400
+#define CART_INTR_REG_OFFSET 0x800
 
-#define RAMROM_BASE_UPPER	0x1000
-#define RAMROM_BASE_UPPER_K1	0xb000
+#define RAMROM_BASE_UPPER 0x1000
+#define RAMROM_BASE_UPPER_K1 0xb000
 
 /*
  * jal will or in the upper four bits of 0xb0000000 whenever we invoke these
  * routines.
  */
-#define PIFMON_WRITE_ADDR	0xfc00030
+#define PIFMON_WRITE_ADDR 0xfc00030
 
-#define PI_BASE_REG_UPPER	0x0460
-#define PI_BASE_REG_UPPER_K1	0xa460
-#define PI_STATUS_REG_OFFSET	0x10
+#define PI_BASE_REG_UPPER 0x0460
+#define PI_BASE_REG_UPPER_K1 0xa460
+#define PI_STATUS_REG_OFFSET 0x10
 
 /*
  * PI status register has 3 bits active when read from (PI_STATUS_REG - read)
@@ -41,28 +41,28 @@
  *	Bit 1: IO busy  - set when IO is in progress
  *	Bit 2: Error    - set when R4300 issues IO request while DMA is busy
  */
-#define	PI_STATUS_ERROR		0x04
-#define	PI_STATUS_IO_BUSY	0x02
-#define	PI_STATUS_DMA_BUSY	0x01
+#define PI_STATUS_ERROR 0x04
+#define PI_STATUS_IO_BUSY 0x02
+#define PI_STATUS_DMA_BUSY 0x01
 
 /*
- * Host to R4300 protocol definitions. 
+ * Host to R4300 protocol definitions.
  *
- *    Host writes DG_RAMROM_REQUEST, DG_RAMROM_CMD_READY to the cartridge 
+ *    Host writes DG_RAMROM_REQUEST, DG_RAMROM_CMD_READY to the cartridge
  *    interrupt register (which the R4300 can poll),
  *
  *    R4300 writes DG_RAMROM_GRANT, DG_RAMROM_CMD_DONE to the gio sync register
  *    (which the host can poll).
  */
 
-#define DG_CARTREG_MASK		0x3f
+#define DG_CARTREG_MASK 0x3f
 
-#define DG_RAMROM_REQUEST	1
-#define DG_RAMROM_GRANT		2
-#define DG_RAMROM_CMD_READY	3
-#define DG_RAMROM_CMD_DONE	4
+#define DG_RAMROM_REQUEST 1
+#define DG_RAMROM_GRANT 2
+#define DG_RAMROM_CMD_READY 3
+#define DG_RAMROM_CMD_DONE 4
 
-#define DG_TINYMON_READ_OP	1
-#define DG_TINYMON_WRITE_OP	2
-#define DG_TINYMON_dma_rom_read_OP	3
-#define DG_TINYMON_dma_rom_write_OP	4
+#define DG_TINYMON_READ_OP 1
+#define DG_TINYMON_WRITE_OP 2
+#define DG_TINYMON_dma_rom_read_OP 3
+#define DG_TINYMON_dma_rom_write_OP 4

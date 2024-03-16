@@ -13,7 +13,8 @@ typedef s32 intptr_t;
 
 // until there's a better place to put the math types...
 typedef f32 Mtx4f[4][4];
-typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices and I need it to be extra specific
+typedef f32 Mtx44f[4][4]; // Same thing as above but I'm terrible at matrices
+						  // and I need it to be extra specific
 
 typedef struct _Vec3h
 {
@@ -59,11 +60,11 @@ typedef struct _Vec2i
 
 // boolean quick types
 
-typedef  s8  sb8; // Signed  8-bit boolean
+typedef s8 sb8;	  // Signed  8-bit boolean
 typedef s16 sb16; // Signed 16-bit boolean
 typedef s32 sb32; // Signed 32-bit boolean
 
-typedef u8   ub8; // Unsigned  8-bit boolean
+typedef u8 ub8;	  // Unsigned  8-bit boolean
 typedef u16 ub16; // Unsigned 16-bit boolean
 typedef u32 ub32; // Unsigned 32-bit boolean
 

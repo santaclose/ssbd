@@ -10,7 +10,8 @@
 
 // Might be temporary, don't know where else to put these
 
-#define I_CONTROLLER_RANGE_MAX 80									// Maximum control stick range in integer
-#define F_CONTROLLER_RANGE_MAX ((float)I_CONTROLLER_RANGE_MAX)		// Maximum control stick range in float
+#define I_CONTROLLER_RANGE_MAX 80 // Maximum control stick range in integer
+#define F_CONTROLLER_RANGE_MAX                                                \
+	((float)I_CONTROLLER_RANGE_MAX) // Maximum control stick range in float
 
-#endif 
+#endif

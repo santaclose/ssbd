@@ -28,8 +28,6 @@
  *
  **************************************************************************/
 
-
-
 #ifndef __ULTRAPORTALS_H__
 #define __ULTRAPORTALS_H__
 
@@ -38,94 +36,95 @@
 #include "vector.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #ifndef ENABLEPORTALS
 #define ENABLEPORTALS
 #endif
 
-#define UP_MAXPVERTS 	16		/* max number of portal verts	*/
-#define UP_MAXCELLS	50		/* max number of cells		*/
-#define UP_CELLNL	32		/* max length of cell names 	*/
-#define UP_OBNL		32		/* max length of obejct names 	*/
-	
-typedef struct
-{
-	vec3	min, max;		/* min and max pts of the box	*/
-} upBox;
+#define UP_MAXPVERTS 16 /* max number of portal verts	*/
+#define UP_MAXCELLS 50	/* max number of cells		*/
+#define UP_CELLNL 32	/* max length of cell names 	*/
+#define UP_OBNL 32		/* max length of obejct names 	*/
 
-typedef struct _upPortalData * _portalptr;
-typedef struct _upCellData * _cellptr;
-typedef struct _upObjectData * _objectptr;
+	typedef struct
+	{
+		vec3 min, max; /* min and max pts of the box	*/
+	} upBox;
 
-typedef struct _upPortalData
-{
-	int 	numverts;		/* number of verts in the portal*/
-	_cellptr	attached_cell;		/* cell on the 'other side'	*/
-	vec3	verts[UP_MAXPVERTS];	/* the actual vertices		*/
+	typedef struct _upPortalData* _portalptr;
+	typedef struct _upCellData* _cellptr;
+	typedef struct _upObjectData* _objectptr;
+
+	typedef struct _upPortalData
+	{
+		int numverts;			  /* number of verts in the portal*/
+		_cellptr attached_cell;	  /* cell on the 'other side'	*/
+		vec3 verts[UP_MAXPVERTS]; /* the actual vertices		*/
 #ifdef MVTVIEW
-	int         mvt_id;                 /* if has mvt, this is the id   */
+		int mvt_id; /* if has mvt, this is the id   */
 #endif
-} upPortalData;
+	} upPortalData;
 
-typedef struct _upCellData
-{
-	int 	numportals;		/* number of portals		*/
-	int 	numobjects;		/* number of objects		*/
-	int 	rendered;		/* last frame number rendered	*/
-	_portalptr	*portals;		/* array for the actual portals	*/
-	_objectptr  *objects;		/* array for 'detail' objects	*/
-	upBox	bbox;			/* bounding box of the cell	*/
-	Gfx		*dlist;			/* associated display list	*/
-	char	name[UP_CELLNL];	/* name of the cell		*/
-	float 	eyeheight;		/* height to constrain eyept to */
-	int		zone;			/* current zone number		*/
-} upCellData;
+	typedef struct _upCellData
+	{
+		int numportals;		  /* number of portals		*/
+		int numobjects;		  /* number of objects		*/
+		int rendered;		  /* last frame number rendered	*/
+		_portalptr* portals;  /* array for the actual portals	*/
+		_objectptr* objects;  /* array for 'detail' objects	*/
+		upBox bbox;			  /* bounding box of the cell	*/
+		Gfx* dlist;			  /* associated display list	*/
+		char name[UP_CELLNL]; /* name of the cell		*/
+		float eyeheight;	  /* height to constrain eyept to */
+		int zone;			  /* current zone number		*/
+	} upCellData;
 
-typedef struct _upObjectData
-{
-	int 	rendered;		/* last frame number rendered   */
-	upBox	bbox;			/* bounding box for the object 	*/
-	Gfx		*dlist;			/* associated display list	*/
-	char	name[UP_OBNL];		/* name of the object		*/
-} upObjectData;
+	typedef struct _upObjectData
+	{
+		int rendered;		/* last frame number rendered   */
+		upBox bbox;			/* bounding box for the object 	*/
+		Gfx* dlist;			/* associated display list	*/
+		char name[UP_OBNL]; /* name of the object		*/
+	} upObjectData;
 
-typedef struct
-{
-	int 	numcells;		/* how many cells are there?	*/
-	upCellData	cells[UP_MAXCELLS];   	/* the actual cells		*/
-	Gfx		*rootdlist;		/* display list for all cells	*/
-	vec2	portalmin, portalmax;	/* XY bbox used by upCheckCells */
-	float	near, far;		/* near, far clipping planes	*/
-	FMatrix	viewmat;		/* viewing matrix (world->eye)	*/
-	FMatrix	projmat;		/* proj matrix (eye->screen)	*/
-	FMatrix 	compmat;		/* view * proj (world->screen)	*/
-	int		portaldepth;		/* depth of the portal stack	*/
-	int		framecount;		/* current frame number		*/
-} upLocateData;
+	typedef struct
+	{
+		int numcells;				   /* how many cells are there?	*/
+		upCellData cells[UP_MAXCELLS]; /* the actual cells		*/
+		Gfx* rootdlist;				   /* display list for all cells	*/
+		vec2 portalmin, portalmax;	   /* XY bbox used by upCheckCells */
+		float near, far;			   /* near, far clipping planes	*/
+		FMatrix viewmat;			   /* viewing matrix (world->eye)	*/
+		FMatrix projmat;			   /* proj matrix (eye->screen)	*/
+		FMatrix compmat;			   /* view * proj (world->screen)	*/
+		int portaldepth;			   /* depth of the portal stack	*/
+		int framecount;				   /* current frame number		*/
+	} upLocateData;
 
-/*
- * Functions:
- */
-extern void upInit();		/* generated automatically by flt2walk	*/
-extern Gfx *upAddVisibleCells(Gfx * glistp, vec3 eyept);
-extern void upTogglePortalBounds();
-extern void upToggleScissorBox();
+	/*
+	 * Functions:
+	 */
+	extern void upInit(); /* generated automatically by flt2walk	*/
+	extern Gfx* upAddVisibleCells(Gfx* glistp, vec3 eyept);
+	extern void upTogglePortalBounds();
+	extern void upToggleScissorBox();
 
-/*
- * Globals:
- */
-extern upLocateData 	upLocator;	/* also extern by test_portals.h */
+	/*
+	 * Globals:
+	 */
+	extern upLocateData upLocator; /* also extern by test_portals.h */
 
 /*
  * Macros:
  */
-#define UP_HUGEVAL  3.40282347e+37
-#define PT_IN_BOX(p,box) ((p)[0] > (box).min[0] && (p)[0] < (box).max[0] &&\
-			  (p)[1] > (box).min[1] && (p)[1] < (box).max[1] &&\
-			  (p)[2] > (box).min[2] && (p)[2] < (box).max[2])
-
+#define UP_HUGEVAL 3.40282347e+37
+#define PT_IN_BOX(p, box)                                                     \
+	((p)[0] > (box).min[0] && (p)[0] < (box).max[0] && (p)[1] > (box).min[1]  \
+	 && (p)[1] < (box).max[1] && (p)[2] > (box).min[2]                        \
+	 && (p)[2] < (box).max[2])
 
 #ifdef __Cplusplus
 }

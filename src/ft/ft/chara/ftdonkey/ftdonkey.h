@@ -6,11 +6,14 @@
 #include "ftdonkey_functions.h"
 
 #define FTDONKEY_GIANTPUNCH_CHARGE_MAX 10
-#define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL 2 // Uncharged Giant Punch damage = base hitbox damage + charge level * this value
+#define FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL                                 \
+	2 // Uncharged Giant Punch damage = base hitbox damage + charge level *
+	  // this value
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID 6
 #define FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH 0
 #define FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED 2.0F
-#define FTDONKEY_GIANTPUNCH_VEL_MUL 8.0F        // Multiplies horizontal ground velocity only
+#define FTDONKEY_GIANTPUNCH_VEL_MUL                                           \
+	8.0F // Multiplies horizontal ground velocity only
 
 #define FTDONKEY_SPINNINGKONG_GROUND_ACCEL 0.025F
 #define FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX 26.0F
@@ -91,7 +94,7 @@ typedef enum ftDonkeyStatus
 	ftStatus_Donkey_ThrowFF,
 	ftStatus_Donkey_ThrowAirFF,
 
-	ftStatus_Donkey_HeavyThrowStart,	// Start of HeavyThrow action states
+	ftStatus_Donkey_HeavyThrowStart, // Start of HeavyThrow action states
 	ftStatus_Donkey_HeavyThrowF = ftStatus_Donkey_HeavyThrowStart,
 	ftStatus_Donkey_HeavyThrowB,
 	ftStatus_Donkey_HeavyThrowF4,

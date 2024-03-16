@@ -81,6 +81,10 @@ init:
 	make extract
 	make all
 
+format:
+	find include -type f | xargs clang-format -i
+	find src -type f | xargs clang-format -i
+
 # ----- Rules ------
 
 $(ROM): $(ELF)

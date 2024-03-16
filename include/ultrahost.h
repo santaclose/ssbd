@@ -23,33 +23,34 @@
 
 #ifdef PTN64 /* { */
 
-#define	execl		execl_pt
+#define execl execl_pt
 
-#define uhOpenGame	uhOpenGame_pt
-#define uhCloseGame	uhCloseGame_pt
+#define uhOpenGame uhOpenGame_pt
+#define uhCloseGame uhCloseGame_pt
 
-#define uhReadGame	uhReadGame_pt
-#define uhWriteGame	uhWriteGame_pt
-#define uhReadRamrom	uhReadRamrom_pt
-#define uhWriteRamrom	uhWriteRamrom_pt
-#define uhPartnerCmd	uhPartnerCmd_pt
-#define uhGload		uhGload_pt
+#define uhReadGame uhReadGame_pt
+#define uhWriteGame uhWriteGame_pt
+#define uhReadRamrom uhReadRamrom_pt
+#define uhWriteRamrom uhWriteRamrom_pt
+#define uhPartnerCmd uhPartnerCmd_pt
+#define uhGload uhGload_pt
 
-int uhPartnerCmd(int,char *);
-int uhGload(int,char *);
+int uhPartnerCmd(int, char*);
+int uhGload(int, char*);
 
 #endif /* } */
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-int	uhOpenGame(const char *);
-int	uhCloseGame(int);
+	int uhOpenGame(const char*);
+	int uhCloseGame(int);
 
-int	uhReadGame(int, void *, int);
-int	uhWriteGame(int, void *, int);
-int	uhWriteRamrom(int, void *, void*, int);
-int	uhReadRamrom(int, void *, void*, int);
+	int uhReadGame(int, void*, int);
+	int uhWriteGame(int, void*, int);
+	int uhWriteRamrom(int, void*, void*, int);
+	int uhReadRamrom(int, void*, void*, int);
 
 #ifdef __cplusplus
 }

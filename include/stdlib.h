@@ -1,8 +1,8 @@
 #ifndef __STDLIB_H__
 #define __STDLIB_H__
 
-#ifndef	NULL
-#define NULL	0
+#ifndef NULL
+#define NULL 0
 #endif
 typedef struct lldiv_t
 {

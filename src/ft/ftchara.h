@@ -1,8 +1,10 @@
 #ifndef _FTCHARA_H_
 #define _FTCHARA_H_
 
-// This file's sole purpose is to collect every chara header so it doesn't take up a ludicrous amount of space in the main fighter header; also hope it is easier to understand this way
-// Add any newly created character's main header file here!
+// This file's sole purpose is to collect every chara header so it doesn't take
+// up a ludicrous amount of space in the main fighter header; also hope it is
+// easier to understand this way Add any newly created character's main header
+// file here!
 
 #include <ft/chara/ftmario/ftmario.h>
 #include <ft/chara/ftfox/ftfox.h>
