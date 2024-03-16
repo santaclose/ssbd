@@ -3038,134 +3038,136 @@ s32 mnCheckBackButtonPress(GObj* cursor_gobj)
 }
 
 // // 0x801382E0
-// void mnHandleButtonPresses(GObj* cursor_gobj)
+// void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 // {
-//     gmController* controller;
-//     mnCharPanelBattle* panel_info;
-//     s32 foo, bar, baz;
-//     s32 port_id = cursor_gobj->user_data.s;
+// 	gmController* controller;
+// 	mnCharPanelBattle* panel_info;
+// 	s32 foo, bar, baz;
+// 	s32 port_id = cursor_gobj->user_data.s;
 
-//     mnBattleAutoPositionCursor(cursor_gobj, port_id);
-//     controller = &gPlayerControllers[port_id];
+// 	mnBattleAutoPositionCursor(cursor_gobj, port_id);
+// 	controller = &gPlayerControllers[port_id];
 
-//     if ((controller->button_new & A_BUTTON)
-//         && (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, port_id)
-//         == TRUE)
-//         && (mnBattleSelectChar(cursor_gobj, port_id,
-//         gMnBattlePanels[port_id].held_port_id, 4) == TRUE)
-//         && (mnBattleCheckAndHandleTokenPickup(cursor_gobj, port_id) == TRUE))
-//     {
-//         if (mnCheckPickerRightArrowPress(cursor_gobj) != FALSE)
-//         {
-//             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
-//             {
-//                 gMnBattleTimerValue =
-//                 mnGetNextTimerValue(gMnBattleTimerValue);
-//                 mnDrawTimerPicker(gMnBattleTimerValue);
-//             }
-//             else
-//             {
-//                 if (gMnBattleStockValue + 1 >= 0x63)
-//                 {
-//                     gMnBattleStockValue = 0;
-//                 }
-//                 else
-//                 {
-//                     gMnBattleStockValue = gMnBattleStockValue + 1;
-//                 }
-//                 mnDrawStockPicker(gMnBattleStockValue);
-//             }
-//             func_800269C0(0xA4U);
-//         }
-//         else if (mnCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
-//         {
-//             if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
-//             {
-//                 gMnBattleTimerValue =
-//                 mnGetPrevTimerValue(gMnBattleTimerValue);
-//                 mnDrawTimerPicker(gMnBattleTimerValue);
-//             }
-//             else
-//             {
-//                 if (gMnBattleStockValue - 1 < 0)
-//                 {
-//                     gMnBattleStockValue = 0x62;
-//                 }
-//                 else
-//                 {
-//                     gMnBattleStockValue = gMnBattleStockValue - 1;
-//                 }
-//                 mnDrawStockPicker(gMnBattleStockValue);
-//             }
-//             func_800269C0(0xA4U);
-//         }
-//         else if (mnCheckFFATeamBattleTogglePress(cursor_gobj) != FALSE)
-//         {
-//             mnHandleFFATeamBattleTogglePress();
-//         }
-//         else if (mnCheckBackButtonPress(cursor_gobj) != FALSE)
-//         {
-//             mnGoBackToVSMenu();
-//             func_800269C0(0xA4U);
-//         }
-//         else if (mnCheckAnyTeamButtonPress(cursor_gobj, port_id) == TRUE)
-//         {
-//             mnCheckAnyCPUHandicapArrowPress(cursor_gobj, port_id);
-//         }
-//     }
+// 	if ((controller->button_new & A_BUTTON)
+// 		&& (mnCheckAndHandleAnyPlayerTypeButtonPress(cursor_gobj, port_id)
+// 			== TRUE)
+// 		&& (mnBattleSelectChar(cursor_gobj, port_id,
+// 							   gMnBattlePanels[port_id].held_port_id, 4)
+// 			== TRUE)
+// 		&& (mnBattleCheckAndHandleTokenPickup(cursor_gobj, port_id) == TRUE))
+// 	{
+// 		if (mnCheckPickerRightArrowPress(cursor_gobj) != FALSE)
+// 		{
+// 			if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
+// 			{
+// 				gMnBattleTimerValue = mnGetNextTimerValue(gMnBattleTimerValue);
+// 				mnDrawTimerPicker(gMnBattleTimerValue);
+// 			}
+// 			else
+// 			{
+// 				if (gMnBattleStockValue + 1 >= 0x63)
+// 				{
+// 					gMnBattleStockValue = 0;
+// 				}
+// 				else
+// 				{
+// 					gMnBattleStockValue = gMnBattleStockValue + 1;
+// 				}
+// 				mnDrawStockPicker(gMnBattleStockValue);
+// 			}
+// 			func_800269C0(0xA4U);
+// 		}
+// 		else if (mnCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
+// 		{
+// 			if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
+// 			{
+// 				gMnBattleTimerValue = mnGetPrevTimerValue(gMnBattleTimerValue);
+// 				mnDrawTimerPicker(gMnBattleTimerValue);
+// 			}
+// 			else
+// 			{
+// 				if (gMnBattleStockValue - 1 < 0)
+// 				{
+// 					gMnBattleStockValue = 0x62;
+// 				}
+// 				else
+// 				{
+// 					gMnBattleStockValue = gMnBattleStockValue - 1;
+// 				}
+// 				mnDrawStockPicker(gMnBattleStockValue);
+// 			}
+// 			func_800269C0(0xA4U);
+// 		}
+// 		else if (mnCheckFFATeamBattleTogglePress(cursor_gobj) != FALSE)
+// 		{
+// 			mnHandleFFATeamBattleTogglePress();
+// 		}
+// 		else if (mnCheckBackButtonPress(cursor_gobj) != FALSE)
+// 		{
+// 			mnGoBackToVSMenu();
+// 			func_800269C0(0xA4U);
+// 		}
+// 		else if (mnCheckAnyTeamButtonPress(cursor_gobj, port_id) == TRUE)
+// 		{
+// 			mnCheckAnyCPUHandicapArrowPress(cursor_gobj, port_id);
+// 		}
+// 	}
 
-//     panel_info = &gMnBattlePanels[port_id];
+// 	panel_info = &gMnBattlePanels[port_id];
 
-//     if (gMnBattleIsTeamBattle == FALSE)
-//     {
-//         if ((controller->button_new & U_CBUTTONS)
-//             && (mnBattleSelectChar(cursor_gobj, port_id,
-//             panel_info->held_port_id, 0) == TRUE)
-//             && (panel_info->unk_0x88 != FALSE))
-//         {
-//             mnTryCostumeChange(port_id, 0);
-//         }
-//         if ((controller->button_new & R_CBUTTONS)
-//             && (mnBattleSelectChar(cursor_gobj, port_id,
-//             panel_info->held_port_id, 1) == TRUE)
-//             && (panel_info->unk_0x88 != FALSE))
-//         {
-//             mnTryCostumeChange(port_id, 1);
-//         }
-//         if ((controller->button_new & D_CBUTTONS)
-//             && (mnBattleSelectChar(cursor_gobj, port_id,
-//             panel_info->held_port_id, 2) == TRUE)
-//             && (panel_info->unk_0x88 != FALSE))
-//         {
-//             mnTryCostumeChange(port_id, 2);
-//         }
-//         if ((controller->button_new & L_CBUTTONS)
-//             && (mnBattleSelectChar(cursor_gobj, port_id,
-//             panel_info->held_port_id, 3) == TRUE)
-//             && (panel_info->unk_0x88 != FALSE))
-//         {
-//             mnTryCostumeChange(port_id, 3);
-//         }
-//     }
-//     else if (controller->button_new & (U_CBUTTONS | R_CBUTTONS | D_CBUTTONS
-//     | L_CBUTTONS))
-//     {
-//         mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id,
-//         4);
-//     }
-//     if ((controller->button_new & B_BUTTON) &&
-//     (mnIsHumanWithCharacterSelected(port_id) != FALSE))
-//     {
-//         mnRecallToken(port_id);
-//     }
-//     if (panel_info->is_recalling == TRUE)
-//     {
-//         mnExitIfBButtonHeld(port_id);
-//     }
-//     if (panel_info->is_recalling == TRUE)
-//     {
-//         mnBattleSyncCursorDisplay(cursor_gobj, port_id);
-//     }
+// 	if (gMnBattleIsTeamBattle == FALSE)
+// 	{
+// 		if ((controller->button_new & U_CBUTTONS)
+// 			&& (mnBattleSelectChar(cursor_gobj, port_id,
+// 								   panel_info->held_port_id, 0)
+// 				== TRUE)
+// 			&& (panel_info->unk_0x88 != FALSE))
+// 		{
+// 			mnTryCostumeChange(port_id, 0);
+// 		}
+// 		if ((controller->button_new & R_CBUTTONS)
+// 			&& (mnBattleSelectChar(cursor_gobj, port_id,
+// 								   panel_info->held_port_id, 1)
+// 				== TRUE)
+// 			&& (panel_info->unk_0x88 != FALSE))
+// 		{
+// 			mnTryCostumeChange(port_id, 1);
+// 		}
+// 		if ((controller->button_new & D_CBUTTONS)
+// 			&& (mnBattleSelectChar(cursor_gobj, port_id,
+// 								   panel_info->held_port_id, 2)
+// 				== TRUE)
+// 			&& (panel_info->unk_0x88 != FALSE))
+// 		{
+// 			mnTryCostumeChange(port_id, 2);
+// 		}
+// 		if ((controller->button_new & L_CBUTTONS)
+// 			&& (mnBattleSelectChar(cursor_gobj, port_id,
+// 								   panel_info->held_port_id, 3)
+// 				== TRUE)
+// 			&& (panel_info->unk_0x88 != FALSE))
+// 		{
+// 			mnTryCostumeChange(port_id, 3);
+// 		}
+// 	}
+// 	else if (controller->button_new
+// 			 & (U_CBUTTONS | R_CBUTTONS | D_CBUTTONS | L_CBUTTONS))
+// 	{
+// 		mnBattleSelectChar(cursor_gobj, port_id, panel_info->held_port_id, 4);
+// 	}
+// 	if ((controller->button_new & B_BUTTON)
+// 		&& (mnIsHumanWithCharacterSelected(port_id) != FALSE))
+// 	{
+// 		mnRecallToken(port_id);
+// 	}
+// 	if (panel_info->is_recalling == TRUE)
+// 	{
+// 		mnExitIfBButtonHeld(port_id);
+// 	}
+// 	if (panel_info->is_recalling == TRUE)
+// 	{
+// 		mnBattleSyncCursorDisplay(cursor_gobj, port_id);
+// 	}
 // }
 
 // // 0x801386E4

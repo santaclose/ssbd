@@ -144,7 +144,9 @@ segments:
     follows_vram: entry
     bss_size: 0x61EA0
     subsegments:
-      - [0x1060, asm, main/main]
+      - [0x1060, asm, main]
+      - [0x1510, asm, nops_1510]
+      - [0x1520, asm, unk_1520]
       - [0x024480, asm, libultra/sprite]
       - [0x026B10, asm, libultra/io/sptaskyield]
       - [0x026BC0, asm, libultra/audio]
