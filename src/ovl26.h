@@ -182,7 +182,7 @@ intptr_t dMnBattleTypeOffsets[4] = { // 8013B6A4[4];
 	0x00000878, 0x00000A58, 0x00000C38, 0x00000E18
 };
 f32 dMnBattleTypeOffsetsX[4] = { // 8013B6B4[4];
-	0x41000000, 0x40A00000, 0x40A00000, 0x40A00000
+	8, 5, 5, 5
 };
 intptr_t dMnBattleTypeOffsetsDuplicate[4] = { // 8013B6C4[4];
 	0x00000878, 0x00000A58, 0x00000C38, 0x00000E18
@@ -257,9 +257,9 @@ s32 dMnBattleTokenPlaceHeldDisplayOrders[4] = { 3, 2, 1, 0 };	// 8013B850[4]; //
 s32 dMnBattleTokenPlaceUnheldDisplayOrders[4] = { 6, 4, 2, 0 }; // 8013B860[4]; // display orders for cursors not
 																// holding tokens on token placement
 Vec2i dMnBattleCursorTypePositions2[3] = { // 8013B870[3]; // x,y offset pairs for cursor type texture
-	{ 7, 16 },
+	{ 7, 15 },
 	{ 9, 10 },
-	{ 9, 16 }
+	{ 9, 15 }
 };
 
 intptr_t dMnBattleTokenOffsets[5] = { // 8013B888[5]; // token offsets
@@ -276,20 +276,19 @@ Vec2f dMnBattleCursorStartingPositions[4] = { // 8013B8AC[4]; // starting coords
 	{ 244, 170 }
 };
 
-s32 dMnBattleCursorStartingDisplayOrders[4]
-	= { 6, 4, 2, 0 }; // 8013B8CC[4]; // display orders for cursors on initial load
-intptr_t dMnBattleTokenOffsetsNoCPU[4] = {
-	// 8013B8DC; // token offsets not including cpu
+s32 dMnBattleCursorStartingDisplayOrders[4] // 8013B8CC[4]; // display orders for cursors on initial load
+	= { 6, 4, 2, 0 }; 
+intptr_t dMnBattleTokenOffsetsNoCPU[4] = { // 8013B8DC; // token offsets not including cpu
 	0x00009048,
 	0x00009B28,
 	0x0000A608,
 	0x0000B0E8,
 };
 s32 dMnBattleTokenStartingDisplayOrders[4] = { 3, 2, 1, 0 }; // 8013B8EC; // display orders for tokens on initial load
-s32 dMnBattleTokenHoldingDisplayOrders[4]
-	= { 6, 4, 2, 0 }; // 8013B8FC; // display orders for tokens while being held initially?
-f32 dMnBattleWhiteCircleSizes[12] = {
-	// 8013B90C[12]; // white circle size
+s32 dMnBattleTokenHoldingDisplayOrders[4] // 8013B8FC; // display orders for tokens while being held initially?
+	= { 6, 4, 2, 0 }; 
+f32 dMnBattleWhiteCircleSizes[12] = { // 8013B90C[12]; // white circle size
+	
 	1.5f, 1.5f, 2.0f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f,
 };
 s32 dMnBattleTimerValues[8] = { // 8013B93C[8];
@@ -320,15 +319,15 @@ scRuntimeInfo D_ovl26_8013B99C
 		  00, 0x88, 00, 00,	  00, 0x00, 00, 00,	  00, 0x6C, 00, 00,	  00, 0x00, 00, 00,	  00, 0x90 },
 		0x8013B0C8 };
 
+u8 unused_ovl26_bss_0[8];
 mnCharPanelBattle gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 8013BA88[GMMATCH_PLAYERS_MAX];
 GObj* gMnBattlePickerGObj;								// 8013BD78; // stock/time picker
 s32 gMnBattleTimerValue;								// 8013BD7C;
 s32 gMnBattleStockValue;								// 8013BD80;
+u8 unused_ovl26_bss_1[8];
 s32 gMnBattleControllerOrderArray[4];					// 8013BD90; // -1 if no controller
 														// plugged in; due to a bug, random
 														// positive value if plugged in
-u8 unused_8013BDA0[8];
-
 s32 gMnBattleStartDelayTimer;		  // 8013BDA0; // when start is pressed
 									  // when ready to fight, timer counts down
 									  // to delay leaving CSS
@@ -341,26 +340,27 @@ sb32 gMnBattleIsTokenShineIncreasing; // 8013BDB8;
 u16 gMnBattleCharacterUnlockedMask;	  // 8013BDBC; // flag indicating
 									  // which bonus chars are available
 
+u8 unused_ovl26_bss_2[4];
 s32 gMnBattlePressStartFlashTimer; // 8013BDC4; looping timer that
 								   // helps determine blink rate of
 								   // Press Start (and Ready to Fight?)
-s32 D_ovl26_8013BDC8;
+s32 D_ovl26_8013BDC8;			// 8013BDC8
 s32 gMnBattleFramesElapsed;	   // 8013BDCC; // frames elapsed on CSS
-s32 gMnBattleMaxFramesElapsed; // 8013BDD0; // frames to wait until
-							   // exiting the CSS
-RldmFileNode D_ovl26_8013C0A8;
+s32 gMnBattleMaxFramesElapsed; // 8013BDD0; // frames to wait until exiting the CSS
+
+u8 unused_ovl26_bss_3[0x2d0];
+RldmFileNode D_ovl26_8013C0A8; // 8013C0A8
+u8 unused_ovl26_bss_4[0x30];
 u32 D_ovl26_8013C0E0[240];
 
-u8 unused_8013C4A0[0x2f0];
-
 s32 gMnBattleFilesArray[7]; // 8013C4A0[7]
-s32 gFile011;				// 8013C4A0; // file 0x011 pointer
-s32 gFile000;				// 8013C4A4; // file 0x000 pointer
-s32 gFile014;				// 8013C4A8; // file 0x014 pointer
-s32 gFile015;				// 8013C4AC; // file 0x015 pointer
-s32 gFile012;				// 8013C4B0; // file 0x012 pointer
-s32 gFile013;				// 8013C4B4; // file 0x013 pointer
-s32 gFile016;				// 8013C4B8; // file 0x016 pointer
+#define gFile011 gMnBattleFilesArray[0]				// 8013C4A0; // file 0x011 pointer
+#define gFile000 gMnBattleFilesArray[1]				// 8013C4A4; // file 0x000 pointer
+#define gFile014 gMnBattleFilesArray[2]				// 8013C4A8; // file 0x014 pointer
+#define gFile015 gMnBattleFilesArray[3]				// 8013C4AC; // file 0x015 pointer
+#define gFile012 gMnBattleFilesArray[4]				// 8013C4B0; // file 0x012 pointer
+#define gFile013 gMnBattleFilesArray[5]				// 8013C4B4; // file 0x013 pointer
+#define gFile016 gMnBattleFilesArray[6]				// 8013C4B8; // file 0x016 pointer
 
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon

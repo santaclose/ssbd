@@ -509,9 +509,9 @@ segments:
     exclusive_ram_id: overlay_80131B00
     subsegments:
       - [0x12fd80, pad, ovl26_nops]
-      - [0x12FDA0, asm, ovl26]
-      - [0x139620, data, ovl26]
-      - [0x139CB0, rodata, ovl26]
+      - [0x12FDA0, c, ovl26]
+      - [0x139620, .data, ovl26]
+      - [0x139CB0, .rodata, ovl26]
       - [0x139D00]
   - name: ovl27
     type: code

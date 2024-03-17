@@ -1066,20 +1066,17 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 			if (panel_info->selected_animation_started == FALSE)
 			{
 				func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
-
 				panel_info->selected_animation_started = TRUE;
 			}
 		}
 		else
 		{
-			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(20.0F);
+			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += 0.3490658402F; //F_DEG_TO_RAD(20.0F);
 
 			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
-
 				func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
-
 				panel_info->selected_animation_started = TRUE;
 			}
 		}
@@ -1087,11 +1084,8 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 	else
 	{
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(2.0F);
-
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
-		{
 			DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= F_DEG_TO_RAD(360.0F);
-		}
 	}
 }
 
@@ -1148,7 +1142,7 @@ void mnBattleCreateFighterViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->view.tilt.x = 0.0F;
 	cam->view.tilt.y = 0.0F;
-	cam->view.tilt.z = -5000.0F;
+	cam->view.tilt.z = 5000.0F;
 	cam->flags = 4;
 	cam->view.pan.x = 0.0F;
 	cam->view.pan.y = 0.0F;
