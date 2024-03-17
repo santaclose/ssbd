@@ -277,8 +277,9 @@ Vec2f dMnBattleCursorStartingPositions[4] = { // 8013B8AC[4]; // starting coords
 };
 
 s32 dMnBattleCursorStartingDisplayOrders[4] // 8013B8CC[4]; // display orders for cursors on initial load
-	= { 6, 4, 2, 0 }; 
-intptr_t dMnBattleTokenOffsetsNoCPU[4] = { // 8013B8DC; // token offsets not including cpu
+	= { 6, 4, 2, 0 };
+intptr_t dMnBattleTokenOffsetsNoCPU[4] = {
+	// 8013B8DC; // token offsets not including cpu
 	0x00009048,
 	0x00009B28,
 	0x0000A608,
@@ -286,9 +287,10 @@ intptr_t dMnBattleTokenOffsetsNoCPU[4] = { // 8013B8DC; // token offsets not inc
 };
 s32 dMnBattleTokenStartingDisplayOrders[4] = { 3, 2, 1, 0 }; // 8013B8EC; // display orders for tokens on initial load
 s32 dMnBattleTokenHoldingDisplayOrders[4] // 8013B8FC; // display orders for tokens while being held initially?
-	= { 6, 4, 2, 0 }; 
-f32 dMnBattleWhiteCircleSizes[12] = { // 8013B90C[12]; // white circle size
-	
+	= { 6, 4, 2, 0 };
+f32 dMnBattleWhiteCircleSizes[12] = {
+	// 8013B90C[12]; // white circle size
+
 	1.5f, 1.5f, 2.0f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f,
 };
 s32 dMnBattleTimerValues[8] = { // 8013B93C[8];
@@ -325,9 +327,9 @@ GObj* gMnBattlePickerGObj;								// 8013BD78; // stock/time picker
 s32 gMnBattleTimerValue;								// 8013BD7C;
 s32 gMnBattleStockValue;								// 8013BD80;
 u8 unused_ovl26_bss_1[8];
-s32 gMnBattleControllerOrderArray[4];					// 8013BD90; // -1 if no controller
-														// plugged in; due to a bug, random
-														// positive value if plugged in
+s32 gMnBattleControllerOrderArray[4]; // 8013BD90; // -1 if no controller
+									  // plugged in; due to a bug, random
+									  // positive value if plugged in
 s32 gMnBattleStartDelayTimer;		  // 8013BDA0; // when start is pressed
 									  // when ready to fight, timer counts down
 									  // to delay leaving CSS
@@ -344,23 +346,23 @@ u8 unused_ovl26_bss_2[4];
 s32 gMnBattlePressStartFlashTimer; // 8013BDC4; looping timer that
 								   // helps determine blink rate of
 								   // Press Start (and Ready to Fight?)
-s32 D_ovl26_8013BDC8;			// 8013BDC8
-s32 gMnBattleFramesElapsed;	   // 8013BDCC; // frames elapsed on CSS
-s32 gMnBattleMaxFramesElapsed; // 8013BDD0; // frames to wait until exiting the CSS
+s32 D_ovl26_8013BDC8;			   // 8013BDC8
+s32 gMnBattleFramesElapsed;		   // 8013BDCC; // frames elapsed on CSS
+s32 gMnBattleMaxFramesElapsed;	   // 8013BDD0; // frames to wait until exiting the CSS
 
 u8 unused_ovl26_bss_3[0x2d0];
 RldmFileNode D_ovl26_8013C0A8; // 8013C0A8
 u8 unused_ovl26_bss_4[0x30];
 u32 D_ovl26_8013C0E0[240];
 
-s32 gMnBattleFilesArray[7]; // 8013C4A0[7]
-#define gFile011 gMnBattleFilesArray[0]				// 8013C4A0; // file 0x011 pointer
-#define gFile000 gMnBattleFilesArray[1]				// 8013C4A4; // file 0x000 pointer
-#define gFile014 gMnBattleFilesArray[2]				// 8013C4A8; // file 0x014 pointer
-#define gFile015 gMnBattleFilesArray[3]				// 8013C4AC; // file 0x015 pointer
-#define gFile012 gMnBattleFilesArray[4]				// 8013C4B0; // file 0x012 pointer
-#define gFile013 gMnBattleFilesArray[5]				// 8013C4B4; // file 0x013 pointer
-#define gFile016 gMnBattleFilesArray[6]				// 8013C4B8; // file 0x016 pointer
+s32 gMnBattleFilesArray[7];				// 8013C4A0[7]
+#define gFile011 gMnBattleFilesArray[0] // 8013C4A0; // file 0x011 pointer
+#define gFile000 gMnBattleFilesArray[1] // 8013C4A4; // file 0x000 pointer
+#define gFile014 gMnBattleFilesArray[2] // 8013C4A8; // file 0x014 pointer
+#define gFile015 gMnBattleFilesArray[3] // 8013C4AC; // file 0x015 pointer
+#define gFile012 gMnBattleFilesArray[4] // 8013C4B0; // file 0x012 pointer
+#define gFile013 gMnBattleFilesArray[5] // 8013C4B4; // file 0x013 pointer
+#define gFile016 gMnBattleFilesArray[6] // 8013C4B8; // file 0x016 pointer
 
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
