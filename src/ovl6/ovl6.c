@@ -535,7 +535,7 @@ void func_ovl6_8018E344()
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
 		{
 			sobj = gcAppendSObjWithSprite(interface_gobj,
-									  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
+										  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00000138));
 			sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
 			sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
 			gBonusTimerDigits[i] = 0;
@@ -543,11 +543,13 @@ void func_ovl6_8018E344()
 		sobj = SObjGetStruct(interface_gobj);
 		sobj->sprite.attr |= SP_HIDDEN;
 
-		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
+		sobj = gcAppendSObjWithSprite(interface_gobj,
+									  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001140));
 		sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
-		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
+		sobj = gcAppendSObjWithSprite(interface_gobj,
+									  (void*)((uintptr_t)gCommonSpriteFiles[3] + (intptr_t)&D_NF_00001238));
 		sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
