@@ -22,14 +22,10 @@ s32 mnBattleGetShade(s32 port_id)
 	s32 i;
 
 	if (gMnBattleIsTeamBattle == FALSE)
-	{
 		return 0;
-	}
 
 	for (i = 0; i < ARRAY_COUNT(used_shade); i++)
-	{
 		used_shade[i] = 0;
-	}
 
 	if (gMnBattleIsTeamBattle == TRUE)
 	{
@@ -47,9 +43,7 @@ s32 mnBattleGetShade(s32 port_id)
 		for (i = 0; i < ARRAY_COUNT(used_shade); i++)
 		{
 			if (used_shade[i] == FALSE)
-			{
 				return i;
-			}
 		}
 	}
 	// WARNING: Undefined behavior. If gMnBattleIsTeamBattle is FALSE, returned
@@ -91,9 +85,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 	mnBattleAnnounceFighter(port_id, held_port_id);
 
 	if ((mnIsHandicap() != FALSE) || (gMnBattlePanels[held_port_id].player_type == 1))
-	{
 		mnReplaceFighterNameWithHandicapCPULevel(held_port_id);
-	}
 
 	mnBattleCreateWhiteSquare(held_port_id);
 }
@@ -104,9 +96,7 @@ f32 mnBattleGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 	f32 portrait_x_position[12] = dMnBattlePortraitPositionsX, portrait_velocity[12] = dMnBattlePortraitVelocities;
 
 	if (current_x_position == portrait_x_position[portrait_id])
-	{
 		return -1.0F;
-	}
 	else if (portrait_x_position[portrait_id] < current_x_position)
 	{
 		return (current_x_position + portrait_velocity[portrait_id]) <= portrait_x_position[portrait_id]
@@ -137,9 +127,7 @@ void mnBattleSetPortraitX(GObj* portrait_gobj)
 		next_sobj = main_sobj->next;
 
 		if (next_sobj != NULL)
-		{
 			next_sobj->pos.x = SObjGetStruct(portrait_gobj)->pos.x;
-		}
 	}
 }
 
@@ -176,11 +164,8 @@ sb32 mnBattleGetIsLocked(s32 char_id)
 	switch (char_id)
 	{
 	case Ft_Kind_Ness: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Ness)) ? FALSE : TRUE;
-
 	case Ft_Kind_Purin: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Purin)) ? FALSE : TRUE;
-
 	case Ft_Kind_Captain: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Captain)) ? FALSE : TRUE;
-
 	case Ft_Kind_Luigi: return (gMnBattleCharacterUnlockedMask & (1 << Ft_Kind_Luigi)) ? FALSE : TRUE;
 	}
 	return FALSE;
@@ -3976,7 +3961,7 @@ void mnBattleInitCSS()
 	rldmSetup.forceBufSize = 7;
 	rldm_initialize(&rldmSetup);
 	rldm_load_files_into(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
-					   hal_alloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
+						 hal_alloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 

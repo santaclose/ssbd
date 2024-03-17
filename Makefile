@@ -74,7 +74,7 @@ clean:
 	rm -r -f $(BUILD_DIR) $(ROM) $(ELF)
 
 extract:
-	rm -r -f asm assets
+	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 
 init:
