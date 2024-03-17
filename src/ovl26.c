@@ -1071,7 +1071,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 		}
 		else
 		{
-			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += 0.3490658402F; //F_DEG_TO_RAD(20.0F);
+			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += (f32)(20.0F * M_DTOR);
 
 			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
 			{
@@ -1083,9 +1083,9 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 	}
 	else
 	{
-		DObjGetStruct(fighter_gobj)->rotate.vec.f.y += F_DEG_TO_RAD(2.0F);
+		DObjGetStruct(fighter_gobj)->rotate.vec.f.y += (f32)(2.0F * M_DTOR);
 		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
-			DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= F_DEG_TO_RAD(360.0F);
+			DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= (f32)(360.0F * M_DTOR);
 	}
 }
 
