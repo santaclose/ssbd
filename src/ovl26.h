@@ -4,16 +4,6 @@
 #include <ssb_types.h>
 #include <sys/obj_renderer.h>
 
-// EXTERN
-extern intptr_t D_NF_800A5240;	   // 0x800A5240
-extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
-extern intptr_t lOverlay26ArenaHi; // 0x803903E0
-
-// DATA
-// TODO!
-
-// Stuff - where does it go?!?
-
 typedef struct mnCharPanelBattle
 {
 	GObj* cursor;
@@ -94,130 +84,147 @@ typedef enum mnCursorState
 
 #define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))
 
-// ovl1 stuff
+extern intptr_t D_NF_800A5240;	   // 0x800A5240
+extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
+extern intptr_t lOverlay26ArenaHi; // 0x803903E0
+
+extern f32 guSqrt(f32);
+extern s32 lbRandom_GetIntRange(s32);
+extern u8 lbRandom_GetTimeByteRange(s32);
+extern void stop_current_process(s32);
+extern void leoInitUnit_atten();
+// ovl0
+extern void func_ovl0_800CD2CC();
+extern GObj* func_ovl0_800CD050(s32, void*, s32, s32, void*, s32, s32, s32, void*, s32, void*, s32);
+extern void func_ovl0_800CD1F0(s32, s32, s32, s32);
+extern void func_ovl0_800CCF74(GObj*);
+extern SObj* gcAppendSObjWithSprite(GObj*, void*);
+// ovl1
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
-
-// ovl26 stuff
-extern RldmFileId D_ovl26_8013B3A0[7];
-
-extern f32 dMnBattlePortraitPositionsX[12];	   // 0x8013B3F0
-extern f32 dMnBattlePortraitVelocities[12];	   // 0x8013B420
-extern Vec2f dMnBattlePortraitPositionsXY[12]; // 0x8013B450[12];
-
-extern s32 dMnBattleFtKindOrder[12];						// 0x8013B4D4[12];
-extern s32 dMnBattlePortraitOrder[12];						// 0x8013B504[12];
-extern s32 dMnBattleLockedPortraitOffsets[12];				// 0x8013B534[12];
-extern s32 dMnBattlePortraitOffsets[12];					// 0x8013B564[12];
-extern s32 dMnBattleTeamButtonOffsets[3];					// 0x8013B594[3];
-extern s32 dMnBattleTypeButtonOffsets[3];					// 0x8013B5A0[3];
-extern Vec2f dMnBattleUnusedPositions[12];					// 0x8013B5AC[12];
-extern s32 dMnBattleLogoOffsets[12];						// 0x8013B60C[12];
-extern s32 dMnBattleNameOffsets[12];						// 0x8013B63C[12];
-extern intptr_t dMnBattlePanelOffsets[4];					// 0x8013B66C[4];
-extern intptr_t dMnBattlePanelCPUOffsets[4];				// 0x8013B67C[4];
-extern GfxColor dMnBattleUnusedColors[4];					// 0x8013B68C[4]
-extern intptr_t dMnBattleTypeButtonOffsetsDuplicate[3];		// 0x8013B698[3];
-extern intptr_t dMnBattleTypeOffsets[4];					// 0x8013B6A4[4];
-extern f32 dMnBattleTypeOffsetsX[4];						// 0x8013B6B4[4];
-extern intptr_t dMnBattleTypeOffsetsDuplicate[4];			// 0x8013B6C4[4];
-extern f32 dMnBattleTypeOffsetsXDuplicate[4];				// 0x8013B6D4[4];
-extern intptr_t dMnBattlePanelProcRenderList[4];			// 0x8013B6E4[4];
-extern s32 dMnBattlePaletteIndexes[4];						// 0x8013B6F4[4];
-extern intptr_t dMnBattleNumberOffsets[10];					// 0x8013B704[10];
-extern s32 dMnBattleNumberColorsTime[6];					// 0x8013B72C[6];
-extern s32 dMnBattleNumberColorsStock[6];					// 0x8013B744[6];
-extern intptr_t dMnBattleTitleOffsets[2];					// 0x8013B75C[2]; // title offsets
-extern GfxColor dMnBattleTitleColors[2];					// 0x8013B764[2]; // title colors
-extern GfxColorPair dMnBattleCursorTypeColors[4];			// 0x8013B76C[4]; // cursor
-															// type texture colors
-extern intptr_t dMnBattleCursorTypeOffsets[4];				// 0x8013B784[4]; // cursor type
-															// texture offsets
-extern intptr_t dMnBattleCursorOffsets[3];					// 0x8013B794[3]; // cursor offsets
-extern Vec2i dMnBattleCursorTypePositions[3];				// 0x8013B7A0[3]; // x,y offset
-															// pairs for cursor type texture
-extern s32 dMnBattlePanelColorIndexes[4];					// 0x8013B7B8[4]; // panel color indexes
-extern intptr_t dMnBattleTitleOffsetsDuplicate[2];			// 0x8013B7C8[2]; //
-															// ffa/team battle offsets
-extern GfxColor dMnBattleTitleColorsDuplicate[2];			// 0x8013B7D0[2]; // ffa/team
-															// battle colors
-extern s32 dMnBattleTeamPaletteIndexes[3];					// 0x8013B7D8[3]; // team panel
-															// color indexes
-extern s32 D_ovl26_8013B7E4[3];								// ??
-extern s32 dMnBattleTokenIndexes[4];						// 0x8013B7F0[4]; // token_ids
-extern u16 dMnBattleAnnouncerNames[12];						// 0x8013B800[12]; // announcer names
-extern intptr_t dMnBattleHandicapCPULevelNumberOffsets[10]; // 0x8013B818[10];
-extern s32 dMnBattleTokenPickupDisplayOrders[4];			// 0x8013B840[4]; // display orders
-															// for cursors on token pickup
-extern s32 dMnBattleTokenPlaceHeldDisplayOrders[4];			// 0x8013B850[4]; // display
-															// orders for cursors holding
-															// tokens on token placement
-extern s32 dMnBattleTokenPlaceUnheldDisplayOrders[4]; // 0x8013B860[4]; // display orders for cursors not holding tokens
-													  // on token placement
-extern Vec2i dMnBattleCursorTypePositions2[3];		  // 0x8013B870[3]; // x,y offset
-													  // pairs for cursor type texture
-extern intptr_t dMnBattleTokenOffsets[5];			  // 0x8013B888[5]; // token offsets
-extern intptr_t dMnBattleCursorTypeOffsetsUnused[4];  // 0x8013B89C[4]; // cursor
-													  // type texture offsets
-extern Vec2f dMnBattleCursorStartingPositions[4];	  // 0x8013B8AC[4]; // starting
-													  // coords for cursors
-extern s32 dMnBattleCursorStartingDisplayOrders[4];	  // 0x8013B8CC[4]; // display orders for cursors on initial load
-extern intptr_t dMnBattleTokenOffsetsNoCPU[4];		  // 0x8013B8DC; // token offsets
-													  // not including cpu
-extern s32 dMnBattleTokenStartingDisplayOrders[4];	  // 0x8013B8EC; // display orders
-													  // for tokens on initial load
-extern s32 dMnBattleTokenHoldingDisplayOrders[4];	  // 0x8013B8FC; // display
-													  // orders for tokens while
-													  // being held initially?
-extern f32 dMnBattleWhiteCircleSizes[12];			  // 0x8013B90C[12]; // white circle size
-extern s32 dMnBattleTimerValues[8];					  // 0x8013B93C[8];
-extern s32 dMnBattleTimerValuesDuplicate[8];		  // 0x8013B95C[8];
-extern u8 dMnBattleDefaultTeam[4];					  // 0x8013B97C[4]; // default team
-extern scUnkDataBounds D_ovl26_8013B980;
-extern scRuntimeInfo D_ovl26_8013B99C;
-
-extern mnCharPanelBattle gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 0x8013BA88[GMMATCH_PLAYERS_MAX];
-extern GObj* gMnBattlePickerGObj;							   // 0x8013BD78; // stock/time picker
-extern s32 gMnBattleTimerValue;								   // 0x8013BD7C;
-extern s32 gMnBattleStockValue;								   // 0x8013BD80;
-extern s32 gMnBattleControllerOrderArray[4];				   // 0x8013BD90; // -1 if no controller
-															   // plugged in; due to a bug, random
-															   // positive value if plugged in
-
-extern s32 gMnBattleStartDelayTimer;		 // 0x8013BDA0; // when start is pressed
-											 // when ready to fight, timer counts down
-											 // to delay leaving CSS
-extern sb32 gMnBattleIsStartTriggered;		 // 0x8013BDA4;
-extern sb32 gMnBattleIsTeamBattle;			 // 0x8013BDA8
-extern sb32 gMnBattleRule;					 // 0x8013BDAC
-extern GObj* gMnBattleTitleGObj;			 // 0x8013BDB0; // title gobj
-extern s32 gMnBattleTokenShinePulseColor;	 // 0x8013BDB4;
-extern sb32 gMnBattleIsTokenShineIncreasing; // 0x8013BDB8;
-extern u16 gMnBattleCharacterUnlockedMask;	 // 0x8013BDBC; // flag indicating
-											 // which bonus chars are available
-
-extern s32 gMnBattlePressStartFlashTimer; // 0x8013BDC4; looping timer that
-										  // helps determine blink rate of
-										  // Press Start (and Ready to Fight?)
-extern s32 D_ovl26_8013BDC8;
-extern s32 gMnBattleFramesElapsed;	  // 0x8013BDCC; // frames elapsed on CSS
-extern s32 gMnBattleMaxFramesElapsed; // 0x8013BDD0; // frames to wait until
-									  // exiting the CSS
-
+// ovl2
 extern u32 D_ovl2_80130D9C;
 extern u8 D_ovl2_8012EF40[4];
-extern RldmFileNode D_ovl26_8013C0A8;
-extern u32 D_ovl26_8013C0E0[240];
+extern u32 D_ovl2_80130D9C;
+
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
-extern s32 gMnBattleFilesArray[7]; // 0x8013C4A0[7]
-extern s32 gFile011;			   // 0x8013C4A0; // file 0x011 pointer
-extern s32 gFile000;			   // 0x8013C4A4; // file 0x000 pointer
-extern s32 gFile014;			   // 0x8013C4A8; // file 0x014 pointer
-extern s32 gFile015;			   // 0x8013C4AC; // file 0x015 pointer
-extern s32 gFile012;			   // 0x8013C4B0; // file 0x012 pointer
-extern s32 gFile013;			   // 0x8013C4B4; // file 0x013 pointer
-extern s32 gFile016;			   // 0x8013C4B8; // file 0x016 pointer
+// ovl26 stuff
+RldmFileId D_ovl26_8013B3A0[7];
+
+f32 dMnBattlePortraitPositionsX[12];	   // 0x8013B3F0
+f32 dMnBattlePortraitVelocities[12];	   // 0x8013B420
+Vec2f dMnBattlePortraitPositionsXY[12]; // 0x8013B450[12];
+
+s32 dMnBattleFtKindOrder[12];						// 0x8013B4D4[12];
+s32 dMnBattlePortraitOrder[12];						// 0x8013B504[12];
+s32 dMnBattleLockedPortraitOffsets[12];				// 0x8013B534[12];
+s32 dMnBattlePortraitOffsets[12];					// 0x8013B564[12];
+s32 dMnBattleTeamButtonOffsets[3];					// 0x8013B594[3];
+s32 dMnBattleTypeButtonOffsets[3];					// 0x8013B5A0[3];
+Vec2f dMnBattleUnusedPositions[12];					// 0x8013B5AC[12];
+s32 dMnBattleLogoOffsets[12];						// 0x8013B60C[12];
+s32 dMnBattleNameOffsets[12];						// 0x8013B63C[12];
+intptr_t dMnBattlePanelOffsets[4];					// 0x8013B66C[4];
+intptr_t dMnBattlePanelCPUOffsets[4];				// 0x8013B67C[4];
+GfxColor dMnBattleUnusedColors[4];					// 0x8013B68C[4]
+intptr_t dMnBattleTypeButtonOffsetsDuplicate[3];		// 0x8013B698[3];
+intptr_t dMnBattleTypeOffsets[4];					// 0x8013B6A4[4];
+f32 dMnBattleTypeOffsetsX[4];						// 0x8013B6B4[4];
+intptr_t dMnBattleTypeOffsetsDuplicate[4];			// 0x8013B6C4[4];
+f32 dMnBattleTypeOffsetsXDuplicate[4];				// 0x8013B6D4[4];
+intptr_t dMnBattlePanelProcRenderList[4];			// 0x8013B6E4[4];
+s32 dMnBattlePaletteIndexes[4];						// 0x8013B6F4[4];
+intptr_t dMnBattleNumberOffsets[10];					// 0x8013B704[10];
+s32 dMnBattleNumberColorsTime[6];					// 0x8013B72C[6];
+s32 dMnBattleNumberColorsStock[6];					// 0x8013B744[6];
+intptr_t dMnBattleTitleOffsets[2];					// 0x8013B75C[2]; // title offsets
+GfxColor dMnBattleTitleColors[2];					// 0x8013B764[2]; // title colors
+GfxColorPair dMnBattleCursorTypeColors[4];			// 0x8013B76C[4]; // cursor
+															// type texture colors
+intptr_t dMnBattleCursorTypeOffsets[4];				// 0x8013B784[4]; // cursor type
+															// texture offsets
+intptr_t dMnBattleCursorOffsets[3];					// 0x8013B794[3]; // cursor offsets
+Vec2i dMnBattleCursorTypePositions[3];				// 0x8013B7A0[3]; // x,y offset
+															// pairs for cursor type texture
+s32 dMnBattlePanelColorIndexes[4];					// 0x8013B7B8[4]; // panel color indexes
+intptr_t dMnBattleTitleOffsetsDuplicate[2];			// 0x8013B7C8[2]; //
+															// ffa/team battle offsets
+GfxColor dMnBattleTitleColorsDuplicate[2];			// 0x8013B7D0[2]; // ffa/team
+															// battle colors
+s32 dMnBattleTeamPaletteIndexes[3];					// 0x8013B7D8[3]; // team panel
+															// color indexes
+s32 D_ovl26_8013B7E4[3];								// ??
+s32 dMnBattleTokenIndexes[4];						// 0x8013B7F0[4]; // token_ids
+u16 dMnBattleAnnouncerNames[12];						// 0x8013B800[12]; // announcer names
+intptr_t dMnBattleHandicapCPULevelNumberOffsets[10]; // 0x8013B818[10];
+s32 dMnBattleTokenPickupDisplayOrders[4];			// 0x8013B840[4]; // display orders
+															// for cursors on token pickup
+s32 dMnBattleTokenPlaceHeldDisplayOrders[4];			// 0x8013B850[4]; // display
+															// orders for cursors holding
+															// tokens on token placement
+s32 dMnBattleTokenPlaceUnheldDisplayOrders[4]; // 0x8013B860[4]; // display orders for cursors not holding tokens
+													  // on token placement
+Vec2i dMnBattleCursorTypePositions2[3];		  // 0x8013B870[3]; // x,y offset
+													  // pairs for cursor type texture
+intptr_t dMnBattleTokenOffsets[5];			  // 0x8013B888[5]; // token offsets
+intptr_t dMnBattleCursorTypeOffsetsUnused[4];  // 0x8013B89C[4]; // cursor
+													  // type texture offsets
+Vec2f dMnBattleCursorStartingPositions[4];	  // 0x8013B8AC[4]; // starting
+													  // coords for cursors
+s32 dMnBattleCursorStartingDisplayOrders[4];	  // 0x8013B8CC[4]; // display orders for cursors on initial load
+intptr_t dMnBattleTokenOffsetsNoCPU[4];		  // 0x8013B8DC; // token offsets
+													  // not including cpu
+s32 dMnBattleTokenStartingDisplayOrders[4];	  // 0x8013B8EC; // display orders
+													  // for tokens on initial load
+s32 dMnBattleTokenHoldingDisplayOrders[4];	  // 0x8013B8FC; // display
+													  // orders for tokens while
+													  // being held initially?
+f32 dMnBattleWhiteCircleSizes[12];			  // 0x8013B90C[12]; // white circle size
+s32 dMnBattleTimerValues[8];					  // 0x8013B93C[8];
+s32 dMnBattleTimerValuesDuplicate[8];		  // 0x8013B95C[8];
+u8 dMnBattleDefaultTeam[4];					  // 0x8013B97C[4]; // default team
+scUnkDataBounds D_ovl26_8013B980;
+scRuntimeInfo D_ovl26_8013B99C;
+
+mnCharPanelBattle gMnBattlePanels[GMMATCH_PLAYERS_MAX]; // 0x8013BA88[GMMATCH_PLAYERS_MAX];
+GObj* gMnBattlePickerGObj;							   // 0x8013BD78; // stock/time picker
+s32 gMnBattleTimerValue;								   // 0x8013BD7C;
+s32 gMnBattleStockValue;								   // 0x8013BD80;
+s32 gMnBattleControllerOrderArray[4];				   // 0x8013BD90; // -1 if no controller
+															   // plugged in; due to a bug, random
+															   // positive value if plugged in
+
+s32 gMnBattleStartDelayTimer;		 // 0x8013BDA0; // when start is pressed
+											 // when ready to fight, timer counts down
+											 // to delay leaving CSS
+sb32 gMnBattleIsStartTriggered;		 // 0x8013BDA4;
+sb32 gMnBattleIsTeamBattle;			 // 0x8013BDA8
+sb32 gMnBattleRule;					 // 0x8013BDAC
+GObj* gMnBattleTitleGObj;			 // 0x8013BDB0; // title gobj
+s32 gMnBattleTokenShinePulseColor;	 // 0x8013BDB4;
+sb32 gMnBattleIsTokenShineIncreasing; // 0x8013BDB8;
+u16 gMnBattleCharacterUnlockedMask;	 // 0x8013BDBC; // flag indicating
+											 // which bonus chars are available
+
+s32 gMnBattlePressStartFlashTimer; // 0x8013BDC4; looping timer that
+										  // helps determine blink rate of
+										  // Press Start (and Ready to Fight?)
+s32 D_ovl26_8013BDC8;
+s32 gMnBattleFramesElapsed;	  // 0x8013BDCC; // frames elapsed on CSS
+s32 gMnBattleMaxFramesElapsed; // 0x8013BDD0; // frames to wait until
+									  // exiting the CSS
+RldmFileNode D_ovl26_8013C0A8;
+u32 D_ovl26_8013C0E0[240];
+
+s32 gMnBattleFilesArray[7]; // 0x8013C4A0[7]
+s32 gFile011;			   // 0x8013C4A0; // file 0x011 pointer
+s32 gFile000;			   // 0x8013C4A4; // file 0x000 pointer
+s32 gFile014;			   // 0x8013C4A8; // file 0x014 pointer
+s32 gFile015;			   // 0x8013C4AC; // file 0x015 pointer
+s32 gFile012;			   // 0x8013C4B0; // file 0x012 pointer
+s32 gFile013;			   // 0x8013C4B4; // file 0x013 pointer
+s32 gFile016;			   // 0x8013C4B8; // file 0x016 pointer
 
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET = 0xDCF0; // file 0x000 image offset for colon
@@ -275,8 +282,12 @@ sb32 mnIsHandicap();
 void mnBattleReorderCursorsOnPickup(s32 port_id, s32 token_id);
 s32 mnBattleReorderCursorsOnPlacement(s32 port_id, s32 held_token_id); // doesn't actually return anything but
 																	   // required to match
-void mnRedrawToken(GObj* token_gobj, s32 token_index);
+void mnBattleRedrawToken(GObj* token_gobj, s32 token_index);
 s32 mnSelectRandomFighter(GObj* token_gobj);
 sb32 mnBattleIsReadyToFight();
+void mnBattleDestroyCursorAndTokenProcesses();
+void mnBattleSaveMatchInfo();
+s32 mnBattleGetNextTimerValue(s32 current_value);
+s32 mnBattleGetPrevTimerValue(s32 current_value);
 
 #endif

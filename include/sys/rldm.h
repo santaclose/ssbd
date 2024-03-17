@@ -23,7 +23,7 @@ typedef struct RldmSetup
 	/* 0x1C */ s32 forceBufSize;
 } RldmSetup; // size == 0x20
 
-u32 rldm_bytes_needed_to_load(u32);
-void* rldm_get_file_with_external_heap(u32, u8*);
+extern u32 rldm_bytes_needed_to_load(u32);
+extern void* rldm_get_file_with_external_heap(u32, u8*);
 
 #endif /* SYS_RLDM_H */

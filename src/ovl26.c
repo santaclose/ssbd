@@ -1,5 +1,6 @@
 #include <sys/rldm.h>
 #include <sys/develop.h>
+#include <sys/om.h>
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <gm/battle.h>
@@ -1735,10 +1736,10 @@ void mnSyncTokenDisplay(GObj* token_gobj, s32 port_id)
 	{
 	case mnPanelTypeHuman:
 		gMnBattlePanels[port_id].is_selected = FALSE;
-		mnRedrawToken(token_gobj, token_ids[port_id]);
+		mnBattleRedrawToken(token_gobj, token_ids[port_id]);
 		break;
 	case mnPanelTypeCPU:
-		mnRedrawToken(token_gobj, 4);
+		mnBattleRedrawToken(token_gobj, 4);
 		gMnBattlePanels[port_id].is_selected = TRUE;
 		break;
 	case mnPanelTypeNA:
@@ -2660,10 +2661,10 @@ void mnGoBackToVSMenu()
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = 9;
 
-	mnSaveMatchInfo();
-	mnDestroyCursorAndTokenProcesses();
+	mnBattleSaveMatchInfo();
+	mnBattleDestroyCursorAndTokenProcesses();
 	func_80020A74();
-	func_80005C74();
+	leoInitUnit_atten();
 }
 
 // 80138140
@@ -2748,7 +2749,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 		{
 			if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
 			{
-				gMnBattleTimerValue = mnGetNextTimerValue(gMnBattleTimerValue);
+				gMnBattleTimerValue = mnBattleGetNextTimerValue(gMnBattleTimerValue);
 				mnDrawTimerPicker(gMnBattleTimerValue);
 			}
 			else
@@ -2765,7 +2766,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 		{
 			if (gMnBattleRule == GMMATCH_GAMERULE_TIME)
 			{
-				gMnBattleTimerValue = mnGetPrevTimerValue(gMnBattleTimerValue);
+				gMnBattleTimerValue = mnBattleGetPrevTimerValue(gMnBattleTimerValue);
 				mnDrawTimerPicker(gMnBattleTimerValue);
 			}
 			else
@@ -2829,7 +2830,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 }
 
 // 801386E4
-void mnRedrawToken(GObj* token_gobj, s32 token_index)
+void mnBattleRedrawToken(GObj* token_gobj, s32 token_index)
 {
 	SObj* token_sobj;
 	f32 current_x, current_y;
@@ -2848,7 +2849,7 @@ void mnRedrawToken(GObj* token_gobj, s32 token_index)
 }
 
 // 80138798
-void mnCenterTokenInPortrait(GObj* token_gobj, s32 ft_kind)
+void mnBattleCenterTokenInPortrait(GObj* token_gobj, s32 ft_kind)
 {
 	s32 portrait_id = mnBattleGetPortraitId(ft_kind);
 
@@ -2876,7 +2877,7 @@ s32 mnSelectRandomFighter(GObj* token_gobj)
 		while (mnBattleCheckFighterIsXBoxed(ft_kind) != 0);
 	} while (mnBattleGetIsLocked(ft_kind) != 0);
 
-	mnCenterTokenInPortrait(token_gobj, ft_kind);
+	mnBattleCenterTokenInPortrait(token_gobj, ft_kind);
 	return ft_kind;
 }
 
@@ -3088,7 +3089,7 @@ f32 getBattleTokenDistance(s32 port_id_1, s32 port_id_2)
 	delta_y = token_sobj_2->pos.y - token_sobj_1->pos.y;
 	delta_x = token_sobj_2->pos.x - token_sobj_1->pos.x;
 
-	return sqrtf((delta_y * delta_y) + (delta_x * delta_x));
+	return guSqrtf((delta_y * delta_y) + (delta_x * delta_x));
 }
 
 // 80139320
@@ -3700,7 +3701,7 @@ void mnBattleMain(s32 arg0)
 		gSceneData.scene_current = 1;
 
 		mnBattleSaveMatchInfo();
-		func_80005C74();
+		leoInitUnit_atten();
 
 		return;
 	}
@@ -3733,7 +3734,7 @@ void mnBattleMain(s32 arg0)
 			}
 
 			mnBattleSaveMatchInfo();
-			func_80005C74();
+			leoInitUnit_atten();
 		}
 	}
 	else
@@ -3973,9 +3974,9 @@ void mnBattleInitCSS()
 	rldmSetup.statusBufSize = 0x78;
 	rldmSetup.forceBuf = (RldmFileNode*)&D_ovl26_8013C0A8;
 	rldmSetup.forceBufSize = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
-					   hlMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
+	rldm_initialize(&rldmSetup);
+	rldm_load_files_into(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
+					   hal_alloc(rldm_bytes_need_to_load(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	omMakeGObjCommon(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
@@ -3991,7 +3992,7 @@ void mnBattleInitCSS()
 		ftManager_SetFileDataKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].anim_heap = hlMemoryAlloc(D_ovl2_80130D9C, 0x10U);
+		gMnBattlePanels[i].anim_heap = hal_alloc(D_ovl2_80130D9C, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

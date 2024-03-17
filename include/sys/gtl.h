@@ -84,7 +84,7 @@ extern void func_80004F78(void);
 extern void append_ucode_load(Gfx** dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
-extern void func_80005C74(void);
+extern void leoInitUnit_atten(void);
 extern void func_8000683C(struct Wrapper683C* arg);
 extern void func_80006B80(void);
 
