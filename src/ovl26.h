@@ -203,6 +203,8 @@ extern s32 gMnBattleFramesElapsed;	  // 0x8013BDCC; // frames elapsed on CSS
 extern s32 gMnBattleMaxFramesElapsed; // 0x8013BDD0; // frames to wait until
 									  // exiting the CSS
 
+extern u32 D_ovl2_80130D9C;
+extern u8 D_ovl2_8012EF40[4];
 extern RldmFileNode D_ovl26_8013C0A8;
 extern u32 D_ovl26_8013C0E0[240];
 extern uintptr_t D_NF_001AC870;
@@ -249,13 +251,14 @@ extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET = 0x440; // file 0x015 image of
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1 = 0x408; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2 = 0x568; // DObjDesc for white circle
 
-void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32); /* extern */
-f32 func_ovl1_8039051C();								   /* extern */
-f32 func_ovl1_80390528();								   /* extern */
-void func_ovl0_800CCF00(GObj*);							   /* extern */
+void ftRender_Lights_DisplayLightReflect(Gfx**, f32, f32);	  /* extern */
+extern f32 func_ovl1_8039051C();							  /* extern */
+extern f32 func_ovl1_80390528();							  /* extern */
+extern void func_ovl0_800CCF00(GObj*);						  /* extern */
+extern void func_ovl1_803904E0(f32, f32, s32, s32, s32, s32); /* extern */
 extern void func_ovl0_800CD2CC();
-GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32); /* extern */
-void func_80007080(void*, f32, f32, f32, f32);											  /* extern */
+extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32); /* extern */
+extern void func_80007080(void*, f32, f32, f32, f32);											 /* extern */
 sb32 mnBattleIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id);
 void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 s32 mnCheckCPUHandicapRightArrowPress(GObj* cursor_gobj, s32 port_id);
@@ -274,5 +277,6 @@ s32 mnBattleReorderCursorsOnPlacement(s32 port_id, s32 held_token_id); // doesn'
 																	   // required to match
 void mnRedrawToken(GObj* token_gobj, s32 token_index);
 s32 mnSelectRandomFighter(GObj* token_gobj);
+sb32 mnBattleIsReadyToFight();
 
 #endif

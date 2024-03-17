@@ -160,6 +160,5 @@ void ssb_main(void)
 	__osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
 	osInitialize();
 	osCreateThread(&sThread1, 1, thread1_idle, &sThreadArgBuf, sThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
-	sThread1Stack[0] = STACK_PROBE_MAGIC;
-	osStartThread(&sThread1);
+	sThread1Stack[0] = STACK_PROBE_MAGIC, osStartThread(&sThread1); // needs to be in the same line to match
 }
