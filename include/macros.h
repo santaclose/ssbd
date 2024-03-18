@@ -2,52 +2,61 @@
 #define SSB_C_MACROS_H
 
 /// Floating Point Constants
-#define FLOAT_MAX 3.4028235e38
+#define FLOAT_MAX     3.4028235e38
 #define FLOAT_NEG_MAX -FLOAT_MAX
 #define FLOAT_MAX_HALF (FLOAT_MAX / 2) // FLOAT_MAX_HALF
+
+#define F32_MAX 3.40282346639e+38F
+#define F32_MIN (-F32_MAX)
+#define F32_HALF (F32_MAX / 2)
 
 #define QUART_PI32 0.7853982F
 #define HALF_PI32 1.5707964F
 #define PI32 3.1415927F
 #define DOUBLE_PI32 6.2831855F
 
+#define PI64 3.14159265358979323846
+#define DTOR64 (PI64 / 180)
+#define RTOD64 (180 / PI64)
+
+#define DTOR32 ((float)DTOR64)
+#define RTOD32 ((float)RTOD64)
+
 // Float convert degrees to radians
-#define F_DEG_TO_RAD(x) ((float)(((x)*PI32) / 180.0F))
+#define F_DEG_TO_RAD(x) ((float)((x) * DTOR32))
 
 // Float convert radians to degrees
-#define F_RAD_TO_DEG(x) ((float)(((x) / PI32) * 180.0F))
+#define F_RAD_TO_DEG(x) ((float)((x) / RTOD32))
 
 // Integer convert degrees to radians
-#define I_DEG_TO_RAD(x) ((int)(((x)*PI32) / 180.0F))
+#define I_DEG_TO_RAD(x) (( int )((x) * DTOR32))
 
 // Integer convert radians to degrees
-#define I_RAD_TO_DEG(x) ((int)(((x) / PI32) * 180.0F))
+#define I_RAD_TO_DEG(x) (( int )((x) / RTOD32))
 
 // Float convert percentage to decimal notation
-#define F_PCT_TO_DEC(x) ((float)((x)*0.01F))
+#define F_PCT_TO_DEC(x) ((float)((x) * 0.01F))
 
-// Bitfield macros to set up in-game bytecode commands (e.g. colanim events,
-// CPU input scripts)
-#define GC_BITFIELD(n) (1 << (n))
-#define GC_BITMASK(len) (GC_BITFIELD(len) - 1)
-#define GC_FIELDMASK(start, len) (GC_BITMASK(len) << (start))
-#define GC_FIELDPREP(x, start, len) (((x)&GC_BITMASK(len)) << (start))
-#define GC_FIELDSET(x, start, len)                                                                                     \
-	(0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len)) // I'm too dumb to do it without the 0
+// Bitfield macros to set up in-game bytecode commands (e.g. colanim events, CPU input scripts)
+#define GC_BITFIELD(n)                 (1 << (n))
+#define GC_BITMASK(len)                (GC_BITFIELD(len) - 1)
+#define GC_FIELDMASK(start, len)       (GC_BITMASK(len) << (start))
+#define GC_FIELDPREP(x, start, len)    ( ((x) & GC_BITMASK(len)) << (start) )
+#define GC_FIELDSET(x, start, len)     ( 0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len) ) // I'm too dumb to do it without the 0
 
-#define GC_FRAMERATE_DEFAULT (60)
+#define GS_FRAMERATE_DEFAULT (60)
 
-#define GC_TIME_SEC (GC_FRAMERATE_DEFAULT * 1)
-#define GC_TIME_MIN (GC_TIME_SEC * 60)
-#define GC_TIME_HRS (GC_TIME_MIN * 60)
+#define GS_TIME_SEC (GS_FRAMERATE_DEFAULT * 1)
+#define GS_TIME_MIN (GS_TIME_SEC * 60)
+#define GS_TIME_HRS (GS_TIME_MIN * 60)
 
-#define I_GC_TIME_TO_FRAMES(q, u) ((int)((q) * (u)))
+#define I_GS_TIME_TO_FRAMES(q, u) ((int) ((q) * (u)))
 
-#define I_SEC_TO_FRAMES(q) ((int)((q)*GC_TIME_SEC))
-#define I_FRAMES_TO_SEC(q) ((int)((q) / GC_TIME_SEC))
-#define I_MIN_TO_SEC(q) ((int)((q)*GC_TIME_SEC))
-#define I_MIN_TO_FRAMES(q) ((int)((q)*GC_TIME_MIN))
-#define I_HRS_TO_FRAMES(q) ((int)((q)*GC_TIME_HRS))
+#define I_SEC_TO_FRAMES(q) ((int) ((q) * GS_TIME_SEC))
+#define I_FRAMES_TO_SEC(q) ((int) ((q) / GS_TIME_SEC))
+#define I_MIN_TO_SEC( q )  ((int) ((q) * GS_TIME_SEC))
+#define I_MIN_TO_FRAMES(q) ((int) ((q) * GS_TIME_MIN))
+#define I_HRS_TO_FRAMES(q) ((int) ((q) * GS_TIME_HRS))
 
 #define I_TIME_TO_FRAMES(h, m, s, f) (I_HRS_TO_FRAMES(h) + I_MIN_TO_FRAMES(m) + I_SEC_TO_FRAMES(s) + (f))
 
@@ -71,14 +80,14 @@
 
 /// Math Functions
 #define SQUARE(x) ((x) * (x))
-#define CUBE(x) ((x) * (x) * (x))
+#define CUBE(x)   ((x) * (x) * (x))
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
+#define ABS(x)  ((x) < 0 ? -(x) : (x))
 #define ABSF(x) ((x) < 0.0F ? -(x) : (x))
 
 // Helpful to have some defines that are explicitly float-sized
-#define M_PI_F ((f32)M_PI)
-#define M_DTOR_F(x) ((x) * (f32)M_DTOR)
+#define M_PI_F      ((f32)M_PI)
+#define M_DTOR_F(x) ((f32)((x) * (f32)M_DTOR))
 
 /// Avoid compiler warnings for unused variables
 #ifdef __GNUC__
@@ -89,12 +98,12 @@
 
 /// Apply compiler printf format checking to function
 #ifdef __GNUC__
-#define PRINTF_CHECK(fmtpos, vargpos) __attribute__((__format__(__printf__, (fmtpos), (vargpos))))
+#define PRINTF_CHECK(fmtpos, vargpos) __attribute__ ((__format__ (__printf__, (fmtpos), (vargpos))))
 #else
 #define PRINTF_CHECK(fmtpos, vargpos)
 #endif
 
-#define GLUE(a, b) a##b
+#define GLUE(a, b) a ## b
 #define GLUE2(a, b) GLUE(a, b)
 
 /// Static assertions
@@ -109,7 +118,7 @@
 
 /// Turn off syntax check diagnostic
 #ifdef __GNUC__
-#define DO_PRAGMA(x) _Pragma(#x)
+#define DO_PRAGMA(x) _Pragma (#x)
 #define DIAGNOSTIC_SAVE() _Pragma("GCC diagnostic push")
 #define DIAGNOSTIC_IGNORE(d) DO_PRAGMA(GCC diagnostic ignored d)
 #define DIAGNOSTIC_RESTORE() _Pragma("GCC diagnostic pop")

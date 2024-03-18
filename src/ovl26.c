@@ -1061,7 +1061,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 
 	if (panel_info->unk_0x88 == 1)
 	{
-		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < F_DEG_TO_RAD(0.1F))
+		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < (PI32/1800))
 		{
 			if (panel_info->selected_animation_started == FALSE)
 			{
@@ -1071,9 +1071,9 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 		}
 		else
 		{
-			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += (f32)(20.0F * M_DTOR);
+			DObjGetStruct(fighter_gobj)->rotate.vec.f.y += M_DTOR_F(20.0F);
 
-			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
+			if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > M_DTOR_F(360.0F))
 			{
 				DObjGetStruct(fighter_gobj)->rotate.vec.f.y = 0.0F;
 				func_ovl1_803905CC(panel_info->player, mnBattleGetSelectedAnimation(panel_info->char_id));
@@ -1083,9 +1083,9 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 	}
 	else
 	{
-		DObjGetStruct(fighter_gobj)->rotate.vec.f.y += (f32)(2.0F * M_DTOR);
-		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > F_DEG_TO_RAD(360.0F))
-			DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= (f32)(360.0F * M_DTOR);
+		DObjGetStruct(fighter_gobj)->rotate.vec.f.y += M_DTOR_F(2.0F);
+		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y > M_DTOR_F(360.0F))
+			DObjGetStruct(fighter_gobj)->rotate.vec.f.y -= M_DTOR_F(360.0F);
 	}
 }
 
