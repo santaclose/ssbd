@@ -1,4 +1,4 @@
-commit 5b5a8a7a341f506481a50db449b14109e64514b0
+commit 349edc7b4dff7262c150d0a03a1cccf3512929d8
 Author: Santiago <san@san.com>
 Date:   Wed Mar 20 22:57:43 2024 +0100
 
@@ -62,7 +62,7 @@ index f86f713..d2b5b9c 100644
          out,
          info: ExtractTask::SpriteInfo(data),
 diff --git a/tools/rust/libsprite/src/lib.rs b/tools/rust/libsprite/src/lib.rs
-index e24a803..baabc81 100644
+index e24a803..2b3bab9 100644
 --- a/tools/rust/libsprite/src/lib.rs
 +++ b/tools/rust/libsprite/src/lib.rs
 @@ -6,6 +6,7 @@
@@ -91,7 +91,7 @@ index e24a803..baabc81 100644
          const ENTRY_SIZE: usize = 6;
          let mut buf = [0u32; ENTRY_SIZE];
          let end = offset + (ENTRY_SIZE * 4);
-@@ -92,6 +95,17 @@ pub fn from_bank(offset: usize, bank_data: &[u8]) -> Result<Self, LibSpriteErr>
+@@ -92,16 +95,39 @@ pub fn from_bank(offset: usize, bank_data: &[u8]) -> Result<Self, LibSpriteErr>
          let mut image_offsets = vec![0u32; image_count as usize];
          let end_imgs = end + image_count as usize * 4;
          BE::read_u32_into(&bank_data[end..end_imgs], &mut image_offsets);
@@ -103,9 +103,33 @@ index e24a803..baabc81 100644
 +            index += 1;
 +            lastoffset = *io + img_bank_start;
 +        }
-+        println!("- [0x{:x}, bin]", lastoffset + (width * height * bitdepth.depth() as u32 / 8));
++        if !are_palettes {
++            println!("- [0x{:x}, bin]", lastoffset + (width * height * bitdepth.depth() as u32 / 8));
++        }
 +        // println!("END IMGS: {:x} ", end_imgs);
 +        // println!("entry offset {:x}: {:?}", offset, image_offsets);
  
++        let mut o = vec![0u32; image_count as usize];
          let palette_offsets = if are_palettes {
-             let mut o = vec![0u32; image_count as usize];
+-            let mut o = vec![0u32; image_count as usize];
+             let end_pals = end_imgs + image_count as usize * 4;
+             BE::read_u32_into(&bank_data[end_imgs..end_pals], &mut o);
+-            Some(o)
++            Some(o.clone())
+         } else {
+             None
+         };
+ 
++        index = 0;
++        if are_palettes {
++            for po in o.iter_mut() {
++                println!("- [0x{:x}, palette, {}_{:x}_{}.{}{}]", *po + img_bank_start, img_bank_index, offset, index, format.as_str(), bitdepth.depth());
++                index += 1;
++                lastoffset = *po + img_bank_start;
++            }
++            println!("- [0x{:x}, bin]", lastoffset + 0x20);
++        }
++
+         Ok(Entry {
+             entry_offset: offset as u32,
+             image_count,
