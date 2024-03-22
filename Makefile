@@ -43,7 +43,10 @@ endif
 
 C_FILES       := $(shell find src -type f | grep \\.c$)
 S_FILES       := $(shell find asm -type f | grep \\.s$ | grep -v nonmatchings)
-BIN_FILES     := $(shell find assets -type f)
+PNG_FILES     := $(shell find assets -type f | grep \\.png$)
+BIN_FILES     := $(shell find assets -type f | grep \\.bin$) \
+                 $(foreach f,$(PNG_FILES:.png=.bin),$f)
+
 O_FILES       := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                  $(foreach f,$(S_FILES:.s=.o),$(BUILD_DIR)/$f) \
                  $(foreach f,$(BIN_FILES:.bin=.o),$(BUILD_DIR)/$f)
@@ -108,5 +111,9 @@ $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.bin
 	mkdir -p $(@D)
 	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+
+.PRECIOUS: assets/%.bin
+assets/%.bin: assets/%.png
+	python tools/image_converter.py $< $@
 
 -include $(DEP_FILES)
