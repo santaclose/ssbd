@@ -100,17 +100,18 @@ $(BUILD_DIR)/%.text: $(BUILD_DIR)/%.o
 	$(OBJCOPY) -O binary --only-section=.text $< $@
 
 $(BUILD_DIR)/%.o: %.s
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.c
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	clang -MMD -MP -fno-builtin -funsigned-char -fdiagnostics-color -std=gnu89 -m32 $(INCLUDES) $(DEFINES) -E -o $@ $< # d file generation
 	$(CC) $(CCFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.bin
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	$(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
+	@bash tools/createPaletteObjectIfNeeded.sh $(OBJCOPY) -I binary -O elf32-tradbigmips -B mips $< $@
 
 .PRECIOUS: assets/%.bin
 assets/%.bin: assets/%.png

@@ -970,47 +970,47 @@ segments:
   - [0xae6430, bin]
   - [0xae6450, ia16, 0_1c650_0.ia16, 32, 32]
   - [0xae6c50, bin]
-  # - [0xae6ce0, ci4, 0_1ce70_0.ci4, 16, 16]
-  # - [0xae6d60, ci4, 0_1ce70_1.ci4, 16, 16]
-  # - [0xae6de0, ci4, 0_1ce70_2.ci4, 16, 16]
-  # - [0xae6e60, ci4, 0_1ce70_3.ci4, 16, 16]
-  # - [0xae6ee0, ci4, 0_1ce70_4.ci4, 16, 16]
-  # - [0xae6f60, ci4, 0_1ce70_5.ci4, 16, 16]
-  # - [0xae6fe0, ci4, 0_1ce70_6.ci4, 16, 16]
-  # - [0xae7060, ci4, 0_1ce70_7.ci4, 16, 16]
-  # - [0xae70e0, ci4, 0_1ce70_8.ci4, 16, 16]
-  # - [0xae7160, ci4, 0_1ce70_9.ci4, 16, 16]
-  # - [0xae71e0, ci4, 0_1ce70_10.ci4, 16, 16]
-  # - [0xae7260, ci4, 0_1ce70_11.ci4, 16, 16]
-  # - [0xae72e0, ci4, 0_1ce70_12.ci4, 16, 16]
-  # - [0xae7360, ci4, 0_1ce70_13.ci4, 16, 16]
-  # - [0xae73e0, ci4, 0_1ce70_14.ci4, 16, 16]
-  # - [0xae7460, palette, 0_1ce70_0.ci4]
-  # - [0xae7480, palette, 0_1ce70_1.ci4]
-  # - [0xae74a0, palette, 0_1ce70_2.ci4]
-  # - [0xae74c0, palette, 0_1ce70_3.ci4]
-  # - [0xae74e0, palette, 0_1ce70_4.ci4]
-  # - [0xae7500, palette, 0_1ce70_5.ci4]
-  # - [0xae7520, palette, 0_1ce70_6.ci4]
-  # - [0xae7540, palette, 0_1ce70_7.ci4]
-  # - [0xae7560, palette, 0_1ce70_8.ci4]
-  # - [0xae7580, palette, 0_1ce70_9.ci4]
-  # - [0xae75a0, palette, 0_1ce70_10.ci4]
-  # - [0xae75c0, palette, 0_1ce70_11.ci4]
-  # - [0xae75e0, palette, 0_1ce70_12.ci4]
-  # - [0xae7600, palette, 0_1ce70_13.ci4]
-  # - [0xae7620, palette, 0_1ce70_14.ci4]
-  # - [0xae7640, bin]
-  # - [0xae7670, ci4, 0_1d860_0.ci4, 16, 16]
-  # - [0xae76f0, ci4, 0_1d860_1.ci4, 16, 16]
-  # - [0xae7770, ci4, 0_1d860_2.ci4, 16, 16]
-  # - [0xae77f0, palette, 0_1d860_0.ci4]
-  # - [0xae7810, palette, 0_1d860_1.ci4]
-  # - [0xae7830, palette, 0_1d860_2.ci4]
-  # - [0xae7850, bin]
-  # - [0xae7870, ci4, 0_1da70_0.ci4, 16, 8]
-  # - [0xae78b0, palette, 0_1da70_0.ci4]
-  # - [0xae78d0, bin]
+  - { start: 0xae6ce0, name: 0_1ce70_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_0.palette] }
+  - { start: 0xae6d60, name: 0_1ce70_1.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_1.palette] }
+  - { start: 0xae6de0, name: 0_1ce70_2.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_2.palette] }
+  - { start: 0xae6e60, name: 0_1ce70_3.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_3.palette] }
+  - { start: 0xae6ee0, name: 0_1ce70_4.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_4.palette] }
+  - { start: 0xae6f60, name: 0_1ce70_5.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_5.palette] }
+  - { start: 0xae6fe0, name: 0_1ce70_6.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_6.palette] }
+  - { start: 0xae7060, name: 0_1ce70_7.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_7.palette] }
+  - { start: 0xae70e0, name: 0_1ce70_8.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_8.palette] }
+  - { start: 0xae7160, name: 0_1ce70_9.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_9.palette] }
+  - { start: 0xae71e0, name: 0_1ce70_10.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_10.palette] }
+  - { start: 0xae7260, name: 0_1ce70_11.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_11.palette] }
+  - { start: 0xae72e0, name: 0_1ce70_12.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_12.palette] }
+  - { start: 0xae7360, name: 0_1ce70_13.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_13.palette] }
+  - { start: 0xae73e0, name: 0_1ce70_14.ci4, type: ci4, width: 16, height: 16, palettes: [0_1ce70_14.palette] }
+  - { start: 0xae7460, name: 0_1ce70_0.palette, type: palette, global_id: 0_1ce70_0.palette }
+  - { start: 0xae7480, name: 0_1ce70_1.palette, type: palette, global_id: 0_1ce70_1.palette }
+  - { start: 0xae74a0, name: 0_1ce70_2.palette, type: palette, global_id: 0_1ce70_2.palette }
+  - { start: 0xae74c0, name: 0_1ce70_3.palette, type: palette, global_id: 0_1ce70_3.palette }
+  - { start: 0xae74e0, name: 0_1ce70_4.palette, type: palette, global_id: 0_1ce70_4.palette }
+  - { start: 0xae7500, name: 0_1ce70_5.palette, type: palette, global_id: 0_1ce70_5.palette }
+  - { start: 0xae7520, name: 0_1ce70_6.palette, type: palette, global_id: 0_1ce70_6.palette }
+  - { start: 0xae7540, name: 0_1ce70_7.palette, type: palette, global_id: 0_1ce70_7.palette }
+  - { start: 0xae7560, name: 0_1ce70_8.palette, type: palette, global_id: 0_1ce70_8.palette }
+  - { start: 0xae7580, name: 0_1ce70_9.palette, type: palette, global_id: 0_1ce70_9.palette }
+  - { start: 0xae75a0, name: 0_1ce70_10.palette, type: palette, global_id: 0_1ce70_10.palette }
+  - { start: 0xae75c0, name: 0_1ce70_11.palette, type: palette, global_id: 0_1ce70_11.palette }
+  - { start: 0xae75e0, name: 0_1ce70_12.palette, type: palette, global_id: 0_1ce70_12.palette }
+  - { start: 0xae7600, name: 0_1ce70_13.palette, type: palette, global_id: 0_1ce70_13.palette }
+  - { start: 0xae7620, name: 0_1ce70_14.palette, type: palette, global_id: 0_1ce70_14.palette }
+  - [0xae7640, bin]
+  - { start: 0xae7670, name: 0_1d860_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_0.palette] }
+  - { start: 0xae76f0, name: 0_1d860_1.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_1.palette] }
+  - { start: 0xae7770, name: 0_1d860_2.ci4, type: ci4, width: 16, height: 16, palettes: [0_1d860_2.palette] }
+  - { start: 0xae77f0, name: 0_1d860_0.palette, type: palette, global_id: 0_1d860_0.palette }
+  - { start: 0xae7810, name: 0_1d860_1.palette, type: palette, global_id: 0_1d860_1.palette }
+  - { start: 0xae7830, name: 0_1d860_2.palette, type: palette, global_id: 0_1d860_2.palette }
+  - [0xae7850, bin]
+  - { start: 0xae7870, name: 0_1da70_0.ci4, type: ci4, width: 16, height: 8, palettes: [0_1da70_0.palette] }
+  - { start: 0xae78b0, name: 0_1da70_0.palette, type: palette, global_id: 0_1da70_0.palette }
+  - [0xae78d0, bin]
   - [0xae7938, i4, 0_1daf0_0.i4, 32, 32]
   - [0xae7b38, i4, 0_1daf0_1.i4, 32, 32]
   - [0xae7d38, i4, 0_1daf0_2.i4, 32, 32]
@@ -1054,91 +1054,91 @@ segments:
   - [0xaf81b8, ia16, 0_2a398_8.ia16, 32, 32]
   - [0xaf89b8, ia16, 0_2a398_9.ia16, 32, 32]
   - [0xaf91b8, bin]
-  # - [0xaf91e8, ci4, 0_2f3d8_0.ci4, 32, 32]
-  # - [0xaf93e8, ci4, 0_2f3d8_1.ci4, 32, 32]
-  # - [0xaf95e8, ci4, 0_2f3d8_2.ci4, 32, 32]
-  # - [0xaf97e8, palette, 0_2f3d8_0.ci4]
-  # - [0xaf9808, palette, 0_2f3d8_1.ci4]
-  # - [0xaf9828, palette, 0_2f3d8_2.ci4]
-  # - [0xaf9848, bin]
-  # - [0xaf9870, ci4, 0_2fa68_0.ci4, 64, 16]
-  # - [0xaf9a70, ci4, 0_2fa68_1.ci4, 64, 16]
-  # - [0xaf9c70, palette, 0_2fa68_0.ci4]
-  # - [0xaf9c90, palette, 0_2fa68_1.ci4]
-  # - [0xaf9cb0, bin]
-  # - [0xaf9d10, ci4, 0_2fed0_0.ci4, 32, 32]
-  # - [0xaf9f10, ci4, 0_2fed0_1.ci4, 32, 32]
-  # - [0xafa110, ci4, 0_2fed0_2.ci4, 32, 32]
-  # - [0xafa310, ci4, 0_2fed0_3.ci4, 32, 32]
-  # - [0xafa510, ci4, 0_2fed0_4.ci4, 32, 32]
-  # - [0xafa710, ci4, 0_2fed0_5.ci4, 32, 32]
-  # - [0xafa910, ci4, 0_2fed0_6.ci4, 32, 32]
-  # - [0xafab10, ci4, 0_2fed0_7.ci4, 32, 32]
-  # - [0xafad10, ci4, 0_2fed0_8.ci4, 32, 32]
-  # - [0xafaf10, palette, 0_2fed0_0.ci4]
-  # - [0xafaf30, palette, 0_2fed0_1.ci4]
-  # - [0xafaf50, palette, 0_2fed0_2.ci4]
-  # - [0xafaf70, palette, 0_2fed0_3.ci4]
-  # - [0xafaf90, palette, 0_2fed0_4.ci4]
-  # - [0xafafb0, palette, 0_2fed0_5.ci4]
-  # - [0xafafd0, palette, 0_2fed0_6.ci4]
-  # - [0xafaff0, palette, 0_2fed0_7.ci4]
-  # - [0xafb010, palette, 0_2fed0_8.ci4]
-  # - [0xafb030, bin]
-  # - [0xafb088, ci4, 0_31250_0.ci4, 32, 32]
-  # - [0xafb288, ci4, 0_31250_1.ci4, 32, 32]
-  # - [0xafb488, ci4, 0_31250_2.ci4, 32, 32]
-  # - [0xafb688, ci4, 0_31250_3.ci4, 32, 32]
-  # - [0xafb888, ci4, 0_31250_4.ci4, 32, 32]
-  # - [0xafba88, ci4, 0_31250_5.ci4, 32, 32]
-  # - [0xafbc88, ci4, 0_31250_6.ci4, 32, 32]
-  # - [0xafbe88, ci4, 0_31250_7.ci4, 32, 32]
-  # - [0xafc088, palette, 0_31250_0.ci4]
-  # - [0xafc0a8, palette, 0_31250_1.ci4]
-  # - [0xafc0c8, palette, 0_31250_2.ci4]
-  # - [0xafc0e8, palette, 0_31250_3.ci4]
-  # - [0xafc108, palette, 0_31250_4.ci4]
-  # - [0xafc128, palette, 0_31250_5.ci4]
-  # - [0xafc148, palette, 0_31250_6.ci4]
-  # - [0xafc168, palette, 0_31250_7.ci4]
-  # - [0xafc188, bin]
-  # - [0xafc1e0, ci4, 0_323a8_0.ci4, 32, 32]
-  # - [0xafc3e0, ci4, 0_323a8_1.ci4, 32, 32]
-  # - [0xafc5e0, ci4, 0_323a8_2.ci4, 32, 32]
-  # - [0xafc7e0, ci4, 0_323a8_3.ci4, 32, 32]
-  # - [0xafc9e0, ci4, 0_323a8_4.ci4, 32, 32]
-  # - [0xafcbe0, ci4, 0_323a8_5.ci4, 32, 32]
-  # - [0xafcde0, ci4, 0_323a8_6.ci4, 32, 32]
-  # - [0xafcfe0, ci4, 0_323a8_7.ci4, 32, 32]
-  # - [0xafd1e0, palette, 0_323a8_0.ci4]
-  # - [0xafd200, palette, 0_323a8_1.ci4]
-  # - [0xafd220, palette, 0_323a8_2.ci4]
-  # - [0xafd240, palette, 0_323a8_3.ci4]
-  # - [0xafd260, palette, 0_323a8_4.ci4]
-  # - [0xafd280, palette, 0_323a8_5.ci4]
-  # - [0xafd2a0, palette, 0_323a8_6.ci4]
-  # - [0xafd2c0, palette, 0_323a8_7.ci4]
-  # - [0xafd2e0, bin]
-  # - [0xafd338, ci4, 0_33500_0.ci4, 32, 32]
-  # - [0xafd538, ci4, 0_33500_1.ci4, 32, 32]
-  # - [0xafd738, ci4, 0_33500_2.ci4, 32, 32]
-  # - [0xafd938, ci4, 0_33500_3.ci4, 32, 32]
-  # - [0xafdb38, ci4, 0_33500_4.ci4, 32, 32]
-  # - [0xafdd38, ci4, 0_33500_5.ci4, 32, 32]
-  # - [0xafdf38, ci4, 0_33500_6.ci4, 32, 32]
-  # - [0xafe138, ci4, 0_33500_7.ci4, 32, 32]
-  # - [0xafe338, palette, 0_33500_0.ci4]
-  # - [0xafe358, palette, 0_33500_1.ci4]
-  # - [0xafe378, palette, 0_33500_2.ci4]
-  # - [0xafe398, palette, 0_33500_3.ci4]
-  # - [0xafe3b8, palette, 0_33500_4.ci4]
-  # - [0xafe3d8, palette, 0_33500_5.ci4]
-  # - [0xafe3f8, palette, 0_33500_6.ci4]
-  # - [0xafe418, palette, 0_33500_7.ci4]
-  # - [0xafe438, bin]
-  # - [0xafe458, ci4, 0_34658_0.ci4, 16, 16]
-  # - [0xafe4d8, palette, 0_34658_0.ci4]
-  # - [0xafe4f8, bin]
+  - { start: 0xaf91e8, name: 0_2f3d8_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_0.palette] }
+  - { start: 0xaf93e8, name: 0_2f3d8_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_1.palette] }
+  - { start: 0xaf95e8, name: 0_2f3d8_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_2f3d8_2.palette] }
+  - { start: 0xaf97e8, name: 0_2f3d8_0.palette, type: palette, global_id: 0_2f3d8_0.palette }
+  - { start: 0xaf9808, name: 0_2f3d8_1.palette, type: palette, global_id: 0_2f3d8_1.palette }
+  - { start: 0xaf9828, name: 0_2f3d8_2.palette, type: palette, global_id: 0_2f3d8_2.palette }
+  - [0xaf9848, bin]
+  - { start: 0xaf9870, name: 0_2fa68_0.ci4, type: ci4, width: 64, height: 16, palettes: [0_2fa68_0.palette] }
+  - { start: 0xaf9a70, name: 0_2fa68_1.ci4, type: ci4, width: 64, height: 16, palettes: [0_2fa68_1.palette] }
+  - { start: 0xaf9c70, name: 0_2fa68_0.palette, type: palette, global_id: 0_2fa68_0.palette }
+  - { start: 0xaf9c90, name: 0_2fa68_1.palette, type: palette, global_id: 0_2fa68_1.palette }
+  - [0xaf9cb0, bin]
+  - { start: 0xaf9d10, name: 0_2fed0_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_0.palette] }
+  - { start: 0xaf9f10, name: 0_2fed0_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_1.palette] }
+  - { start: 0xafa110, name: 0_2fed0_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_2.palette] }
+  - { start: 0xafa310, name: 0_2fed0_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_3.palette] }
+  - { start: 0xafa510, name: 0_2fed0_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_4.palette] }
+  - { start: 0xafa710, name: 0_2fed0_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_5.palette] }
+  - { start: 0xafa910, name: 0_2fed0_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_6.palette] }
+  - { start: 0xafab10, name: 0_2fed0_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_7.palette] }
+  - { start: 0xafad10, name: 0_2fed0_8.ci4, type: ci4, width: 32, height: 32, palettes: [0_2fed0_8.palette] }
+  - { start: 0xafaf10, name: 0_2fed0_0.palette, type: palette, global_id: 0_2fed0_0.palette }
+  - { start: 0xafaf30, name: 0_2fed0_1.palette, type: palette, global_id: 0_2fed0_1.palette }
+  - { start: 0xafaf50, name: 0_2fed0_2.palette, type: palette, global_id: 0_2fed0_2.palette }
+  - { start: 0xafaf70, name: 0_2fed0_3.palette, type: palette, global_id: 0_2fed0_3.palette }
+  - { start: 0xafaf90, name: 0_2fed0_4.palette, type: palette, global_id: 0_2fed0_4.palette }
+  - { start: 0xafafb0, name: 0_2fed0_5.palette, type: palette, global_id: 0_2fed0_5.palette }
+  - { start: 0xafafd0, name: 0_2fed0_6.palette, type: palette, global_id: 0_2fed0_6.palette }
+  - { start: 0xafaff0, name: 0_2fed0_7.palette, type: palette, global_id: 0_2fed0_7.palette }
+  - { start: 0xafb010, name: 0_2fed0_8.palette, type: palette, global_id: 0_2fed0_8.palette }
+  - [0xafb030, bin]
+  - { start: 0xafb088, name: 0_31250_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_0.palette] }
+  - { start: 0xafb288, name: 0_31250_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_1.palette] }
+  - { start: 0xafb488, name: 0_31250_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_2.palette] }
+  - { start: 0xafb688, name: 0_31250_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_3.palette] }
+  - { start: 0xafb888, name: 0_31250_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_4.palette] }
+  - { start: 0xafba88, name: 0_31250_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_5.palette] }
+  - { start: 0xafbc88, name: 0_31250_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_6.palette] }
+  - { start: 0xafbe88, name: 0_31250_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_31250_7.palette] }
+  - { start: 0xafc088, name: 0_31250_0.palette, type: palette, global_id: 0_31250_0.palette }
+  - { start: 0xafc0a8, name: 0_31250_1.palette, type: palette, global_id: 0_31250_1.palette }
+  - { start: 0xafc0c8, name: 0_31250_2.palette, type: palette, global_id: 0_31250_2.palette }
+  - { start: 0xafc0e8, name: 0_31250_3.palette, type: palette, global_id: 0_31250_3.palette }
+  - { start: 0xafc108, name: 0_31250_4.palette, type: palette, global_id: 0_31250_4.palette }
+  - { start: 0xafc128, name: 0_31250_5.palette, type: palette, global_id: 0_31250_5.palette }
+  - { start: 0xafc148, name: 0_31250_6.palette, type: palette, global_id: 0_31250_6.palette }
+  - { start: 0xafc168, name: 0_31250_7.palette, type: palette, global_id: 0_31250_7.palette }
+  - [0xafc188, bin]
+  - { start: 0xafc1e0, name: 0_323a8_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_0.palette] }
+  - { start: 0xafc3e0, name: 0_323a8_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_1.palette] }
+  - { start: 0xafc5e0, name: 0_323a8_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_2.palette] }
+  - { start: 0xafc7e0, name: 0_323a8_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_3.palette] }
+  - { start: 0xafc9e0, name: 0_323a8_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_4.palette] }
+  - { start: 0xafcbe0, name: 0_323a8_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_5.palette] }
+  - { start: 0xafcde0, name: 0_323a8_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_6.palette] }
+  - { start: 0xafcfe0, name: 0_323a8_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_323a8_7.palette] }
+  - { start: 0xafd1e0, name: 0_323a8_0.palette, type: palette, global_id: 0_323a8_0.palette }
+  - { start: 0xafd200, name: 0_323a8_1.palette, type: palette, global_id: 0_323a8_1.palette }
+  - { start: 0xafd220, name: 0_323a8_2.palette, type: palette, global_id: 0_323a8_2.palette }
+  - { start: 0xafd240, name: 0_323a8_3.palette, type: palette, global_id: 0_323a8_3.palette }
+  - { start: 0xafd260, name: 0_323a8_4.palette, type: palette, global_id: 0_323a8_4.palette }
+  - { start: 0xafd280, name: 0_323a8_5.palette, type: palette, global_id: 0_323a8_5.palette }
+  - { start: 0xafd2a0, name: 0_323a8_6.palette, type: palette, global_id: 0_323a8_6.palette }
+  - { start: 0xafd2c0, name: 0_323a8_7.palette, type: palette, global_id: 0_323a8_7.palette }
+  - [0xafd2e0, bin]
+  - { start: 0xafd338, name: 0_33500_0.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_0.palette] }
+  - { start: 0xafd538, name: 0_33500_1.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_1.palette] }
+  - { start: 0xafd738, name: 0_33500_2.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_2.palette] }
+  - { start: 0xafd938, name: 0_33500_3.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_3.palette] }
+  - { start: 0xafdb38, name: 0_33500_4.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_4.palette] }
+  - { start: 0xafdd38, name: 0_33500_5.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_5.palette] }
+  - { start: 0xafdf38, name: 0_33500_6.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_6.palette] }
+  - { start: 0xafe138, name: 0_33500_7.ci4, type: ci4, width: 32, height: 32, palettes: [0_33500_7.palette] }
+  - { start: 0xafe338, name: 0_33500_0.palette, type: palette, global_id: 0_33500_0.palette }
+  - { start: 0xafe358, name: 0_33500_1.palette, type: palette, global_id: 0_33500_1.palette }
+  - { start: 0xafe378, name: 0_33500_2.palette, type: palette, global_id: 0_33500_2.palette }
+  - { start: 0xafe398, name: 0_33500_3.palette, type: palette, global_id: 0_33500_3.palette }
+  - { start: 0xafe3b8, name: 0_33500_4.palette, type: palette, global_id: 0_33500_4.palette }
+  - { start: 0xafe3d8, name: 0_33500_5.palette, type: palette, global_id: 0_33500_5.palette }
+  - { start: 0xafe3f8, name: 0_33500_6.palette, type: palette, global_id: 0_33500_6.palette }
+  - { start: 0xafe418, name: 0_33500_7.palette, type: palette, global_id: 0_33500_7.palette }
+  - [0xafe438, bin]
+  - { start: 0xafe458, name: 0_34658_0.ci4, type: ci4, width: 16, height: 16, palettes: [0_34658_0.palette] }
+  - { start: 0xafe4d8, name: 0_34658_0.palette, type: palette, global_id: 0_34658_0.palette }
+  - [0xafe4f8, bin]
   - [0xafe520, ia16, 0_34718_0.ia16, 16, 16]
   - [0xafe720, ia16, 0_34718_1.ia16, 16, 16]
   - [0xafe920, ia16, 0_34718_2.ia16, 16, 16]
