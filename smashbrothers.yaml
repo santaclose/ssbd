@@ -179,6 +179,7 @@ segments:
       - [0x033540, c, libultra/gu/mtxutil]
       - [0x0337B0, asm, libultra/io/visetmode]
       - [0x033820, asm, libultra/os/probetlb]
+      - [0x033A50, asm, libultra/io/piacs]
       - [0x033B10, asm, libultra/nops_33B10]
       - [0x033B20, asm, libultra/io/devmgr]
       - [0x033FB0, asm, libultra/io/pirawdma]
