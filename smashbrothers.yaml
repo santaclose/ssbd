@@ -147,6 +147,8 @@ segments:
       - [0x1060, asm, main]
       - [0x1510, asm, nops_1510]
       - [0x1520, asm, unk_1520]
+      - [0x01F1C0, asm, hal_audio]
+      - [0x021CC0, asm, unk_21CC0]
       - [0x024480, asm, libultra/sprite]
       - [0x026B10, asm, libultra/io/sptaskyield]
       - [0x026BC0, asm, libultra/audio]
@@ -239,6 +241,7 @@ segments:
       - [0x03A270, asm, libultra/io/spsetpc]
       - [0x03A2B0, hasm, libultra/unk_3A2B0_hasm]
       - [0x03A3E0, data, libultra_data]
+      - [0x03E020, data, unk_data_3E020]
       - [0x03E250, rodata, libultra_rodata]
       - { start: 0x406D0, type: bss, vram: 0x8003FAD0 }
       # - [0x0406D0, asm, unk_406D0]
