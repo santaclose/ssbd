@@ -1,0 +1,9 @@
+services:
+  build:
+    container_name: santaclose-ssbd-build
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    volumes:
+      - ./:/src
