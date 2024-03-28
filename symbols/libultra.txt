@@ -11,9 +11,7 @@ __osActiveQueue_B = 0x8004501C;
 __osSiAccessQueue_A = 0x800454C8;
 __additional_scanline_A = 0x8003D63C;
 __additional_scanline_B = 0x80045018;
-__osSiRelAccess_B = 0x80006AF8;
 
-__osGetActiveQueue = 0x8000092C;
 __osExceptionPreamble = 0x80030C70;
 __osException = 0x80030C80;
 __osPopThread = 0x800313D4;
@@ -90,8 +88,6 @@ __osPfsInodeCache = 0x800A0610;
 
 osTvType = 0x80000300;
 osRomBase = 0x80000308;
-osViExtendVStart = 0x80002A50;
-osSetTime = 0x80023010;
 osSendMesg = 0x80030000;
 osStopThread = 0x80030150;
 osRecvMesg = 0x80030210;
@@ -149,11 +145,6 @@ spScale = 0x80025F50;
 __alCSeqNextDelta = 0x80028AF8;
 __alSeqNextDelta = 0x8002F9FC;
 
-__dummy = 0x80000C5C;
-leoInitUnit_atten = 0x80005C74;
-alSeqFileNew = 0x8001E648;
-myfree = 0x80020A28;
-alSynFreeFX = 0x80020FA0;
 n_alSynSetPriority = 0x80023880;
 alCSeqNewMarker = 0x8002898C;
 alLink = 0x80028C60;
@@ -266,13 +257,6 @@ __ll_rshift = 0x80030C44;
 __ll_to_d = 0x800394B4;
 __ll_to_f = 0x800394CC;
 
-guLookAt = 0x8001A37C;
-guLookAtStereo = 0x8001A6C8;
-guLookAtReflect = 0x8001AB2C;
-guFrustum = 0x8001B1E4;
-guPerspective = 0x8001B474;
-guAlign = 0x8001BBF8;
-guRotateRPY = 0x8001CAB4;
 guMtxF2L = 0x80032940;
 guMtxIdentF = 0x80032A40;
 guMtxIdent = 0x80032AC8;
@@ -283,5 +267,3 @@ guNormalize = 0x80035380;
 guSqrtf = 0x80033510;
 
 fcos = 0x80035CD0;
-
-fatal_printf = 0x80023624;

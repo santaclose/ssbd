@@ -684,35 +684,23 @@ gOMObjCommonLinks = 0x800466F0;
 func_ovl0_800CCF00 = 0x800CCF00;
 ftGlobal_SpawnInfo_MainData = 0x80116DD0;
 gDefaultBattleState = 0x800A3fc8;
-scnmgr_crash_print_gobj_state = 0x800a3040;
 gDisplayListHead = 0x800465B0;
 gCommonSpriteFiles = 0x80130D40;
 gMapLightAngleY = 0x80131394;
-rgba32_to_fill_color = 0x80006d70;
 gPlayerControllers = 0x80045228;
 gBattleState = 0x800A50e8;
-omAddGObjCommonProc = 0x80008188;
 gSceneData = 0x800A4AD0;
 gMapLightAngleX = 0x80131390;
 gCameraGObj = 0x80131460;
 gMusicIndexDefault = 0x801313a0;
-omMakeGObjCommon = 0x80009968;
 gPlayerCommonInterface = 0x80131580;
-omAddGObjRenderProc = 0x80009df4;
 gMusicIndexCurrent = 0x8013139C;
-hal_alloc = 0x80004980;
 
 gGroundInfo = 0x80131300;
 
-lbRandom_GetIntRange = 0x80018994;
-lbRandom_GetTimeByteRange = 0x80018A30;
-
 menu_zoom = 0x80390D90;
-stop_current_process = 0x8000b1e8;
 gcAppendSObjWithSprite = 0x800ccfdc;
 gSaveData = 0x800A44E0;
-omEjectGObjCommon = 0x80009a84;
-om_g_move_obj_dl = 0x8000A0D0;
 D_ovl2_80130D9C = 0x80130D9C;
 func_ovl0_800CD2CC = 0x800CD2CC;
 func_ovl0_800CD1F0 = 0x800CD1F0;

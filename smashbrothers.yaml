@@ -24,6 +24,8 @@ options:
 
   symbol_addrs_path:
     - symbols/libultra.txt
+    - symbols/system.txt
+    - symbols/scene_manager.txt
     - symbols/ovl0.txt
     - symbols/ovl2.txt
     - symbols/ovl3.txt
@@ -149,21 +151,21 @@ segments:
       - [0x001520, asm, thread3]
       - [0x003660, asm, dma]
       - [0x004800, asm, thread6]
-      - [0x0054d0, asm, gtl]
-      - [0x0078e0, asm, ml]
+      - [0x0054D0, asm, gtl]
+      - [0x0078E0, asm, ml]
       - [0x007970, asm, system_00]
-      - [0x007C80, asm, system_01] # rdp_reset
-      - [0x007FE0, asm, system_02] # obj_manager
+      - [0x007C80, asm, rdp_reset]
+      - [0x007FE0, asm, obj_manager]
       - [0x00B8D0, asm, system_03]
       - [0x00BAF0, asm, system_03_1]
-      - [0x00c7b0, asm, system_04]
-      - [0x011970, asm, system_05] # obj_renderer
-      - [0x0190E0, asm, system_06] # trig_rand
-      - [0x019AE0, asm, system_07] # vec
-      - [0x01A870, asm, system_08] # hal_gu
-      - [0x01E210, asm, system_09] # interpolation
-      - [0x01F1C0, asm, system_10] # hal_audio
-      - [0x021CC0, asm, system_11] # crash
+      - [0x00C7B0, asm, system_04]
+      - [0x011970, asm, obj_renderer]
+      - [0x0190E0, asm, trig_rand]
+      - [0x019AE0, asm, vec_math]
+      - [0x01A870, asm, hal_gu]
+      - [0x01E210, asm, interpolation]
+      - [0x01F1C0, asm, hal_audio]
+      - [0x021CC0, asm, crash]
       - [0x024440, asm, unk_24440]
       - [0x024480, asm, libultra/sprite]
       - [0x026B10, asm, libultra/io/sptaskyield]
