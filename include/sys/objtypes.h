@@ -2,6 +2,7 @@
 #define _OBJTYPES_H_
 
 #include <PR/ultratypes.h>
+#include <PR/os.h>
 #include <PR/sp.h>
 #include <ssb_types.h>
 #include <macros.h>
@@ -44,6 +45,13 @@ union ACommand
 	u16 uhalf;
 };
 
+union AObjActor
+{
+    void *p;
+    ATrack *atrack;
+    ACommand *acommand;
+};
+
 struct _AObj
 {
 	/* 0x00 */ AObj* next;
@@ -58,6 +66,20 @@ struct _AObj
 	// interpolation control struct?
 	/* 0x20 */ ACommand* interpolate;
 }; // size == 0x24
+
+struct _OMThreadStackNode
+{
+    OMThreadStackNode *next;
+    u32 stack_size;
+    u64 stack[1];
+}; // size == 0x08 + VLA
+
+struct _OMThreadStackList
+{
+    OMThreadStackList *next;
+    OMThreadStackNode *stack;
+    u32 size;
+};
 
 struct _GObjProcess
 {
@@ -75,6 +97,14 @@ struct _GObjProcess
 		void (*proc)(GObj*);
 	};
 	void* unk_gobjproc_0x20;
+};
+
+struct _GObjThread
+{
+    GObjThread *next;
+    OSThread osthread;
+    u64 *osstack;
+    u32 stack_size;
 };
 
 struct GObj
@@ -116,6 +146,67 @@ struct _OMMtx
 	///* 0x0C */ u8 pad0C[0x48 - 0xc];
 }; // size == 0x48
 
+struct OMPersp
+{
+    OMMtx *ommtx;
+    u16 norm;
+    f32 fovy;
+    f32 aspect;
+    f32 near;
+    f32 far;
+    f32 scale;
+};
+
+struct OMFrustum
+{
+    OMMtx *ommtx;
+    f32 l, r, b, t, n, f;
+    f32 scale;
+};
+
+struct OMOrtho
+{
+    OMMtx *ommtx;
+    f32 l, r, b, t, n, f;
+    f32 scale;
+};
+
+struct OMTranslate
+{
+    OMMtx *ommtx;
+
+    union
+    {
+        Vec3f f;
+        Vec3i i;
+
+    } vec;
+};
+
+struct OMRotate
+{
+    OMMtx *ommtx;
+
+    f32 a;          // Rotation angle
+
+    union
+    {
+        Vec3f f;
+
+    } vec;
+};
+
+struct OMScale
+{
+    OMMtx *ommtx;
+
+    union
+    {
+        Vec3f f;
+
+    } vec;
+};
+
 struct _Mtx6f
 {
 	OMMtx* mtx;
@@ -126,6 +217,12 @@ struct _Mtx7f
 {
 	OMMtx* mtx;
 	f32 f[7];
+};
+
+struct OMGfxLink
+{
+    s32 id;
+    Gfx *dls[4];
 };
 
 struct OMMtxVec3
@@ -287,41 +384,47 @@ struct _SObj // Sprite object
 	u16 lrs, lrt;				// lower right s and t - used for wrap/mirror boundary
 };
 
-struct OMMtxCamera
+struct CameraVec
 {
-	OMMtx* mtx;
-	Vec3f tilt; // Either camera terms do not translate very well here or I'm
-				// just too incompetent... this rotates about the focus point
-	Vec3f pan;	// This moves the camera on the XYZ planes
-	Vec3f unk;
+    OMMtx *ommtx;
+    Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
+    Vec3f at;  // This moves the camera on the XYZ planes
+    Vec3f up;
 };
 
-// 0x18 and 0x1C are roll (rotate camera on Z axis?)
-struct _OMCamera
+struct _Camera
 {
-	u8 filler_0x0[0x8];
-	Vp viewport;
-	union
-	{
-		Mtx6f f6;
-		Mtx7f f7;
+    Camera *next;
+    GObj *parent_gobj;
 
-	} mtx_types;
-	OMMtxCamera view;
-	s32 mtx_len;
-	OMMtx* om_mtx[2];
-	AObj* aobj;
-	union
-	{
-		ATrack* atrack; // Unconfirmed
-		ACommand* acommand;
-	};
+    Vp viewport;
 
-	f32 omcam_f0;
-	f32 omcam_f1;
-	f32 omcam_f2;
+    union CameraProjection
+    {
+        OMPersp persp;
+        OMOrtho ortho;
+        OMFrustum frustum;
 
-	u32 flags;
+    } projection;
+
+    CameraVec vec;
+
+    s32 ommtx_len;
+    OMMtx *ommtx[2];
+
+    AObj *aobj;
+    AObjActor actor;
+
+    f32 cam_f0;
+    f32 cam_f1;
+    f32 cam_f2;
+
+    u32 flags;
+    u32 color;
+
+    void(*proc_camera)(Camera*, s32);
+
+    s32 unk_camera_0x8C;
 };
 
 #endif

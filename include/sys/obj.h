@@ -11,7 +11,7 @@
 
 #define SObjGetStruct(gobj) ((SObj*)(gobj)->obj)
 
-#define OMCameraGetStruct(gobj) ((OMCamera*)(gobj)->obj)
+#define CameraGetStruct(gobj) ((Camera*)(gobj)->obj)
 
 #define SObjGetSprite(sobj) ((Sprite*)&(sobj)->sprite)
 

@@ -325,30 +325,6 @@ struct SObj
 	/* 0x60 */ GfxColor sobj_color;
 }; // size >= 0x58 (0x6C?)
 
-struct OMCamera
-{
-	/* 0x00 */ struct OMCamera* next;
-	/* 0x04 */ struct GObjCommon* unk04;
-	/* 0x08 */ Vp unk08;
-	/* 0x18 */ union
-	{
-		struct Mtx6Float f6;
-		struct Mtx7Float f7;
-	} unk18;
-	/* 0x38 */ struct Mtx3x3Float unk38;
-	/* 0x60 */ s32 unk60; // len of unk64
-	/* 0x64 */ struct OMMtx* unk64[2];
-	/* 0x6C */ struct AObj* unk6C;
-	/* 0x70 */ s32 unk70;
-	/* 0x74 */ f32 unk74;
-	/* 0x78 */ f32 unk78;
-	/* 0x7C */ f32 unk7C;
-	/* 0x80 */ s32 unk80; // attr flags?
-	/* 0x84 */ s32 unk84; // color?
-	/* 0x88 */ void (*unk88)(struct OMCamera*, s32);
-	/* 0x8C */ s32 unk8C;
-}; // size >= 0x90
-
 // replace `struct TempUnkA6E0` with this
 // and replace raw struct sizes in `func_8000683C`
 struct OMSetup

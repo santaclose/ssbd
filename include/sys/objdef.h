@@ -39,8 +39,10 @@ typedef enum omGObjLinkIndex
 typedef union OMUserData OMUserData;
 typedef union ATrack ATrack;
 typedef union ACommand ACommand;
+typedef union AObjActor AObjActor;
 typedef struct GObj GObj;
 typedef struct _GObjProcess GObjProcess;
+typedef struct _GObjThread GObjThread;
 typedef struct _DObj DObj; // Some structs are temporarily prefixed with
 						   // underscore to avoid conflict with types in om.h
 typedef struct DObjDesc DObjDesc;
@@ -48,6 +50,7 @@ typedef struct DObjRenderTypes DObjRenderTypes;
 typedef struct DObjDescArray DObjDescArray;
 typedef struct DObjDescContainer DObjDescContainer;
 typedef struct DObjMultiList DObjMultiList;
+typedef struct DObjDynamicStore DObjDynamicStore;
 typedef struct _AObj AObj;
 typedef struct _MObj MObj;
 typedef struct _MObjSub MObjSub;
@@ -57,7 +60,19 @@ typedef struct _Mtx6f Mtx6f;
 typedef struct _Mtx7f Mtx7f;
 typedef struct OMMtxVec3 OMMtxVec3;
 typedef struct OMMtxVec4 OMMtxVec4;
+typedef struct OMGfxLink OMGfxLink;
 typedef struct OMMtxCamera OMMtxCamera;
-typedef struct _OMCamera OMCamera;
+typedef struct CameraVec            CameraVec;
+typedef struct _Camera              Camera;
+
+typedef struct OMPersp              OMPersp;
+typedef struct OMFrustum            OMFrustum;
+typedef struct OMOrtho              OMOrtho;
+typedef struct OMTranslate          OMTranslate;
+typedef struct OMRotate             OMRotate;
+typedef struct OMScale              OMScale;
+
+typedef struct _OMThreadStackNode   OMThreadStackNode;
+typedef struct _OMThreadStackList   OMThreadStackList;
 
 #endif
