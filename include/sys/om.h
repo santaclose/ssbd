@@ -72,25 +72,6 @@ struct GObjCommon
 	/* 0x84 */ void* unk84;
 }; // size >= 0x88
 
-struct GObjProcess
-{
-	/* 0x00 */ struct GObjProcess* unk00;
-	/* 0x04 */ struct GObjProcess* unk04;
-	/* 0x08 */ struct GObjProcess* unk08;
-	/* 0x08 */ struct GObjProcess* unk0C;
-	/* 0x10 */ s32 unk10; // priority
-	/* 0x14 */ u8 unk14;  // kind
-	/* 0x15 */ u8 unk15;
-	/* 0x18 */ struct GObjCommon* unk18;
-	// following two fields are typed via unk14 / kind
-	/* 0x1C */ union
-	{
-		struct GObjThread* thread;
-		void (*cb)(struct GObjCommon*);
-	} unk1C;
-	/* 0x20 */ void* unk20;
-}; // size == 0x24
-
 struct OMMtx
 {
 	/* 0x00 */ struct OMMtx* next;

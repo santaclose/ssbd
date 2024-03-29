@@ -1061,7 +1061,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 
 	if (panel_info->unk_0x88 == 1)
 	{
-		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < (PI32/1800))
+		if (DObjGetStruct(fighter_gobj)->rotate.vec.f.y < (PI32 / 1800))
 		{
 			if (panel_info->selected_animation_started == FALSE)
 			{
@@ -3655,12 +3655,12 @@ void mnBattleDestroyCursorAndTokenProcesses()
 		cursor_gobj = gMnBattlePanels[i].cursor;
 
 		if (cursor_gobj != NULL)
-			func_8000B2EC(cursor_gobj->gobjproc);
+			func_8000B2EC(cursor_gobj->gobjproc_next);
 
 		token_gobj = gMnBattlePanels[i].token;
 
 		if (token_gobj != NULL)
-			func_8000B2EC(token_gobj->gobjproc);
+			func_8000B2EC(token_gobj->gobjproc_next);
 	};
 }
 

@@ -47,9 +47,9 @@ union ACommand
 
 union AObjActor
 {
-    void *p;
-    ATrack *atrack;
-    ACommand *acommand;
+	void* p;
+	ATrack* atrack;
+	ACommand* acommand;
 };
 
 struct _AObj
@@ -69,24 +69,25 @@ struct _AObj
 
 struct _OMThreadStackNode
 {
-    OMThreadStackNode *next;
-    u32 stack_size;
-    u64 stack[1];
+	OMThreadStackNode* next;
+	u32 stackSize;
+	u64 stack[1];
 }; // size == 0x08 + VLA
 
 struct _OMThreadStackList
 {
-    OMThreadStackList *next;
-    OMThreadStackNode *stack;
-    u32 size;
+	OMThreadStackList* next;
+	OMThreadStackNode* stack;
+	u32 size;
 };
 
 struct _GObjProcess
 {
 	GObjProcess* gobjproc_next;
 	GObjProcess* gobjproc_prev;
-	GObjProcess* unk_gobjproc_0x8[2]; // This is more than likely not an array, doing
-									  // this only to get the correct offsets
+	GObjProcess* unk_gobjproc_0x8;
+	GObjProcess* unk_gobjproc_0xC;
+
 	s32 priority;
 	u8 kind;
 	u8 unk_gobjproc_0x15;
@@ -101,10 +102,10 @@ struct _GObjProcess
 
 struct _GObjThread
 {
-    GObjThread *next;
-    OSThread osthread;
-    u64 *osstack;
-    u32 stack_size;
+	GObjThread* next;
+	OSThread osthread;
+	u64* osstack;
+	u32 stack_size;
 };
 
 struct GObj
@@ -119,8 +120,15 @@ struct GObj
 				 // OMCamera
 	s32 group_order; // Might be room?
 	void* call_unk;
-	GObjProcess* gobjproc;
-	s32 unk_0x1C;
+	GObjProcess* gobjproc_next;
+
+	union
+	{
+		s32 unk_0x1C;
+		GObj* unk_gobj_0x1C;
+		GObjProcess* gobjproc_prev;
+	};
+
 	GObj* room_gobj_next; // Unconfirmed, might be int
 	GObj* room_gobj_prev; // Unconfirmed, might be int
 	s32 room_order;		  // Might be group? Assuming room based on order here
@@ -148,63 +156,63 @@ struct _OMMtx
 
 struct OMPersp
 {
-    OMMtx *ommtx;
-    u16 norm;
-    f32 fovy;
-    f32 aspect;
-    f32 near;
-    f32 far;
-    f32 scale;
+	OMMtx* ommtx;
+	u16 norm;
+	f32 fovy;
+	f32 aspect;
+	f32 near;
+	f32 far;
+	f32 scale;
 };
 
 struct OMFrustum
 {
-    OMMtx *ommtx;
-    f32 l, r, b, t, n, f;
-    f32 scale;
+	OMMtx* ommtx;
+	f32 l, r, b, t, n, f;
+	f32 scale;
 };
 
 struct OMOrtho
 {
-    OMMtx *ommtx;
-    f32 l, r, b, t, n, f;
-    f32 scale;
+	OMMtx* ommtx;
+	f32 l, r, b, t, n, f;
+	f32 scale;
 };
 
 struct OMTranslate
 {
-    OMMtx *ommtx;
+	OMMtx* ommtx;
 
-    union
-    {
-        Vec3f f;
-        Vec3i i;
+	union
+	{
+		Vec3f f;
+		Vec3i i;
 
-    } vec;
+	} vec;
 };
 
 struct OMRotate
 {
-    OMMtx *ommtx;
+	OMMtx* ommtx;
 
-    f32 a;          // Rotation angle
+	f32 a; // Rotation angle
 
-    union
-    {
-        Vec3f f;
+	union
+	{
+		Vec3f f;
 
-    } vec;
+	} vec;
 };
 
 struct OMScale
 {
-    OMMtx *ommtx;
+	OMMtx* ommtx;
 
-    union
-    {
-        Vec3f f;
+	union
+	{
+		Vec3f f;
 
-    } vec;
+	} vec;
 };
 
 struct _Mtx6f
@@ -221,8 +229,8 @@ struct _Mtx7f
 
 struct OMGfxLink
 {
-    s32 id;
-    Gfx *dls[4];
+	s32 id;
+	Gfx* dls[4];
 };
 
 struct OMMtxVec3
@@ -386,45 +394,46 @@ struct _SObj // Sprite object
 
 struct CameraVec
 {
-    OMMtx *ommtx;
-    Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
-    Vec3f at;  // This moves the camera on the XYZ planes
-    Vec3f up;
+	OMMtx* ommtx;
+	Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about
+			   // the focus point
+	Vec3f at;  // This moves the camera on the XYZ planes
+	Vec3f up;
 };
 
 struct _Camera
 {
-    Camera *next;
-    GObj *parent_gobj;
+	Camera* next;
+	GObj* parent_gobj;
 
-    Vp viewport;
+	Vp viewport;
 
-    union CameraProjection
-    {
-        OMPersp persp;
-        OMOrtho ortho;
-        OMFrustum frustum;
+	union CameraProjection
+	{
+		OMPersp persp;
+		OMOrtho ortho;
+		OMFrustum frustum;
 
-    } projection;
+	} projection;
 
-    CameraVec vec;
+	CameraVec vec;
 
-    s32 ommtx_len;
-    OMMtx *ommtx[2];
+	s32 ommtx_len;
+	OMMtx* ommtx[2];
 
-    AObj *aobj;
-    AObjActor actor;
+	AObj* aobj;
+	AObjActor actor;
 
-    f32 cam_f0;
-    f32 cam_f1;
-    f32 cam_f2;
+	f32 cam_f0;
+	f32 cam_f1;
+	f32 cam_f2;
 
-    u32 flags;
-    u32 color;
+	u32 flags;
+	u32 color;
 
-    void(*proc_camera)(Camera*, s32);
+	void (*proc_camera)(Camera*, s32);
 
-    s32 unk_camera_0x8C;
+	s32 unk_camera_0x8C;
 };
 
 #endif

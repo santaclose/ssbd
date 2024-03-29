@@ -62,17 +62,17 @@ typedef struct OMMtxVec3 OMMtxVec3;
 typedef struct OMMtxVec4 OMMtxVec4;
 typedef struct OMGfxLink OMGfxLink;
 typedef struct OMMtxCamera OMMtxCamera;
-typedef struct CameraVec            CameraVec;
-typedef struct _Camera              Camera;
+typedef struct CameraVec CameraVec;
+typedef struct _Camera Camera;
 
-typedef struct OMPersp              OMPersp;
-typedef struct OMFrustum            OMFrustum;
-typedef struct OMOrtho              OMOrtho;
-typedef struct OMTranslate          OMTranslate;
-typedef struct OMRotate             OMRotate;
-typedef struct OMScale              OMScale;
+typedef struct OMPersp OMPersp;
+typedef struct OMFrustum OMFrustum;
+typedef struct OMOrtho OMOrtho;
+typedef struct OMTranslate OMTranslate;
+typedef struct OMRotate OMRotate;
+typedef struct OMScale OMScale;
 
-typedef struct _OMThreadStackNode   OMThreadStackNode;
-typedef struct _OMThreadStackList   OMThreadStackList;
+typedef struct _OMThreadStackNode OMThreadStackNode;
+typedef struct _OMThreadStackList OMThreadStackList;
 
 #endif
